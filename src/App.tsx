@@ -1,24 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Training, { TrainingModel } from "./training/training";
+
+const mockTraining: TrainingModel = {
+  trainingId: "training1",
+  exercises: [
+    {
+      exerciseId: "exercise1",
+      name: "my first exercise",
+      sets: [
+        { setId: "set1", reps: 8, weight: 50 },
+        { setId: "set2", reps: 8, weight: 50 },
+        { setId: "set3", reps: 6, weight: 55 },
+        { setId: "set4", reps: 6, weight: 55 },
+        { setId: "set5", reps: 6, weight: 55 },
+      ]
+    },
+    {
+      exerciseId: "exercise2",
+      name: "my second exercise",
+      sets: [
+        { setId: "set1", reps: 8, weight: 50 },
+        { setId: "set2", reps: 8, weight: 50 },
+        { setId: "set3", reps: 6, weight: 55 },
+        { setId: "set4", reps: 6, weight: 55 },
+        { setId: "set5", reps: 6, weight: 55 },
+      ]
+    },
+    {
+      exerciseId: "exercise3",
+      name: "my third exercise",
+      sets: [
+        { setId: "set1", reps: 8, weight: 50 },
+        { setId: "set2", reps: 8, weight: 50 },
+        { setId: "set3", reps: 6, weight: 55 },
+        { setId: "set4", reps: 6, weight: 55 },
+        { setId: "set5", reps: 6, weight: 55 },
+      ]
+    },
+  ]
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Training training={mockTraining} />
     </div>
   );
 }
