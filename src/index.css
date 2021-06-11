@@ -3,9 +3,82 @@ body {
   padding: 0;
   font-family: "OpenSans", Arial, Helvetica, sans-serif;
 }
+#root {}
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+/* stats
+-------------------------------------------------------------------------- */
+.stats {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: -5px;
+}
+.stats__item {
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+.stats-item {
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.stats-item > .stats-item__term,
+.stats-item > .stats-item__value {
+  padding: 6px 8px 4px 8px;
+  font-weight: bold;
+  line-height: 1;
+}
+.stats-item__term {
+  min-width: 28px;
+  text-align: center;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 5px;
+  text-shadow: 0 1px 1px rgb(0, 0, 0, 0.25);
+}
+.stats-item__value {
+  border-radius: 5px;
+}
+.stats-item__units {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Volume */
+/* ------------------------------------------------------- */
+.stats-item--volume {}
+.stats-item--volume > .stats-item__term {
+  background-color: hsl(317, 80%, 70%);
+  color: #ffffff;
+}
+.stats-item--volume > .stats-item__value {
+  color: hsl(317, 80%, 20%);
+}
+
+/* Intensity */
+/* ------------------------------------------------------- */
+.stats-item--intensity {}
+.stats-item--intensity > .stats-item__term {
+  background-color: hsl(145, 65%, 60%);
+  color: #ffffff;
+}
+.stats-item--intensity > .stats-item__value {
+  color: hsl(145, 65%, 20%);
+}
+
+/* Reps */
+/* ------------------------------------------------------- */
+.stats-item--reps {}
+.stats-item--reps > .stats-item__term {
+  background-color: hsl(216, 80%, 70%);
+  color: #ffffff;
+}
+.stats-item--reps > .stats-item__value {
+  color: hsl(216, 80%, 20%);
 }

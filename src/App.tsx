@@ -1,50 +1,33 @@
 import React from 'react';
 import './App.css';
-import Training, { TrainingModel } from "./training/training";
-
-const mockTraining: TrainingModel = {
-  trainingId: "training1",
-  exercises: [
-    {
-      exerciseId: "exercise1",
-      name: "my first exercise",
-      sets: [
-        { setId: "set1", reps: 8, weight: 50 },
-        { setId: "set2", reps: 8, weight: 50 },
-        { setId: "set3", reps: 6, weight: 55 },
-        { setId: "set4", reps: 6, weight: 55 },
-        { setId: "set5", reps: 6, weight: 55 },
-      ]
-    },
-    {
-      exerciseId: "exercise2",
-      name: "my second exercise",
-      sets: [
-        { setId: "set1", reps: 8, weight: 50 },
-        { setId: "set2", reps: 8, weight: 50 },
-        { setId: "set3", reps: 6, weight: 55 },
-        { setId: "set4", reps: 6, weight: 55 },
-        { setId: "set5", reps: 6, weight: 55 },
-      ]
-    },
-    {
-      exerciseId: "exercise3",
-      name: "my third exercise",
-      sets: [
-        { setId: "set1", reps: 8, weight: 50 },
-        { setId: "set2", reps: 8, weight: 50 },
-        { setId: "set3", reps: 6, weight: 55 },
-        { setId: "set4", reps: 6, weight: 55 },
-        { setId: "set5", reps: 6, weight: 55 },
-      ]
-    },
-  ]
-}
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
+import { RootState, WeekScheduleModel } from "./store";
+import { useSelector } from 'react-redux';
+import Schedule from './components/schedule/schedule';
 
 function App() {
+
+  const schedule = useSelector<RootState, WeekScheduleModel>(state => state.weekSchedule);
+
+  console.log("App called, schedule:", schedule);
+
+
   return (
     <div className="app">
-      <Training training={mockTraining} />
+      <div className="app__header">
+        <Header />
+      </div>
+      <div className="app__main">
+        <div className="app__schedule">
+          <Schedule
+            initialSchedule={schedule}
+          />
+        </div>
+      </div>
+      <div className="app__footer">
+        <Footer />
+      </div>
     </div>
   );
 }

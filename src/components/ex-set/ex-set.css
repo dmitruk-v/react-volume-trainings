@@ -1,0 +1,72 @@
+.ex-set {
+  --focus-shadow-inner: 0 0 0 3px #ffffff;
+  --focus-shadow-outer: 0 0 0 6px #e0ddbd;
+  --input-bg-color: #f5f5f5;
+  --input-text-color: #555555;
+  --input-placeholder-color: #a1a1a1;
+  --input-focus-bg-color: #fbf8d7;
+  --input-focus-text-color: #000000;
+  --input-focus-placeholder-color: #000000;
+  position: relative;
+  transition: all 0.15s ease-in-out;
+}
+.ex-set__layout {
+  display: flex;
+  flex-flow: column;
+}
+.ex-set__number {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  padding: 2px 4px 2px 2px;
+  font-size: 12px;
+  line-height: 1;
+  color: #a1a1a1;
+  background-color: #ffffff;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.1);
+  border-radius: 0 5px 5px 0;
+}
+.ex-set__reps {
+  margin-bottom: 3px;
+}
+.ex-set__weight {}
+.ex-set__input {
+  width: 100%;
+  margin: 0;
+  padding: 4px 6px;
+  font-size: 22px;
+  line-height: 1;
+  border: 0;
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+  text-align: center;
+  border-radius: 5px;
+}
+.ex-set__input::placeholder {
+  font-size: 16px;
+  color: var(--input-placeholder-color);
+  transform: translateY(-2px);
+}
+.ex-set__input:focus {
+  outline: none;
+  background-color: var(--input-focus-bg-color);
+  color: var(--input-focus-text-color);
+}
+.ex-set__input:focus::placeholder {
+  color: var(--input-focus-placeholder-color);
+}
+.ex-set__input::selection {
+  background-color: #000000;
+  color: #ffffff;
+}
+.ex-set--focused {
+  box-shadow: var(--focus-shadow-inner), var(--focus-shadow-outer);
+  border-radius: 5px;
+}
+.ex-set--focused .ex-set__number {
+  padding: 4px 5px 4px 2px;
+  font-size: 14px;
+  color: #000000;
+}

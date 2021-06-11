@@ -1,4 +1,14 @@
 .app {
-  padding: 30px;
-  background-color: #f1f1f1;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  height: 100%;
 }
+.app__header {
+  margin-bottom: 30px;
+}
+.app__main {
+  flex: 1;
+}
+.app__schedule {}
+.app__footer {}

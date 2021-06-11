@@ -1,0 +1,7 @@
+.training-day {
+  padding: 30px;
+  background-color: #f7f1e4;
+  border: 2px dashed #d2c6ae;
+  border-radius: 15px;
+}
+.training-day__trainings {}
