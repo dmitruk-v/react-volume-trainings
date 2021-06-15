@@ -1,16 +1,26 @@
-import { TrainingModel } from "..";
+import { TrainingModel, Day } from "..";
 import { ActionCreator } from ".";
 
 type AddTrainingAction = {
   type: "trainings/add",
   payload: {
+    day: Day,
     addedTraining: TrainingModel
+  }
+};
+
+type CloneTrainingAction = {
+  type: "trainings/clone",
+  payload: {
+    day: Day,
+    clonedTraining: TrainingModel
   }
 };
 
 type UpdateTrainingAction = {
   type: "trainings/update",
   payload: {
+    day: Day,
     updatedTraining: TrainingModel
   }
 };
@@ -18,38 +28,60 @@ type UpdateTrainingAction = {
 type RemoveTrainingAction = {
   type: "trainings/remove",
   payload: {
+    day: Day,
     removedTraining: TrainingModel
   }
 };
 
-type TrainingActions = AddTrainingAction | UpdateTrainingAction | RemoveTrainingAction;
+type TrainingActions = AddTrainingAction | CloneTrainingAction | UpdateTrainingAction | RemoveTrainingAction;
 
-const addTrainingAction = (addedTraining: TrainingModel): ActionCreator<AddTrainingAction> => {
+const addTrainingAction: ActionCreator<AddTrainingAction> = (
+  day: Day,
+  addedTraining: TrainingModel
+) => {
   return (dispatch) => {
     return {
       type: "trainings/add",
-      payload: { addedTraining }
+      payload: { day, addedTraining }
     }
   }
 }
 
-const updateTrainingAction = (updatedTraining: TrainingModel): ActionCreator<UpdateTrainingAction> => {
+const cloneTrainingAction: ActionCreator<CloneTrainingAction> = (
+  day: Day,
+  clonedTraining: TrainingModel
+) => {
+  return (dispatch) => {
+    return {
+      type: "trainings/clone",
+      payload: { day, clonedTraining }
+    }
+  }
+}
+
+const updateTrainingAction: ActionCreator<UpdateTrainingAction> = (
+  day: Day,
+  updatedTraining: TrainingModel
+) => {
   return (dispatch) => {
     return {
       type: "trainings/update",
-      payload: { updatedTraining }
+      payload: { day, updatedTraining }
     }
   }
 }
 
-const removeTrainingAction = (removedTraining: TrainingModel): ActionCreator<RemoveTrainingAction> => {
+const removeTrainingAction: ActionCreator<RemoveTrainingAction> = (
+  day: Day,
+  removedTraining: TrainingModel
+) => {
   return (dispatch) => {
     return {
       type: "trainings/remove",
-      payload: { removedTraining }
+      payload: { day, removedTraining }
     }
   }
 }
 
 export type { TrainingActions };
-export { addTrainingAction, updateTrainingAction, removeTrainingAction };
+export { addTrainingAction, cloneTrainingAction, updateTrainingAction, removeTrainingAction };

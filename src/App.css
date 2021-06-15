@@ -4,11 +4,10 @@
   min-height: 100vh;
   height: 100%;
 }
-.app__header {
-  margin-bottom: 30px;
-}
+.app__header {}
 .app__main {
   flex: 1;
+  padding: 30px;
 }
 .app__schedule {}
 .app__footer {}

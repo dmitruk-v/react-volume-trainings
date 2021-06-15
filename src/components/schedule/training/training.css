@@ -1,0 +1,60 @@
+.training {
+  background-color: #f1f1f1;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+}
+.training:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.training__head {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.training__title {
+  margin-right: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 1;
+  background-color: #999999;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.training__buttons {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-left: auto;
+}
+.training__button {
+  margin-right: 10px;
+  background-color: #ffffff;
+}
+
+.training__body {
+  display: none;
+  padding: 0 15px 17px 15px;
+}
+.training--opened > .training__body {
+  display: block;
+}
+.training__exercises {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -15px;
+  margin-bottom: -15px;
+}
+.training__exercise {
+  flex: 0 1 calc(25% - 15px);
+  min-width: 240px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.training__stats {}
+.training-stats {
+  display: flex;
+  flex-flow: row wrap;
+}

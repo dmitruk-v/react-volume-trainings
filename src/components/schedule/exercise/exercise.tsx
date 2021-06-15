@@ -1,7 +1,18 @@
 import { useMemo, useState } from "react";
+import { ExerciseModel, calculateExerciseStats, Day, } from "../../../store";
+
+// COMPONENTS --------------------------------------
 import ExSet from "../ex-set/ex-set";
-import { ExerciseModel, calculateExerciseStats, Day, } from "../../store";
+// -------------------------------------------------
+
+// ASSETS ------------------------------------------
+import openMenuIcon from "../../../assets/svg/menu_black_24dp.svg";
+import closeMenuIcon from "../../../assets/svg/close_black_24dp.svg";
+// -------------------------------------------------
+
+// STYLES ------------------------------------------
 import "./exercise.css";
+// -------------------------------------------------
 
 type Props = {
   day: Day,
@@ -84,7 +95,9 @@ const Exercise: React.FC<Props> = (props) => {
           </div>
         </div>
 
-        <button className="exercise-button exercise__menu-btn" onClick={() => setIsMenuVisible(true)}></button>
+        <button className="button-type1 exercise__menu-btn" onClick={() => setIsMenuVisible(true)}>
+          <img src={openMenuIcon} alt="" />
+        </button>
 
         <div className={`exercise__menu ${isMenuVisible ? "exercise__menu--visible" : ""}`}>
           <ul className="exercise-menu">
@@ -107,7 +120,9 @@ const Exercise: React.FC<Props> = (props) => {
               <button className="" onClick={() => { }}>Remove exercise</button>
             </li>
           </ul>
-          <button className="exercise-button exercise__menu-close-btn" onClick={() => setIsMenuVisible(false)}></button>
+          <button className="button-type1 exercise__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
+            <img src={closeMenuIcon} alt="" />
+          </button>
         </div>
 
         {isNameEditable
@@ -118,7 +133,7 @@ const Exercise: React.FC<Props> = (props) => {
                 value={exerciseName}
                 onChange={handleChangeName}
               />
-              <button className="exercise-button exercise-name__done-btn" onClick={() => setIsNameEditable(false)}></button>
+              <button className="button-type1 exercise-name__done-btn" onClick={() => setIsNameEditable(false)}></button>
             </div>
           </div>
           : ""}

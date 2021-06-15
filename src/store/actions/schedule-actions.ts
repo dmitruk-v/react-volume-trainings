@@ -10,7 +10,9 @@ type LoadWeekScheduleAction = {
 
 type WeekScheduleActions = LoadWeekScheduleAction;
 
-const loadScheduleAction = (schedule: WeekScheduleModel): ActionCreator<LoadWeekScheduleAction> => {
+const loadScheduleAction: ActionCreator<LoadWeekScheduleAction> = (
+  schedule: WeekScheduleModel
+) => {
   return (dispatch) => {
     return {
       type: "schedule/load",

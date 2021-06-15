@@ -1,1 +1,30 @@
 .header {}
+.header__menu {}
+.header-menu {
+  padding: 15px 30px;
+  background-color: #333333;
+}
+.header-menu__list {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.header-menu__item {
+  position: relative;
+}
+.header-menu__link {
+  display: block;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.header-menu__link--active {
+  background-color: #ffffff;
+  color: #000000;
+}

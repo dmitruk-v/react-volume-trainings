@@ -1,7 +1,7 @@
 import { ExSetModel, Day } from "..";
 import { ActionCreator } from ".";
 
-type CommonSetPayload = {
+type CommonSetActionPayload = {
   payload: {
     day: Day,
     trainingId: string,
@@ -9,28 +9,28 @@ type CommonSetPayload = {
   }
 }
 
-type AddSetAction = CommonSetPayload & {
+type AddSetAction = CommonSetActionPayload & {
   type: "sets/add",
   payload: {
     addedSet: ExSetModel
   }
 };
 
-type UpdateSetAction = CommonSetPayload & {
+type UpdateSetAction = CommonSetActionPayload & {
   type: "sets/update",
   payload: {
     updatedSet: ExSetModel
   }
 };
 
-type UpdateSetWithSpreadAction = CommonSetPayload & {
+type UpdateSetWithSpreadAction = CommonSetActionPayload & {
   type: "sets/updateSpread",
   payload: {
     updatedSet: ExSetModel
   }
 };
 
-type RemoveSetAction = CommonSetPayload & {
+type RemoveSetAction = CommonSetActionPayload & {
   type: "sets/remove",
   payload: {
     removedSet: ExSetModel
@@ -39,7 +39,12 @@ type RemoveSetAction = CommonSetPayload & {
 
 type SetActions = AddSetAction | UpdateSetAction | UpdateSetWithSpreadAction | RemoveSetAction;
 
-const addSetAction = (day: Day, trainingId: string, exerciseId: string, addedSet: ExSetModel): ActionCreator<AddSetAction> => {
+const addSetAction: ActionCreator<AddSetAction> = (
+  day: Day,
+  trainingId: string,
+  exerciseId: string,
+  addedSet: ExSetModel
+) => {
   return (dispatch) => {
     return {
       type: "sets/add",
@@ -48,7 +53,12 @@ const addSetAction = (day: Day, trainingId: string, exerciseId: string, addedSet
   }
 }
 
-const updateSetAction = (day: Day, trainingId: string, exerciseId: string, updatedSet: ExSetModel): ActionCreator<UpdateSetAction> => {
+const updateSetAction: ActionCreator<UpdateSetAction> = (
+  day: Day,
+  trainingId: string,
+  exerciseId: string,
+  updatedSet: ExSetModel
+) => {
   return (dispatch) => {
     return {
       type: "sets/update",
@@ -57,7 +67,12 @@ const updateSetAction = (day: Day, trainingId: string, exerciseId: string, updat
   }
 }
 
-const updateSetWithSpreadAction = (day: Day, trainingId: string, exerciseId: string, updatedSet: ExSetModel): ActionCreator<UpdateSetWithSpreadAction> => {
+const updateSetWithSpreadAction: ActionCreator<UpdateSetWithSpreadAction> = (
+  day: Day,
+  trainingId: string,
+  exerciseId: string,
+  updatedSet: ExSetModel
+) => {
   return (dispatch) => {
     return {
       type: "sets/updateSpread",
@@ -66,7 +81,12 @@ const updateSetWithSpreadAction = (day: Day, trainingId: string, exerciseId: str
   }
 }
 
-const removeSetAction = (day: Day, trainingId: string, exerciseId: string, removedSet: ExSetModel): ActionCreator<RemoveSetAction> => {
+const removeSetAction: ActionCreator<RemoveSetAction> = (
+  day: Day,
+  trainingId: string,
+  exerciseId: string,
+  removedSet: ExSetModel
+) => {
   return (dispatch) => {
     return {
       type: "sets/remove",

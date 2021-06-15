@@ -1,10 +1,14 @@
 import React from "react";
 
+// STYLES ------------------------------------------
+import "./footer.css";
+// -------------------------------------------------
+
 type Props = {}
 
 const Footer: React.FC<Props> = (props) => {
   return (
-    <div>Footer</div>
+    <footer className="footer">&copy; Valeriy Dmitruk</footer>
   );
 }
 

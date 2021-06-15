@@ -38,23 +38,6 @@
   font-size: 18px;
 }
 /* ---------------------------------------------------------------------------- */
-.exercise-button {
-  display: block;
-  width: 32px;
-  height: 32px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.exercise-button:hover {
-  background-color: #f1f1f1;
-}
-/* ---------------------------------------------------------------------------- */
 .exercise__sets-wrapper {
   flex: 1;
   margin-right: -10px;
@@ -109,21 +92,12 @@
   margin-left: 15px;
   background-color: #d9ffce;
 }
-.exercise-name__done-btn:before {
-  background: url(./assets/done_black_24dp.svg) center center no-repeat;
-}
 /* ---------------------------------------------------------------------------- */
-.exercise__menu-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-image: url(./assets/menu_black_24dp.svg);
-}
+.exercise__menu-btn,
 .exercise__menu-close-btn {
   position: absolute;
   top: 15px;
   right: 15px;
-  background-image: url(./assets/close_black_24dp.svg);
 }
 /* ---------------------------------------------------------------------------- */
 .exercise__menu {

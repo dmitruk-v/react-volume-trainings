@@ -1,27 +1,27 @@
 import { ExerciseModel } from "..";
 import { ActionCreator } from ".";
 
-type CommonExercisePayload = {
+type CommonExerciseActionPayload = {
   payload: {
     trainingId: string
   }
 }
 
-type AddExerciseAction = CommonExercisePayload & {
+type AddExerciseAction = CommonExerciseActionPayload & {
   type: "exercises/add",
   payload: {
     addedExercise: ExerciseModel
   }
 };
 
-type UpdateExerciseAction = CommonExercisePayload & {
+type UpdateExerciseAction = CommonExerciseActionPayload & {
   type: "exercises/update",
   payload: {
     updatedExercise: ExerciseModel
   }
 };
 
-type RemoveExerciseAction = CommonExercisePayload & {
+type RemoveExerciseAction = CommonExerciseActionPayload & {
   type: "exercises/remove",
   payload: {
     removedExercise: ExerciseModel
@@ -30,7 +30,10 @@ type RemoveExerciseAction = CommonExercisePayload & {
 
 type ExerciseActions = AddExerciseAction | UpdateExerciseAction | RemoveExerciseAction;
 
-const addExerciseAction = (trainingId: string, addedExercise: ExerciseModel): ActionCreator<AddExerciseAction> => {
+const addExerciseAction: ActionCreator<AddExerciseAction> = (
+  trainingId: string,
+  addedExercise: ExerciseModel
+) => {
   return (dispatch) => {
     return {
       type: "exercises/add",
@@ -39,7 +42,10 @@ const addExerciseAction = (trainingId: string, addedExercise: ExerciseModel): Ac
   }
 }
 
-const updateExerciseAction = (trainingId: string, updatedExercise: ExerciseModel): ActionCreator<UpdateExerciseAction> => {
+const updateExerciseAction: ActionCreator<UpdateExerciseAction> = (
+  trainingId: string,
+  updatedExercise: ExerciseModel
+) => {
   return (dispatch) => {
     return {
       type: "exercises/update",
@@ -48,7 +54,10 @@ const updateExerciseAction = (trainingId: string, updatedExercise: ExerciseModel
   }
 }
 
-const removeExerciseAction = (trainingId: string, removedExercise: ExerciseModel): ActionCreator<RemoveExerciseAction> => {
+const removeExerciseAction: ActionCreator<RemoveExerciseAction> = (
+  trainingId: string,
+  removedExercise: ExerciseModel
+) => {
   return (dispatch) => {
     return {
       type: "exercises/remove",

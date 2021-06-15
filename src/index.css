@@ -3,7 +3,6 @@ body {
   padding: 0;
   font-family: "OpenSans", Arial, Helvetica, sans-serif;
 }
-#root {}
 
 *,
 *:before,
@@ -12,14 +11,15 @@ body {
 }
 
 /* stats
--------------------------------------------------------------------------- */
+--------------------------------------------------------------------------------- */
 .stats {
   display: flex;
   flex-flow: row wrap;
+  margin-right: -10px;
   margin-bottom: -5px;
 }
 .stats__item {
-  margin-right: 15px;
+  margin-right: 10px;
   margin-bottom: 5px;
 }
 .stats-item {
@@ -50,8 +50,6 @@ body {
   font-weight: normal;
 }
 
-/* Volume */
-/* ------------------------------------------------------- */
 .stats-item--volume {}
 .stats-item--volume > .stats-item__term {
   background-color: hsl(317, 80%, 70%);
@@ -61,8 +59,6 @@ body {
   color: hsl(317, 80%, 20%);
 }
 
-/* Intensity */
-/* ------------------------------------------------------- */
 .stats-item--intensity {}
 .stats-item--intensity > .stats-item__term {
   background-color: hsl(145, 65%, 60%);
@@ -72,8 +68,6 @@ body {
   color: hsl(145, 65%, 20%);
 }
 
-/* Reps */
-/* ------------------------------------------------------- */
 .stats-item--reps {}
 .stats-item--reps > .stats-item__term {
   background-color: hsl(216, 80%, 70%);
@@ -82,3 +76,39 @@ body {
 .stats-item--reps > .stats-item__value {
   color: hsl(216, 80%, 20%);
 }
+
+/* button
+--------------------------------------------------------------------------------- */
+.button-type1 {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+.button-type1:hover {
+  background-color: #f1f1f1;
+}
+
+.button-type1--sm {
+  width: 32px;
+  height: 32px;
+}
+.button-type1--md {
+  width: 40px;
+  height: 40px;
+}
+.button-type1--lg {}
+
+/* utils
+--------------------------------------------------------------------------------- */
+.t-underlined { text-decoration: underline; }
+.t-bold { font-weight: bold; }
+.t-italic { font-style: italic; }

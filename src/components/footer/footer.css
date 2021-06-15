@@ -1,1 +1,6 @@
-.footer {}
+.footer {
+  padding: 30px;
+  /* border-top: 2px dashed #cccccc; */
+  background-color: #ffffff;
+  color: #555555;
+}

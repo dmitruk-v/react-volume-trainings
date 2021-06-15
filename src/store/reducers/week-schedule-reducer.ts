@@ -1,4 +1,4 @@
-import { Actions, WeekScheduleModel, ExSetModel } from "..";
+import { Actions, WeekScheduleModel, ExSetModel, createTrainingId } from "..";
 
 const initialState: WeekScheduleModel = {
   Monday: { day: "Monday", trainings: [] },
@@ -67,6 +67,46 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
               }
               : tr
           )
+        }
+      }
+    }
+
+    case "trainings/add": {
+      const { day, addedTraining } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: [
+            ...weekSchedule[day].trainings,
+            addedTraining
+          ]
+        }
+      }
+    }
+
+    case "trainings/clone": {
+      const { day, clonedTraining } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: [
+            ...weekSchedule[day].trainings,
+            { ...clonedTraining, trainingId: createTrainingId() }
+          ]
+        }
+      }
+    }
+
+    case "trainings/remove": {
+      const { day, removedTraining } = action.payload;
+      if (weekSchedule[day].trainings.length === 1) return weekSchedule;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.filter(tr => tr.trainingId !== removedTraining.trainingId),
         }
       }
     }
