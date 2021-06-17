@@ -1,4 +1,4 @@
-import { Actions, WeekScheduleModel, ExSetModel, createTrainingId } from "..";
+import { Actions, WeekScheduleModel, ExSetModel } from "..";
 
 const initialState: WeekScheduleModel = {
   Monday: { day: "Monday", trainings: [] },
@@ -138,6 +138,10 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
 // const updateSet = (sets: ExSetModel[], updatedSet: ExSetModel) => {
 //   return sets.map(s => s.setId === updatedSet.setId ? updatedSet : s);
 // }
+
+// const addSet = (sets: ExSetModel[], addedSet: ExSetModel) => [...sets, addedSet];
+// const removeSet = (sets: ExSetModel[], removedSet: ExSetModel) => sets.filter(s => s.setId !== removedSet.setId);
+// const updateSet = (sets: ExSetModel[], updatedSet: ExSetModel) => sets.map(s => s.setId === updatedSet.setId ? updatedSet : s);
 
 const spreadSet = (sets: ExSetModel[], spreadedSet: ExSetModel) => {
   let spreadPosition: number;

@@ -4,7 +4,7 @@ import rootReducer from "./reducers";
 
 const store = createStore(rootReducer);
 
-const weekSchedule = createSchedule({ reps: 0, weight: 0 });
+const weekSchedule = createSchedule({ setsCount: 5, reps: 0, weight: 0 });
 store.dispatch(loadScheduleAction(weekSchedule)(store.dispatch));
 
 type RootState = ReturnType<typeof store.getState>;
