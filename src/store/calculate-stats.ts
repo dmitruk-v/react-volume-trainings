@@ -5,8 +5,8 @@ import { ExerciseModel, ExSetModel, StatsModel, TrainingModel, TrainingDayModel,
 const calculateExSetStats = (set: ExSetModel): StatsModel => {
   const exSetStats = { volume: 0, intensity: 0, reps: 0 };
   exSetStats.volume = (set.reps * set.weight) / 1000;
-  exSetStats.reps = set.reps;
-  exSetStats.intensity = set.weight;
+  exSetStats.reps = (set.weight >= 1) ? set.reps : 0;
+  exSetStats.intensity = (set.reps >= 1) ? set.weight : 0;
   return exSetStats;
 }
 

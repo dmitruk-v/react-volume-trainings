@@ -1,12 +1,12 @@
 .ex-set {
-  --focus-shadow-inner: 0 0 0 4px #ffffff;
-  --focus-shadow-outer: 0 0 0 5px #d1d1d1;
-  --input-bg-color: #f5f5f5;
-  --input-text-color: #555555;
-  --input-placeholder-color: #a1a1a1;
-  --input-focus-bg-color: #f7f4d0;
-  --input-focus-text-color: #000000;
-  --input-focus-placeholder-color: #000000;
+  --set-input-bg-color: #f5f5f5;
+  --set-input-border-color: #e1e1e1;
+  --set-input-text-color: #555555;
+  --set-input-placeholder-color: #a1a1a1;
+  --set-input-focus-bg-color: #ffffff;
+  --set-input-focus-border-color: #555555;
+  --set-input-focus-text-color: #000000;
+  --set-input-focus-placeholder-color: #000000;
   position: relative;
   padding: 5px;
 }
@@ -21,9 +21,9 @@
   left: 0;
   transform: translate(0, -50%);
   padding: 2px 4px 2px 2px;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1;
-  color: #a1a1a1;
+  color: #bbbbbb;
   background-color: #ffffff;
   box-shadow: 2px 0 2px rgba(0, 0, 0, 0.1);
   border-radius: 0 5px 5px 0;
@@ -38,28 +38,28 @@
   margin: 0;
   font-size: 22px;
   line-height: 1;
-  border: 1px solid #e1e1e1;
-  background-color: var(--input-bg-color);
-  color: var(--input-text-color);
+  border: 1px solid var(--set-input-border-color);
+  background-color: var(--set-input-bg-color);
+  color: var(--set-input-text-color);
   text-align: center;
   border-radius: 5px;
 }
 .ex-set__input::placeholder {
   font-size: 16px;
-  color: var(--input-placeholder-color);
+  color: var(--set-input-placeholder-color);
   transform: translateY(-2px);
 }
 .ex-set__input:focus {
   outline: none;
-  border: 1px solid #a1a1a1;
-  background-color: var(--input-focus-bg-color);
-  color: var(--input-focus-text-color);
+  border: 1px solid var(--set-input-focus-border-color);
+  background-color: var(--set-input-focus-bg-color);
+  color: var(--set-input-focus-text-color);
 }
 .ex-set__input:focus::placeholder {
-  color: #555555;
+  color: var(--set-input-focus-placeholder-color);
 }
 .ex-set__input::selection {
-  background-color: #000000;
+  background-color: #cccccc;
   color: #ffffff;
 }
 .ex-set--focused {
@@ -67,7 +67,6 @@
   border-radius: 5px;
 }
 .ex-set--focused .ex-set__number {
-  padding: 4px 5px 4px 2px;
-  font-size: 14px;
+  font-size: 18px;
   color: #000000;
 }

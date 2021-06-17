@@ -1,12 +1,9 @@
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, ExSetModel, Day, AppDispatch, updateSetWithSpreadAction, updateSetAction } from "../../../store";
+import { RootState, ExSetModel, Day, AppDispatch, updateSetWithSpreadAction, updateSetAction, ActionCreator } from "../../../store";
 
 // STYLES ------------------------------------------
 import "./ex-set.css";
-// -------------------------------------------------
-
-// COMPONENTS --------------------------------------
 // -------------------------------------------------
 
 type Props = {
@@ -22,61 +19,45 @@ const ExSet: React.FC<Props> = (props) => {
   console.log("ExSet called");
 
   const dispatch = useDispatch<AppDispatch>();
-
   const scheduleOptions = useSelector((state: RootState) => state.appOptions.schedule);
-
   const [isRepsFocused, setIsRepsFocused] = useState(false);
   const [isWeightFocused, setIsWeightFocused] = useState(false);
 
   const handleRepsChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const reps = Number(evt.target.value);
-    let actionCreator = null;
-
     if (isNaN(reps)) return;
+
+    let actionCreator: ActionCreator<any> = updateSetAction;
 
     if (scheduleOptions.spreadReps === true) {
       actionCreator = updateSetWithSpreadAction;
-    } else {
-      actionCreator = updateSetAction;
     }
 
     const action = actionCreator(
       props.day,
       props.trainingId,
       props.exerciseId,
-      {
-        setId: props.initialSet.setId,
-        reps: reps,
-        weight: props.initialSet.weight
-      }
+      { ...props.initialSet, reps }
     )(dispatch);
-
     dispatch(action);
   }
 
   const handleWeightChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const weight = Number(evt.target.value);
-    let actionCreator = null;
-
     if (isNaN(weight)) return;
+
+    let actionCreator: ActionCreator<any> = updateSetAction;
 
     if (scheduleOptions.spreadWeight === true) {
       actionCreator = updateSetWithSpreadAction;
-    } else {
-      actionCreator = updateSetAction;
     }
 
     const action = actionCreator(
       props.day,
       props.trainingId,
       props.exerciseId,
-      {
-        setId: props.initialSet.setId,
-        reps: props.initialSet.reps,
-        weight: weight
-      }
+      { ...props.initialSet, weight }
     )(dispatch);
-
     dispatch(action);
   }
 
