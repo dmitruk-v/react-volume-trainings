@@ -2,17 +2,33 @@
   background-color: #f1f1f1;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
+  user-select: none;
 }
 .training:hover {
   border-color: rgba(0, 0, 0, 0.15);
 }
 .training__head {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  padding: 15px;
+  padding: 15px 15px 15px 50px;
   border-radius: 5px;
   cursor: pointer;
+}
+.training__head:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: url("../../../assets/svg/arrow_downward_black_24dp.svg") center center no-repeat;
+  transition: all 0.15s ease-in-out;
+}
+.training--opened > .training__head::before {
+  transform: translateY(-50%) rotate(-180deg);
 }
 .training__title {
   margin-right: 30px;

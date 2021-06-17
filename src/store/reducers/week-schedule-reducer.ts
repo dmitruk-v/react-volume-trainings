@@ -17,6 +17,31 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
     case "schedule/load":
       return action.payload.schedule;
 
+    case "sets/add": {
+      const { day, trainingId, exerciseId, addedSet } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.map(
+            tr => tr.trainingId === trainingId
+              ? {
+                ...tr,
+                exercises: tr.exercises.map(
+                  ex => ex.exerciseId === exerciseId
+                    ? {
+                      ...ex,
+                      sets: [...ex.sets, addedSet]
+                    }
+                    : ex
+                )
+              }
+              : tr
+          )
+        }
+      }
+    }
+
     case "sets/update": {
       const { day, trainingId, exerciseId, updatedSet } = action.payload;
       return {
@@ -77,10 +102,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
         ...weekSchedule,
         [day]: {
           ...weekSchedule[day],
-          trainings: [
-            ...weekSchedule[day].trainings,
-            addedTraining
-          ]
+          trainings: [...weekSchedule[day].trainings, addedTraining]
         }
       }
     }
@@ -91,10 +113,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
         ...weekSchedule,
         [day]: {
           ...weekSchedule[day],
-          trainings: [
-            ...weekSchedule[day].trainings,
-            { ...clonedTraining, trainingId: createTrainingId() }
-          ]
+          trainings: [...weekSchedule[day].trainings, clonedTraining]
         }
       }
     }

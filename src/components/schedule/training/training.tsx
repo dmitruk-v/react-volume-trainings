@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { calculateTrainingStats, TrainingModel, Day, AppDispatch, cloneTrainingAction, removeTrainingAction } from "../../../store";
+import { calculateTrainingStats, TrainingModel, Day, AppDispatch, cloneTrainingAction, removeTrainingAction, createTrainingId } from "../../../store";
 
 // COMPONENTS --------------------------------------
 import Exercise from "../exercise/exercise";
@@ -39,7 +39,7 @@ function Training(props: Props) {
 
   const cloneTraining = () => {
     dispatch(
-      cloneTrainingAction(props.day, props.initialTraining)(dispatch)
+      cloneTrainingAction(props.day, { ...props.initialTraining, trainingId: createTrainingId() })(dispatch)
     );
   }
 

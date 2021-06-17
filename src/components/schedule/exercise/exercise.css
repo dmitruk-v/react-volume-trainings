@@ -110,7 +110,7 @@
   bottom: 0;
   left: 0;
   transform: translateX(-30px);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   transition: all 0.15s ease-in-out;
 }
 .exercise__menu--visible {
@@ -119,10 +119,19 @@
   transform: translateX(0);
 }
 .exercise-menu {
-  margin: 0;
   padding: 15px;
+}
+.exercise-menu__section {
+  margin-bottom: 0;
+}
+.exercise-menu__list {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 .exercise-menu__item {
+  margin-right: 10px;
   margin-bottom: 10px;
 }

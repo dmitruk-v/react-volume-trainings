@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ExerciseModel, calculateExerciseStats, Day, } from "../../../store";
+import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId } from "../../../store";
 
 // COMPONENTS --------------------------------------
 import ExSet from "../ex-set/ex-set";
@@ -12,6 +12,7 @@ import closeMenuIcon from "../../../assets/svg/close_black_24dp.svg";
 
 // STYLES ------------------------------------------
 import "./exercise.css";
+import { useDispatch } from "react-redux";
 // -------------------------------------------------
 
 type Props = {
@@ -26,7 +27,7 @@ const Exercise: React.FC<Props> = (props) => {
   const [exerciseName, setExerciseName] = useState(props.initialExercise.name);
   const [isNameEditable, setIsNameEditable] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  // const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
   const exerciseStats = useMemo(
     () => calculateExerciseStats(props.initialExercise),
@@ -38,7 +39,11 @@ const Exercise: React.FC<Props> = (props) => {
   }
 
   const addSet = () => {
-    // const lastSet = props.initialExercise.sets[props.initialExercise.sets.length - 1];
+    const { day, trainingId, initialExercise } = props;
+    const lastSet = initialExercise.sets[initialExercise.sets.length - 1];
+    dispatch(
+      addSetAction(day, trainingId, initialExercise.exerciseId, { ...lastSet, setId: createSetId() })(dispatch)
+    );
   }
 
   const removeSet = () => {
@@ -100,26 +105,41 @@ const Exercise: React.FC<Props> = (props) => {
         </button>
 
         <div className={`exercise__menu ${isMenuVisible ? "exercise__menu--visible" : ""}`}>
-          <ul className="exercise-menu">
-            <li className="exercise-menu__item">
-              <button className="" onClick={() => {
-                setIsNameEditable(true);
-                setIsMenuVisible(false);
-              }}>Change name</button>
-            </li>
-            <li className="exercise-menu__item">
-              <button className="" onClick={() => addSet()}>Add set</button>
-            </li>
-            <li className="exercise-menu__item">
-              <button className="" onClick={() => removeSet()}>Remove set</button>
-            </li>
-            <li className="exercise-menu__item">
-              <button className="" onClick={() => { }}>Clone exercise</button>
-            </li>
-            <li className="exercise-menu__item">
-              <button className="" onClick={() => { }}>Remove exercise</button>
-            </li>
-          </ul>
+          <div className="exercise-menu">
+            <div className="exercise-menu__section">
+              <ul className="exercise-menu__list">
+                <li className="exercise-menu__item">
+                  <button className="button-type2" onClick={() => {
+                    setIsNameEditable(true);
+                    setIsMenuVisible(false);
+                  }}>Change name</button>
+                </li>
+              </ul>
+            </div>
+            <div className="exercise-menu__section">
+              <ul className="exercise-menu__list">
+                <li className="exercise-menu__item">
+                  <button className="button-type2" title="Add set" onClick={() => addSet()}>
+                    <img src="../../../assets/svg/menu_black_24dp.svg" alt="" />+ set
+                  </button>
+                </li>
+                <li className="exercise-menu__item">
+                  <button className="button-type2" title="Remove last set" onClick={() => removeSet()}>− set</button>
+                </li>
+              </ul>
+            </div>
+            <div className="exercise-menu__section">
+              <ul className="exercise-menu__list">
+                <li className="exercise-menu__item">
+                  <button className="button-type2" title="Clone this exercise" onClick={() => { }}>+ exercise</button>
+                </li>
+                <li className="exercise-menu__item">
+                  <button className="button-type2" title="Remove last exercise" onClick={() => { }}>− exercise</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <button className="button-type1 exercise__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
             <img src={closeMenuIcon} alt="" />
           </button>
