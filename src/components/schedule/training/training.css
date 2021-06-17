@@ -58,11 +58,14 @@
   display: block;
 }
 .training__exercises {
+  position: relative;
   margin-bottom: -10px;
 }
 .training__exercise {
   margin-bottom: 10px;
+  border-radius: 5px;
 }
+
 .training__stats {}
 .training-stats {
   display: flex;

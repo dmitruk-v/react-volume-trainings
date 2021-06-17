@@ -1,8 +1,9 @@
-import { ExerciseModel } from "..";
+import { ExerciseModel, Day } from "..";
 import { ActionCreator } from ".";
 
 type CommonExerciseActionPayload = {
   payload: {
+    day: Day,
     trainingId: string
   }
 }
@@ -31,37 +32,40 @@ type RemoveExerciseAction = CommonExerciseActionPayload & {
 type ExerciseActions = AddExerciseAction | UpdateExerciseAction | RemoveExerciseAction;
 
 const addExerciseAction: ActionCreator<AddExerciseAction> = (
+  day: Day,
   trainingId: string,
   addedExercise: ExerciseModel
 ) => {
   return (dispatch) => {
     return {
       type: "exercises/add",
-      payload: { trainingId, addedExercise }
+      payload: { day, trainingId, addedExercise }
     }
   }
 }
 
 const updateExerciseAction: ActionCreator<UpdateExerciseAction> = (
+  day: Day,
   trainingId: string,
   updatedExercise: ExerciseModel
 ) => {
   return (dispatch) => {
     return {
       type: "exercises/update",
-      payload: { trainingId, updatedExercise }
+      payload: { day, trainingId, updatedExercise }
     }
   }
 }
 
 const removeExerciseAction: ActionCreator<RemoveExerciseAction> = (
+  day: Day,
   trainingId: string,
   removedExercise: ExerciseModel
 ) => {
   return (dispatch) => {
     return {
       type: "exercises/remove",
-      payload: { trainingId, removedExercise }
+      payload: { day, trainingId, removedExercise }
     }
   }
 }

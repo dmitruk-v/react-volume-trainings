@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId } from "../../../store";
+import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId, updateExerciseAction } from "../../../store";
+import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
 import ExSet from "../ex-set/ex-set";
@@ -8,13 +9,13 @@ import ExSet from "../ex-set/ex-set";
 // ASSETS ------------------------------------------
 import openMenuIcon from "../../../assets/svg/menu_black_24dp.svg";
 import closeMenuIcon from "../../../assets/svg/close_black_24dp.svg";
-import cloneExerciseIcon from "../../../assets/svg/content_copy_black_24dp.svg";
-import removeExerciseIcon from "../../../assets/svg/delete_outline_black_24dp-red.svg";
+// import cloneExerciseIcon from "../../../assets/svg/content_copy_black_24dp.svg";
+// import removeExerciseIcon from "../../../assets/svg/delete_outline_black_24dp-red.svg";
+import doneIcon from "../../../assets/svg/done_black_24dp.svg";
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./exercise.css";
-import { useDispatch } from "react-redux";
 // -------------------------------------------------
 
 type Props = {
@@ -36,8 +37,12 @@ const Exercise: React.FC<Props> = (props) => {
     [props.initialExercise]
   );
 
-  const handleChangeName = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setExerciseName(evt.target.value);
+  const handleSubmitName = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    dispatch(
+      updateExerciseAction(props.day, props.trainingId, { ...props.initialExercise, name: exerciseName })(dispatch)
+    );
+    setIsNameEditable(false);
   }
 
   const editName = () => {
@@ -65,7 +70,7 @@ const Exercise: React.FC<Props> = (props) => {
         <div className="exercise__col exercise__name">
           <div className="exercise-name">
             <div className="exercise-name__number">Exercise {props.exerciseNumber}</div>
-            <div className="exercise-name__title">Some very-very long, heavy, hard and beautiful {props.initialExercise.name}</div>
+            <div className="exercise-name__title">{props.initialExercise.name}</div>
           </div>
         </div>
 
@@ -114,10 +119,7 @@ const Exercise: React.FC<Props> = (props) => {
         <div className="exercise-menu">
           <ul className="exercise-menu__list">
             <li className="exercise-menu__item">
-              <button
-                className="button-type2"
-                onClick={() => editName()}
-              >Change name</button>
+              <button className="button-type2" onClick={() => editName()}>Change name</button>
             </li>
             <li className="exercise-menu__item">
               <button className="button-type2" title="Add set" onClick={() => addSet()}>Add set</button>
@@ -142,13 +144,18 @@ const Exercise: React.FC<Props> = (props) => {
       {isNameEditable
         ?
         <div className="exercise__overlay">
-          <div className="exercise-name__edit">
-            <input type="text" className="exercise-name__input"
+          <form className="exercise-name__edit" onSubmit={handleSubmitName}>
+            <input
+              type="text"
+              className="exercise-name__input"
+              autoFocus
               value={exerciseName}
-              onChange={handleChangeName}
+              onChange={evt => setExerciseName(evt.target.value)}
             />
-            <button className="button-type1 exercise-name__done-btn" onClick={() => setIsNameEditable(false)}></button>
-          </div>
+            <button className="button-type1 button-type1--lg exercise-name__done-btn">
+              <img src={doneIcon} alt="" />
+            </button>
+          </form>
         </div>
         : ""}
     </div>

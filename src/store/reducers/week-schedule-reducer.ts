@@ -96,6 +96,27 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
+    case "exercises/update": {
+      const { day, trainingId, updatedExercise } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.map(
+            tr => tr.trainingId === trainingId
+              ? {
+                ...tr,
+                exercises: tr.exercises.map(
+                  ex => ex.exerciseId === updatedExercise.exerciseId
+                    ? updatedExercise
+                    : ex
+                )
+              } : tr
+          )
+        }
+      };
+    }
+
     case "trainings/add": {
       const { day, addedTraining } = action.payload;
       return {

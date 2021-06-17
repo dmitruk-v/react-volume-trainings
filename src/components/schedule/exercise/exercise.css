@@ -102,6 +102,7 @@
 
 /* ---------------------------------------------------------------------------- */
 .exercise__overlay {
+  z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
@@ -110,12 +111,13 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 .exercise-name__edit {
   position: relative;
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
   width: 100%;
   margin: auto;
   padding: 0 20px;
@@ -123,11 +125,14 @@
 .exercise-name__input {
   width: 100%;
   padding: 15px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  border: 0;
+  border: 1px solid #cccccc;
   background-color: #ffffff;
   border-radius: 5px;
+}
+.exercise-name__input:focus {
+  outline: none;
+  border-color: #555555;
 }
 .exercise-name__done-btn {
   margin-left: 15px;
