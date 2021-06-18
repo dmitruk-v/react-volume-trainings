@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { calculateTrainingStats, TrainingModel, Day, AppDispatch, cloneTrainingAction, removeTrainingAction, createTrainingId } from "../../../store";
+import { calculateTrainingStats, TrainingModel, Day, AppDispatch, cloneTrainingAction, removeTrainingAction, createTrainingId, createExerciseId, createSetId } from "../../../store";
 import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
@@ -39,21 +39,41 @@ function Training(props: Props) {
   }
 
   const cloneTraining = () => {
+    const { day, initialTraining } = props;
+    const clonedTraining: TrainingModel = {
+      ...initialTraining,
+      trainingId: createTrainingId(),
+      exercises: initialTraining.exercises.map(
+        ex => ({
+          ...ex,
+          exerciseId: createExerciseId(),
+          sets: ex.sets.map(
+            s => ({ ...s, setId: createSetId() })
+          )
+        })
+      )
+    }
     dispatch(
-      cloneTrainingAction(props.day, { ...props.initialTraining, trainingId: createTrainingId() })(dispatch)
+      cloneTrainingAction(day, clonedTraining)(dispatch)
     );
   }
 
   const removeTraining = () => {
+    const { day, initialTraining } = props;
     dispatch(
-      removeTrainingAction(props.day, props.initialTraining)(dispatch)
+      removeTrainingAction(day, initialTraining)(dispatch)
     );
   }
 
   return (
     <div className={`training ${isOpened ? "training--opened" : ""}`} onClick={toggleTraining}>
       <div className="training__head">
-        <div className="training__title">Training {props.trainingNumber}</div>
+        <div className="training__title">
+          <div className="training-title">
+            <div className="training-title__name">Training</div>
+            <div className="training-title__number">{props.trainingNumber}</div>
+          </div>
+        </div>
         <div className="training__stats">
           <div className="stats">
             <div className="stats__item">
@@ -95,7 +115,7 @@ function Training(props: Props) {
             </ul>
           </div>
 
-          <button className="button-type1 exercise__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
+          <button className="button-type1 button-type1--md training__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
             <img src={closeMenuIcon} alt="" />
           </button>
         </div>

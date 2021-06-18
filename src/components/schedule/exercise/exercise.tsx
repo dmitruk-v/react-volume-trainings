@@ -68,8 +68,13 @@ const Exercise: React.FC<Props> = (props) => {
 
   const cloneExercise = () => {
     const { day, trainingId, initialExercise } = props;
+    const clonedExercise: ExerciseModel = {
+      ...initialExercise,
+      exerciseId: createExerciseId(),
+      sets: initialExercise.sets.map(s => ({ ...s, setId: createSetId() }))
+    }
     dispatch(
-      cloneExerciseAction(day, trainingId, { ...initialExercise, exerciseId: createExerciseId() })(dispatch)
+      cloneExerciseAction(day, trainingId, clonedExercise)(dispatch)
     );
   }
 

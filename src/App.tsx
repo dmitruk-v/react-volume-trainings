@@ -19,7 +19,7 @@ function App() {
   const schedule = useSelector<RootState, WeekScheduleModel>(state => state.weekSchedule);
 
   return (
-    <div className="app">
+    <div className="app theme-girls">
 
       <BrowserRouter>
 
