@@ -1,5 +1,5 @@
 .training {
-  background-color: #f1f1f1;
+  background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   user-select: none;
@@ -62,12 +62,12 @@
   display: flex;
   flex-flow: row wrap;
   margin-right: -10px;
-  margin-bottom: -10px;
+  margin-bottom: -15px;
 }
 .training__exercise {
   flex: 1 1 calc(100% - 10px);
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 5px;
 }
 
