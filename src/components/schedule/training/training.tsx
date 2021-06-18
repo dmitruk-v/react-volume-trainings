@@ -1,18 +1,18 @@
 import { useMemo, useState } from "react";
 import { calculateTrainingStats, TrainingModel, Day, AppDispatch, cloneTrainingAction, removeTrainingAction, createTrainingId } from "../../../store";
+import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
 import Exercise from "../exercise/exercise";
 // -------------------------------------------------
 
 // ASSETS ------------------------------------------
-import cloneTrIcon from "../../../assets/svg/content_copy_black_24dp.svg";
-import removeTrIcon from "../../../assets/svg/delete_outline_black_24dp-red.svg";
+import menuIcon from "../../../assets/svg/menu_black_24dp.svg";
+import closeMenuIcon from "../../../assets/svg/close_black_24dp.svg";
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./training.css";
-import { useDispatch } from "react-redux";
 // -------------------------------------------------
 
 type Props = {
@@ -24,6 +24,7 @@ type Props = {
 function Training(props: Props) {
 
   const dispatch = useDispatch<AppDispatch>();
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isOpened, setIsOpened] = useState(props.trainingNumber === 1);
 
   const trainingStats = useMemo(
@@ -50,10 +51,7 @@ function Training(props: Props) {
   }
 
   return (
-    <div
-      className={`training ${isOpened ? "training--opened" : ""}`}
-      onClick={toggleTraining}
-    >
+    <div className={`training ${isOpened ? "training--opened" : ""}`} onClick={toggleTraining}>
       <div className="training__head">
         <div className="training__title">Training {props.trainingNumber}</div>
         <div className="training__stats">
@@ -78,20 +76,30 @@ function Training(props: Props) {
             </div>
           </div>
         </div>
-        <div className="training__buttons">
-          <button
-            className="button-type1 button-type1--md training__button"
-            onClick={() => cloneTraining()}
-          >
-            <img src={cloneTrIcon} alt="" />
-          </button>
-          <button
-            className="button-type1 button-type1--md training__button"
-            onClick={() => removeTraining()}
-          >
-            <img src={removeTrIcon} alt="" />
+
+        <div className="training__menu-btn">
+          <button className="button-type1 button-type1--md training__button" onClick={() => setIsMenuVisible(true)}>
+            <img src={menuIcon} alt="" />
           </button>
         </div>
+
+        <div className={`exercise__menu ${isMenuVisible ? "exercise__menu--visible" : ""}`}>
+          <div className="exercise-menu">
+            <ul className="exercise-menu__list">
+              <li className="exercise-menu__item">
+                <button className="button-type2" title="Clone training" onClick={() => cloneTraining()}>Clone</button>
+              </li>
+              <li className="exercise-menu__item">
+                <button className="button-type2" title="Remove training" onClick={() => removeTraining()}>Remove</button>
+              </li>
+            </ul>
+          </div>
+
+          <button className="button-type1 exercise__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
+            <img src={closeMenuIcon} alt="" />
+          </button>
+        </div>
+
       </div>
       <div className="training__body">
         <div className="training__exercises">
