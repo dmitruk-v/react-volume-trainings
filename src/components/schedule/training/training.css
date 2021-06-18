@@ -5,7 +5,7 @@
   user-select: none;
 }
 .training:hover {
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.25);
 }
 .training__head {
   position: relative;
@@ -39,14 +39,16 @@
   color: #ffffff;
   border-radius: 5px;
 }
-.training__buttons {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-left: auto;
+.training__menu-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
 }
 .training__button {
-  margin-right: 10px;
+  background-color: transparent;
+}
+.training__button:hover {
   background-color: #ffffff;
 }
 
