@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId, updateExerciseAction } from "../../../store";
+import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId, updateExerciseAction, removeSetAction, removeExerciseAction, cloneExerciseAction, createExerciseId } from "../../../store";
 import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
@@ -59,18 +59,35 @@ const Exercise: React.FC<Props> = (props) => {
   }
 
   const removeSet = () => {
-    if (props.initialExercise.sets.length <= 1) return;
-    // const lastSet = props.initialExercise.sets[props.initialExercise.sets.length - 1];
+    const { day, trainingId, initialExercise } = props;
+    const lastSet = initialExercise.sets[initialExercise.sets.length - 1];
+    dispatch(
+      removeSetAction(day, trainingId, initialExercise.exerciseId, lastSet)(dispatch)
+    );
+  }
+
+  const cloneExercise = () => {
+    const { day, trainingId, initialExercise } = props;
+    dispatch(
+      cloneExerciseAction(day, trainingId, { ...initialExercise, exerciseId: createExerciseId() })(dispatch)
+    );
+  }
+
+  const removeExercise = () => {
+    const { day, trainingId, initialExercise } = props;
+    dispatch(
+      removeExerciseAction(day, trainingId, initialExercise)(dispatch)
+    );
   }
 
   return (
     <div className="exercise">
       <div className="exercise__layout">
 
-        <div className="exercise__col exercise__name">
-          <div className="exercise-name">
-            <div className="exercise-name__number">Exercise {props.exerciseNumber}</div>
-            <div className="exercise-name__title">{props.initialExercise.name}</div>
+        <div className="exercise__col exercise__head">
+          <div className="exercise-head">
+            <div className="exercise-head__number">Exercise {props.exerciseNumber}</div>
+            <div className="exercise-head__name">Very-very long {props.initialExercise.name} name for very-very hard exercise</div>
           </div>
         </div>
 
@@ -128,10 +145,10 @@ const Exercise: React.FC<Props> = (props) => {
               <button className="button-type2" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>
             </li>
             <li className="exercise-menu__item">
-              <button className="button-type2" title="Clone this exercise" onClick={() => { }}>Clone</button>
+              <button className="button-type2" title="Clone this exercise" onClick={() => cloneExercise()}>Clone</button>
             </li>
             <li className="exercise-menu__item">
-              <button className="button-type2" title="Remove last exercise" onClick={() => { }}>Remove</button>
+              <button className="button-type2" title="Remove last exercise" onClick={() => removeExercise()}>Remove</button>
             </li>
           </ul>
         </div>

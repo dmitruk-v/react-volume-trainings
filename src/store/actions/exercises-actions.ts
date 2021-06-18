@@ -15,6 +15,13 @@ type AddExerciseAction = CommonExerciseActionPayload & {
   }
 };
 
+type CloneExerciseAction = CommonExerciseActionPayload & {
+  type: "exercises/clone",
+  payload: {
+    clonedExercise: ExerciseModel
+  }
+};
+
 type UpdateExerciseAction = CommonExerciseActionPayload & {
   type: "exercises/update",
   payload: {
@@ -29,7 +36,7 @@ type RemoveExerciseAction = CommonExerciseActionPayload & {
   }
 };
 
-type ExerciseActions = AddExerciseAction | UpdateExerciseAction | RemoveExerciseAction;
+type ExerciseActions = AddExerciseAction | CloneExerciseAction | UpdateExerciseAction | RemoveExerciseAction;
 
 const addExerciseAction: ActionCreator<AddExerciseAction> = (
   day: Day,
@@ -40,6 +47,19 @@ const addExerciseAction: ActionCreator<AddExerciseAction> = (
     return {
       type: "exercises/add",
       payload: { day, trainingId, addedExercise }
+    }
+  }
+}
+
+const cloneExerciseAction: ActionCreator<CloneExerciseAction> = (
+  day: Day,
+  trainingId: string,
+  clonedExercise: ExerciseModel
+) => {
+  return (dispatch) => {
+    return {
+      type: "exercises/clone",
+      payload: { day, trainingId, clonedExercise }
     }
   }
 }
@@ -71,4 +91,4 @@ const removeExerciseAction: ActionCreator<RemoveExerciseAction> = (
 }
 
 export type { ExerciseActions };
-export { addExerciseAction, updateExerciseAction, removeExerciseAction };
+export { addExerciseAction, cloneExerciseAction, updateExerciseAction, removeExerciseAction };

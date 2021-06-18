@@ -4,6 +4,7 @@
   --set-input-between: 5px;
   overflow: hidden;
   position: relative;
+  height: 100%;
   padding: 15px 20px;
   background-color: #ffffff;
   border-radius: 5px;
@@ -17,27 +18,30 @@
 }
 .exercise__col {
   margin-right: 15px;
-}
-/* ---------------------------------------------------------------------------- */
-.exercise__name {
-  width: 220px;
   padding-right: 15px;
   border-right: 1px dashed rgba(0, 0, 0, 0.1);
 }
-.exercise-name {
-  line-height: 1.2;
+.exercise__col:last-child {
+  margin-right: 15px;
+  padding-right: 0;
+  border-right: 0;
 }
-.exercise-name__number {
+/* ---------------------------------------------------------------------------- */
+.exercise__head {
+  width: 220px;
+}
+.exercise-head {}
+.exercise-head__number {
   margin-bottom: 5px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
   color: #cccccc;
 }
-.exercise-name__title {
+.exercise-head__name {
   font-size: 18px;
+  line-height: 1.2;
 }
-
 /* ---------------------------------------------------------------------------- */
 .exercise__stats {
   width: 150px;
@@ -45,8 +49,6 @@
   border-right: 1px dashed rgba(0, 0, 0, 0.1);
 }
 .exercise-stats {
-  display: flex;
-  flex-flow: column nowrap;
   padding-top: 5px;
 }
 .exercise-stats__item {
@@ -54,38 +56,35 @@
   flex-flow: row wrap;
   justify-content: space-between;
   margin-bottom: 8px;
-  border-bottom: 1px dashed #e1e1e1;
+  border-bottom: 1px dashed #eaeaea;
 }
 .exercise-stats__item:last-child {
   margin-bottom: 0;
 }
-.exercise-stats__term {}
+.exercise-stats__term {
+  color: #a1a1a1;
+}
 .exercise-stats__value {
   font-weight: bold;
+  /* color: #000 !important; */
 }
 .exercise-stats__units {
   font-weight: normal;
 }
 
-.exercise-stats__item--volume > .exercise-stats__term {
-  color: #f075cd;
-}
+.exercise-stats__item--volume > .exercise-stats__term {}
 .exercise-stats__item--volume > .exercise-stats__value {
-  color: #9B0A73;
+  color: #d2189f;
 }
 
-.exercise-stats__item--intensity > .exercise-stats__term {
-  color: #57db8e;
-}
+.exercise-stats__item--intensity > .exercise-stats__term {}
 .exercise-stats__item--intensity > .exercise-stats__value {
-  color: #145F07;
+  color: #34ca1a;
 }
 
-.exercise-stats__item--reps > .exercise-stats__term {
-  color: #75a6f0;
-}
+.exercise-stats__item--reps > .exercise-stats__term {}
 .exercise-stats__item--reps > .exercise-stats__value {
-  color: #0A2B5C;
+  color: #1e6bdc;
 }
 
 /* ---------------------------------------------------------------------------- */

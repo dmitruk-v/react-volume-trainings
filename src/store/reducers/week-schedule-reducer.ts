@@ -96,6 +96,50 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
+    case "sets/remove": {
+      const { day, trainingId, exerciseId, removedSet } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.map(
+            tr => tr.trainingId === trainingId
+              ? {
+                ...tr,
+                exercises: tr.exercises.map(
+                  ex => ex.exerciseId === exerciseId
+                    ? {
+                      ...ex,
+                      sets: ex.sets.length > 1
+                        ? ex.sets.filter(s => s.setId !== removedSet.setId)
+                        : ex.sets
+                    }
+                    : ex
+                )
+              }
+              : tr
+          )
+        }
+      }
+    }
+
+    case "exercises/clone": {
+      const { day, trainingId, clonedExercise } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.map(
+            tr => tr.trainingId === trainingId
+              ? {
+                ...tr,
+                exercises: [...tr.exercises, clonedExercise]
+              } : tr
+          )
+        }
+      };
+    }
+
     case "exercises/update": {
       const { day, trainingId, updatedExercise } = action.payload;
       return {
@@ -111,6 +155,25 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
                     ? updatedExercise
                     : ex
                 )
+              } : tr
+          )
+        }
+      };
+    }
+
+    case "exercises/remove": {
+      const { day, trainingId, removedExercise } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.map(
+            tr => tr.trainingId === trainingId
+              ? {
+                ...tr,
+                exercises: tr.exercises.length > 1
+                  ? tr.exercises.filter(ex => ex.exerciseId !== removedExercise.exerciseId)
+                  : tr.exercises
               } : tr
           )
         }

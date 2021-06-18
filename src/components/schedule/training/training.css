@@ -59,9 +59,14 @@
 }
 .training__exercises {
   position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -10px;
   margin-bottom: -10px;
 }
 .training__exercise {
+  flex: 1 1 calc(100% - 10px);
+  margin-right: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
