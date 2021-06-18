@@ -98,24 +98,24 @@ function Training(props: Props) {
         </div>
 
         <div className="training__menu-btn">
-          <button className="button-type1 button-type1--md training__button" onClick={() => setIsMenuVisible(true)}>
+          <button className="button-type1 training__button" onClick={() => setIsMenuVisible(true)}>
             <img src={menuIcon} alt="" />
           </button>
         </div>
 
-        <div className={`exercise__menu ${isMenuVisible ? "exercise__menu--visible" : ""}`}>
-          <div className="exercise-menu">
-            <ul className="exercise-menu__list">
-              <li className="exercise-menu__item">
+        <div className={`dropdown-menu ${isMenuVisible ? "dropdown-menu--visible" : ""} training__dropdown`}>
+          <div className="dropdown-menu__inner">
+            <ul className="dropdown-menu__list">
+              <li className="dropdown-menu__item">
                 <button className="button-type2" title="Clone training" onClick={() => cloneTraining()}>Clone</button>
               </li>
-              <li className="exercise-menu__item">
+              <li className="dropdown-menu__item">
                 <button className="button-type2" title="Remove training" onClick={() => removeTraining()}>Remove</button>
               </li>
             </ul>
           </div>
 
-          <button className="button-type1 button-type1--md training__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
+          <button className="button-type1 dropdown-menu__close-btn" onClick={() => setIsMenuVisible(false)}>
             <img src={closeMenuIcon} alt="" />
           </button>
         </div>

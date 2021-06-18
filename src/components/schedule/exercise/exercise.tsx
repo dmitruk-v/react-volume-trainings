@@ -9,8 +9,6 @@ import ExSet from "../ex-set/ex-set";
 // ASSETS ------------------------------------------
 import openMenuIcon from "../../../assets/svg/menu_black_24dp.svg";
 import closeMenuIcon from "../../../assets/svg/close_black_24dp.svg";
-// import cloneExerciseIcon from "../../../assets/svg/content_copy_black_24dp.svg";
-// import removeExerciseIcon from "../../../assets/svg/delete_outline_black_24dp-red.svg";
 import doneIcon from "../../../assets/svg/done_black_24dp.svg";
 // -------------------------------------------------
 
@@ -137,28 +135,28 @@ const Exercise: React.FC<Props> = (props) => {
         <img src={openMenuIcon} alt="" />
       </button>
 
-      <div className={`exercise__menu ${isMenuVisible ? "exercise__menu--visible" : ""}`}>
-        <div className="exercise-menu">
-          <ul className="exercise-menu__list">
-            <li className="exercise-menu__item">
+      <div className={`dropdown-menu ${isMenuVisible ? "dropdown-menu--visible" : ""} exercise__dropdown`}>
+        <div className="dropdown-menu__inner">
+          <ul className="dropdown-menu__list">
+            <li className="dropdown-menu__item">
               <button className="button-type2" onClick={() => editName()}>Change name</button>
             </li>
-            <li className="exercise-menu__item">
+            <li className="dropdown-menu__item">
               <button className="button-type2" title="Add set" onClick={() => addSet()}>Add set</button>
             </li>
-            <li className="exercise-menu__item">
+            <li className="dropdown-menu__item">
               <button className="button-type2" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>
             </li>
-            <li className="exercise-menu__item">
+            <li className="dropdown-menu__item">
               <button className="button-type2" title="Clone this exercise" onClick={() => cloneExercise()}>Clone</button>
             </li>
-            <li className="exercise-menu__item">
+            <li className="dropdown-menu__item">
               <button className="button-type2" title="Remove last exercise" onClick={() => removeExercise()}>Remove</button>
             </li>
           </ul>
         </div>
 
-        <button className="button-type1 exercise__menu-close-btn" onClick={() => setIsMenuVisible(false)}>
+        <button className="button-type1 dropdown-menu__close-btn" onClick={() => setIsMenuVisible(false)}>
           <img src={closeMenuIcon} alt="" />
         </button>
       </div>

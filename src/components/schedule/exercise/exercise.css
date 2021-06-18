@@ -2,7 +2,6 @@
   --set-input-width: 70px;
   --set-input-height: calc(var(--set-input-width) / 1.62 - var(--set-input-between));
   --set-input-between: 5px;
-  overflow: hidden;
   position: relative;
   height: 100%;
   background-color: transparent;
@@ -136,47 +135,12 @@
   background-color: #d9ffce;
 }
 /* ---------------------------------------------------------------------------- */
-.exercise__menu-btn,
-.exercise__menu-close-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-/* ---------------------------------------------------------------------------- */
-.exercise__menu {
-  visibility: hidden;
-  opacity: 0;
-  z-index: 1;
+.exercise__menu-btn {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  transform: translateY(-100%);
-  transition: all 0.15s ease-in-out;
+  right: 0;
 }
-.exercise__menu--visible {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-}
-.exercise-menu {
-  padding: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
-  border-radius: 5px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-}
-.exercise-menu__list {
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0 -10px -10px 0;
-  padding: 0;
-  list-style: none;
-}
-.exercise-menu__item {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-.exercise-menu__item:last-child:not(:only-child) {
-  margin-bottom: 0;
+.exercise__dropdown {
+  top: -10px;
+  right: -10px;
 }

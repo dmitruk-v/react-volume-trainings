@@ -63,20 +63,6 @@
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.15);
 }
 
-.training__menu-btn,
-.training__menu-close-btn {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-}
-.training__button {
-  background-color: transparent;
-}
-.training__button:hover {
-  background-color: #ffffff;
-}
-
 .training__body {
   display: none;
   padding: 15px 15px 17px 15px;
@@ -104,6 +90,16 @@
 .training-stats {
   display: flex;
   flex-flow: row wrap;
+}
+/* ---------------------------------------------------------------------------- */
+.training__menu-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+}
+.training__dropdown {
+  right: 5px;
 }
 
 /* THEME: GIRLS
