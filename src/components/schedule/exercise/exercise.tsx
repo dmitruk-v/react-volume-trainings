@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
 import ExSet from "../ex-set/ex-set";
+import Stats from "../stats/stats";
 // -------------------------------------------------
 
 // ASSETS ------------------------------------------
@@ -95,26 +96,12 @@ const Exercise: React.FC<Props> = (props) => {
         </div>
 
         <div className="exercise__col exercise__stats">
-          <div className="stats stats--vertical">
-            <div className="stats__item">
-              <div className="stats-item stats-item--volume">
-                <span className="stats-item__term">Volume:</span>
-                <span className="stats-item__value">{exerciseStats.volume.toFixed(2)}<span className="stats-item__units">t</span></span>
-              </div>
-            </div>
-            <div className="stats__item">
-              <div className="stats-item stats-item--intensity">
-                <span className="stats-item__term">Intensity:</span>
-                <span className="stats-item__value">{exerciseStats.intensity.toFixed(1)}<span className="stats-item__units">kg</span></span>
-              </div>
-            </div>
-            <div className="stats__item">
-              <div className="stats-item stats-item--reps">
-                <span className="stats-item__term">Reps:</span>
-                <span className="stats-item__value">{exerciseStats.reps}<span className="stats-item__units">reps</span></span>
-              </div>
-            </div>
-          </div>
+          <Stats
+            statsOptions={{
+              modifierClasses: ["stats--vertical"]
+            }}
+            stats={exerciseStats}
+          />
         </div>
 
         <div className="exercise__col exercise__sets-wrapper">
