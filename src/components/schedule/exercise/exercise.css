@@ -41,49 +41,14 @@
 }
 /* ---------------------------------------------------------------------------- */
 .exercise__stats {
-  width: 150px;
+  width: 160px;
+  padding-top: 5px;
   padding-right: 15px;
   border-right: 1px dashed rgba(0, 0, 0, 0.1);
 }
-.exercise-stats {
-  padding-top: 5px;
-}
-.exercise-stats__item {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  border-bottom: 1px dashed #eaeaea;
-}
-.exercise-stats__item:last-child {
-  margin-bottom: 0;
-}
-.exercise-stats__term {
+.exercise__stats .stats-item__term {
   color: #a1a1a1;
 }
-.exercise-stats__value {
-  font-weight: bold;
-  /* color: #000 !important; */
-}
-.exercise-stats__units {
-  font-weight: normal;
-}
-
-.exercise-stats__item--volume > .exercise-stats__term {}
-.exercise-stats__item--volume > .exercise-stats__value {
-  color: #d2189f;
-}
-
-.exercise-stats__item--intensity > .exercise-stats__term {}
-.exercise-stats__item--intensity > .exercise-stats__value {
-  color: #34ca1a;
-}
-
-.exercise-stats__item--reps > .exercise-stats__term {}
-.exercise-stats__item--reps > .exercise-stats__value {
-  color: #1e6bdc;
-}
-
 /* ---------------------------------------------------------------------------- */
 .exercise__sets-wrapper {
   flex: 1;

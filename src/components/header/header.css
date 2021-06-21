@@ -1,7 +1,7 @@
 .header {}
 .header__menu {}
 .header-menu {
-  padding: 15px 30px;
+  padding: 10px 0 0 10px;
   background-color: #333333;
 }
 .header-menu__list {
@@ -16,13 +16,13 @@
 }
 .header-menu__link {
   display: block;
-  padding: 15px;
+  padding: 15px 20px;
   font-size: 18px;
   font-weight: normal;
   line-height: 1;
   text-decoration: none;
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
 }
 .header-menu__link--active {
   background-color: #ffffff;

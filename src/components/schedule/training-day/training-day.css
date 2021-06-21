@@ -1,40 +1,7 @@
-.training-day {  
-  border-radius: 0 0 5px 5px;
-}
-.training-day__head {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-bottom: 15px;
-  padding: 15px;
-  background-color: #ffeeca;
-  border-radius: 0 5px 5px 5px;
-}
-
-.training-day__title {
-  margin-right: 15px;
-  padding: 10px 15px;
-  font-size: 18px;
-  line-height: 1;
-  background-color: #b37900;
-  color: #ffffff;
-  border-radius: 5px;
-}
-
+.training-day {}
 .training-day__body {
   position: relative;
 }
-
-.training-day__stats {}
-
-.training-day__create-training {
-  margin-bottom: 15px;
-}
-
-.training-day__button {
-  padding: 15px;
-}
-
 .training-day__trainings {}
 .training-day__training {
   margin-bottom: 15px;

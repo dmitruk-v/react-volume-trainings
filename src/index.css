@@ -10,7 +10,7 @@ body {
   box-sizing: border-box;
 }
 
-/* stats
+/* STATS: DEFAULT
 --------------------------------------------------------------------------------- */
 .stats {
   display: flex;
@@ -22,59 +22,170 @@ body {
   margin-right: 10px;
   margin-bottom: 5px;
 }
-.stats-item {
-  overflow: hidden;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-}
-.stats-item > .stats-item__term,
-.stats-item > .stats-item__value {
+.stats-item {}
+.stats-item__term,
+.stats-item__value {
+  display: inline-block;
   padding: 6px 8px 4px 8px;
   font-weight: bold;
   line-height: 1;
 }
 .stats-item__term {
-  min-width: 28px;
-  text-align: center;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 5px;
-  text-shadow: 0 1px 1px rgb(0, 0, 0, 0.25);
+  color: #555555;
 }
 .stats-item__value {
   border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
 }
 .stats-item__units {
+  padding-left: 5px;
   font-size: 14px;
   font-weight: normal;
 }
 
 .stats-item--volume {}
-.stats-item--volume > .stats-item__term {
-  background-color: hsl(317, 80%, 70%);
-  color: #ffffff;
-}
 .stats-item--volume > .stats-item__value {
-  color: hsl(317, 80%, 20%);
+  border-color: #d2189f;
+  color: #d2189f;
 }
 
 .stats-item--intensity {}
-.stats-item--intensity > .stats-item__term {
-  background-color: hsl(145, 65%, 60%);
-  color: #ffffff;
-}
 .stats-item--intensity > .stats-item__value {
-  color: hsl(145, 65%, 20%);
+  border-color: #19b52c;
+  color: #19b52c;
 }
 
 .stats-item--reps {}
-.stats-item--reps > .stats-item__term {
-  background-color: hsl(216, 80%, 70%);
-  color: #ffffff;
-}
 .stats-item--reps > .stats-item__value {
-  color: hsl(216, 80%, 20%);
+  border-color: #1e6bdc;
+  color: #1e6bdc;
+}
+
+/* STATS: VERTICAL
+--------------------------------------------------------------------------------- */
+.stats.stats--vertical {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+.stats--vertical .stats__item {
+  margin-right: 0;
+  margin-bottom: 5px;
+}
+.stats--vertical .stats__item:last-child {
+  margin-bottom: 0;
+}
+.stats--vertical .stats-item {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #eaeaea;
+}
+
+.stats--vertical .stats-item__term,
+.stats--vertical .stats-item__value {
+  padding: 0;
+}
+.stats--vertical .stats-item__term {
+  margin-right: 10px;
+  font-weight: normal;
+  color: #555555;
+}
+.stats--vertical .stats-item__value {
+  margin-left: auto;
+  border: 0;
+  background-color: transparent;
+  text-align: right;
+}
+.stats--vertical .stats-item__units {
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.stats--vertical .stats-item--volume {}
+.stats--vertical .stats-item--volume > .stats-item__value {
+  border-color: #d2189f;
+  color: #d2189f;
+}
+
+.stats--vertical .stats-item--intensity {}
+.stats--vertical .stats-item--intensity > .stats-item__value {
+  border-color: #19b52c;
+  color: #19b52c;
+}
+
+.stats--vertical .stats-item--reps {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+.stats--vertical .stats-item--reps > .stats-item__value {
+  border-color: #1e6bdc;
+  color: #1e6bdc;
+}
+
+/* STATS: WEEK
+---------------------------------------------------- */
+.stats--week {
+  margin: 0;
+}
+.stats--week .stats__item {
+  margin: 0;
+}
+.stats--week .stats-item {
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 5px;
+}
+.stats--week .stats-item__term,
+.stats--week .stats-item__value {
+  display: block;
+  padding: 0;
+  font-weight: bold;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+}
+.stats--week .stats-item__term {
+  margin-bottom: 3px;
+  color: #555555;
+}
+.stats--week .stats-item__value {
+  font-size: 32px;
+  font-weight: normal;
+}
+.stats--week .stats-item__units {
+  padding-left: 5px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.stats--week .stats-item--volume {}
+.stats--week .stats-item--volume > .stats-item__value {
+  color: #d2189f;
+}
+
+.stats--week .stats-item--intensity {}
+.stats--week .stats-item--intensity > .stats-item__value {
+  color: #19b52c;
+}
+
+.stats--week .stats-item--reps {}
+.stats--week .stats-item--reps > .stats-item__value {
+  color: #1e6bdc;
+}
+
+/* STATS: INACTIVE
+---------------------------------------------------- */
+.stats--inactive {}
+.stats--inactive .stats-item__term {
+  color: #cccccc;
+}
+.stats--inactive .stats-item__value {
+  color: #cccccc !important;
 }
 
 /* button icons

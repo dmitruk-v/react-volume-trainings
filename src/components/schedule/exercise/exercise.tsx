@@ -90,23 +90,29 @@ const Exercise: React.FC<Props> = (props) => {
         <div className="exercise__col exercise__head">
           <div className="exercise-head">
             <div className="exercise-head__number">Exercise {props.exerciseNumber}</div>
-            <div className="exercise-head__name">Very-very long {props.initialExercise.name} name for very-very hard exercise</div>
+            <div className="exercise-head__name">{props.initialExercise.name}</div>
           </div>
         </div>
 
         <div className="exercise__col exercise__stats">
-          <div className="exercise-stats">
-            <div className="exercise-stats__item exercise-stats__item--volume">
-              <span className="exercise-stats__term">Volume:</span>
-              <span className="exercise-stats__value">{exerciseStats.volume.toFixed(2)} <span className="exercise-stats__units">t</span></span>
+          <div className="stats stats--vertical">
+            <div className="stats__item">
+              <div className="stats-item stats-item--volume">
+                <span className="stats-item__term">Volume:</span>
+                <span className="stats-item__value">{exerciseStats.volume.toFixed(2)}<span className="stats-item__units">t</span></span>
+              </div>
             </div>
-            <div className="exercise-stats__item exercise-stats__item--intensity">
-              <span className="exercise-stats__term">Intensity:</span>
-              <span className="exercise-stats__value">{exerciseStats.intensity.toFixed(1)} <span className="exercise-stats__units">kg</span></span>
+            <div className="stats__item">
+              <div className="stats-item stats-item--intensity">
+                <span className="stats-item__term">Intensity:</span>
+                <span className="stats-item__value">{exerciseStats.intensity.toFixed(1)}<span className="stats-item__units">kg</span></span>
+              </div>
             </div>
-            <div className="exercise-stats__item exercise-stats__item--reps">
-              <span className="exercise-stats__term">Reps:</span>
-              <span className="exercise-stats__value">{exerciseStats.reps} <span className="exercise-stats__units">reps</span></span>
+            <div className="stats__item">
+              <div className="stats-item stats-item--reps">
+                <span className="stats-item__term">Reps:</span>
+                <span className="stats-item__value">{exerciseStats.reps}<span className="stats-item__units">reps</span></span>
+              </div>
             </div>
           </div>
         </div>

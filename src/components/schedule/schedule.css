@@ -15,36 +15,6 @@
   flex: 1;
 }
 
-
-.schedule__menu {}
-.schedule-menu {
-  background-color: #ffffff;
-}
-.schedule-menu__list {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.schedule-menu__item {
-  position: relative;
-}
-.schedule-menu__link {
-  display: block;
-  padding: 10px 15px;
-  font-size: 18px;
-  background-color: #ffffff;
-  color: #684c0f;
-  text-decoration: none;
-  border-radius: 5px 5px 0 0;
-}
-.schedule-menu__link--active {
-  color: #684c0f;
-  background-color: #ffeeca;
-}
-
 .schedule__head {
   z-index: 2;
   position: fixed;
@@ -52,23 +22,139 @@
   right: 15px;
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
+  /* padding: 5px; */
   background-color: #ffffff;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.schedule__title-layout {
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 90px;
+  padding: 10px 15px;
+  background-color: #ffe387;
   border-radius: 5px;
 }
 .schedule__title {
-  padding: 15px 30px;
+  margin: auto;
   font-size: 20px;
   line-height: 1;
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 5px;
+  text-align: center;
+  color: #4e3808;
 }
 .schedule__stats {
-  padding-right: 20px;
+  padding: 0 10px;
 }
-.schedule__days {}
-.schedule__day {
-  margin-bottom: 30px;
+.schedule__days {
+  margin-bottom: 15px;
 }
+
+
+.days-menu {}
+.days-menu__items {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -15px;
+  margin-bottom: -15px;
+}
+.days-menu__item {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.menu-day {
+  position: relative;
+  display: block;
+  border: 2px solid #cccccc;
+  background-color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.menu-day:hover {
+  border-color: #a1a1a1;
+}
+.menu-day__title {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  font-size: 18px;
+  line-height: 1;
+  border-bottom: 2px solid #f1f1f1;
+  background-color: #ffffff;
+  border-radius: 5px 5px 0 0;
+}
+.menu-day__day-name {
+  padding: 10px 15px;
+  color: #555555;
+}
+.menu-day__trainings {
+  margin-left: auto;
+  padding: 10px;
+  font-weight: bold;
+  line-height: 1;
+  background-color: #f1f1f1;
+  color: #555555;
+  border-radius: 0 4px 0 0;
+}
+.menu-day__stats {
+  padding: 10px 15px;
+}
+
+.menu-day--used {
+  border-color: #83bf6b;
+  background-color: #ffffff;
+}
+.menu-day--used:hover {
+  border-color: #50883a;
+}
+.menu-day--used .menu-day__title {
+  border-color: #c1e4b3;
+  background-color: #d8ffc9;
+}
+.menu-day--used .menu-day__day-name {
+  color: #296b10;
+}
+.menu-day--used .menu-day__trainings {
+  background-color: #c1e4b3;
+  color: #296b10;
+}
+
+.menu-day--active {
+  border-color: #dabf65;
+}
+.menu-day--active:hover {
+  border-color: #dabf65;
+}
+.menu-day--active .menu-day__title {
+  background-color: #ffebaa;
+  border-color: #ead58f;
+}
+.menu-day--active .menu-day__day-name {
+  color: #584f32;
+}
+.menu-day--active .menu-day__trainings {
+  background-color: #ead58f;
+  color: #584f32;
+}
+
+/* THEME: GIRLS - days-menu
+--------------------------------------------------------------------------------- */
+.theme-girls .menu-day--active {
+  border-color: #de36c5;
+}
+.theme-girls .menu-day--active:hover {
+  border-color: #a71390;
+}
+.theme-girls .menu-day--active .menu-day__title {
+  background-color: #ffebfc;
+  border-color: #fbaeef;
+}
+.theme-girls .menu-day--active .menu-day__day-name {
+  color: #861074;
+}
+.theme-girls .menu-day--active .menu-day__trainings {
+  background-color: #fbaeef;
+  color: #981184;
+}
+
+.schedule__selected-day {}
