@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId, updateExerciseAction, removeSetAction, removeExerciseAction, cloneExerciseAction, createExerciseId } from "../../../store";
+import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId, updateExerciseAction, removeSetAction, removeExerciseAction, addExerciseAction, createExerciseId } from "../../../store";
 import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
@@ -49,7 +49,7 @@ const Exercise: React.FC<Props> = (props) => {
     setIsMenuVisible(false);
   }
 
-  const addSet = () => {
+  const cloneLastSet = () => {
     const { day, trainingId, initialExercise } = props;
     const lastSet = initialExercise.sets[initialExercise.sets.length - 1];
     dispatch(
@@ -73,7 +73,7 @@ const Exercise: React.FC<Props> = (props) => {
       sets: initialExercise.sets.map(s => ({ ...s, setId: createSetId() }))
     }
     dispatch(
-      cloneExerciseAction(day, trainingId, clonedExercise)(dispatch)
+      addExerciseAction(day, trainingId, clonedExercise)(dispatch)
     );
   }
 
@@ -88,17 +88,25 @@ const Exercise: React.FC<Props> = (props) => {
     <div className="exercise">
       <div className="exercise__layout">
 
-        <div className="exercise__col exercise__head">
+        <div className="exercise__head">
           <div className="exercise-head">
             <div className="exercise-head__number">Exercise {props.exerciseNumber}</div>
             <div className="exercise-head__name">{props.initialExercise.name}</div>
           </div>
         </div>
 
-        <div className="exercise__col exercise__stats">
+        <div className="exercise__stats">
           <Stats
             statsOptions={{
-              modifierClasses: ["stats--vertical"]
+              modifierClasses: [
+                "stats--vertical",
+                "stats--strong-terms",
+                "stats--colored-terms",
+                "stats--colored-values"
+              ],
+              volumeTerm: "V:",
+              intensityTerm: "I:",
+              repsTerm: "N:",
             }}
             stats={exerciseStats}
           />
@@ -135,7 +143,7 @@ const Exercise: React.FC<Props> = (props) => {
               <button className="button-type2" onClick={() => editName()}>Change name</button>
             </li>
             <li className="dropdown-menu__item">
-              <button className="button-type2" title="Add set" onClick={() => addSet()}>Add set</button>
+              <button className="button-type2" title="Add set" onClick={() => cloneLastSet()}>Clone last set</button>
             </li>
             <li className="dropdown-menu__item">
               <button className="button-type2" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>

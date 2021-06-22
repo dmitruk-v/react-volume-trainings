@@ -123,8 +123,8 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
-    case "exercises/clone": {
-      const { day, trainingId, clonedExercise } = action.payload;
+    case "exercises/add": {
+      const { day, trainingId, addedExercise } = action.payload;
       return {
         ...weekSchedule,
         [day]: {
@@ -133,7 +133,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
             tr => tr.trainingId === trainingId
               ? {
                 ...tr,
-                exercises: [...tr.exercises, clonedExercise]
+                exercises: [...tr.exercises, addedExercise]
               } : tr
           )
         }
@@ -187,17 +187,6 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
         [day]: {
           ...weekSchedule[day],
           trainings: [...weekSchedule[day].trainings, addedTraining]
-        }
-      }
-    }
-
-    case "trainings/clone": {
-      const { day, clonedTraining } = action.payload;
-      return {
-        ...weekSchedule,
-        [day]: {
-          ...weekSchedule[day],
-          trainings: [...weekSchedule[day].trainings, clonedTraining]
         }
       }
     }

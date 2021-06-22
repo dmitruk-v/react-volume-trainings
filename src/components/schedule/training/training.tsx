@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import { calculateTrainingStats, TrainingModel, Day, AppDispatch, cloneTrainingAction, removeTrainingAction, createTrainingId, createExerciseId, createSetId } from "../../../store";
+import { calculateTrainingStats, TrainingModel, Day, AppDispatch, addTrainingAction, removeTrainingAction, createTrainingId, createExerciseId, createSetId } from "../../../store";
 import { useDispatch } from "react-redux";
 
 // COMPONENTS --------------------------------------
 import Exercise from "../exercise/exercise";
+import Stats from "../stats/stats";
 // -------------------------------------------------
 
 // ASSETS ------------------------------------------
@@ -54,7 +55,7 @@ function Training(props: Props) {
       )
     }
     dispatch(
-      cloneTrainingAction(day, clonedTraining)(dispatch)
+      addTrainingAction(day, clonedTraining)(dispatch)
     );
   }
 
@@ -75,26 +76,19 @@ function Training(props: Props) {
           </div>
         </div>
         <div className="training__stats">
-          <div className="stats">
-            <div className="stats__item">
-              <div className="stats-item stats-item--volume">
-                <div className="stats-item__term">Volume</div>
-                <div className="stats-item__value">{trainingStats.volume.toFixed(2)}<span className="stats-item__units">t</span></div>
-              </div>
-            </div>
-            <div className="stats__item">
-              <div className="stats-item stats-item--intensity">
-                <div className="stats-item__term">Intensity</div>
-                <div className="stats-item__value">{trainingStats.intensity.toFixed(1)}<span className="stats-item__units">kg</span></div>
-              </div>
-            </div>
-            <div className="stats__item">
-              <div className="stats-item stats-item--reps">
-                <div className="stats-item__term">Reps</div>
-                <div className="stats-item__value">{trainingStats.reps}<span className="stats-item__units">reps</span></div>
-              </div>
-            </div>
-          </div>
+          <Stats
+            statsOptions={{
+              modifierClasses: [
+                "stats--colored-terms",
+                "stats--colored-values",
+                "stats--colored-borders",
+              ],
+              volumeTerm: "V:",
+              intensityTerm: "I:",
+              repsTerm: "N:",
+            }}
+            stats={trainingStats}
+          />
         </div>
 
         <div className="training__menu-btn">

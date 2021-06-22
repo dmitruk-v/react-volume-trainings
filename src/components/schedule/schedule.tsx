@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 // COMPONENTS --------------------------------------
 import TrainingDay from "./training-day/training-day";
+import Stats from "./stats/stats";
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
@@ -33,26 +34,17 @@ const Schedule: React.FC<Props> = (props) => {
           <span className="schedule__title">Week stats</span>
         </div>
         <div className="schedule__stats">
-          <div className="stats stats--week">
-            <div className="stats__item">
-              <div className="stats-item stats-item--volume">
-                <div className="stats-item__term">Volume</div>
-                <div className="stats-item__value">{weekStats.volume.toFixed(2)}<span className="stats-item__units">t</span></div>
-              </div>
-            </div>
-            <div className="stats__item">
-              <div className="stats-item stats-item--intensity">
-                <div className="stats-item__term">Intensity</div>
-                <div className="stats-item__value">{weekStats.intensity.toFixed(1)}<span className="stats-item__units">kg</span></div>
-              </div>
-            </div>
-            <div className="stats__item">
-              <div className="stats-item stats-item--reps">
-                <div className="stats-item__term">Reps</div>
-                <div className="stats-item__value">{weekStats.reps}</div>
-              </div>
-            </div>
-          </div>
+          <Stats
+            statsOptions={{
+              modifierClasses: [
+                "stats--week",
+                "stats--colored-terms",
+                "stats--colored-values"
+              ],
+              repsUnits: "",
+            }}
+            stats={weekStats}
+          />
         </div>
       </div>
 
@@ -74,26 +66,15 @@ const Schedule: React.FC<Props> = (props) => {
                       <div className="menu-day__trainings">{trainingDay.trainings.length}</div>
                     </div>
                     <div className="menu-day__stats">
-                      <div className={`stats stats--vertical ${dayStats.volume === 0 ? "stats--inactive" : ""}`}>
-                        <div className="stats__item">
-                          <div className="stats-item stats-item--volume">
-                            <div className="stats-item__term">Volume:</div>
-                            <div className="stats-item__value">{dayStats.volume.toFixed(2)}<span className="stats-item__units">t</span></div>
-                          </div>
-                        </div>
-                        <div className="stats__item">
-                          <div className="stats-item stats-item--intensity">
-                            <div className="stats-item__term">Intensity:</div>
-                            <div className="stats-item__value">{dayStats.intensity.toFixed(1)}<span className="stats-item__units">kg</span></div>
-                          </div>
-                        </div>
-                        <div className="stats__item">
-                          <div className="stats-item stats-item--reps">
-                            <div className="stats-item__term">Reps:</div>
-                            <div className="stats-item__value">{dayStats.reps}</div>
-                          </div>
-                        </div>
-                      </div>
+                      <Stats
+                        statsOptions={{
+                          modifierClasses: [
+                            "stats--vertical",
+                            "stats--colored-values",
+                          ]
+                        }}
+                        stats={dayStats}
+                      />
                     </div>
                   </NavLink>
                 </div>

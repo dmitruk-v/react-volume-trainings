@@ -38,23 +38,23 @@ type Props = {
 const Stats: React.FC<Props> = (props) => {
   const opts = { ...defaultStatsOptions, ...props.statsOptions };
   return (
-    <div className={`stats ${[...opts.modifierClasses]}`}>
+    <div className={`stats ${props.stats.volume === 0 ? "stats--inactive" : ""} ${opts.modifierClasses.join(" ")}`}>
       <div className="stats__item">
         <div className="stats-item stats-item--volume">
-          <span className="stats-item__term">{opts.volumeTerm}</span>
-          <span className="stats-item__value">{props.stats.volume.toFixed(2)}<span className="stats-item__units">{opts.volumeUnits}</span></span>
+          <div className="stats-item__term">{opts.volumeTerm}</div>
+          <div className="stats-item__value">{props.stats.volume.toFixed(2)}<span className="stats-item__units">{opts.volumeUnits}</span></div>
         </div>
       </div>
       <div className="stats__item">
         <div className="stats-item stats-item--intensity">
-          <span className="stats-item__term">{opts.intensityTerm}</span>
-          <span className="stats-item__value">{props.stats.intensity.toFixed(1)}<span className="stats-item__units">{opts.intensityUnits}</span></span>
+          <div className="stats-item__term">{opts.intensityTerm}</div>
+          <div className="stats-item__value">{props.stats.intensity.toFixed(1)}<span className="stats-item__units">{opts.intensityUnits}</span></div>
         </div>
       </div>
       <div className="stats__item">
         <div className="stats-item stats-item--reps">
-          <span className="stats-item__term">{opts.repsTerm}</span>
-          <span className="stats-item__value">{props.stats.reps}<span className="stats-item__units">{opts.repsUnits}</span></span>
+          <div className="stats-item__term">{opts.repsTerm}</div>
+          <div className="stats-item__value">{props.stats.reps}<span className="stats-item__units">{opts.repsUnits}</span></div>
         </div>
       </div>
     </div>

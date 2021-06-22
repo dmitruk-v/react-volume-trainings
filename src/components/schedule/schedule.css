@@ -140,10 +140,10 @@
 /* THEME: GIRLS - days-menu
 --------------------------------------------------------------------------------- */
 .theme-girls .menu-day--active {
-  border-color: #de36c5;
+  border-color: #e66bd3;
 }
 .theme-girls .menu-day--active:hover {
-  border-color: #a71390;
+  border-color: #d22fb8;
 }
 .theme-girls .menu-day--active .menu-day__title {
   background-color: #ffebfc;

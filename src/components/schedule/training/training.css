@@ -1,7 +1,6 @@
 .training {
-  overflow: hidden;
-  background-color: #ffffff;
   border: 2px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
   border-radius: 5px;
   user-select: none;
   transition: all 0.15s ease-in-out;
@@ -73,19 +72,11 @@
 }
 .training__exercises {
   position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  margin-right: -15px;
 }
 .training__exercise {
-  flex: 1 1 calc(50% - (15px + 15px));
-  margin-right: 15px;
   margin-bottom: 15px;
-  padding-right: 15px;
   padding-bottom: 15px;
-  border-right: 2px dashed rgba(0, 0, 0, 0.15);
   border-bottom: 2px dashed rgba(0, 0, 0, 0.15);
-  /* border-radius: 5px; */
 }
 .training__exercise:last-child {
   margin-bottom: 0;
@@ -106,6 +97,7 @@
   transform: translateY(-50%);
 }
 .training__dropdown {
+  top: 5px;
   right: 5px;
 }
 
@@ -135,10 +127,10 @@
   background-color: hsl(309, 78%, 40%);
 }
 .theme-girls .training__body {
-  border-top-color: hsl(309, 30%, 90%);
+  border-top-color: hsl(309, 40%, 90%);
 }
 .theme-girls .training__exercise {
-  border-bottom-color: hsl(309, 30%, 90%);
+  border-bottom-color: hsl(309, 40%, 90%);
 }
 
 /* THEME: BOYS
