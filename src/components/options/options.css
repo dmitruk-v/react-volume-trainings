@@ -8,40 +8,86 @@
 .app-opts-form {}
 .app-opts-form__title {
   margin-bottom: 15px;
-  padding-bottom: 10px;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1;
-  border-bottom: 1px dashed #a1a1a1;
 }
 .app-opts-form__sub-title {}
 
-.app-opts-form__section {}
+.app-opts-form__section {
+  padding: 15px 15px 0 15px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+}
 .app-opts-form__section + .app-opts-form__title {
-  margin-top: 15px;
+  margin-top: 25px;
+}
+
+/* section typography
+------------------------------------------------------------ */
+.app-opts-form__section p {
+  margin-bottom: 10px;
+}
+.app-opts-form__section ul,
+.app-opts-form__section ol {
+  margin-bottom: 10px;
+}
+.app-opts-form__section ul:last-child,
+.app-opts-form__section ol:last-child {
+  margin-bottom: 0;
 }
 
 .app-opts-form__field {
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: 15px;
-  border-bottom: 1px dashed #cccccc;
+  /* margin-bottom: 15px; */
+  /* border-bottom: 1px dashed #cccccc; */
 }
-.app-opts-form__field:only-child {
+.app-opts-form__field:only-child,
+.app-opts-form__field:last-child {
   margin-bottom: 0;
   border-bottom: 0;
 }
 .app-opts-form__control {
-  width: 180px;
+  width: 150px;
   margin-right: 30px;
   margin-bottom: 15px;
 }
 .app-opts-form__detail {
   flex: 1;
   margin-bottom: 15px;
+  color: #555555;
 }
 .app-opts-form__label {
   display: block;
   margin-bottom: 5px;
+}
+
+/* cols
+--------------------------------------------------------------- */
+.small-cols {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -10px;
+  margin-bottom: -10px;
+}
+.small-cols__col {
+  flex: 1;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* control-input
+--------------------------------------------------------------- */
+.control-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #555555;
+  border-radius: 5px;
+}
+.control-input:focus {
+  outline: none;  
+  box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.25);
 }
 
 /* control-select
@@ -93,10 +139,11 @@
 }
 .control-checkbox__input {
   position: absolute;
-  top: -9999px;
-  left: -9999px;
+  top: 0;
+  left: 0;
   width: 0;
   height: 0;
+  visibility: hidden;
 }
 .control-checkbox__name:before,
 .control-checkbox__name:after {

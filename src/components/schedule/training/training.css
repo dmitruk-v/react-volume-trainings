@@ -92,13 +92,15 @@
 /* ---------------------------------------------------------------------------- */
 .training__menu-btn {
   position: absolute;
-  top: 50%;
+  top: 15px;
   right: 15px;
-  transform: translateY(-50%);
+}
+.training__menu-btn:hover {
+  background-color: #ffffff;
 }
 .training__dropdown {
-  top: 5px;
-  right: 5px;
+  top: 15px;
+  right: calc(15px + 35px);
 }
 
 /* THEME: GIRLS

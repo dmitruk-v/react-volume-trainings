@@ -92,8 +92,8 @@
   right: 0;
 }
 .exercise__dropdown {
-  top: -10px;
-  right: -10px;
+  top: 0;
+  right: 35px;
 }
 
 /* THEME: GIRLS

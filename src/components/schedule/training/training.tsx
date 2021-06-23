@@ -91,20 +91,18 @@ function Training(props: Props) {
           />
         </div>
 
-        <div className="training__menu-btn">
-          <button className="button-type1 training__button" onClick={() => setIsMenuVisible(true)}>
-            <img src={menuIcon} alt="" />
-          </button>
-        </div>
+        <button className="button-type1 training__menu-btn" onClick={() => setIsMenuVisible(true)}>
+          <img src={menuIcon} alt="" />
+        </button>
 
         <div className={`dropdown-menu ${isMenuVisible ? "dropdown-menu--visible" : ""} training__dropdown`}>
           <div className="dropdown-menu__inner">
             <ul className="dropdown-menu__list">
               <li className="dropdown-menu__item">
-                <button className="button-type2" title="Clone training" onClick={() => cloneTraining()}>Clone</button>
+                <button className="dropdown-menu__button" title="Clone training" onClick={() => cloneTraining()}>Clone training</button>
               </li>
               <li className="dropdown-menu__item">
-                <button className="button-type2" title="Remove training" onClick={() => removeTraining()}>Remove</button>
+                <button className="dropdown-menu__button" title="Remove training" onClick={() => removeTraining()}>Remove training</button>
               </li>
             </ul>
           </div>

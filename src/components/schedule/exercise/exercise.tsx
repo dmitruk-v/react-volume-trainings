@@ -140,19 +140,19 @@ const Exercise: React.FC<Props> = (props) => {
         <div className="dropdown-menu__inner">
           <ul className="dropdown-menu__list">
             <li className="dropdown-menu__item">
-              <button className="button-type2" onClick={() => editName()}>Change name</button>
+              <button className="dropdown-menu__button" title="Change exercise name" onClick={() => editName()}>Change name</button>
             </li>
             <li className="dropdown-menu__item">
-              <button className="button-type2" title="Add set" onClick={() => cloneLastSet()}>Clone last set</button>
+              <button className="dropdown-menu__button" title="Add set" onClick={() => cloneLastSet()}>Clone last set</button>
             </li>
             <li className="dropdown-menu__item">
-              <button className="button-type2" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>
+              <button className="dropdown-menu__button" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>
             </li>
             <li className="dropdown-menu__item">
-              <button className="button-type2" title="Clone this exercise" onClick={() => cloneExercise()}>Clone</button>
+              <button className="dropdown-menu__button" title="Clone this exercise" onClick={() => cloneExercise()}>Clone exercise</button>
             </li>
             <li className="dropdown-menu__item">
-              <button className="button-type2" title="Remove last exercise" onClick={() => removeExercise()}>Remove</button>
+              <button className="dropdown-menu__button" title="Remove last exercise" onClick={() => removeExercise()}>Remove exercise</button>
             </li>
           </ul>
         </div>
