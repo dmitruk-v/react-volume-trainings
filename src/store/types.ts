@@ -1,13 +1,24 @@
-import { DAYS_OF_WEEK } from "../constants";
+import { WeekDay } from "../constants";
 
-type Day = typeof DAYS_OF_WEEK[number];
+type YearScheduleModel = {
+  [year: number]: WeekScheduleModel2[]
+}
+
+type Cycle = "none" | "relax" | "volume" | "volume-strength" | "strength" | "fat-burn";
+
+type WeekScheduleModel2 = {
+  weekStartDate: Date,
+  cycle: Cycle,
+  days: { [key in WeekDay]: TrainingDayModel }
+};
+
 
 type WeekScheduleModel = {
-  [key in Day]: TrainingDayModel
+  [key in WeekDay]: TrainingDayModel
 };
 
 type TrainingDayModel = {
-  day: Day,
+  day: WeekDay,
   trainings: TrainingModel[]
 }
 
@@ -38,8 +49,9 @@ type StatsModel = {
 }
 
 export type {
-  WeekScheduleModel,
-  Day, TrainingDayModel,
+  YearScheduleModel,
+  WeekScheduleModel, WeekScheduleModel2, Cycle,
+  WeekDay, TrainingDayModel,
   TrainingId, TrainingModel,
   ExerciseId, ExerciseModel,
   ExSetId, ExSetModel,

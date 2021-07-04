@@ -1,99 +1,38 @@
-import { ExSetModel, Day } from "..";
-import { ActionCreator } from ".";
+import { ExSetModel, WeekDay } from "..";
 
-type CommonSetActionPayload = {
-  payload: {
-    day: Day,
-    trainingId: string,
-    exerciseId: string,
-  }
+const addSetAction = (day: WeekDay, trainingId: string, exerciseId: string, addedSet: ExSetModel) => {
+  return {
+    type: "schedule/sets/add",
+    payload: { day, trainingId, exerciseId, addedSet }
+  } as const;
 }
 
-type AddSetAction = CommonSetActionPayload & {
-  type: "sets/add",
-  payload: {
-    addedSet: ExSetModel
-  }
-};
-
-type UpdateSetAction = CommonSetActionPayload & {
-  type: "sets/update",
-  payload: {
-    updatedSet: ExSetModel
-  }
-};
-
-type UpdateSetWithSpreadAction = CommonSetActionPayload & {
-  type: "sets/updateSpread",
-  payload: {
-    updatedSet: ExSetModel
-  }
-};
-
-type RemoveSetAction = CommonSetActionPayload & {
-  type: "sets/remove",
-  payload: {
-    removedSet: ExSetModel
-  }
-};
-
-type SetActions = AddSetAction | UpdateSetAction | UpdateSetWithSpreadAction | RemoveSetAction;
-
-const addSetAction: ActionCreator<AddSetAction> = (
-  day: Day,
-  trainingId: string,
-  exerciseId: string,
-  addedSet: ExSetModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "sets/add",
-      payload: { day, trainingId, exerciseId, addedSet }
-    }
-  }
+const updateSetAction = (day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel) => {
+  return {
+    type: "schedule/sets/update",
+    payload: { day, trainingId, exerciseId, updatedSet }
+  } as const;
 }
 
-const updateSetAction: ActionCreator<UpdateSetAction> = (
-  day: Day,
-  trainingId: string,
-  exerciseId: string,
-  updatedSet: ExSetModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "sets/update",
-      payload: { day, trainingId, exerciseId, updatedSet }
-    }
-  }
+const updateSetWithSpreadAction = (day: WeekDay, trainingId: string, exerciseId: string, spreadedSet: ExSetModel) => {
+  return {
+    type: "schedule/sets/updateSpread",
+    payload: { day, trainingId, exerciseId, spreadedSet }
+  } as const;
 }
 
-const updateSetWithSpreadAction: ActionCreator<UpdateSetWithSpreadAction> = (
-  day: Day,
-  trainingId: string,
-  exerciseId: string,
-  updatedSet: ExSetModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "sets/updateSpread",
-      payload: { day, trainingId, exerciseId, updatedSet }
-    }
-  }
+const removeSetAction = (day: WeekDay, trainingId: string, exerciseId: string, removedSet: ExSetModel) => {
+  return {
+    type: "schedule/sets/remove",
+    payload: { day, trainingId, exerciseId, removedSet }
+  } as const;
 }
 
-const removeSetAction: ActionCreator<RemoveSetAction> = (
-  day: Day,
-  trainingId: string,
-  exerciseId: string,
-  removedSet: ExSetModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "sets/remove",
-      payload: { day, trainingId, exerciseId, removedSet }
-    }
-  }
-}
+type SetActions =
+  ReturnType<typeof addSetAction>
+  | ReturnType<typeof updateSetAction>
+  | ReturnType<typeof updateSetWithSpreadAction>
+  | ReturnType<typeof removeSetAction>;
 
 export type { SetActions };
 export { addSetAction, updateSetAction, updateSetWithSpreadAction, removeSetAction };

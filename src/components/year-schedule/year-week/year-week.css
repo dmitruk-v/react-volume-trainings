@@ -1,0 +1,90 @@
+/* WEEK
+------------------------------------------------------ */
+.ysch-week {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px;
+  line-height: 1;
+  border-radius: 5px;
+  background-color: #e1e1e1;
+}
+.ysch-week--current {
+  position: relative;
+  box-shadow: 0 0 0 10px #ff0000;
+}
+.ysch-week__header {
+  display: flex;
+  flex-flow: column wrap;
+  margin-right: 10px;
+}
+.ysch-week__number {
+  width: 32px;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+.ysch-week__menu-button {
+  margin-top: auto;
+}
+.ysch-week__days {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -5px;
+}
+.ysch-week__day {
+  flex: 1;
+  min-width: 50px;
+  margin-right: 5px;
+}
+
+/* DAY
+------------------------------------------------------ */
+.ysch-day {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 10px;
+  line-height: 1;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: none;
+}
+.ysch-day__weekday {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+.ysch-day__month {
+  margin-bottom: 2px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.ysch-day__date {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+.ysch-day--used {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ysch-week--cycle_none { background-color: #e1e1e1; }
+.ysch-week--cycle_volume { background-color: #87F3D9; }
+.ysch-week--cycle_volume-strength { background-color: #f6c1ff; }
+.ysch-week--cycle_strength { background-color: #ffbbbb; }
+.ysch-week--cycle_fat-burn { background-color: #f1e099; }
+.ysch-week--cycle_relax { background-color: #d3e4ff; }
+
+.ysch-week__dropdown {
+  top: 10px;
+  left: 10px;
+  right: 10px;
+}

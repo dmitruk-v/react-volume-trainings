@@ -1,67 +1,30 @@
-import { TrainingModel, Day } from "..";
-import { ActionCreator } from ".";
+import { TrainingModel, WeekDay } from "..";
 
-type AddTrainingAction = {
-  type: "trainings/add",
-  payload: {
-    day: Day,
-    addedTraining: TrainingModel
-  }
-};
-
-type UpdateTrainingAction = {
-  type: "trainings/update",
-  payload: {
-    day: Day,
-    updatedTraining: TrainingModel
-  }
-};
-
-type RemoveTrainingAction = {
-  type: "trainings/remove",
-  payload: {
-    day: Day,
-    removedTraining: TrainingModel
-  }
-};
-
-type TrainingActions = AddTrainingAction | UpdateTrainingAction | RemoveTrainingAction;
-
-const addTrainingAction: ActionCreator<AddTrainingAction> = (
-  day: Day,
-  addedTraining: TrainingModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "trainings/add",
-      payload: { day, addedTraining }
-    }
-  }
+const addTrainingAction = (day: WeekDay, addedTraining: TrainingModel) => {
+  return {
+    type: "schedule/trainings/add",
+    payload: { day, addedTraining }
+  } as const
 }
 
-const updateTrainingAction: ActionCreator<UpdateTrainingAction> = (
-  day: Day,
-  updatedTraining: TrainingModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "trainings/update",
-      payload: { day, updatedTraining }
-    }
-  }
+const updateTrainingAction = (day: WeekDay, updatedTraining: TrainingModel) => {
+  return {
+    type: "schedule/trainings/update",
+    payload: { day, updatedTraining }
+  } as const
 }
 
-const removeTrainingAction: ActionCreator<RemoveTrainingAction> = (
-  day: Day,
-  removedTraining: TrainingModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "trainings/remove",
-      payload: { day, removedTraining }
-    }
-  }
+const removeTrainingAction = (day: WeekDay, removedTraining: TrainingModel) => {
+  return {
+    type: "schedule/trainings/remove",
+    payload: { day, removedTraining }
+  } as const
 }
+
+type TrainingActions =
+  ReturnType<typeof addTrainingAction>
+  | ReturnType<typeof updateTrainingAction>
+  | ReturnType<typeof removeTrainingAction>;
 
 export type { TrainingActions };
 export { addTrainingAction, updateTrainingAction, removeTrainingAction };

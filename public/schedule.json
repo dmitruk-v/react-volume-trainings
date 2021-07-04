@@ -1,0 +1,767 @@
+{
+  "Monday": {
+    "day": "Monday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-lZy7RE09",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-jdNwh8o3",
+            "name": "Приседания на одной ноге",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-5KTqVBfL",
+                "reps": 8,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t42m37-iIR7-Vy9",
+                "reps": 8,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t42m37-puRIW--5",
+                "reps": 8,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t4tmqr--jx10FCF",
+                "reps": 8,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t4tn4i-mcxfhGfv",
+                "reps": 8,
+                "weight": 80
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-_eOvDVLe",
+            "name": "Приседания в ножницы",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-qgbDG8r1",
+                "reps": 10,
+                "weight": 30
+              },
+              {
+                "setId": "s-1f8t42m37-q5aWHIBc",
+                "reps": 10,
+                "weight": 30
+              },
+              {
+                "setId": "s-1f8t42m37-IGMQEdPp",
+                "reps": 10,
+                "weight": 30
+              },
+              {
+                "setId": "s-1f8t5hl9a-VjwMy1m6",
+                "reps": 10,
+                "weight": 30
+              },
+              {
+                "setId": "s-1f8t5hlei-e8B7Mjld",
+                "reps": 10,
+                "weight": 30
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-2g9lqVsh",
+            "name": "Тяга мёртвая",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-4sAuBMP8",
+                "reps": 10,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t42m37-Bi1DcRzA",
+                "reps": 10,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t42m37-aMxB4Cmy",
+                "reps": 10,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5j1fa-Caylg9Sx",
+                "reps": 10,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5j1vq-GVGuP40-",
+                "reps": 10,
+                "weight": 48
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t5j89b-IgT_58gn",
+            "name": "Отжимания на одной руке",
+            "sets": [
+              {
+                "setId": "s-1f8t5j89b-2Vjbrb5h",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5j89b-ul_XwLjG",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5j89b-HIzRFJ4B",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5j89b-uV22iZM1",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5j89b-9Ts36sYv",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8uamo16-Z_dxKtRS",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8uamo7m-aQ9ppXZd",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8uamoke-l05Q56ZJ",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8uamoqe-rBkB0Rni",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8uamphe-6fXyi9zg",
+                "reps": 5,
+                "weight": 80
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Tuesday": {
+    "day": "Tuesday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-AHkv1dlu",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-JHyX2nsO",
+            "name": "Подтягивания",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-fKy2soum",
+                "reps": 12,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t42m37-VDsguUzQ",
+                "reps": 10,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t42m37-s9kvzgWe",
+                "reps": 10,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t564lj-AcKixnut",
+                "reps": 8,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t564sb-3veQMvl3",
+                "reps": 8,
+                "weight": 80
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-Fo2wMf9s",
+            "name": "Тяга гантели одной рукой в наклоне с упором",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-K7rm5Rq8",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t42m37-4MeYLhEO",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t42m37-6XHzEy3Z",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t57eni-6UUUC5sw",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t57erq-73cWDgOb",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t59s5i--QXS3fN_",
+                "reps": 10,
+                "weight": 64
+              },
+              {
+                "setId": "s-1f8t59smb-u6uP3JQB",
+                "reps": 10,
+                "weight": 64
+              },
+              {
+                "setId": "s-1f8t59ss2-z4GBZKIa",
+                "reps": 10,
+                "weight": 64
+              },
+              {
+                "setId": "s-1f8t59t8a-hBe_MwGa",
+                "reps": 10,
+                "weight": 64
+              },
+              {
+                "setId": "s-1f8t59tvq-FEEAaGvl",
+                "reps": 10,
+                "weight": 64
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t5aibb-TdUfGU1Z",
+            "name": "Подтягивания обратным хватом",
+            "sets": [
+              {
+                "setId": "s-1f8t5aibb-L7eBzhmY",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5aibb-uNmzph0p",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5aibb-HvRFrALe",
+                "reps": 5,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5aibb-ahY0V2OZ",
+                "reps": 5,
+                "weight": 80
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t5dgkq-5qPzWgx0",
+            "name": "Отжимания вниз головой с упором об стену",
+            "sets": [
+              {
+                "setId": "s-1f8t5dgkq-3xBeyaiq",
+                "reps": 2,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5dgkq-mTa6LEhJ",
+                "reps": 2,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5dgkq-aF5jnCyJ",
+                "reps": 2,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5dgkq-XfiuvJrA",
+                "reps": 2,
+                "weight": 80
+              },
+              {
+                "setId": "s-1f8t5eh52-EH_kC33C",
+                "reps": 2,
+                "weight": 80
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t5enda-IrSp2SGT",
+            "name": "Жим гири",
+            "sets": [
+              {
+                "setId": "s-1f8t5enda-8fzkt5KV",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5enda-fqzWJSag",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5enda-NxUKGr5k",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5enda-yzXRu_1f",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5enda-9i55g6e1",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5fi4a-99fsf8s7",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5fi92-8JL6GRTc",
+                "reps": 5,
+                "weight": 48
+              },
+              {
+                "setId": "s-1f8t5fidj-iUKZ04NK",
+                "reps": 5,
+                "weight": 48
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8uhicu5-csv2eLY6",
+            "name": "Махи гантелями на средние дельты",
+            "sets": [
+              {
+                "setId": "s-1f8uhicu5-Fdsa_ah7",
+                "reps": 10,
+                "weight": 20
+              },
+              {
+                "setId": "s-1f8uhicu5-XERmXY5y",
+                "reps": 10,
+                "weight": 20
+              },
+              {
+                "setId": "s-1f8uhicu5-kOQ5JX8h",
+                "reps": 10,
+                "weight": 20
+              },
+              {
+                "setId": "s-1f8uhicu5-13Cr3ytS",
+                "reps": 10,
+                "weight": 20
+              },
+              {
+                "setId": "s-1f8uhicu5-gul7-Aoy",
+                "reps": 10,
+                "weight": 20
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Wednesday": {
+    "day": "Wednesday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-gipmd_kI",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-PYxjtUpS",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-LEo843iG",
+                "reps": 12,
+                "weight": 13
+              },
+              {
+                "setId": "s-1f8t42m37-9yapm-a2",
+                "reps": 12,
+                "weight": 13
+              },
+              {
+                "setId": "s-1f8t42m37-ptPhyapc",
+                "reps": 12,
+                "weight": 13
+              },
+              {
+                "setId": "s-1f8t5589b-y-8aWxHF",
+                "reps": 12,
+                "weight": 13
+              },
+              {
+                "setId": "s-1f8t558ki-Mj5Y08Z9",
+                "reps": 12,
+                "weight": 13
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-j4c0BDKM",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-vhzrZ9BF",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-MFdXLNs2",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-SFtYpW6V",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-WHhkkRZe",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-y290U8kY",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-gKOyCxNr",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-O0lOihlb",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Thursday": {
+    "day": "Thursday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-Vl1TmaxW",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-a2dMaDp9",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-X646uySn",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-d48-Jnsk",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-8ZPQheg0",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-t6JuIc19",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-FFIEyEmm",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-myRUHmhx",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-3ZPa8zYp",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-KL6F5-KP",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-zbwPiIwp",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-4iD5oBNS",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-aJrSYRBj",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Friday": {
+    "day": "Friday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-yZTJiMDh",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-yOMypNDG",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-4sOq5iBY",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-1QG4x2Y-",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-c45ojK-E",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-xUTnk6aR",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-jFuDz-I7",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-xuATPchP",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-GJjYo8ke",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-D5saq3Jp",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-s4kKXoP0",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-iQrIPMWI",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-2yqDPOwU",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Saturday": {
+    "day": "Saturday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-ktA4e05P",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-e0paT-Ue",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-7JAcMXjC",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-9CI20rb5",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-bPc2YxFu",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-qFjjCEMK",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-RN5DyvFO",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-Tzd4BaFf",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-9pIOFHd5",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-1zOwN0m6",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-thLpxwfI",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-bluCXNho",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-vOhl4HfD",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Sunday": {
+    "day": "Sunday",
+    "trainings": [
+      {
+        "trainingId": "tr-1f8t42m37-VKWhNHU4",
+        "exercises": [
+          {
+            "exerciseId": "ex-1f8t42m37-gc9XuPJe",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-sQqed-jA",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-W6dTdwqA",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-bnRNsvw4",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-K_9pyuBO",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-Ntewlzen",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-nn9OZRFc",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-h60GKv_O",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          },
+          {
+            "exerciseId": "ex-1f8t42m37-flOIPWRb",
+            "name": "Exercise",
+            "sets": [
+              {
+                "setId": "s-1f8t42m37-uhexS68M",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37-7V1jYXe2",
+                "reps": 0,
+                "weight": 0
+              },
+              {
+                "setId": "s-1f8t42m37--0aHPPrk",
+                "reps": 0,
+                "weight": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

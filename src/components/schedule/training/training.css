@@ -23,11 +23,11 @@
   position: absolute;
   top: 50%;
   left: 15px;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(0);
   width: 16px;
   height: 16px;
   background: url("../../../assets/svg/arrow_downward_black_24dp.svg") center center no-repeat;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .training--opened > .training__head::before {
   transform: translateY(-50%) rotate(-180deg);
@@ -41,6 +41,7 @@
   font-size: 16px;
   font-weight: bold;
   line-height: 1;
+  border: 1px solid transparent;
   text-transform: uppercase;
   background-color: #999999;
   color: #ffffff;
@@ -59,7 +60,7 @@
   background-color: #ffffff;
   color: #000000;
   border-radius: 16px;
-  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .training__body {
@@ -119,14 +120,15 @@
   background-color: hsl(309, 100%, 96%);
 }
 .theme-girls .training-title {
-  background-color: hsl(309, 78%, 40%);
+  /* background-color: hsl(309, 67%, 68%); */
+  background-color: #ffffff;
+}
+.theme-girls .training-title__name {
+  color: hsl(309, 78%, 40%);
 }
 .theme-girls .training-title__number {
   color: hsl(309, 78%, 40%);
-  box-shadow: 0 0 3px 1px hsla(309, 78%, 40%, 0.75);
-}
-.theme-girls .training-title__name {
-  background-color: hsl(309, 78%, 40%);
+  box-shadow: 0 0 0 2px hsl(309, 78%, 40%);
 }
 .theme-girls .training__body {
   border-top-color: hsl(309, 40%, 90%);

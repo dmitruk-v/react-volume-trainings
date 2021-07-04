@@ -24,6 +24,8 @@
   color: #ffffff;
   border-radius: 5px 5px 0 0;
 }
+.header-menu__link--schedule {}
+
 .header-menu__link--active {
   background-color: #ffffff;
   color: #000000;

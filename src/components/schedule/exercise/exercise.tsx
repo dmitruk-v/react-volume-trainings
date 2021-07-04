@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
-import { ExerciseModel, calculateExerciseStats, Day, AppDispatch, addSetAction, createSetId, updateExerciseAction, removeSetAction, removeExerciseAction, addExerciseAction, createExerciseId } from "../../../store";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ExerciseModel, calculateExerciseStats, AppDispatch, addSetAction, updateExerciseAction, removeSetAction, removeExerciseAction, addExerciseAction } from "../../../store";
 import { useDispatch } from "react-redux";
+import { createClonedExercise, createResetedExercise, createClonedSet } from "../../../utils/schedule-utils";
+import { WeekDay } from "../../../constants";
 
 // COMPONENTS --------------------------------------
-import ExSet from "../ex-set/ex-set";
 import Stats from "../stats/stats";
 // -------------------------------------------------
 
@@ -18,7 +19,7 @@ import "./exercise.css";
 // -------------------------------------------------
 
 type Props = {
-  day: Day,
+  day: WeekDay,
   trainingId: string,
   initialExercise: ExerciseModel,
   exerciseNumber: number,
@@ -26,10 +27,17 @@ type Props = {
 
 const Exercise: React.FC<Props> = (props) => {
 
+  const nameRef = useRef<HTMLInputElement>(null);
   const [exerciseName, setExerciseName] = useState(props.initialExercise.name);
   const [isNameEditable, setIsNameEditable] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    const nameField = nameRef.current;
+    nameField?.focus();
+    nameField?.select();
+  }, [isNameEditable, nameRef]);
 
   const exerciseStats = useMemo(
     () => calculateExerciseStats(props.initialExercise),
@@ -39,7 +47,7 @@ const Exercise: React.FC<Props> = (props) => {
   const handleSubmitName = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(
-      updateExerciseAction(props.day, props.trainingId, { ...props.initialExercise, name: exerciseName })(dispatch)
+      updateExerciseAction(props.day, props.trainingId, { ...props.initialExercise, name: exerciseName })
     );
     setIsNameEditable(false);
   }
@@ -53,7 +61,7 @@ const Exercise: React.FC<Props> = (props) => {
     const { day, trainingId, initialExercise } = props;
     const lastSet = initialExercise.sets[initialExercise.sets.length - 1];
     dispatch(
-      addSetAction(day, trainingId, initialExercise.exerciseId, { ...lastSet, setId: createSetId() })(dispatch)
+      addSetAction(day, trainingId, initialExercise.exerciseId, createClonedSet(lastSet))
     );
   }
 
@@ -61,27 +69,32 @@ const Exercise: React.FC<Props> = (props) => {
     const { day, trainingId, initialExercise } = props;
     const lastSet = initialExercise.sets[initialExercise.sets.length - 1];
     dispatch(
-      removeSetAction(day, trainingId, initialExercise.exerciseId, lastSet)(dispatch)
+      removeSetAction(day, trainingId, initialExercise.exerciseId, lastSet)
     );
   }
 
   const cloneExercise = () => {
     const { day, trainingId, initialExercise } = props;
-    const clonedExercise: ExerciseModel = {
-      ...initialExercise,
-      exerciseId: createExerciseId(),
-      sets: initialExercise.sets.map(s => ({ ...s, setId: createSetId() }))
-    }
     dispatch(
-      addExerciseAction(day, trainingId, clonedExercise)(dispatch)
+      addExerciseAction(day, trainingId, createClonedExercise(initialExercise))
     );
+    setIsMenuVisible(false);
+  }
+
+  const resetExercise = () => {
+    const { day, trainingId, initialExercise } = props;
+    dispatch(
+      updateExerciseAction(day, trainingId, createResetedExercise(initialExercise))
+    );
+    setIsMenuVisible(false);
   }
 
   const removeExercise = () => {
     const { day, trainingId, initialExercise } = props;
     dispatch(
-      removeExerciseAction(day, trainingId, initialExercise)(dispatch)
+      removeExerciseAction(day, trainingId, initialExercise)
     );
+    setIsMenuVisible(false);
   }
 
   return (
@@ -113,21 +126,7 @@ const Exercise: React.FC<Props> = (props) => {
         </div>
 
         <div className="exercise__col exercise__sets-wrapper">
-          <div className="exercise__sets">
-            {props.initialExercise.sets.map((set, idx) => {
-              return (
-                <div key={set.setId} className="exercise__ex-set">
-                  <ExSet
-                    day={props.day}
-                    trainingId={props.trainingId}
-                    exerciseId={props.initialExercise.exerciseId}
-                    setNumber={idx + 1}
-                    initialSet={set}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          <div className="exercise__sets">{props.children}</div>
         </div>
 
       </div>
@@ -136,40 +135,44 @@ const Exercise: React.FC<Props> = (props) => {
         <img src={openMenuIcon} alt="" />
       </button>
 
-      <div className={`dropdown-menu ${isMenuVisible ? "dropdown-menu--visible" : ""} exercise__dropdown`}>
-        <div className="dropdown-menu__inner">
-          <ul className="dropdown-menu__list">
-            <li className="dropdown-menu__item">
-              <button className="dropdown-menu__button" title="Change exercise name" onClick={() => editName()}>Change name</button>
-            </li>
-            <li className="dropdown-menu__item">
-              <button className="dropdown-menu__button" title="Add set" onClick={() => cloneLastSet()}>Clone last set</button>
-            </li>
-            <li className="dropdown-menu__item">
-              <button className="dropdown-menu__button" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>
-            </li>
-            <li className="dropdown-menu__item">
-              <button className="dropdown-menu__button" title="Clone this exercise" onClick={() => cloneExercise()}>Clone exercise</button>
-            </li>
-            <li className="dropdown-menu__item">
-              <button className="dropdown-menu__button" title="Remove last exercise" onClick={() => removeExercise()}>Remove exercise</button>
-            </li>
-          </ul>
+      <div className={`dropdown ${isMenuVisible ? "dropdown--visible" : ""} exercise__dropdown`}>
+        <div className="dropdown__inner">
+          <div className="dropdown-menu">
+            <ul className="dropdown-menu__list">
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Change exercise name" onClick={() => editName()}>Change name</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Reset exercise sets" onClick={() => resetExercise()}>Reset exercise</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Add set" onClick={() => cloneLastSet()}>Clone last set</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Remove last set" onClick={() => removeSet()}>Remove last set</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Clone this exercise" onClick={() => cloneExercise()}>Clone exercise</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Remove last exercise" onClick={() => removeExercise()}>Remove exercise</button>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <button className="button-type1 dropdown-menu__close-btn" onClick={() => setIsMenuVisible(false)}>
+        <button className="button-type1 dropdown__close-btn" onClick={() => setIsMenuVisible(false)}>
           <img src={closeMenuIcon} alt="" />
         </button>
       </div>
 
-      {isNameEditable
-        ?
+      {isNameEditable ? (
         <div className="exercise__overlay">
           <form className="exercise-name__edit" onSubmit={handleSubmitName}>
             <input
               type="text"
               className="exercise-name__input"
-              autoFocus
+              ref={nameRef}
               value={exerciseName}
               onChange={evt => setExerciseName(evt.target.value)}
             />
@@ -178,7 +181,8 @@ const Exercise: React.FC<Props> = (props) => {
             </button>
           </form>
         </div>
-        : ""}
+      ) : ""}
+
     </div>
   );
 }

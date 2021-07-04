@@ -1,13 +1,16 @@
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, ExSetModel, Day, AppDispatch, updateSetWithSpreadAction, updateSetAction, ActionCreator } from "../../../store";
+import { RootState, ExSetModel, AppDispatch, updateSetWithSpreadAction, updateSetAction } from "../../../store";
+import { WeekDay } from "../../../constants";
 
 // STYLES ------------------------------------------
 import "./ex-set.css";
 // -------------------------------------------------
 
+type UpdateSetActionCreator = typeof updateSetWithSpreadAction | typeof updateSetAction;
+
 type Props = {
-  day: Day,
+  day: WeekDay,
   trainingId: string,
   exerciseId: string,
   setNumber: number,
@@ -27,38 +30,28 @@ const ExSet: React.FC<Props> = (props) => {
     const reps = Number(evt.target.value);
     if (isNaN(reps)) return;
 
-    let actionCreator: ActionCreator<any> = updateSetAction;
-
+    let actionCreator: UpdateSetActionCreator = updateSetAction;
+    const updatedSet = { ...props.initialSet, reps };
     if (scheduleOptions.spreadReps === true) {
       actionCreator = updateSetWithSpreadAction;
     }
-
-    const action = actionCreator(
-      props.day,
-      props.trainingId,
-      props.exerciseId,
-      { ...props.initialSet, reps }
-    )(dispatch);
-    dispatch(action);
+    dispatch(
+      actionCreator(props.day, props.trainingId, props.exerciseId, updatedSet)
+    );
   }
 
   const handleWeightChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const weight = Number(evt.target.value);
     if (isNaN(weight)) return;
 
-    let actionCreator: ActionCreator<any> = updateSetAction;
-
+    let actionCreator: UpdateSetActionCreator = updateSetAction;
+    const updatedSet = { ...props.initialSet, weight };
     if (scheduleOptions.spreadWeight === true) {
       actionCreator = updateSetWithSpreadAction;
     }
-
-    const action = actionCreator(
-      props.day,
-      props.trainingId,
-      props.exerciseId,
-      { ...props.initialSet, weight }
-    )(dispatch);
-    dispatch(action);
+    dispatch(
+      actionCreator(props.day, props.trainingId, props.exerciseId, updatedSet)
+    );
   }
 
   const getFocusedClass = useMemo(

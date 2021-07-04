@@ -24,7 +24,7 @@
 
 /* section typography
 ------------------------------------------------------------ */
-.app-opts-form__section p {
+/* .app-opts-form__section p {
   margin-bottom: 10px;
 }
 .app-opts-form__section ul,
@@ -34,13 +34,11 @@
 .app-opts-form__section ul:last-child,
 .app-opts-form__section ol:last-child {
   margin-bottom: 0;
-}
+} */
 
 .app-opts-form__field {
   display: flex;
   flex-flow: row wrap;
-  /* margin-bottom: 15px; */
-  /* border-bottom: 1px dashed #cccccc; */
 }
 .app-opts-form__field:only-child,
 .app-opts-form__field:last-child {
@@ -134,16 +132,22 @@
   display: inline-block;
   position: relative;
   padding-left: 30px;
-  padding-top: 2px;
+  line-height: 1.2;
+  vertical-align: middle;
   cursor: pointer;
 }
 .control-checkbox__input {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; /* big numbers are the cause of vertical scroll jumping on click */
+  left: 0; /* big numbers are the cause of horizontal scroll jumping on click */
   width: 0;
   height: 0;
-  visibility: hidden;
+  border: 0;
+  opacity: 0;
+}
+.control-checkbox__name {
+  display: inline-block;
+  vertical-align: middle;
 }
 .control-checkbox__name:before,
 .control-checkbox__name:after {

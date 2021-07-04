@@ -1,9 +1,11 @@
-import { createIdGenerator } from "../utils/generate-id";
-import { ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel, WeekScheduleModel, Day } from ".";
-import { DAYS_OF_WEEK } from "../constants";
+import { createIdGenerator } from "./generate-id";
+import { ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel, WeekScheduleModel, WeekDay } from "../store";
+import { WEEK_DAYS, CYCLES, Cycle } from "../constants";
+import { getWeekdayDates } from "./date-utils";
+import { WeekScheduleModel2, YearScheduleModel } from "../store/types";
 
 type TrainingDayOptions = {
-  day: Day,
+  day: WeekDay,
   trainingsCount: number,
   exercisesCount: number,
   setsCount: number,
@@ -12,15 +14,14 @@ type TrainingDayOptions = {
   weight: number
 }
 
-
 const defaultTrainingDayOptions: TrainingDayOptions = {
   day: "Monday",
   trainingsCount: 1,
-  exercisesCount: 6,
-  setsCount: 4,
+  exercisesCount: 1,
+  setsCount: 3,
   exerciseName: "Exercise",
-  reps: 8,
-  weight: 30
+  reps: 0,
+  weight: 0
 }
 
 const createTrainingId = createIdGenerator({ prefix: "tr-" });
@@ -68,17 +69,37 @@ const createTrainingDay = (options: Partial<TrainingDayOptions> = defaultTrainin
 
 const createSchedule = (options: Partial<TrainingDayOptions> = defaultTrainingDayOptions): WeekScheduleModel => {
   const opts = { ...defaultTrainingDayOptions, ...options };
-  return DAYS_OF_WEEK.reduce((schedule, item) => {
+  return WEEK_DAYS.reduce((schedule, item) => {
     schedule[item] = createTrainingDay({ ...opts, day: item });
     return schedule;
   }, {} as WeekScheduleModel);
 }
+
+// ------------------------------------------------------------------------------
+const createYearSchedule = (years: number[], options: Partial<TrainingDayOptions> = defaultTrainingDayOptions): YearScheduleModel => {
+  const randCycle = (): Cycle => CYCLES[Math.floor(Math.random() * CYCLES.length)];
+  console.log("createYearSchedule called!");
+
+  const global: YearScheduleModel = {};
+  years.forEach(year => {
+    const mondays = getWeekdayDates(year, 1);
+    const weekSchedules = mondays.map(mondayDate => ({
+      weekStartDate: mondayDate,
+      cycle: randCycle(),
+      days: createSchedule({ reps: 8, weight: 30 })
+    } as WeekScheduleModel2));
+    global[year] = weekSchedules;
+  });
+  return global;
+}
+// ------------------------------------------------------------------------------
 
 export {
   createTrainingId,
   createExerciseId,
   createSetId,
 
+  createYearSchedule,
   createSchedule,
   createTrainingDay,
   createTraining,

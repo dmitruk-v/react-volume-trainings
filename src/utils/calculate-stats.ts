@@ -1,12 +1,12 @@
-import { ExerciseModel, ExSetModel, StatsModel, TrainingModel, TrainingDayModel, WeekScheduleModel } from ".";
+import { ExerciseModel, ExSetModel, StatsModel, TrainingModel, TrainingDayModel, WeekScheduleModel } from "../store";
 
 /* calculations
 ------------------------------------------------------------------------- */
 const calculateExSetStats = (set: ExSetModel): StatsModel => {
   const exSetStats = { volume: 0, intensity: 0, reps: 0 };
   exSetStats.volume = (set.reps * set.weight) / 1000;
-  exSetStats.reps = (set.weight >= 1) ? set.reps : 0;
-  exSetStats.intensity = (set.reps >= 1) ? set.weight : 0;
+  exSetStats.reps = set.weight > 0 ? set.reps : 0;
+  exSetStats.intensity = set.reps > 0 ? set.weight : 0;
   return exSetStats;
 }
 
@@ -18,7 +18,9 @@ const calculateExerciseStats = (exercise: ExerciseModel): StatsModel => {
     exerciseStats.intensity += exSetStats.intensity;
     exerciseStats.reps += exSetStats.reps;
   });
-  exerciseStats.intensity = exerciseStats.intensity / exercise.sets.length;
+  exerciseStats.intensity = exercise.sets.length > 0
+    ? exerciseStats.intensity / exercise.sets.length
+    : 0;
   return exerciseStats;
 }
 
@@ -30,7 +32,9 @@ const calculateTrainingStats = (training: TrainingModel): StatsModel => {
     trainingStats.intensity += exerciseStats.intensity;
     trainingStats.reps += exerciseStats.reps;
   });
-  trainingStats.intensity = trainingStats.intensity / training.exercises.length;
+  trainingStats.intensity = training.exercises.length > 0
+    ? trainingStats.intensity / training.exercises.length
+    : 0;
   return trainingStats;
 }
 
@@ -42,7 +46,9 @@ const calculateDayStats = (trainingDay: TrainingDayModel): StatsModel => {
     dayStats.intensity += trainingStats.intensity;
     dayStats.reps += trainingStats.reps;
   });
-  dayStats.intensity = dayStats.intensity / trainingDay.trainings.length;
+  dayStats.intensity = trainingDay.trainings.length > 0
+    ? dayStats.intensity / trainingDay.trainings.length
+    : 0;
   return dayStats;
 }
 

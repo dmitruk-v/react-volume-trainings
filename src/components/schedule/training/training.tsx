@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import { calculateTrainingStats, TrainingModel, Day, AppDispatch, addTrainingAction, removeTrainingAction, createTrainingId, createExerciseId, createSetId } from "../../../store";
+import { calculateTrainingStats, TrainingModel, AppDispatch, addTrainingAction, removeTrainingAction, updateTrainingAction } from "../../../store";
 import { useDispatch } from "react-redux";
+import { createClonedTraining, createResetedTraining } from "../../../utils/schedule-utils";
+import { WeekDay } from "../../../constants";
 
 // COMPONENTS --------------------------------------
-import Exercise from "../exercise/exercise";
 import Stats from "../stats/stats";
 // -------------------------------------------------
 
@@ -17,12 +18,12 @@ import "./training.css";
 // -------------------------------------------------
 
 type Props = {
-  day: Day,
+  day: WeekDay,
   initialTraining: TrainingModel,
-  trainingNumber: number
+  trainingNumber: number,
 };
 
-function Training(props: Props) {
+const Training: React.FC<Props> = (props) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -40,29 +41,20 @@ function Training(props: Props) {
   }
 
   const cloneTraining = () => {
-    const { day, initialTraining } = props;
-    const clonedTraining: TrainingModel = {
-      ...initialTraining,
-      trainingId: createTrainingId(),
-      exercises: initialTraining.exercises.map(
-        ex => ({
-          ...ex,
-          exerciseId: createExerciseId(),
-          sets: ex.sets.map(
-            s => ({ ...s, setId: createSetId() })
-          )
-        })
-      )
-    }
     dispatch(
-      addTrainingAction(day, clonedTraining)(dispatch)
+      addTrainingAction(props.day, createClonedTraining(props.initialTraining))
     );
   }
 
   const removeTraining = () => {
-    const { day, initialTraining } = props;
     dispatch(
-      removeTrainingAction(day, initialTraining)(dispatch)
+      removeTrainingAction(props.day, props.initialTraining)
+    );
+  }
+
+  const resetTraining = () => {
+    dispatch(
+      updateTrainingAction(props.day, createResetedTraining(props.initialTraining))
     );
   }
 
@@ -95,39 +87,31 @@ function Training(props: Props) {
           <img src={menuIcon} alt="" />
         </button>
 
-        <div className={`dropdown-menu ${isMenuVisible ? "dropdown-menu--visible" : ""} training__dropdown`}>
-          <div className="dropdown-menu__inner">
-            <ul className="dropdown-menu__list">
-              <li className="dropdown-menu__item">
-                <button className="dropdown-menu__button" title="Clone training" onClick={() => cloneTraining()}>Clone training</button>
-              </li>
-              <li className="dropdown-menu__item">
-                <button className="dropdown-menu__button" title="Remove training" onClick={() => removeTraining()}>Remove training</button>
-              </li>
-            </ul>
+        <div className={`dropdown ${isMenuVisible ? "dropdown--visible" : ""} training__dropdown`}>
+          <div className="dropdown__inner">
+            <div className="dropdown-menu">
+              <ul className="dropdown-menu__list">
+                <li className="dropdown-menu__item">
+                  <button className="dropdown-menu__button" title="Reset training" onClick={() => resetTraining()}>Reset training</button>
+                </li>
+                <li className="dropdown-menu__item">
+                  <button className="dropdown-menu__button" title="Clone training" onClick={() => cloneTraining()}>Clone training</button>
+                </li>
+                <li className="dropdown-menu__item">
+                  <button className="dropdown-menu__button" title="Remove training" onClick={() => removeTraining()}>Remove training</button>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <button className="button-type1 dropdown-menu__close-btn" onClick={() => setIsMenuVisible(false)}>
+          <button className="button-type1 dropdown__close-btn" onClick={() => setIsMenuVisible(false)}>
             <img src={closeMenuIcon} alt="" />
           </button>
         </div>
 
       </div>
       <div className="training__body">
-        <div className="training__exercises">
-          {props.initialTraining.exercises.map((exercise, idx) => {
-            return (
-              <div key={exercise.exerciseId} className="training__exercise">
-                <Exercise
-                  day={props.day}
-                  trainingId={props.initialTraining.trainingId}
-                  initialExercise={exercise}
-                  exerciseNumber={idx + 1}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <div className="training__exercises">{props.children}</div>
       </div>
     </div>
   );

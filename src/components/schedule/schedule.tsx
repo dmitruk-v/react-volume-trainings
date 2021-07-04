@@ -1,30 +1,37 @@
-import { WeekScheduleModel, calculateWeekStats, Day, RootState, calculateDayStats } from "../../store";
+import { WeekScheduleModel, calculateWeekStats, RootState } from "../../store";
 import { useMemo } from "react";
-import { NavLink, Route, useRouteMatch, Redirect } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-// COMPONENTS --------------------------------------
-import TrainingDay from "./training-day/training-day";
-import Stats from "./stats/stats";
+// ASSETS ------------------------------------------
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./schedule.css";
 // -------------------------------------------------
 
-type Props = {
-  initialSchedule: WeekScheduleModel
-}
+// COMPONENTS --------------------------------------
+import TrainingDay from "./training-day/training-day";
+import Training from "./training/training";
+import Exercise from "./exercise/exercise";
+import ExSet from "./ex-set/ex-set";
+import Stats from "./stats/stats";
+import DaysMenu from "./days-menu/days-menu";
+// -------------------------------------------------
+
+type Props = {}
 
 const Schedule: React.FC<Props> = (props) => {
 
-  const activeDay = useSelector<RootState, Day>(state => state.appOptions.schedule.activeDay);
-  const { path, url } = useRouteMatch();
+  const weekSchedule = useSelector<RootState, WeekScheduleModel>(state => state.weekSchedule);
+  const { path } = useRouteMatch();
 
   const weekStats = useMemo(
-    () => calculateWeekStats(props.initialSchedule),
-    [props.initialSchedule]
+    () => calculateWeekStats(weekSchedule),
+    [weekSchedule]
   );
+
+  const scheduleDays = Object.keys(weekSchedule) as (keyof typeof weekSchedule)[];
 
   return (
     <div className="schedule">
@@ -49,51 +56,52 @@ const Schedule: React.FC<Props> = (props) => {
       </div>
 
       <div className="schedule__days">
-        <div className="days-menu">
-          <div className="days-menu__items">
-            {Object.keys(props.initialSchedule).map(dayKey => {
-              const trainingDay = props.initialSchedule[dayKey as Day];
-              const dayStats = calculateDayStats(trainingDay);
-              return (
-                <div key={dayKey} className="days-menu__item">
-                  <NavLink
-                    to={`${url}/${dayKey.toLocaleLowerCase()}`}
-                    className={`menu-day ${dayStats.volume > 0 ? "menu-day--used" : ""}`}
-                    activeClassName="menu-day--active"
-                  >
-                    <div className="menu-day__title">
-                      <div className="menu-day__day-name">{dayKey}</div>
-                      <div className="menu-day__trainings">{trainingDay.trainings.length}</div>
-                    </div>
-                    <div className="menu-day__stats">
-                      <Stats
-                        statsOptions={{
-                          modifierClasses: [
-                            "stats--vertical",
-                            "stats--colored-values",
-                          ]
-                        }}
-                        stats={dayStats}
-                      />
-                    </div>
-                  </NavLink>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+        <DaysMenu schedule={weekSchedule} />
       </div>
 
       <div className="schedule__selected-day">
-        <Redirect path={`${path}`} exact to={`${path}/${activeDay.toLocaleLowerCase()}`} />
+        <Route path={path} exact>
+          Please select training day.
+        </Route>
 
-        {Object.keys(props.initialSchedule).map(dayKey => {
-          return (
-            <Route key={dayKey} path={`${path}/${dayKey.toLocaleLowerCase()}`}>
-              <TrainingDay initialTrainingDay={props.initialSchedule[dayKey as Day]} />
-            </Route>
-          )
-        })}
+        {scheduleDays.map(day => (
+          <Route key={day} path={`${path}/${day}`}>
+            <TrainingDay initialTrainingDay={weekSchedule[day]}>
+              {weekSchedule[day].trainings.map((training, tIdx) =>
+                <div key={training.trainingId} className="training-day__training">
+                  <Training
+                    day={day}
+                    initialTraining={training}
+                    trainingNumber={tIdx + 1}
+                  >
+                    {training.exercises.map((exercise, eIdx) =>
+                      <div key={exercise.exerciseId} className="training__exercise">
+                        <Exercise
+                          day={day}
+                          trainingId={training.trainingId}
+                          initialExercise={exercise}
+                          exerciseNumber={eIdx + 1}
+                        >
+                          {exercise.sets.map((set, sIdx) =>
+                            <div key={set.setId} className="exercise__ex-set">
+                              <ExSet
+                                day={day}
+                                trainingId={training.trainingId}
+                                exerciseId={exercise.exerciseId}
+                                initialSet={set}
+                                setNumber={sIdx + 1}
+                              />
+                            </div>
+                          )}
+                        </Exercise>
+                      </div>
+                    )}
+                  </Training>
+                </div>
+              )}
+            </TrainingDay>
+          </Route>
+        ))}
       </div>
 
     </div>

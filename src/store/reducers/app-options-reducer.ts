@@ -1,12 +1,12 @@
-import { Actions, Day } from "..";
-import { DAYS_OF_WEEK } from "../../constants";
+import { Actions, WeekDay } from "..";
+import { WEEK_DAYS } from "../../constants";
 
 type AppOptionsModel = {
   ui: {
     viewGridCols: number,
   },
   schedule: {
-    activeDay: Day,
+    activeDay: WeekDay,
     spreadReps: boolean,
     spreadWeight: boolean
   }
@@ -17,7 +17,7 @@ const defaultAppOptions: AppOptionsModel = {
     viewGridCols: 4,
   },
   schedule: {
-    activeDay: DAYS_OF_WEEK[0],
+    activeDay: WEEK_DAYS[0],
     spreadReps: true,
     spreadWeight: true,
   }

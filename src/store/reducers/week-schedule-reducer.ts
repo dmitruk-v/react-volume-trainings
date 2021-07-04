@@ -1,4 +1,13 @@
-import { Actions, WeekScheduleModel, ExSetModel } from "..";
+import { Actions, WeekScheduleModel } from "..";
+import { createExerciseWithSpreadedSet } from "../../utils/schedule-utils";
+
+// type ReadyState = "idle" | "loading" | "success" | "error";
+
+// type State = {
+//   weekSchedule: WeekScheduleModel,
+//   readyState: ReadyState,
+//   error: any
+// }
 
 const initialState: WeekScheduleModel = {
   Monday: { day: "Monday", trainings: [] },
@@ -10,14 +19,25 @@ const initialState: WeekScheduleModel = {
   Sunday: { day: "Sunday", trainings: [] }
 }
 
-const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, action: Actions) => {
+const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, action: Actions): WeekScheduleModel => {
   console.log("inside weekScheduleReducer", action);
 
   switch (action.type) {
+
     case "schedule/load":
+      return weekSchedule;
+
+    case "schedule/load-success":
       return action.payload.schedule;
 
-    case "sets/add": {
+    // case "schedule/load-error":
+    //   return {
+    //     weekSchedule: weekSchedule,
+    //     loading: false,
+    //     error: true,
+    //   }
+
+    case "schedule/sets/add": {
       const { day, trainingId, exerciseId, addedSet } = action.payload;
       return {
         ...weekSchedule,
@@ -42,7 +62,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
-    case "sets/update": {
+    case "schedule/sets/update": {
       const { day, trainingId, exerciseId, updatedSet } = action.payload;
       return {
         ...weekSchedule,
@@ -71,8 +91,8 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
-    case "sets/updateSpread": {
-      const { day, trainingId, exerciseId, updatedSet } = action.payload;
+    case "schedule/sets/updateSpread": {
+      const { day, trainingId, exerciseId, spreadedSet } = action.payload;
       return {
         ...weekSchedule,
         [day]: {
@@ -83,10 +103,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
                 ...tr,
                 exercises: tr.exercises.map(
                   ex => ex.exerciseId === exerciseId
-                    ? {
-                      ...ex,
-                      sets: spreadSet(ex.sets, updatedSet)
-                    }
+                    ? createExerciseWithSpreadedSet(ex, spreadedSet)
                     : ex
                 )
               }
@@ -96,7 +113,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
-    case "sets/remove": {
+    case "schedule/sets/remove": {
       const { day, trainingId, exerciseId, removedSet } = action.payload;
       return {
         ...weekSchedule,
@@ -123,7 +140,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
-    case "exercises/add": {
+    case "schedule/exercises/add": {
       const { day, trainingId, addedExercise } = action.payload;
       return {
         ...weekSchedule,
@@ -140,7 +157,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       };
     }
 
-    case "exercises/update": {
+    case "schedule/exercises/update": {
       const { day, trainingId, updatedExercise } = action.payload;
       return {
         ...weekSchedule,
@@ -161,7 +178,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       };
     }
 
-    case "exercises/remove": {
+    case "schedule/exercises/remove": {
       const { day, trainingId, removedExercise } = action.payload;
       return {
         ...weekSchedule,
@@ -180,7 +197,7 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       };
     }
 
-    case "trainings/add": {
+    case "schedule/trainings/add": {
       const { day, addedTraining } = action.payload;
       return {
         ...weekSchedule,
@@ -191,45 +208,47 @@ const weekScheduleReducer = (weekSchedule: WeekScheduleModel = initialState, act
       }
     }
 
-    case "trainings/remove": {
+    case "schedule/trainings/update": {
+      const { day, updatedTraining } = action.payload;
+      return {
+        ...weekSchedule,
+        [day]: {
+          ...weekSchedule[day],
+          trainings: weekSchedule[day].trainings.map(
+            tr => tr.trainingId === updatedTraining.trainingId
+              ? updatedTraining
+              : tr
+          )
+        }
+      }
+    }
+
+    case "schedule/trainings/remove": {
       const { day, removedTraining } = action.payload;
       if (weekSchedule[day].trainings.length === 1) return weekSchedule;
       return {
         ...weekSchedule,
         [day]: {
           ...weekSchedule[day],
-          trainings: weekSchedule[day].trainings.filter(tr => tr.trainingId !== removedTraining.trainingId),
+          trainings: weekSchedule[day].trainings.filter(
+            tr => tr.trainingId !== removedTraining.trainingId
+          ),
         }
       }
     }
 
-    default:
-      return weekSchedule;
-  }
-}
-
-// const updateSet = (sets: ExSetModel[], updatedSet: ExSetModel) => {
-//   return sets.map(s => s.setId === updatedSet.setId ? updatedSet : s);
-// }
-
-// const addSet = (sets: ExSetModel[], addedSet: ExSetModel) => [...sets, addedSet];
-// const removeSet = (sets: ExSetModel[], removedSet: ExSetModel) => sets.filter(s => s.setId !== removedSet.setId);
-// const updateSet = (sets: ExSetModel[], updatedSet: ExSetModel) => sets.map(s => s.setId === updatedSet.setId ? updatedSet : s);
-
-const spreadSet = (sets: ExSetModel[], spreadedSet: ExSetModel) => {
-  let spreadPosition: number;
-  return sets.map((s, idx) => {
-    if (s.setId === spreadedSet.setId) {
-      spreadPosition = idx;
-    }
-    if (spreadPosition !== undefined) {
-      if (idx >= spreadPosition) {
-        s.reps = spreadedSet.reps;
-        s.weight = spreadedSet.weight;
+    case "schedule/trainingDay/update": {
+      const { updatedDay } = action.payload;
+      return {
+        ...weekSchedule,
+        [updatedDay.day]: updatedDay
       }
     }
-    return { ...s };
-  });
+
+    default:
+      // const _exhaustiveCheck: never = action;
+      return weekSchedule;
+  }
 }
 
 export { weekScheduleReducer };

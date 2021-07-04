@@ -23,8 +23,20 @@ const Header: React.FC<Props> = (props) => {
             </li>
             <li className="header-menu__item">
               <NavLink
-                to={"/schedule"}
+                to={"/year"}
                 className="header-menu__link"
+                activeClassName="header-menu__link--active">Year</NavLink>
+            </li>
+            <li className="header-menu__item">
+              <NavLink
+                to={"/month"}
+                className="header-menu__link"
+                activeClassName="header-menu__link--active">Month</NavLink>
+            </li>
+            <li className="header-menu__item">
+              <NavLink
+                to={"/schedule"}
+                className="header-menu__link header-menu__link--schedule"
                 activeClassName="header-menu__link--active">Schedule</NavLink>
             </li>
             <li className="header-menu__item">

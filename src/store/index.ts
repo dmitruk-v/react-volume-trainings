@@ -4,8 +4,8 @@ export * from "./types";
 
 // tools
 // ---------------------------------------------------------------
-export * from "./calculate-stats";
-export * from "./create-schedule";
+export * from "../utils/calculate-stats";
+export * from "../utils/create-schedule";
 
 // redux
 // ---------------------------------------------------------------

@@ -1,7 +1,20 @@
+:root {
+  --main-font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "OpenSans", Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-family: var(--main-font-family);
+}
+
+/* set font-family for native browser elements
+--------------------------------------------------------------------------------- */
+input,
+button,
+select {
+  font-family: var(--main-font-family);
 }
 
 *,
@@ -12,17 +25,33 @@ body {
 
 /* typography
 --------------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+  line-height: 1;
+}
+
 p {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
 }
 
 p:last-child {
   margin-bottom: 0;
 }
 
+p + h1,
+p + h2,
+p + h3,
+p + h4 {
+  margin-top: 25px;
+}
+
 ul,
 ol {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   padding: 0 0 0 17px;
 }
 
@@ -67,31 +96,94 @@ ol:last-child {
   height: 48px;
 }
 
-/* dropdown-menu
+/* dropdown
 --------------------------------------------------------------------------------- */
-.dropdown-menu {
+.dropdown {
   visibility: hidden;
-  opacity: 0;
   z-index: 1;
   position: absolute;
   top: 0;
   right: 0;
   width: auto;
-  transform: scale(0.5);
-  transform-origin: 90% 10%;
-  transition: all 0.15s ease-in-out;
 }
-.dropdown-menu--visible {
+.dropdown--visible {
   visibility: visible;
-  opacity: 1;
-  transform: scale(1);
 }
-.dropdown-menu__inner {
+.dropdown__inner {
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: 100% 0;
   border: 1px solid rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.15s ease-in-out;
 }
+.dropdown--visible > .dropdown__inner {
+  opacity: 1;
+  transform: scale(1);
+}
+.dropdown__close-btn {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: -35px;
+  background-color: #ffffff;
+  transition: all 0.15s ease-in-out;
+}
+.dropdown--visible > .dropdown__close-btn {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* from left */
+.dropdown--anim_from-lt { left: 0; }
+.dropdown--anim_from-lt > .dropdown__inner { transform-origin: left top; }
+
+.dropdown--anim_from-lc { left: 0; }
+.dropdown--anim_from-lc > .dropdown__inner { transform-origin: left center; }
+
+.dropdown--anim_from-lb { left: 0; }
+.dropdown--anim_from-lb > .dropdown__inner { transform-origin: left bottom; }
+
+/* from right */
+.dropdown--anim_from-rt { right: 0; }
+.dropdown--anim_from-rt > .dropdown__inner { transform-origin: right top; }
+
+.dropdown--anim_from-rc { right: 0; }
+.dropdown--anim_from-rc > .dropdown__inner { transform-origin: right center; }
+
+.dropdown--anim_from-rb { right: 0; }
+.dropdown--anim_from-rb > .dropdown__inner { transform-origin: right bottom; }
+
+/* from top */
+.dropdown--anim_from-ct {}
+.dropdown--anim_from-ct > .dropdown__inner { transform-origin: center top; }
+
+/* from bottom */
+.dropdown--anim_from-cb {}
+.dropdown--anim_from-cb > .dropdown__inner { transform-origin: center bottom; }
+
+/* Close button positions */
+.dropdown--close_inside-top-right {}
+.dropdown--close_inside-top-right > .dropdown__close-btn { top: 5px; right: 5px; }
+
+.dropdown--close_inside-top-left {}
+.dropdown--close_inside-top-left > .dropdown__close-btn { top: 5px; left: 5px; }
+
+/* dropdown-title
+--------------------------------------------------------------------------------- */
+.dropdown-title {
+  padding: 20px 20px 10px 20px;
+  font-size: 18px;
+  border-bottom: 1px solid #f1f1f1;
+  line-height: 1;
+}
+
+/* dropdown-menu
+--------------------------------------------------------------------------------- */
+.dropdown-menu {}
 .dropdown-menu__list {
   margin: 0;
   padding: 10px 0;
@@ -105,23 +197,34 @@ ol:last-child {
 }
 .dropdown-menu__button {
   width: 100%;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 16px;
   border: 0;
   background-color: #ffffff;
-  border-radius: 5px;
   text-align: left;
   cursor: pointer;
 }
 .dropdown-menu__button:hover {
   background-color: #f1f1f1;
 }
-.dropdown-menu__close-btn {
-  position: absolute;
-  top: 0;
-  right: -35px;
-  background-color: #ffffff;
+
+/* dropdown-form
+--------------------------------------------------------------------------------- */
+.dropdown-form {
+  padding: 15px;
 }
+.dropdown-form__title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.dropdown-form__section {
+  margin-bottom: 15px;
+}
+.dropdown-form__field {
+  margin-bottom: 5px;
+}
+
 
 /* utils
 --------------------------------------------------------------------------------- */

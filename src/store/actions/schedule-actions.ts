@@ -1,25 +1,29 @@
 import { WeekScheduleModel } from "..";
-import { ActionCreator } from ".";
 
-type LoadWeekScheduleAction = {
-  type: "schedule/load",
-  payload: {
-    schedule: WeekScheduleModel
-  }
-};
-
-type WeekScheduleActions = LoadWeekScheduleAction;
-
-const loadScheduleAction: ActionCreator<LoadWeekScheduleAction> = (
-  schedule: WeekScheduleModel
-) => {
-  return (dispatch) => {
-    return {
-      type: "schedule/load",
-      payload: { schedule }
-    }
-  }
+const loadWeekScheduleAction = () => (dispatch: any) => {
+  return {
+    type: "schedule/load"
+  } as const
 }
 
+const loadWeekScheduleSuccessAction = (schedule: WeekScheduleModel) => {
+  return {
+    type: "schedule/load-success",
+    payload: { schedule }
+  } as const
+}
+
+const loadWeekScheduleFailedAction = (error: string | Error) => {
+  return {
+    type: "schedule/load-error",
+    payload: { error }
+  } as const
+}
+
+type WeekScheduleActions =
+  ReturnType<ReturnType<typeof loadWeekScheduleAction>>
+  | ReturnType<typeof loadWeekScheduleSuccessAction>
+  | ReturnType<typeof loadWeekScheduleFailedAction>;
+
 export type { WeekScheduleActions };
-export { loadScheduleAction };
+export { loadWeekScheduleAction, loadWeekScheduleSuccessAction, loadWeekScheduleFailedAction };

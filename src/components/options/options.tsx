@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, changeScheduleSpreadReps, changeScheduleSpreadWeight } from "../../store";
-import { DAYS_OF_WEEK } from "../../constants";
+import { AppDispatch, RootState, changeOptionScheduleSpreadReps, changeOptionScheduleSpreadWeight } from "../../store";
+import { WEEK_DAYS } from "../../constants";
 
 // STYLES ------------------------------------------
 import "./options.css";
@@ -19,11 +19,15 @@ const Options: React.FC<Props> = (props) => {
   const spreadWeightState = useSelector<RootState, boolean>(state => state.appOptions.schedule.spreadWeight);
 
   const handleSpreadRepsCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeScheduleSpreadReps(evt.target.checked)(dispatch));
+    dispatch(
+      changeOptionScheduleSpreadReps(evt.target.checked)
+    );
   }
 
   const handleSpreadWeightCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeScheduleSpreadWeight(evt.target.checked)(dispatch));
+    dispatch(
+      changeOptionScheduleSpreadWeight(evt.target.checked)
+    );
   }
 
   return (
@@ -64,7 +68,7 @@ const Options: React.FC<Props> = (props) => {
               <div className="app-opts-form__control">
                 <span className="control-select">
                   <select name="spread-reps" className="control-select__native" onChange={() => { }}>
-                    {DAYS_OF_WEEK.map(day => <option key={day} value={day}>{day}</option>)}
+                    {WEEK_DAYS.map(day => <option key={day} value={day}>{day}</option>)}
                   </select>
                 </span>
               </div>
