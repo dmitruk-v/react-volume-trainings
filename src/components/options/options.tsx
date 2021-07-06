@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState, changeOptionScheduleSpreadReps, changeOptionScheduleSpreadWeight } from "../../store";
+import { AppDispatch, RootState } from "../../store";
+import { changeOptionScheduleSpreadReps, changeOptionScheduleSpreadWeight } from "../../store/actions";
 import { WEEK_DAYS } from "../../constants";
 
 // STYLES ------------------------------------------
@@ -131,4 +132,4 @@ const Options: React.FC<Props> = (props) => {
 }
 // -----------------------------------------------------------------------------
 
-export default Options;
+export { Options };

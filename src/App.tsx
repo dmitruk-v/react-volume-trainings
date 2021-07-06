@@ -6,11 +6,11 @@ import "./App.css";
 // -------------------------------------------------
 
 // COMPONENTS --------------------------------------
-import Schedule from "./components/schedule/schedule";
-import Options from "./components/options/options";
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
-import Home from "./components/home/home";
+import { Home } from "./components/home/home";
+import { Options } from "./components/options/options";
+import { Header } from "./components/header/header";
+import { Footer } from "./components/footer/footer";
+import { TrainingWeek } from "./components/training-week/training-week";
 import { YearSchedule } from "./components/year-schedule/year-schedule";
 // -------------------------------------------------
 
@@ -34,15 +34,15 @@ function App() {
             </Route>
 
             <Route path="/schedule">
-              <Schedule />
+              <YearSchedule />
+            </Route>
+
+            <Route path="/week/:year/:weekId">
+              <TrainingWeek />
             </Route>
 
             <Route path="/options">
               <Options />
-            </Route>
-
-            <Route path="/year">
-              <YearSchedule />
             </Route>
 
             <Route path="*">

@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { getCurrentWeekStartDate } from "../../utils/date-utils";
-import { createYearSchedule, YearScheduleModel } from "../../store";
-
-import { yearScheduleReducer } from "../../store/reducers/year-schedule-reducer";
-import { loadYearScheduleAction } from "../../store/actions/year-schedule-actions";
+import { RootState } from "../../store";
+import { YearScheduleModel } from "../../store/types";
+import { NavLink, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // ASSETS ------------------------------------------
 // -------------------------------------------------
@@ -13,57 +13,55 @@ import "./year-schedule.css";
 // -------------------------------------------------
 
 // COMPONENTS --------------------------------------
-import { YearWeek } from "./year-week/year-week";
+import { YearWeek } from "../year-week/year-week";
 // -------------------------------------------------
 
 type Props = {};
+type RouteParams = {
+  year: string
+}
 
 const YearSchedule: React.FC<Props> = (props) => {
 
   const currYear = new Date().getFullYear();
-  const [yearSchedule, setYearSchedule] = useState({ [currYear]: [] } as YearScheduleModel);
-
-  useEffect(() => {
-    setYearSchedule(createYearSchedule([2019, 2020, currYear]));
-  }, [currYear]);
-
-  console.log("global: ", yearSchedule);
-
-  // -----------------------------------------------------------
-  // const loadAction = loadYearScheduleAction(yearSchedule);
-  // const loaded = yearScheduleReducer({}, loadAction);
-  console.log("YearSchedule called!");
-
-  // console.log("global: ", globalSchedule);
-  // console.log("loaded: ", loaded);
-
-  // const updatedSchedule =
-
-  // -----------------------------------------------------------
-
   const currWeekStartDate = useMemo(() => getCurrentWeekStartDate(), []);
-  // const [selectedYear, setSelectedYear] = useState(currYear);
+  const yearSchedule = useSelector<RootState, YearScheduleModel>(state => state.yearSchedule);
+  const match = useRouteMatch<RouteParams>();
 
   return (
     <div className="year-schedule">
-      {/* <div className="year-schedule__year-selector">
-        <div className="control-select">
-          <select className="control-select__native" onChange={evt => setSelectedYear(Number(evt.target.value))} defaultValue={currYear}>
-            {Object.keys(yearSchedule).map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-        </div>
-      </div> */}
-      <div className="year-schedule__weeks">
-        {yearSchedule[2021].map((weekSchedule, idx) => {
-          return (
-            <div key={weekSchedule.weekStartDate.getTime()} className={`year-schedule__week`}>
-              <YearWeek currWeekStartDate={currWeekStartDate} weekSchedule={weekSchedule} weekNum={idx + 1} />
-            </div>
-          )
-        })}
+
+      <div className="year-schedule__year-selector">
+        {Object.keys(yearSchedule).map(year => (
+          <NavLink
+            key={year}
+            to={`${match.url}/${year}`}
+            className="year-schedule__button ysch-button"
+            activeClassName="ysch-button--active"
+          >{year}</NavLink>
+        ))}
       </div>
+
+      <Switch>
+        {Object.keys(yearSchedule).map(year => (
+          <Route key={year} path={`${match.path}/${year}`}>
+            <div className="year-schedule__weeks">
+              {yearSchedule[year].map((week, idx) => (
+                <div key={idx} className="year-schedule__week">
+                  <YearWeek
+                    year={year}
+                    weekNum={idx + 1}
+                    weekSchedule={week}
+                    currWeekStartDate={currWeekStartDate}
+                  />
+                </div>
+              ))}
+            </div>
+          </Route>
+        ))}
+        <Redirect exact from={match.url} to={`${match.path}/${currYear}`} />
+      </Switch>
+
     </div>
   );
 }

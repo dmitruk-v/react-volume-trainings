@@ -1,16 +1,6 @@
-import { Actions, WeekDay } from "..";
+import { Actions } from "../actions";
+import { AppOptionsModel } from "../types";
 import { WEEK_DAYS } from "../../constants";
-
-type AppOptionsModel = {
-  ui: {
-    viewGridCols: number,
-  },
-  schedule: {
-    activeDay: WeekDay,
-    spreadReps: boolean,
-    spreadWeight: boolean
-  }
-};
 
 const defaultAppOptions: AppOptionsModel = {
   ui: {

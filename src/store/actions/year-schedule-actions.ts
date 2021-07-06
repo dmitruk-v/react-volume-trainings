@@ -1,23 +1,162 @@
-import { YearScheduleModel } from "../reducers/year-schedule-reducer";
-import { WeekScheduleModel2 } from "../types";
+import { YearScheduleModel, WeekDay, ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel, TrainingWeekModel } from "../types";
 
-const loadYearScheduleAction = (schedule: YearScheduleModel) => {
+const yearScheduleLoadAction = (yearSchedule: YearScheduleModel) => {
   return {
-    type: "year-schedule/load",
-    payload: { schedule }
+    type: "yearSchedule/load",
+    payload: { yearSchedule }
   } as const;
 }
 
-const updateYearScheduleWeekAction = (year: number, updatedWeek: WeekScheduleModel2) => {
+// --------------------------------------------------------------------------------
+// SETS
+// --------------------------------------------------------------------------------
+const yearScheduleAddSetAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, addedSet: ExSetModel
+) => {
   return {
-    type: "year-schedule/updateWeek",
-    payload: { year, updatedWeek }
-  } as const;
+    type: "yearSchedule/addSet",
+    payload: { year, weekId, day, trainingId, exerciseId, addedSet }
+  } as const
 }
+
+const yearScheduleUpdateSetAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel
+) => {
+  return {
+    type: "yearSchedule/updateSet",
+    payload: { year, weekId, day, trainingId, exerciseId, updatedSet }
+  } as const
+}
+
+const yearScheduleUpdateSetWithSpreadAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel
+) => {
+  return {
+    type: "yearSchedule/updateSetWithSpread",
+    payload: { year, weekId, day, trainingId, exerciseId, updatedSet }
+  } as const
+}
+
+const yearScheduleRemoveSetAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, removedSet: ExSetModel
+) => {
+  return {
+    type: "yearSchedule/updateSet",
+    payload: { year, weekId, day, trainingId, exerciseId, removedSet }
+  } as const
+}
+
+// --------------------------------------------------------------------------------
+// EXRCISES
+// --------------------------------------------------------------------------------
+const yearScheduleAddExerciseAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, addedExercise: ExerciseModel
+) => {
+  return {
+    type: "yearSchedule/addExercise",
+    payload: { year, weekId, day, trainingId, addedExercise }
+  } as const
+}
+
+const yearScheduleUpdateExerciseAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, updatedExercise: ExerciseModel
+) => {
+  return {
+    type: "yearSchedule/updateExercise",
+    payload: { year, weekId, day, trainingId, updatedExercise }
+  } as const
+}
+
+const yearScheduleRemoveExerciseAction = (
+  year: number, weekId: string, day: WeekDay, trainingId: string, removedExercise: ExerciseModel
+) => {
+  return {
+    type: "yearSchedule/removeExercise",
+    payload: { year, weekId, day, trainingId, removedExercise }
+  } as const
+}
+
+// --------------------------------------------------------------------------------
+// TRAINING
+// --------------------------------------------------------------------------------
+const yearScheduleAddTrainingAction = (
+  year: number, weekId: string, day: WeekDay, addedTraining: TrainingModel
+) => {
+  return {
+    type: "yearSchedule/addTraining",
+    payload: { year, weekId, day, addedTraining }
+  } as const
+}
+
+const yearScheduleUpdateTrainingAction = (
+  year: number, weekId: string, day: WeekDay, updatedTraining: TrainingModel
+) => {
+  return {
+    type: "yearSchedule/updateTraining",
+    payload: { year, weekId, day, updatedTraining }
+  } as const
+}
+
+const yearScheduleRemoveTrainingAction = (
+  year: number, weekId: string, day: WeekDay, removedTraining: TrainingModel
+) => {
+  return {
+    type: "yearSchedule/removeTraining",
+    payload: { year, weekId, day, removedTraining }
+  } as const
+}
+
+// --------------------------------------------------------------------------------
+// TRAINING-DAY
+// --------------------------------------------------------------------------------
+const yearScheduleUpdateTrainingDayAction = (
+  year: number, weekId: string, updatedTrainingDay: TrainingDayModel
+) => {
+  return {
+    type: "yearSchedule/updateTrainingDay",
+    payload: { year, weekId, updatedTrainingDay }
+  } as const
+}
+
+// --------------------------------------------------------------------------------
+// WEEK-SCHEDULE
+// --------------------------------------------------------------------------------
+const yearScheduleUpdateTrainingWeekAction = (
+  year: number, updatedWeekSchedule: TrainingWeekModel
+) => {
+  return {
+    type: "yearSchedule/updateWeekSchedule",
+    payload: { year, updatedWeekSchedule }
+  } as const
+}
+
 
 type YearScheduleActions =
-  ReturnType<typeof updateYearScheduleWeekAction>
-  | ReturnType<typeof loadYearScheduleAction>;
+  | ReturnType<typeof yearScheduleLoadAction>
+  // sets
+  | ReturnType<typeof yearScheduleAddSetAction>
+  | ReturnType<typeof yearScheduleUpdateSetAction>
+  | ReturnType<typeof yearScheduleUpdateSetWithSpreadAction>
+  | ReturnType<typeof yearScheduleRemoveSetAction>
+  // exercises
+  | ReturnType<typeof yearScheduleAddExerciseAction>
+  | ReturnType<typeof yearScheduleUpdateExerciseAction>
+  | ReturnType<typeof yearScheduleRemoveExerciseAction>
+  // training
+  | ReturnType<typeof yearScheduleAddTrainingAction>
+  | ReturnType<typeof yearScheduleUpdateTrainingAction>
+  | ReturnType<typeof yearScheduleRemoveTrainingAction>
+  // training-day
+  | ReturnType<typeof yearScheduleUpdateTrainingDayAction>
+  // training-week
+  | ReturnType<typeof yearScheduleUpdateTrainingWeekAction>;
 
 export type { YearScheduleActions };
-export { loadYearScheduleAction, updateYearScheduleWeekAction }
+export {
+  yearScheduleLoadAction,
+  yearScheduleAddSetAction, yearScheduleUpdateSetAction, yearScheduleUpdateSetWithSpreadAction, yearScheduleRemoveSetAction,
+  yearScheduleAddExerciseAction, yearScheduleUpdateExerciseAction, yearScheduleRemoveExerciseAction,
+  yearScheduleAddTrainingAction, yearScheduleUpdateTrainingAction, yearScheduleRemoveTrainingAction,
+  yearScheduleUpdateTrainingDayAction,
+  yearScheduleUpdateTrainingWeekAction
+}

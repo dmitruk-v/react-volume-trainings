@@ -11,19 +11,7 @@ const FRIDAY = "Friday" as const;
 const SATURDAY = "Saturday" as const;
 const SUNDAY = "Sunday" as const;
 
-type WeekDays = [
-  typeof MONDAY,
-  typeof TUESDAY,
-  typeof WEDNESDAY,
-  typeof THURSDAY,
-  typeof FRIDAY,
-  typeof SATURDAY,
-  typeof SUNDAY,
-];
-
-type WeekDay = WeekDays[number];
-
-const WEEK_DAYS: WeekDays = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY];
+const WEEK_DAYS = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY] as const;
 
 // MONTHS
 // -------------------------------------------------------
@@ -40,27 +28,10 @@ const OCTOBER = "October" as const;
 const NOVEMBER = "November" as const;
 const DECEMBER = "December" as const;
 
-type Months = [
-  typeof JANUARY,
-  typeof FEBRUARY,
-  typeof MARCH,
-  typeof APRIL,
-  typeof MAY,
-  typeof JUNE,
-  typeof JULY,
-  typeof AUGUST,
-  typeof SEPTEMBER,
-  typeof OCTOBER,
-  typeof NOVEMBER,
-  typeof DECEMBER,
-];
-
-type Month = Months[number];
-
-const MONTHS: Months = [
+const MONTHS = [
   JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER,
-];
+] as const;
 
-export type { WeekDay, WeekDays, Month, Months }
+export { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
 export { LEAP_YEAR, NORMAL_YEAR }
 export { WEEK_DAYS, MONTHS }

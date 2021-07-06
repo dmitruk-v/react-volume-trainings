@@ -33,4 +33,4 @@ const Home: React.FC<Props> = (props) => {
   );
 }
 
-export default Home;
+export { Home };

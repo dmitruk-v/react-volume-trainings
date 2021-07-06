@@ -1,4 +1,4 @@
-import { AppOptionsModel } from "../../store";
+import { AppOptionsModel } from "../../store/types";
 
 const changeOptionViewGridCols = (optionValue: AppOptionsModel["ui"]["viewGridCols"]) => {
   return {

@@ -4,6 +4,9 @@ import React from "react";
 import "./footer.css";
 // -------------------------------------------------
 
+// COMPONENTS --------------------------------------
+// -------------------------------------------------
+
 type Props = {}
 
 const Footer: React.FC<Props> = (props) => {
@@ -12,4 +15,4 @@ const Footer: React.FC<Props> = (props) => {
   );
 }
 
-export default Footer;
+export { Footer };

@@ -23,6 +23,26 @@
 .year-schedule__year-selector {
   margin-bottom: 15px;
 }
+.year-schedule__button {
+  margin-right: 10px;
+}
+
+.ysch-button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 18px;
+  line-height: 1;
+  border: 2px solid #eaeaea;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.ysch-button:hover,
+.ysch-button--active {
+  border-color: #333333;
+}
 
 /* WEEKS
 ------------------------------------------------------ */

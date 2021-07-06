@@ -1,9 +1,9 @@
 import { applyMiddleware, createStore } from "redux";
-import { WeekScheduleModel } from "./";
+import { TrainingWeekModel } from "./types";
 import rootReducer from "./reducers";
 // import { JsonProvider } from "../providers/json-provider";
 import { LocalStorageProvider } from "../providers/local-storage-provider";
-import { createSchedule } from "../utils/create-schedule";
+import { createYearSchedule, createTrainingWeek } from "../utils/create-schedule";
 
 // when user loads app we need to load persisted data or create new data
 // ---------------------------------------------------------------------------
@@ -21,7 +21,7 @@ import { createSchedule } from "../utils/create-schedule";
 
 // preload data and create store
 // ---------------------------------------------------------------------------
-const dataProvider = LocalStorageProvider<WeekScheduleModel>("schedule");
+const dataProvider = LocalStorageProvider<TrainingWeekModel>("schedule");
 // const dataProvider = JsonProvider<WeekScheduleModel>("http://localhost:3000/schedule.json");
 
 const loadPersistedScheduleMiddleware = (storeAPI: any) => (next: any) => (action: any) => {
@@ -34,7 +34,7 @@ const loadPersistedScheduleMiddleware = (storeAPI: any) => (next: any) => (actio
           }
           return storeAPI.dispatch({
             type: "schedule/load-success", payload: {
-              schedule: createSchedule()
+              schedule: createTrainingWeek()
             }
           });
         })
@@ -54,11 +54,15 @@ const loadPersistedScheduleMiddleware = (storeAPI: any) => (next: any) => (actio
 
 const store = createStore(rootReducer, applyMiddleware(loadPersistedScheduleMiddleware));
 
-store.dispatch({ type: "schedule/load" });
-
-store.subscribe(() => {
-  dataProvider.save(store.getState().weekSchedule);
+const yearSchedule = createYearSchedule([2019, 2020, 2021]);
+store.dispatch({
+  type: "yearSchedule/load",
+  payload: { yearSchedule }
 });
+
+// store.subscribe(() => {
+//   dataProvider.save(store.getState().weekSchedule);
+// });
 
 // ---------------------------------------------------------------------------
 

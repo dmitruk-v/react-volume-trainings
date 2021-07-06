@@ -1,17 +1,23 @@
-import { ExerciseModel, ExSetModel, StatsModel, TrainingModel, TrainingDayModel, WeekScheduleModel } from "../store";
+import { ExerciseModel, ExSetModel, StatsModel, TrainingModel, TrainingDayModel, TrainingWeekModel } from "../store/types";
 
 /* calculations
 ------------------------------------------------------------------------- */
-const calculateExSetStats = (set: ExSetModel): StatsModel => {
+const calculateExSetStats = (set: ExSetModel | undefined): StatsModel => {
   const exSetStats = { volume: 0, intensity: 0, reps: 0 };
+  if (set === undefined) {
+    return exSetStats;
+  }
   exSetStats.volume = (set.reps * set.weight) / 1000;
   exSetStats.reps = set.weight > 0 ? set.reps : 0;
   exSetStats.intensity = set.reps > 0 ? set.weight : 0;
   return exSetStats;
 }
 
-const calculateExerciseStats = (exercise: ExerciseModel): StatsModel => {
+const calculateExerciseStats = (exercise: ExerciseModel | undefined): StatsModel => {
   const exerciseStats = { volume: 0, intensity: 0, reps: 0 };
+  if (exercise === undefined) {
+    return exerciseStats;
+  }
   exercise.sets.forEach(set => {
     const exSetStats = calculateExSetStats(set);
     exerciseStats.volume += exSetStats.volume;
@@ -24,8 +30,11 @@ const calculateExerciseStats = (exercise: ExerciseModel): StatsModel => {
   return exerciseStats;
 }
 
-const calculateTrainingStats = (training: TrainingModel): StatsModel => {
+const calculateTrainingStats = (training: TrainingModel | undefined): StatsModel => {
   const trainingStats = { volume: 0, intensity: 0, reps: 0 };
+  if (training === undefined) {
+    return trainingStats;
+  }
   training.exercises.forEach(exercise => {
     const exerciseStats = calculateExerciseStats(exercise);
     trainingStats.volume += exerciseStats.volume;
@@ -38,8 +47,11 @@ const calculateTrainingStats = (training: TrainingModel): StatsModel => {
   return trainingStats;
 }
 
-const calculateDayStats = (trainingDay: TrainingDayModel): StatsModel => {
+const calculateTrainingDayStats = (trainingDay: TrainingDayModel | undefined): StatsModel => {
   const dayStats = { volume: 0, intensity: 0, reps: 0 };
+  if (trainingDay === undefined) {
+    return dayStats;
+  }
   trainingDay.trainings.forEach(training => {
     const trainingStats = calculateTrainingStats(training);
     dayStats.volume += trainingStats.volume;
@@ -52,16 +64,19 @@ const calculateDayStats = (trainingDay: TrainingDayModel): StatsModel => {
   return dayStats;
 }
 
-const calculateWeekStats = (schedule: WeekScheduleModel): StatsModel => {
+const calculateTrainingWeekStats = (trainingWeek: TrainingWeekModel | undefined): StatsModel => {
   const weekStats = { volume: 0, intensity: 0, reps: 0 };
-  Object.values(schedule).forEach(trainingDay => {
-    const dayStats = calculateDayStats(trainingDay);
+  if (trainingWeek === undefined) {
+    return weekStats;
+  }
+  Object.values(trainingWeek.days).forEach(trainingDay => {
+    const dayStats = calculateTrainingDayStats(trainingDay);
     weekStats.volume += dayStats.volume;
     weekStats.intensity += dayStats.intensity;
     weekStats.reps += dayStats.reps;
   });
 
-  weekStats.intensity = weekStats.intensity / Object.keys(schedule).length;
+  weekStats.intensity = weekStats.intensity / Object.keys(trainingWeek.days).length;
   return weekStats;
 }
 
@@ -69,6 +84,6 @@ export {
   calculateExSetStats,
   calculateExerciseStats,
   calculateTrainingStats,
-  calculateDayStats,
-  calculateWeekStats
+  calculateTrainingDayStats,
+  calculateTrainingWeekStats
 };

@@ -1,33 +1,67 @@
 import { Actions } from "../actions"
-import { WeekScheduleModel2 } from "../types"
-
-type YearScheduleModel = {
-  [year: number]: WeekScheduleModel2[]
-}
+import { YearScheduleModel } from "../types"
 
 const initialSchedule: YearScheduleModel = {};
 
-const yearScheduleReducer = (oldSchedule: YearScheduleModel = initialSchedule, action: Actions): YearScheduleModel => {
+const yearScheduleReducer = (oldYearSchedule: YearScheduleModel = initialSchedule, action: Actions): YearScheduleModel => {
   switch (action.type) {
-    case "year-schedule/load": {
-      return action.payload.schedule;
+
+    case "yearSchedule/load": {
+      return action.payload.yearSchedule;
     }
 
-    case "year-schedule/updateWeek": {
-      const { year, updatedWeek } = action.payload;
+    case "yearSchedule/addSet": {
+      const { year, weekId, day, trainingId, exerciseId, addedSet } = action.payload;
       return {
-        ...oldSchedule,
-        [year]: [
-          ...oldSchedule[year].map(
-            week => week.weekStartDate.getTime() === updatedWeek.weekStartDate.getTime()
-              ? updatedWeek
-              : week
-          )
-        ]
+        ...oldYearSchedule,
+        [year]: oldYearSchedule[year].map(
+          week => week.weekId === weekId
+            ? {
+              ...week,
+              days: {
+                ...week.days,
+                [day]: {
+                  ...week.days[day],
+                  trainings: week.days[day].trainings.map(
+                    tr => tr.trainingId === trainingId
+                      ? {
+                        ...tr,
+                        exercises: tr.exercises.map(
+                          ex => ex.exerciseId === exerciseId
+                            ? {
+                              ...ex,
+                              sets: [...ex.sets, addedSet]
+                            }
+                            : ex
+                        )
+                      }
+                      : tr
+                  )
+                }
+              }
+            }
+            : week
+        )
       }
     }
+
+
+
+    // case "yearSchedule/updateWeek": {
+    //   const { year, updatedWeek } = action.payload;
+    //   return {
+    //     ...oldYearSchedule,
+    //     [year]: [
+    //       ...oldYearSchedule[year].map(
+    //         week => week.weekId === updatedWeek.weekId
+    //           ? updatedWeek
+    //           : week
+    //       )
+    //     ]
+    //   }
+    // }
     default:
-      return oldSchedule;
+      return oldYearSchedule;
   }
 }
 

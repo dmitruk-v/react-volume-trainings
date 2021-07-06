@@ -147,8 +147,8 @@ const getCurrentWeekStartDate = (): Date => {
   const now = new Date();
   const weekDayNum = now.getDay();
   return weekDayNum === 1
-    ? now
-    : new Date(now.getFullYear(), now.getMonth(), now.getDate() - (weekDayNum + 6) % WEEK_DAYS.length);
+    ? new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0)
+    : new Date(now.getFullYear(), now.getMonth(), now.getDate() - (weekDayNum + 6) % WEEK_DAYS.length, 0);
 }
 
 export {

@@ -1,13 +1,12 @@
 import { combineReducers } from "redux";
 
-import { weekScheduleReducer } from "./week-schedule-reducer";
+import { yearScheduleReducer } from "./year-schedule-reducer";
 import { appOptionsReducer } from "./app-options-reducer";
 
 const rootReducer = combineReducers({
-  weekSchedule: weekScheduleReducer,
+  yearSchedule: yearScheduleReducer,
   appOptions: appOptionsReducer
 });
 
-export type { AppOptionsModel } from "./app-options-reducer";
 export * from "./reducers-utils";
 export default rootReducer;

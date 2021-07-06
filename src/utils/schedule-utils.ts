@@ -1,4 +1,9 @@
-import { ExSetModel, ExerciseModel, TrainingModel, createSetId, createExerciseId, createTrainingId, TrainingDayModel } from "../store";
+import { createSetId, createExerciseId, createTrainingId, } from "../store";
+import { ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel } from "../store/types";
+// -------------------------------------------------------------------------
+// SCHEDULE CREATION
+// -------------------------------------------------------------------------
+
 
 // -------------------------------------------------------------------------
 // RESET
