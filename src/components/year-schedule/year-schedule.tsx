@@ -59,7 +59,7 @@ const YearSchedule: React.FC<Props> = (props) => {
             </div>
           </Route>
         ))}
-        <Redirect exact from={match.url} to={`${match.path}/${currYear}`} />
+        <Redirect exact from={match.path} to={`${match.path}/${currYear}`} />
       </Switch>
 
     </div>
