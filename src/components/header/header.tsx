@@ -37,13 +37,13 @@ const Header: React.FC<Props> = (props) => {
 
             <li className="header-menu__item">
               <NavLink
-                to={"/schedule"}
+                to={"/year-schedule"}
                 className="header-menu__link"
                 activeClassName="header-menu__link--active">Schedule</NavLink>
             </li>
             <li className="header-menu__item">
               <NavLink
-                to={`/week/${currYear}/${currWeek?.weekId}`}
+                to={`/week-schedule/${currYear}/${currWeek?.weekId}`}
                 className="header-menu__link header-menu__link--schedule"
                 activeClassName="header-menu__link--active">Current Week</NavLink>
             </li>

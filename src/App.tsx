@@ -33,11 +33,11 @@ function App() {
               <Home />
             </Route>
 
-            <Route path="/schedule">
+            <Route path="/year-schedule">
               <YearSchedule />
             </Route>
 
-            <Route path="/week/:year/:weekId">
+            <Route path="/week-schedule/:year/:weekId">
               <TrainingWeek />
             </Route>
 

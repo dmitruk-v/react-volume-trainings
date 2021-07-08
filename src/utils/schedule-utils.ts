@@ -50,7 +50,6 @@ const createClonedDay = (trainingDay: TrainingDayModel): TrainingDayModel => ({
 // SPREAD SET IN EXERCISE
 // -------------------------------------------------------------------------
 const createExerciseWithSpreadedSet = (exercise: ExerciseModel, spreadedSet: ExSetModel): ExerciseModel => {
-  console.log(spreadedSet);
   let spreadPosition: number;
   return {
     ...exercise,

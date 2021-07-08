@@ -11,7 +11,7 @@ const yearScheduleLoadAction = (yearSchedule: YearScheduleModel) => {
 // SETS
 // --------------------------------------------------------------------------------
 const yearScheduleAddSetAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, addedSet: ExSetModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, addedSet: ExSetModel
 ) => {
   return {
     type: "yearSchedule/addSet",
@@ -20,7 +20,7 @@ const yearScheduleAddSetAction = (
 }
 
 const yearScheduleUpdateSetAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel
 ) => {
   return {
     type: "yearSchedule/updateSet",
@@ -29,7 +29,7 @@ const yearScheduleUpdateSetAction = (
 }
 
 const yearScheduleUpdateSetWithSpreadAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, updatedSet: ExSetModel
 ) => {
   return {
     type: "yearSchedule/updateSetWithSpread",
@@ -38,10 +38,10 @@ const yearScheduleUpdateSetWithSpreadAction = (
 }
 
 const yearScheduleRemoveSetAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, removedSet: ExSetModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, exerciseId: string, removedSet: ExSetModel
 ) => {
   return {
-    type: "yearSchedule/updateSet",
+    type: "yearSchedule/removeSet",
     payload: { year, weekId, day, trainingId, exerciseId, removedSet }
   } as const
 }
@@ -50,7 +50,7 @@ const yearScheduleRemoveSetAction = (
 // EXRCISES
 // --------------------------------------------------------------------------------
 const yearScheduleAddExerciseAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, addedExercise: ExerciseModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, addedExercise: ExerciseModel
 ) => {
   return {
     type: "yearSchedule/addExercise",
@@ -59,7 +59,7 @@ const yearScheduleAddExerciseAction = (
 }
 
 const yearScheduleUpdateExerciseAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, updatedExercise: ExerciseModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, updatedExercise: ExerciseModel
 ) => {
   return {
     type: "yearSchedule/updateExercise",
@@ -68,7 +68,7 @@ const yearScheduleUpdateExerciseAction = (
 }
 
 const yearScheduleRemoveExerciseAction = (
-  year: number, weekId: string, day: WeekDay, trainingId: string, removedExercise: ExerciseModel
+  year: string, weekId: string, day: WeekDay, trainingId: string, removedExercise: ExerciseModel
 ) => {
   return {
     type: "yearSchedule/removeExercise",
@@ -80,7 +80,7 @@ const yearScheduleRemoveExerciseAction = (
 // TRAINING
 // --------------------------------------------------------------------------------
 const yearScheduleAddTrainingAction = (
-  year: number, weekId: string, day: WeekDay, addedTraining: TrainingModel
+  year: string, weekId: string, day: WeekDay, addedTraining: TrainingModel
 ) => {
   return {
     type: "yearSchedule/addTraining",
@@ -89,7 +89,7 @@ const yearScheduleAddTrainingAction = (
 }
 
 const yearScheduleUpdateTrainingAction = (
-  year: number, weekId: string, day: WeekDay, updatedTraining: TrainingModel
+  year: string, weekId: string, day: WeekDay, updatedTraining: TrainingModel
 ) => {
   return {
     type: "yearSchedule/updateTraining",
@@ -98,7 +98,7 @@ const yearScheduleUpdateTrainingAction = (
 }
 
 const yearScheduleRemoveTrainingAction = (
-  year: number, weekId: string, day: WeekDay, removedTraining: TrainingModel
+  year: string, weekId: string, day: WeekDay, removedTraining: TrainingModel
 ) => {
   return {
     type: "yearSchedule/removeTraining",
@@ -110,7 +110,7 @@ const yearScheduleRemoveTrainingAction = (
 // TRAINING-DAY
 // --------------------------------------------------------------------------------
 const yearScheduleUpdateTrainingDayAction = (
-  year: number, weekId: string, updatedTrainingDay: TrainingDayModel
+  year: string, weekId: string, updatedTrainingDay: TrainingDayModel
 ) => {
   return {
     type: "yearSchedule/updateTrainingDay",
@@ -122,7 +122,7 @@ const yearScheduleUpdateTrainingDayAction = (
 // WEEK-SCHEDULE
 // --------------------------------------------------------------------------------
 const yearScheduleUpdateTrainingWeekAction = (
-  year: number, updatedWeekSchedule: TrainingWeekModel
+  year: string, updatedWeekSchedule: TrainingWeekModel
 ) => {
   return {
     type: "yearSchedule/updateWeekSchedule",

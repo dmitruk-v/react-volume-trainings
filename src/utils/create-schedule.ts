@@ -14,7 +14,7 @@ type TrainingDayOptions = {
 }
 
 const defaultTrainingDayOptions: TrainingDayOptions = {
-  day: "Monday",
+  day: "monday",
   trainingsCount: 1,
   exercisesCount: 1,
   setsCount: 3,
