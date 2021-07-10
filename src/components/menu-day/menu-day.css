@@ -21,10 +21,10 @@
 }
 .menu-day__menu-button {
   z-index: 1;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .menu-day__day-name {
-  padding: 10px 15px 10px 5px;
+  padding: 15px 15px 15px 10px;
   color: #555555;
 }
 .menu-day__day-name::first-letter {
@@ -32,7 +32,7 @@
 }
 .menu-day__trainings {
   margin-left: auto;
-  padding: 10px;
+  padding: 15px;
   font-weight: bold;
   line-height: 1;
   color: #555555;
