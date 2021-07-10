@@ -1,0 +1,73 @@
+"filename", "language", "TypeScript", "TypeScript React", "CSS", "XML", "comment", "blank", "total"
+"h:\work\_projects\react\volume-trainings\src\App.css", "CSS", 0, 0, 12, 0, 0, 0, 12
+"h:\work\_projects\react\volume-trainings\src\App.tsx", "TypeScript React", 0, 53, 0, 0, 4, 22, 79
+"h:\work\_projects\react\volume-trainings\src\assets\css\normalize.css", "CSS", 0, 0, 3, 0, 0, 0, 3
+"h:\work\_projects\react\volume-trainings\src\assets\svg\arrow_downward_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\close_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\content_copy_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\copy_all_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\delete_outline_black_24dp-red.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\delete_outline_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\done_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\edit_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\history_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\keyboard_arrow_down_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\menu_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\menu_grey_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\settings_backup_restore_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\components\days-menu\days-menu.css", "CSS", 0, 0, 11, 0, 0, 0, 11
+"h:\work\_projects\react\volume-trainings\src\components\days-menu\days-menu.tsx", "TypeScript React", 0, 22, 0, 0, 4, 7, 33
+"h:\work\_projects\react\volume-trainings\src\components\ex-set\ex-set.css", "CSS", 0, 0, 76, 0, 0, 0, 76
+"h:\work\_projects\react\volume-trainings\src\components\ex-set\ex-set.tsx", "TypeScript React", 0, 78, 0, 0, 6, 17, 101
+"h:\work\_projects\react\volume-trainings\src\components\exercise\exercise.css", "CSS", 0, 0, 96, 0, 5, 1, 102
+"h:\work\_projects\react\volume-trainings\src\components\exercise\exercise.tsx", "TypeScript React", 0, 169, 0, 0, 6, 25, 200
+"h:\work\_projects\react\volume-trainings\src\components\footer\footer.css", "CSS", 0, 0, 5, 0, 1, 0, 6
+"h:\work\_projects\react\volume-trainings\src\components\footer\footer.tsx", "TypeScript React", 0, 9, 0, 0, 4, 5, 18
+"h:\work\_projects\react\volume-trainings\src\components\header\header.css", "CSS", 0, 0, 31, 0, 0, 1, 32
+"h:\work\_projects\react\volume-trainings\src\components\header\header.tsx", "TypeScript React", 0, 50, 0, 0, 4, 9, 63
+"h:\work\_projects\react\volume-trainings\src\components\home\home.css", "CSS", 0, 0, 6, 0, 1, 0, 7
+"h:\work\_projects\react\volume-trainings\src\components\home\home.tsx", "TypeScript React", 0, 22, 0, 0, 4, 10, 36
+"h:\work\_projects\react\volume-trainings\src\components\menu-day\menu-day.css", "CSS", 0, 0, 143, 0, 10, 6, 159
+"h:\work\_projects\react\volume-trainings\src\components\menu-day\menu-day.tsx", "TypeScript React", 0, 99, 0, 0, 6, 16, 121
+"h:\work\_projects\react\volume-trainings\src\components\options\options.css", "CSS", 0, 0, 152, 0, 21, 8, 181
+"h:\work\_projects\react\volume-trainings\src\components\options\options.tsx", "TypeScript React", 0, 114, 0, 0, 5, 16, 135
+"h:\work\_projects\react\volume-trainings\src\components\stats\stats.css", "CSS", 0, 0, 166, 0, 18, 9, 193
+"h:\work\_projects\react\volume-trainings\src\components\stats\stats.tsx", "TypeScript React", 0, 61, 0, 0, 4, 9, 74
+"h:\work\_projects\react\volume-trainings\src\components\training-day\training-day.css", "CSS", 0, 0, 11, 0, 0, 0, 11
+"h:\work\_projects\react\volume-trainings\src\components\training-day\training-day.tsx", "TypeScript React", 0, 15, 0, 0, 4, 5, 24
+"h:\work\_projects\react\volume-trainings\src\components\training-week\training-week.css", "CSS", 0, 0, 134, 0, 13, 9, 156
+"h:\work\_projects\react\volume-trainings\src\components\training-week\training-week.tsx", "TypeScript React", 0, 126, 0, 0, 6, 16, 148
+"h:\work\_projects\react\volume-trainings\src\components\training\training.css", "CSS", 0, 0, 100, 0, 30, 3, 133
+"h:\work\_projects\react\volume-trainings\src\components\training\training.tsx", "TypeScript React", 0, 108, 0, 0, 6, 16, 130
+"h:\work\_projects\react\volume-trainings\src\components\year-schedule\year-schedule.css", "CSS", 0, 0, 39, 0, 2, 2, 43
+"h:\work\_projects\react\volume-trainings\src\components\year-schedule\year-schedule.tsx", "TypeScript React", 0, 53, 0, 0, 6, 12, 71
+"h:\work\_projects\react\volume-trainings\src\components\year-week\year-week.css", "CSS", 0, 0, 123, 0, 4, 5, 132
+"h:\work\_projects\react\volume-trainings\src\components\year-week\year-week.tsx", "TypeScript React", 0, 123, 0, 0, 6, 15, 144
+"h:\work\_projects\react\volume-trainings\src\constants\date-and-time.ts", "TypeScript", 28, 0, 0, 0, 4, 5, 37
+"h:\work\_projects\react\volume-trainings\src\constants\index.ts", "TypeScript", 2, 0, 0, 0, 0, 0, 2
+"h:\work\_projects\react\volume-trainings\src\constants\schedule.ts", "TypeScript", 10, 0, 0, 0, 0, 2, 12
+"h:\work\_projects\react\volume-trainings\src\index.css", "CSS", 0, 0, 188, 0, 21, 28, 237
+"h:\work\_projects\react\volume-trainings\src\index.tsx", "TypeScript React", 0, 14, 0, 0, 0, 1, 15
+"h:\work\_projects\react\volume-trainings\src\providers\index.ts", "TypeScript", 7, 0, 0, 0, 0, 1, 8
+"h:\work\_projects\react\volume-trainings\src\providers\json-provider.ts", "TypeScript", 14, 0, 0, 0, 1, 4, 19
+"h:\work\_projects\react\volume-trainings\src\providers\local-storage-provider.ts", "TypeScript", 28, 0, 0, 0, 0, 5, 33
+"h:\work\_projects\react\volume-trainings\src\react-app-env.d.ts", "TypeScript", 0, 0, 0, 0, 1, 1, 2
+"h:\work\_projects\react\volume-trainings\src\store\actions\app-options-actions.ts", "TypeScript", 40, 0, 0, 0, 0, 6, 46
+"h:\work\_projects\react\volume-trainings\src\store\actions\index.ts", "TypeScript", 8, 0, 0, 0, 0, 3, 11
+"h:\work\_projects\react\volume-trainings\src\store\actions\year-schedule-actions.ts", "TypeScript", 126, 0, 0, 0, 20, 16, 162
+"h:\work\_projects\react\volume-trainings\src\store\index.ts", "TypeScript", 3, 0, 0, 0, 4, 1, 8
+"h:\work\_projects\react\volume-trainings\src\store\reducers\app-options-reducer.ts", "TypeScript", 53, 0, 0, 0, 0, 8, 61
+"h:\work\_projects\react\volume-trainings\src\store\reducers\index.ts", "TypeScript", 9, 0, 0, 0, 0, 3, 12
+"h:\work\_projects\react\volume-trainings\src\store\reducers\reducers-utils.ts", "TypeScript", 13, 0, 0, 0, 0, 3, 16
+"h:\work\_projects\react\volume-trainings\src\store\reducers\year-schedule-reducer.ts", "TypeScript", 335, 0, 0, 0, 28, 22, 385
+"h:\work\_projects\react\volume-trainings\src\store\state.ts", "TypeScript", 38, 0, 0, 0, 23, 15, 76
+"h:\work\_projects\react\volume-trainings\src\store\types\date-types.ts", "TypeScript", 6, 0, 0, 0, 0, 3, 9
+"h:\work\_projects\react\volume-trainings\src\store\types\index.ts", "TypeScript", 2, 0, 0, 0, 0, 0, 2
+"h:\work\_projects\react\volume-trainings\src\store\types\schedule-types.ts", "TypeScript", 56, 0, 0, 0, 0, 12, 68
+"h:\work\_projects\react\volume-trainings\src\utils\calculate-stats.ts", "TypeScript", 80, 0, 0, 0, 2, 7, 89
+"h:\work\_projects\react\volume-trainings\src\utils\create-schedule.ts", "TypeScript", 110, 0, 0, 0, 3, 12, 125
+"h:\work\_projects\react\volume-trainings\src\utils\css-utils.ts", "TypeScript", 11, 0, 0, 0, 0, 2, 13
+"h:\work\_projects\react\volume-trainings\src\utils\date-utils.ts", "TypeScript", 143, 0, 0, 0, 0, 27, 170
+"h:\work\_projects\react\volume-trainings\src\utils\generate-id.ts", "TypeScript", 34, 0, 0, 0, 9, 8, 51
+"h:\work\_projects\react\volume-trainings\src\utils\schedule-utils.ts", "TypeScript", 62, 0, 0, 0, 15, 13, 90
+"Total", "-", 1218, 1116, 1296, 13, 311, 452, 4406

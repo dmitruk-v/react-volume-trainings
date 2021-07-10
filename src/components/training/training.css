@@ -1,0 +1,133 @@
+.training {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 5px;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+.training:hover {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+.training__head {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 15px 15px 15px 50px;
+  background-color: #f1f1f1;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+.training__head:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%) rotate(0);
+  width: 16px;
+  height: 16px;
+  background: url("../../assets/svg/arrow_downward_black_24dp.svg") center center no-repeat;
+  transition: all 0.3s ease-in-out;
+}
+.training--opened > .training__head::before {
+  transform: translateY(-50%) rotate(-180deg);
+}
+.training__title {
+  margin-right: 30px;
+}
+.training-title {
+  position: relative;
+  padding: 5px 25px 3px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  color: #555555;
+  border-radius: 5px;
+}
+.training-title__number {
+  position: absolute;
+  top: 50%;
+  right: -16px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 32px;
+  text-align: center;
+  background-color: #ffffff;
+  color: #555555;
+  border-radius: 16px;
+  box-shadow: 0 0 0 2px #a1a1a1;
+}
+
+.training__body {
+  display: none;
+  padding: 15px 15px 17px 15px;
+  border-top: 2px solid rgba(0, 0, 0, 0.15);
+}
+.training--opened > .training__body {
+  display: block;
+}
+.training__exercises {
+  position: relative;
+}
+.training__exercise {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.15);
+}
+.training__exercise:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.training__stats {}
+.training-stats {
+  display: flex;
+  flex-flow: row wrap;
+}
+/* ---------------------------------------------------------------------------- */
+.training__menu-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.training__dropdown {
+  top: 5px;
+  right: 5px;
+  width: 200px;
+}
+
+/* THEME: GIRLS
+-------------------------------------------------------------------- */
+/* .theme-girls {}
+.theme-girls .training {
+  background-color: #ffffff;
+  border-color: hsl(309, 50%, 85%);
+}
+.theme-girls .training:hover {
+  border-color: hsl(309, 50%, 60%);
+}
+.theme-girls .training__head {
+  background-color: hsl(309, 100%, 96%);
+}
+.theme-girls .training-title {
+  background-color: #ffffff;
+}
+.theme-girls .training-title__name {
+  color: hsl(309, 78%, 40%);
+}
+.theme-girls .training-title__number {
+  color: hsl(309, 78%, 40%);
+  box-shadow: 0 0 0 2px hsl(309, 78%, 40%);
+}
+.theme-girls .training__body {
+  border-top-color: hsl(309, 40%, 90%);
+}
+.theme-girls .training__exercise {
+  border-bottom-color: hsl(309, 40%, 90%);
+} */

@@ -1,0 +1,193 @@
+/* STATS: DEFAULT
+--------------------------------------------------------------------------------- */
+.stats {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -10px;
+  margin-bottom: -10px;
+}
+.stats__item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.stats-item {
+  overflow: hidden;
+  padding: 6px 8px 4px 8px;
+  line-height: 1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  border-radius: 5px;
+}
+.stats-item__term,
+.stats-item__value {
+  display: inline-block;
+  font-weight: bold;
+}
+.stats-item__term {
+  min-width: 16px;
+  margin-right: 10px;
+  text-align: center;
+  color: #555555;
+}
+.stats-item__value {
+  color: #555555;
+}
+.stats-item__units {
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* STATS: VERTICAL
+--------------------------------------------------------------------------------- */
+.stats.stats--vertical {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+.stats--vertical .stats__item {
+  margin-right: 0;
+  margin-bottom: 3px;
+  padding: 0 0 3px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+.stats--vertical .stats__item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+.stats--vertical .stats-item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+.stats--vertical .stats-item__term {
+  font-weight: normal;
+}
+.stats--vertical .stats-item__value {
+  margin-left: auto;
+  background-color: transparent;
+  text-align: right;
+}
+.stats--vertical .stats-item__units {
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: normal;
+}
+.stats--vertical .stats-item--reps {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* STATS: WEEK
+---------------------------------------------------- */
+.stats--week {
+  margin: 0;
+}
+.stats--week .stats__item {
+  margin: 0;
+}
+.stats--week .stats-item {
+  padding: 10px;
+  border: 0;
+  background-color: transparent;
+}
+.stats--week .stats-item__term,
+.stats--week .stats-item__value {
+  display: block;
+  padding: 0;
+  font-weight: bold;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+}
+.stats--week .stats-item__term {
+  margin-bottom: 3px;
+  text-align: left;
+}
+.stats--week .stats-item__value {
+  font-size: 32px;
+  font-weight: bold;
+}
+.stats--week .stats-item__units {
+  padding-left: 5px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* STATS: STRONG TERMS
+---------------------------------------------------- */
+.stats--strong-terms .stats-item--volume > .stats-item__term,
+.stats--strong-terms .stats-item--intensity > .stats-item__term,
+.stats--strong-terms .stats-item--reps > .stats-item__term {
+  font-weight: bold;
+}
+
+/* STATS: LIGHT-BG ITEMS
+---------------------------------------------------- */
+.stats--light-bg-items .stats-item--volume,
+.stats--light-bg-items .stats-item--intensity,
+.stats--light-bg-items .stats-item--reps {
+  background-color: #ffffff;
+}
+
+/* STATS: COLORED BORDERS
+---------------------------------------------------- */
+.stats--colored-borders .stats-item--volume {
+  border-color: #d2189f;
+}
+.stats--colored-borders .stats-item--intensity {
+  border-color: #19b52c;
+}
+.stats--colored-borders .stats-item--reps {
+  border-color: #1e6bdc;
+}
+
+/* STATS: COLORED TERMS
+---------------------------------------------------- */
+.stats--colored-terms .stats-item--volume > .stats-item__term {
+  color: #d2189f;
+}
+.stats--colored-terms .stats-item--intensity > .stats-item__term {
+  color: #19b52c;
+}
+.stats--colored-terms .stats-item--reps > .stats-item__term {
+  color: #1e6bdc;
+}
+
+/* STATS: COLORED VALUES
+---------------------------------------------------- */
+.stats--colored-values .stats-item--volume > .stats-item__value {
+  color: #d2189f;
+}
+.stats--colored-values .stats-item--intensity > .stats-item__value {
+  color: #19b52c;
+}
+.stats--colored-values .stats-item--reps > .stats-item__value {
+  color: #1e6bdc;
+}
+
+/* STATS: INACTIVE (must be the last item, to has ability to overwrite all styles)
+---------------------------------------------------- */
+.stats--inactive {}
+.stats--inactive .stats-item {
+  border-color: #e1e1e1;
+}
+.stats--inactive.stats--vertical .stats-item {
+  border-color: #f1f1f1;
+}
+
+.stats--inactive .stats-item--volume > .stats-item__term,
+.stats--inactive .stats-item--intensity > .stats-item__term,
+.stats--inactive .stats-item--reps > .stats-item__term {
+  color: #cccccc;
+}
+.stats--inactive .stats-item--volume > .stats-item__value,
+.stats--inactive .stats-item--intensity > .stats-item__value,
+.stats--inactive .stats-item--reps > .stats-item__value {
+  color: #cccccc;
+}

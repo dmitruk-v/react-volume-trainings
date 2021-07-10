@@ -1,0 +1,11 @@
+.training-day {}
+.training-day__body {
+  position: relative;
+}
+.training-day__trainings {}
+.training-day__training {
+  margin-bottom: 15px;
+}
+.training-day__training:last-child {
+  margin-bottom: 0;
+}
