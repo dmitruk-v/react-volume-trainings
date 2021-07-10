@@ -151,6 +151,10 @@ const getCurrentWeekStartDate = (): Date => {
     : new Date(now.getFullYear(), now.getMonth(), now.getDate() - (weekDayNum + 6) % WEEK_DAYS.length, 0);
 }
 
+const getDaysCountBetweenDates = (begin: Date, end: Date) => {
+  return (end.getTime() - begin.getTime()) / (1000 * 60 * 60 * 24);
+}
+
 export {
   fromMs,
   getLastDayOfMonth,
@@ -161,5 +165,6 @@ export {
   getWeekdayDates,
   getDayName,
   getMonthName,
-  getCurrentWeekStartDate
+  getCurrentWeekStartDate,
+  getDaysCountBetweenDates
 }

@@ -122,11 +122,11 @@ const yearScheduleUpdateTrainingDayAction = (
 // WEEK-SCHEDULE
 // --------------------------------------------------------------------------------
 const yearScheduleUpdateTrainingWeekAction = (
-  year: string, updatedWeekSchedule: TrainingWeekModel
+  year: string, updatedTrainingWeek: TrainingWeekModel
 ) => {
   return {
-    type: "yearSchedule/updateWeekSchedule",
-    payload: { year, updatedWeekSchedule }
+    type: "yearSchedule/updateTrainingWeek",
+    payload: { year, updatedTrainingWeek }
   } as const
 }
 

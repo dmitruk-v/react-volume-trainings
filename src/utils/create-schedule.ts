@@ -77,19 +77,35 @@ const createTrainingWeek = (options: Partial<TrainingDayOptions> = defaultTraini
 
 // ------------------------------------------------------------------------------
 const createYearSchedule = (years: number[], options: Partial<TrainingDayOptions> = defaultTrainingDayOptions): YearScheduleModel => {
+  const yearSchedule: YearScheduleModel = {};
+  years.forEach(year => {
+    const mondays = getWeekdayDates(year, 1);
+    const trainingWeeks = mondays.map(mondayDate => ({
+      weekId: createWeekId(),
+      weekStartDate: mondayDate,
+      cycle: "none",
+      days: createTrainingWeek({ reps: 0, weight: 0 })
+    } as TrainingWeekModel));
+    yearSchedule[year] = trainingWeeks;
+  });
+  return yearSchedule;
+}
+// ------------------------------------------------------------------------------
+const createRandomizedYearSchedule = (years: number[], options: Partial<TrainingDayOptions> = defaultTrainingDayOptions): YearScheduleModel => {
   const randCycle = (): Cycle => CYCLES[Math.floor(Math.random() * CYCLES.length)];
-  console.log("createYearSchedule called!");
+  const randReps = (): number => Math.floor(4 + Math.random() * 6);
+  const randWeight = (): number => Math.floor(20 + Math.random() * 40);
 
   const yearSchedule: YearScheduleModel = {};
   years.forEach(year => {
     const mondays = getWeekdayDates(year, 1);
-    const weekSchedules = mondays.map(mondayDate => ({
+    const trainingWeeks = mondays.map(mondayDate => ({
       weekId: createWeekId(),
       weekStartDate: mondayDate,
       cycle: randCycle(),
-      days: createTrainingWeek({ reps: 8, weight: 30 })
+      days: createTrainingWeek({ reps: randReps(), weight: randWeight() })
     } as TrainingWeekModel));
-    yearSchedule[year] = weekSchedules;
+    yearSchedule[year] = trainingWeeks;
   });
   return yearSchedule;
 }
@@ -100,7 +116,7 @@ export {
   createExerciseId,
   createSetId,
 
-  createYearSchedule,
+  createYearSchedule, createRandomizedYearSchedule,
   createTrainingWeek,
   createTrainingDay,
   createTraining,

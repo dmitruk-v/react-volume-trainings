@@ -1,5 +1,5 @@
 import { createSetId, createExerciseId, createTrainingId, } from "../store";
-import { ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel } from "../store/types";
+import { ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel, TrainingWeekModel, WeekDay } from "../store/types";
 // -------------------------------------------------------------------------
 // SCHEDULE CREATION
 // -------------------------------------------------------------------------
@@ -23,28 +23,41 @@ const createResetedTraining = (training: TrainingModel): TrainingModel => ({
 // -------------------------------------------------------------------------
 // CLONE
 // -------------------------------------------------------------------------
-const createClonedSet = (set: ExSetModel): ExSetModel => ({
+const createClonedSet = (fromSet: ExSetModel): ExSetModel => ({
   setId: createSetId(),
-  reps: set.reps,
-  weight: set.weight,
+  reps: fromSet.reps,
+  weight: fromSet.weight,
 });
 
-const createClonedExercise = (exercise: ExerciseModel): ExerciseModel => ({
-  ...exercise,
+const createClonedExercise = (fromExercise: ExerciseModel): ExerciseModel => ({
+  ...fromExercise,
   exerciseId: createExerciseId(),
-  sets: exercise.sets.map(s => createClonedSet(s)),
+  sets: fromExercise.sets.map(s => createClonedSet(s)),
 });
 
-const createClonedTraining = (training: TrainingModel): TrainingModel => ({
-  ...training,
+const createClonedTraining = (fromTraining: TrainingModel): TrainingModel => ({
+  ...fromTraining,
   trainingId: createTrainingId(),
-  exercises: training.exercises.map(ex => createClonedExercise(ex)),
+  exercises: fromTraining.exercises.map(ex => createClonedExercise(ex)),
 });
 
-const createClonedDay = (trainingDay: TrainingDayModel): TrainingDayModel => ({
-  ...trainingDay,
-  trainings: trainingDay.trainings.map(tr => createClonedTraining(tr)),
+const createClonedDay = (fromDay: TrainingDayModel): TrainingDayModel => ({
+  ...fromDay,
+  trainings: fromDay.trainings.map(tr => createClonedTraining(tr)),
 });
+
+const createClonedWeek = (fromWeek: TrainingWeekModel, toWeek: TrainingWeekModel): TrainingWeekModel => ({
+  ...toWeek,
+  cycle: fromWeek.cycle,
+  days: Object.keys(toWeek.days).reduce((days, dayKey) => {
+    days[dayKey as WeekDay] = createClonedDay(fromWeek.days[dayKey as WeekDay]);
+    return days;
+  }, {} as TrainingWeekModel["days"])
+});
+
+// -------------------------------------------------------------------------
+// COPY
+// -------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------
 // SPREAD SET IN EXERCISE
@@ -72,5 +85,6 @@ const createExerciseWithSpreadedSet = (exercise: ExerciseModel, spreadedSet: ExS
 export {
   createResetedSet, createResetedExercise, createResetedTraining,
   createClonedSet, createClonedExercise, createClonedTraining, createClonedDay,
+  createClonedWeek,
   createExerciseWithSpreadedSet
 }

@@ -28,6 +28,8 @@ const YearSchedule: React.FC<Props> = (props) => {
   const yearSchedule = useSelector<RootState, YearScheduleModel>(state => state.yearSchedule);
   const match = useRouteMatch<RouteParams>();
 
+  console.log("YearSchedule called", match, props);
+
   return (
     <div className="year-schedule">
 
@@ -51,7 +53,7 @@ const YearSchedule: React.FC<Props> = (props) => {
                   <YearWeek
                     year={year}
                     weekNum={idx + 1}
-                    weekSchedule={week}
+                    trainingWeek={week}
                     currWeekStartDate={currWeekStartDate}
                   />
                 </div>
@@ -59,7 +61,7 @@ const YearSchedule: React.FC<Props> = (props) => {
             </div>
           </Route>
         ))}
-        <Redirect exact from={match.path} to={`${match.path}/${currYear}`} />
+        <Redirect exact from={match.path} to={`${match.url}/${currYear}`} />
       </Switch>
 
     </div>

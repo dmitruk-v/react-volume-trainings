@@ -1,25 +1,4 @@
-/* .year-schedule {
-  --year-width: 100%;
-  --year-day-width: calc(var(--year-width) / 7 - var(--year-day-mright));
-  --year-day-mright: 5px;
-  --year-day-mbottom: 5px;
-}
-.year-schedule__days {
-  display: flex;
-  flex-flow: row wrap;
-  width: var(--year-width)
-}
-.year-schedule__day {
-  width: var(--year-day-width);
-  margin-right: var(--year-day-mright);
-  margin-bottom: var(--year-day-mbottom);
-} */
 .year-schedule {}
-/* .year-schedule__header {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #000000;
-} */
-
 .year-schedule__year-selector {
   margin-bottom: 15px;
 }
@@ -39,8 +18,11 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.ysch-button:hover,
-.ysch-button--active {
+.ysch-button:hover {
+  border-color: #c1c1c1;
+}
+.ysch-button--active,
+.ysch-button--active:hover {
   border-color: #333333;
 }
 
@@ -54,7 +36,8 @@
 }
 .year-schedule__week {
   flex: 1;
-  min-width: 440px;
+  min-width: 290px;
+  max-width: 360px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
