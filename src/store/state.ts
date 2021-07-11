@@ -54,8 +54,8 @@ const loadPersistedScheduleMiddleware = (storeAPI: any) => (next: any) => (actio
 
 const store = createStore(rootReducer, applyMiddleware(loadPersistedScheduleMiddleware));
 
-// const yearSchedule = createRandomizedYearSchedule([2019, 2020, 2021]);
-const yearSchedule = createYearSchedule([2019, 2020, 2021]);
+const yearSchedule = createRandomizedYearSchedule([2019, 2020, 2021]);
+// const yearSchedule = createYearSchedule([2019, 2020, 2021]);
 store.dispatch({
   type: "yearSchedule/load",
   payload: { yearSchedule }
