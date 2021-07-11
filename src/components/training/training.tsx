@@ -72,8 +72,7 @@ const Training: React.FC<Props> = (props) => {
       <div className="training__head">
         <div className="training__title">
           <div className="training-title">
-            <div className="training-title__name">Training</div>
-            <div className="training-title__number">{props.trainingNumber}</div>
+            <div className="training-title__name">Training {props.trainingNumber}</div>
           </div>
         </div>
         <div className="training__stats">

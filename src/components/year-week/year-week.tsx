@@ -69,27 +69,31 @@ const YearWeek: React.FC<Props> = (props) => {
           <img src={icoCycle} alt="ico-cycle" />
         </button>
       </div>
-      <div className="ysch-week__days">
-        {Object.keys(props.trainingWeek.days).map((day, idx) => {
-          const dayStats = calculateTrainingDayStats(props.trainingWeek.days[day as WeekDay]);
-          const currDayDate = new Date(
-            props.trainingWeek.weekStartDate.getFullYear(),
-            props.trainingWeek.weekStartDate.getMonth(),
-            props.trainingWeek.weekStartDate.getDate() + idx
-          );
-          return (
-            <div key={day} className="ysch-week__day">
-              <NavLink
-                className={`ysch-day ${dayStats.volume > 0 ? "ysch-day--used" : ""}`}
-                to={`/week-schedule/${props.year}/${props.trainingWeek.weekId}/${day}`}
-              >
-                <div className="ysch-day__weekday">{formatWeekday(currDayDate)}</div>
-                <div className="ysch-day__month">{formatMonth(currDayDate)}</div>
-                <div className="ysch-day__date">{currDayDate.getDate()}</div>
-              </NavLink>
-            </div>
-          );
-        })}
+      <div className="ysch-week__body">
+        <div className="ysch-week__cycle-name">{props.trainingWeek.cycle}</div>
+        <div className="ysch-week__days">
+          {Object.keys(props.trainingWeek.days).map((day, idx) => {
+            const dayStats = calculateTrainingDayStats(props.trainingWeek.days[day as WeekDay]);
+            const currDayDate = new Date(
+              props.trainingWeek.weekStartDate.getFullYear(),
+              props.trainingWeek.weekStartDate.getMonth(),
+              props.trainingWeek.weekStartDate.getDate() + idx
+            );
+            return (
+              <div key={day} className="ysch-week__day">
+                <NavLink
+                  className={`ysch-day ${dayStats.volume > 0 ? "ysch-day--used" : ""}`}
+                  to={`/week-schedule/${props.year}/${props.trainingWeek.weekId}/${day}`}
+                >
+                  <div className="ysch-day__weekday">{formatWeekday(currDayDate)}</div>
+                  <div className="ysch-day__month">{formatMonth(currDayDate)}</div>
+                  <div className="ysch-day__date">{currDayDate.getDate()}</div>
+                </NavLink>
+              </div>
+            );
+          })}
+        </div>
+        <div className="ysch-week__stats">stats</div>
       </div>
 
       <div className={`dropdown ${copyMenuVisible ? "dropdown--visible" : ""} ysch-week__dropdown`}>

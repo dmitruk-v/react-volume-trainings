@@ -3,8 +3,8 @@
 .ysch-week {
   position: relative;
   display: flex;
-  flex-flow: row wrap;
-  padding: 10px;
+  flex-flow: row wrap; 
+  padding: 15px;
   line-height: 1;
   border-radius: 5px;
   background-color: #e1e1e1;
@@ -12,7 +12,7 @@
 }
 .ysch-week--current {
   position: relative;
-  box-shadow: 0 0 0 5px #ff9e9e;
+  box-shadow: 0 0 0 10px #ff9e9e;
 }
 .ysch-week__link {
   position: absolute;
@@ -24,7 +24,7 @@
 .ysch-week__header {
   display: flex;
   flex-flow: column wrap;
-  margin-right: 10px;
+  margin-right: 15px;
   padding-right: 10px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -41,13 +41,28 @@
 .ysch-week__menu-button {
   z-index: 1;
 }
+.ysch-week__body {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+}
+.ysch-week__cycle-name {
+  margin-bottom: 15px;
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.75);
+}
+.ysch-week__cycle-name::first-letter {
+  text-transform: uppercase;
+}
 .ysch-week__days {
   flex: 1;
   display: flex;
   flex-flow: row wrap;
   margin-right: -5px;
-  margin-bottom: -5px;
+  margin-bottom: 10px;
 }
+.ysch-week__stats {}
 .ysch-week__day {
   min-width: 50px;
   margin-right: 5px;
@@ -118,11 +133,18 @@
 }
 
 .ysch-week--cycle_none { background-color: #eaeaea; }
+.ysch-week--cycle_relax { background-color: #dee7f7; }
+.ysch-week--cycle_volume { background-color: #d1f3ea; }
+.ysch-week--cycle_volume-strength { background-color: #f3dff7; }
+.ysch-week--cycle_strength { background-color: #f9e0e0; }
+.ysch-week--cycle_fat-burn { background-color: #f9f1d0; }
+
+/* .ysch-week--cycle_none { background-color: #eaeaea; }
 .ysch-week--cycle_relax { background-color: #d3e4ff; }
 .ysch-week--cycle_volume { background-color: #a5ffe9; }
 .ysch-week--cycle_volume-strength { background-color: #f8d0ff; }
 .ysch-week--cycle_strength { background-color: #ffd1d1; }
-.ysch-week--cycle_fat-burn { background-color: #fff0b0; }
+.ysch-week--cycle_fat-burn { background-color: #fff0b0; } */
 
 .ysch-week__dropdown {
   z-index: 2;
