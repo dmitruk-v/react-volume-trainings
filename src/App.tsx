@@ -8,10 +8,11 @@ import "./App.css";
 // COMPONENTS --------------------------------------
 import { Home } from "./components/home/home";
 import { Options } from "./components/options/options";
-import { Header } from "./components/header/header";
-import { Footer } from "./components/footer/footer";
+import { Header } from "./components/common/header/header";
+import { Footer } from "./components/common/footer/footer";
 import { TrainingWeek } from "./components/training-week/training-week";
-import { YearSchedule } from "./components/year-schedule/year-schedule";
+import { Schedule } from "./components/schedule/schedule";
+import { Bla } from "./components/bla/bla";
 // -------------------------------------------------
 
 function App() {
@@ -33,8 +34,12 @@ function App() {
               <Home />
             </Route>
 
-            <Route path="/year-schedule">
-              <YearSchedule />
+            <Route path="/bla" exact>
+              <Bla />
+            </Route>
+
+            <Route path="/schedule">
+              <Schedule />
             </Route>
 
             <Route path="/week-schedule/:year/:weekId">

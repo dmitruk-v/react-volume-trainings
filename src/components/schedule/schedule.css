@@ -1,0 +1,27 @@
+.schedule {}
+.schedule__year-selector {
+  margin-bottom: 15px;
+}
+.schedule__button {
+  margin-right: 10px;
+}
+
+.schedule-button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 18px;
+  line-height: 1;
+  border: 2px solid #eaeaea;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.schedule-button:hover {
+  border-color: #c1c1c1;
+}
+.schedule-button--active,
+.schedule-button--active:hover {
+  border-color: #333333;
+}

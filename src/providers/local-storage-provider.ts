@@ -7,11 +7,16 @@ const LocalStorageProvider = <T>(key: string): Provider<T> => {
   const ls = window.localStorage;
 
   return {
-    load: () => {
+    load: (reviver?: (k: string, v: any) => void) => {
       try {
         let lsData = ls.getItem(key);
-        return Promise.resolve(
-          lsData !== null ? JSON.parse(lsData) : lsData
+        if (lsData === null) {
+          return Promise.reject(`Key "${key}" not found in LocalStorage`);
+        }
+        return Promise.resolve<T>(
+          reviver !== undefined
+            ? JSON.parse(lsData, reviver)
+            : JSON.parse(lsData)
         );
       } catch (err) {
         return Promise.reject(err);

@@ -143,12 +143,11 @@ const getWeekdayDates = (year: number, day: number): Date[] => {
   return dates;
 }
 
-const getCurrentWeekStartDate = (): Date => {
-  const now = new Date();
-  const weekDayNum = now.getDay();
+const getWeekStartDate = (date: Date): Date => {
+  const weekDayNum = date.getDay();
   return weekDayNum === 1
-    ? new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0)
-    : new Date(now.getFullYear(), now.getMonth(), now.getDate() - (weekDayNum + 6) % WEEK_DAYS.length, 0);
+    ? new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0)
+    : new Date(date.getFullYear(), date.getMonth(), date.getDate() - (weekDayNum + 6) % WEEK_DAYS.length, 0);
 }
 
 const getDaysCountBetweenDates = (begin: Date, end: Date) => {
@@ -165,6 +164,6 @@ export {
   getWeekdayDates,
   getDayName,
   getMonthName,
-  getCurrentWeekStartDate,
+  getWeekStartDate,
   getDaysCountBetweenDates
 }

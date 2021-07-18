@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { RootState } from "../../store";
-import { YearScheduleModel } from "../../store/types";
-import { getCurrentWeekStartDate } from "../../utils/date-utils";
+import { RootState } from "../../../store";
+import { selectTrainingWeekByDate } from "../../../store/selectors";
+import { TrainingWeekModel } from "../../../store/types";
+
+// ASSETS ------------------------------------------
+// -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./header.css";
@@ -16,11 +19,10 @@ type Props = {}
 
 const Header: React.FC<Props> = (props) => {
 
-  const yearSchedule = useSelector<RootState, YearScheduleModel>(state => state.yearSchedule);
-
   const currYear = new Date().getFullYear();
-  const currWeekStartDate = getCurrentWeekStartDate();
-  const currWeek = yearSchedule[currYear].find(week => week.weekStartDate.getTime() === currWeekStartDate.getTime());
+  const currWeek = useSelector<RootState, TrainingWeekModel | undefined>(
+    (state) => selectTrainingWeekByDate(state, new Date())
+  );
 
   return (
     <header className="header">
@@ -37,7 +39,7 @@ const Header: React.FC<Props> = (props) => {
 
             <li className="header-menu__item">
               <NavLink
-                to={"/year-schedule"}
+                to={"/schedule"}
                 className="header-menu__link"
                 activeClassName="header-menu__link--active">Schedule</NavLink>
             </li>

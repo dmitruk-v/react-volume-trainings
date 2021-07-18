@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../../store";
-import { yearScheduleUpdateSetWithSpreadAction, yearScheduleUpdateSetAction } from "../../store/actions";
+import { AppDispatch } from "../../store";
+import { scheduleUpdateSetWithSpreadAction, scheduleUpdateSetAction } from "../../store/actions";
+import { selectScheduleOptions } from "../../store/selectors";
 import { WeekDay, ExSetModel } from "../../store/types";
 
 // ASSETS ------------------------------------------
@@ -14,7 +15,7 @@ import "./ex-set.css";
 // COMPONENTS --------------------------------------
 // -------------------------------------------------
 
-type UpdateSetActionCreator = typeof yearScheduleUpdateSetWithSpreadAction | typeof yearScheduleUpdateSetAction;
+type UpdateSetActionCreator = typeof scheduleUpdateSetWithSpreadAction | typeof scheduleUpdateSetAction;
 
 type Props = {
   year: string,
@@ -31,7 +32,7 @@ const ExSet: React.FC<Props> = (props) => {
   console.log("ExSet called");
 
   const dispatch = useDispatch<AppDispatch>();
-  const scheduleOptions = useSelector((state: RootState) => state.appOptions.schedule);
+  const scheduleOptions = useSelector(selectScheduleOptions);
   const [isRepsFocused, setIsRepsFocused] = useState(false);
   const [isWeightFocused, setIsWeightFocused] = useState(false);
 
@@ -46,9 +47,9 @@ const ExSet: React.FC<Props> = (props) => {
       updatedSet = { ...props.initialSet, weight: val };
     }
 
-    let actionCreator: UpdateSetActionCreator = yearScheduleUpdateSetAction;
+    let actionCreator: UpdateSetActionCreator = scheduleUpdateSetAction;
     if (scheduleOptions.spreadReps === true || scheduleOptions.spreadWeight === true) {
-      actionCreator = yearScheduleUpdateSetWithSpreadAction;
+      actionCreator = scheduleUpdateSetWithSpreadAction;
     }
 
     dispatch(
@@ -64,13 +65,13 @@ const ExSet: React.FC<Props> = (props) => {
     handleChange("weight", evt.target.value);
   }
 
-  const getFocusedClass = useMemo(
-    () => (isRepsFocused || isWeightFocused) ? "ex-set--focused" : "",
+  const focused = useMemo(
+    () => isRepsFocused || isWeightFocused,
     [isRepsFocused, isWeightFocused]
   );
 
   return (
-    <div className={`ex-set ${getFocusedClass}`}>
+    <div className={`ex-set ${focused ? "ex-set--focused" : ""}`}>
       <div className="ex-set__number">{props.setNumber}</div>
       <div className="ex-set__layout">
         <div className="ex-set__reps">

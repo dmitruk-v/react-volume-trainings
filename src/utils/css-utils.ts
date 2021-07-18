@@ -1,13 +1,19 @@
+type ClassNamesResolver = { [key: string]: boolean };
 
-const getClasses = (clsObj: { [key: string]: boolean }): string => {
-  let result = "";
-  for (const cKey in clsObj) {
-    if (!Object.prototype.hasOwnProperty.call(clsObj, cKey)) continue;
-    if (clsObj[cKey] === true) {
-      result += (" " + cKey);
+const getClasses = (...names: (string | ClassNamesResolver)[]): string => {
+  return names.reduce<string>((result, name) => {
+    if (typeof name === "object") {
+      for (const cKey in name) {
+        if (!Object.prototype.hasOwnProperty.call(name, cKey)) continue;
+        if (name[cKey] === true) {
+          result += (" " + cKey);
+        }
+      }
+    } else {
+      result += (" " + name);
     }
-  }
-  return result.trim();
+    return result;
+  }, "").trim();
 }
 
 export { getClasses };

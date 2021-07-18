@@ -1,11 +1,11 @@
 import { AppOptionsActions } from "./app-options-actions";
-import { YearScheduleActions } from "./year-schedule-actions";
+import { ScheduleActions } from "./schedule-actions";
 
 type Actions =
-  | YearScheduleActions
+  | ScheduleActions
   | AppOptionsActions;
 
 export * from "./app-options-actions";
-export * from "./year-schedule-actions";
+export * from "./schedule-actions";
 
 export type { Actions };

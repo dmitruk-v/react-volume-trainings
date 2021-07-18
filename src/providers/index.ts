@@ -1,5 +1,5 @@
 interface Provider<T> {
-  load: () => Promise<T | null>;
+  load: (reviver?: (k: string, v: any) => void) => Promise<T>;
   save: (schedule: T) => Promise<void>;
 }
 

@@ -99,7 +99,7 @@
 .training__menu-btn:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
-.training__dropdown {
+.dropdown.training__dropdown {
   top: 5px;
   right: 5px;
   width: 200px;

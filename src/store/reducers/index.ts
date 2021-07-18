@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 
-import { yearScheduleReducer } from "./year-schedule-reducer";
+import { scheduleReducer } from "./schedule-reducer";
 import { appOptionsReducer } from "./app-options-reducer";
+import { usersReducer } from "./users-reducer";
 
 const rootReducer = combineReducers({
-  yearSchedule: yearScheduleReducer,
-  appOptions: appOptionsReducer
+  schedule: scheduleReducer,
+  options: appOptionsReducer,
+  users: usersReducer,
 });
 
 export * from "./reducers-utils";

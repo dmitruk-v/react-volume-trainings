@@ -1,13 +1,12 @@
 import { useMemo, useState } from "react";
 import { calculateTrainingStats, AppDispatch } from "../../store";
-import { yearScheduleAddTrainingAction, yearScheduleUpdateTrainingAction, yearScheduleRemoveTrainingAction } from "../../store/actions";
+import { scheduleAddTrainingAction, scheduleUpdateTrainingAction, scheduleRemoveTrainingAction } from "../../store/actions";
 import { WeekDay, TrainingModel } from "../../store/types";
 import { useDispatch } from "react-redux";
 import { createClonedTraining, createResetedTraining } from "../../utils/schedule-utils";
 
 // ASSETS ------------------------------------------
 import icoMenu from "../../assets/svg/menu_black_24dp.svg";
-import icoMenuClose from "../../assets/svg/close_black_24dp.svg";
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
@@ -16,6 +15,7 @@ import "./training.css";
 
 // COMPONENTS --------------------------------------
 import { Stats } from "../stats/stats";
+import { Dropdown } from "../common/dropdown/dropdown";
 // -------------------------------------------------
 
 type Props = {
@@ -29,23 +29,23 @@ type Props = {
 const Training: React.FC<Props> = (props) => {
 
   const dispatch = useDispatch<AppDispatch>();
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [isOpened, setIsOpened] = useState(props.trainingNumber === 1);
+  const [menuOpened, setMenuOpened] = useState(false);
+  const [opened, setOpened] = useState(props.trainingNumber === 1);
 
   const trainingStats = useMemo(
     () => calculateTrainingStats(props.initialTraining),
     [props.initialTraining]
   );
 
-  const toggleTraining = (evt: React.MouseEvent<HTMLDivElement>) => {
+  const toggleOpenTraining = (evt: React.MouseEvent<HTMLDivElement>) => {
     if ((evt.target as HTMLDivElement).classList.contains("training__head")) {
-      setIsOpened(!isOpened);
+      setOpened(!opened);
     }
   }
 
   const cloneTraining = () => {
     dispatch(
-      yearScheduleAddTrainingAction(
+      scheduleAddTrainingAction(
         props.year, props.weekId, props.day, createClonedTraining(props.initialTraining)
       )
     );
@@ -53,7 +53,7 @@ const Training: React.FC<Props> = (props) => {
 
   const removeTraining = () => {
     dispatch(
-      yearScheduleRemoveTrainingAction(
+      scheduleRemoveTrainingAction(
         props.year, props.weekId, props.day, props.initialTraining
       )
     );
@@ -61,14 +61,14 @@ const Training: React.FC<Props> = (props) => {
 
   const resetTraining = () => {
     dispatch(
-      yearScheduleUpdateTrainingAction(
+      scheduleUpdateTrainingAction(
         props.year, props.weekId, props.day, createResetedTraining(props.initialTraining)
       )
     );
   }
 
   return (
-    <div className={`training ${isOpened ? "training--opened" : ""}`} onClick={toggleTraining}>
+    <div className={`training ${opened ? "training--opened" : ""}`} onClick={toggleOpenTraining}>
       <div className="training__head">
         <div className="training__title">
           <div className="training-title">
@@ -92,31 +92,31 @@ const Training: React.FC<Props> = (props) => {
           />
         </div>
 
-        <button className="button-type1 training__menu-btn" onClick={() => setIsMenuVisible(true)}>
+        <button className="button-type1 training__menu-btn" onClick={() => setMenuOpened(true)}>
           <img src={icoMenu} alt="" />
         </button>
 
-        <div className={`dropdown ${isMenuVisible ? "dropdown--visible" : ""} dropdown--anim_from-ct training__dropdown`}>
-          <div className="dropdown__inner">
-            <div className="dropdown-title">Training menu</div>
-            <div className="dropdown-menu">
-              <ul className="dropdown-menu__list">
-                <li className="dropdown-menu__item">
-                  <button className="dropdown-menu__button" title="Reset training" onClick={() => resetTraining()}>Reset training</button>
-                </li>
-                <li className="dropdown-menu__item">
-                  <button className="dropdown-menu__button" title="Clone training" onClick={() => cloneTraining()}>Clone training</button>
-                </li>
-                <li className="dropdown-menu__item">
-                  <button className="dropdown-menu__button" title="Remove training" onClick={() => removeTraining()}>Remove training</button>
-                </li>
-              </ul>
-            </div>
-            <button className="button-type1 dropdown__close-btn" onClick={() => setIsMenuVisible(false)}>
-              <img src={icoMenuClose} alt="" />
-            </button>
+        <Dropdown
+          isOpened={menuOpened}
+          classNames="training__dropdown"
+          withCloseBtn
+          onClose={() => setMenuOpened(false)}
+        >
+          <div className="dropdown-title">Training menu</div>
+          <div className="dropdown-menu">
+            <ul className="dropdown-menu__list">
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Reset training" onClick={() => resetTraining()}>Reset training</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Clone training" onClick={() => cloneTraining()}>Clone training</button>
+              </li>
+              <li className="dropdown-menu__item">
+                <button className="dropdown-menu__button" title="Remove training" onClick={() => removeTraining()}>Remove training</button>
+              </li>
+            </ul>
           </div>
-        </div>
+        </Dropdown>
 
       </div>
       <div className="training__body">

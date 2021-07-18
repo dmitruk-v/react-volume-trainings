@@ -2,6 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { changeOptionScheduleSpreadReps, changeOptionScheduleSpreadWeight } from "../../store/actions";
 import { WEEK_DAYS } from "../../constants";
+import { AppOptionsModel } from "../../store/types";
+import { selectOptions } from "../../store/selectors";
+
+// ASSETS ------------------------------------------
+// -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./options.css";
@@ -15,9 +20,7 @@ type Props = {};
 const Options: React.FC<Props> = (props) => {
 
   const dispatch = useDispatch<AppDispatch>();
-
-  const spreadRepsState = useSelector<RootState, boolean>(state => state.appOptions.schedule.spreadReps);
-  const spreadWeightState = useSelector<RootState, boolean>(state => state.appOptions.schedule.spreadWeight);
+  const appOptions = useSelector<RootState, AppOptionsModel>(selectOptions);
 
   const handleSpreadRepsCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
@@ -81,7 +84,7 @@ const Options: React.FC<Props> = (props) => {
                 <label className="control-checkbox">
                   <input type="checkbox" name="spread-reps" className="control-checkbox__input"
                     onChange={handleSpreadRepsCheckbox}
-                    checked={spreadRepsState}
+                    checked={appOptions.schedule.spreadReps}
                   />
                   <span className="control-checkbox__name">Spread reps?</span>
                 </label>
@@ -96,7 +99,7 @@ const Options: React.FC<Props> = (props) => {
                 <label className="control-checkbox">
                   <input type="checkbox" name="spread-weight" className="control-checkbox__input"
                     onChange={handleSpreadWeightCheckbox}
-                    checked={spreadWeightState}
+                    checked={appOptions.schedule.spreadWeight}
                   />
                   <span className="control-checkbox__name">Spread weight?</span>
                 </label>

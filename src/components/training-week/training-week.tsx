@@ -3,6 +3,8 @@ import { TrainingWeekModel } from "../../store/types";
 import { useMemo } from "react";
 import { Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getClasses } from "../../utils/css-utils";
+import { selectTrainingWeekById } from "../../store/selectors";
 
 // ASSETS ------------------------------------------
 // -------------------------------------------------
@@ -18,7 +20,6 @@ import { Exercise } from "../exercise/exercise";
 import { ExSet } from "../ex-set/ex-set";
 import { Stats } from "../stats/stats";
 import { DaysMenu } from "../days-menu/days-menu";
-import { getClasses } from "../../utils/css-utils";
 // -------------------------------------------------
 
 type Props = {}
@@ -33,7 +34,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
 
   const match = useRouteMatch<RouteParams>();
   const trainingWeek = useSelector<RootState, TrainingWeekModel | undefined>(
-    state => state.yearSchedule[match.params.year].find(week => week.weekId === match.params.weekId)
+    state => selectTrainingWeekById(state, match.params.year, match.params.weekId)
   );
 
   const weekStats = useMemo(
@@ -42,7 +43,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
   );
 
   const weekScheduleClasses = getClasses({
-    [`week-schedule--cycle_${trainingWeek?.cycle}`]: trainingWeek !== undefined
+    [`training-week--cycle_${trainingWeek?.cycle}`]: trainingWeek !== undefined
   });
 
   if (trainingWeek === undefined) {
@@ -52,26 +53,26 @@ const TrainingWeek: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className={`week-schedule ${weekScheduleClasses}`}>
+    <div className={`training-week ${weekScheduleClasses}`}>
 
-      <div className="week-schedule__head">
-        <div className={`wsch-head wsch-head--cycle_${trainingWeek.cycle}`}>
-          <div className="wsch-head__meta">
-            <dl className="wsch-head__def wsch-head__date">
-              <dt className="wsch-head__term">Date:</dt>
-              <dd className="wsch-head__description">{JSON.stringify(trainingWeek.weekStartDate)}</dd>
+      <div className="training-week__head">
+        <div className={`tweek-head tweek-head--cycle_${trainingWeek.cycle}`}>
+          <div className="tweek-head__meta">
+            <dl className="tweek-head__def tweek-head__date">
+              <dt className="tweek-head__term">Date:</dt>
+              <dd className="tweek-head__description">{JSON.stringify(trainingWeek.weekStartDate)}</dd>
             </dl>
-            <dl className="wsch-head__def wsch-head__weekid">
-              <dt className="wsch-head__term">WeekId:</dt>
-              <dd className="wsch-head__description">{match.params.weekId}</dd>
+            <dl className="tweek-head__def tweek-head__weekid">
+              <dt className="tweek-head__term">WeekId:</dt>
+              <dd className="tweek-head__description">{match.params.weekId}</dd>
             </dl>
-            <dl className="wsch-head__def wsch-head__cycle">
-              <dt className="wsch-head__term">Cycle:</dt>
-              <dd className="wsch-head__description">{trainingWeek.cycle}</dd>
+            <dl className="tweek-head__def tweek-head__cycle">
+              <dt className="tweek-head__term">Cycle:</dt>
+              <dd className="tweek-head__description">{trainingWeek.cycle}</dd>
             </dl>
           </div>
-          <div className="wsch-head__title">Week<br/>stats</div>
-          <div className="wsch-head__stats">
+          <div className="tweek-head__title">Week<br/>stats</div>
+          <div className="tweek-head__stats">
             <Stats
               statsOptions={{
                 modifierClasses: [
@@ -87,15 +88,19 @@ const TrainingWeek: React.FC<Props> = (props) => {
         </div>        
       </div>
 
-      <div className="week-schedule__days">
+      <div className="training-week__days">
         <DaysMenu year={match.params.year} trainingWeek={trainingWeek} />
       </div>
 
-      <div className="week-schedule__selected-day">
+      <div className="training-week__selected-day">
         <Switch>
           {(Object.keys(trainingWeek.days) as (keyof typeof trainingWeek.days)[]).map(day => (
             <Route key={day} path={`${match.path}/${day}`}>
-              <TrainingDay initialTrainingDay={trainingWeek.days[day]}>
+              <TrainingDay
+                year={match.params.year}
+                weekId={match.params.weekId}
+                initialTrainingDay={trainingWeek.days[day]}
+              >
                 {trainingWeek.days[day].trainings.map((training, tIdx) =>
                   <div key={training.trainingId} className="training-day__training">
                     <Training

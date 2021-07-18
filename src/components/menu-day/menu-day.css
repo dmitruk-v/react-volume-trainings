@@ -44,14 +44,6 @@
   background-color: #ffffff;
   border-radius: 0 0 5px 5px;
 }
-.menu-day__dropdown {
-  z-index: 3;
-  position: absolute;
-  top: 35px;
-  right: -10px;
-  bottom: -10px;
-  left: -10px;
-}
 .menu-day__menu-button:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
@@ -63,98 +55,106 @@
   bottom: 0;
   left: 0;
 }
+.dropdown.menu-day__dropdown {
+  z-index: 3;
+  position: absolute;
+  top: 35px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+}
 
 /* RELAX
 ----------------------------------------------------------- */
-.week-schedule--cycle_relax .menu-day--used {
+.training-week--cycle_relax .menu-day--used {
   border-color: #8da7d0;
 }
-.week-schedule--cycle_relax .menu-day--used.menu-day--active,
-.week-schedule--cycle_relax .menu-day--used:hover {
+.training-week--cycle_relax .menu-day--used.menu-day--active,
+.training-week--cycle_relax .menu-day--used:hover {
   box-shadow: 0 0 0 2px #8da7d0;
 }
-.week-schedule--cycle_relax .menu-day--used .menu-day__title {
+.training-week--cycle_relax .menu-day--used .menu-day__title {
   background-color: #ebf3ff;
 }
-.week-schedule--cycle_relax .menu-day--used .menu-day__day-name {
+.training-week--cycle_relax .menu-day--used .menu-day__day-name {
   color: #324e79;
 }
-.week-schedule--cycle_relax .menu-day--used .menu-day__trainings {
+.training-week--cycle_relax .menu-day--used .menu-day__trainings {
   color: #324e79;
 }
 
 /* VOLUME
 ----------------------------------------------------------- */
-.week-schedule--cycle_volume .menu-day--used {
+.training-week--cycle_volume .menu-day--used {
   border-color: #77b7a7;
 }
-.week-schedule--cycle_volume .menu-day--used.menu-day--active,
-.week-schedule--cycle_volume .menu-day--used:hover {
+.training-week--cycle_volume .menu-day--used.menu-day--active,
+.training-week--cycle_volume .menu-day--used:hover {
   box-shadow: 0 0 0 2px #77b7a7;
 }
-.week-schedule--cycle_volume .menu-day--used .menu-day__title {
+.training-week--cycle_volume .menu-day--used .menu-day__title {
   background-color: #e0fff7;
 }
-.week-schedule--cycle_volume .menu-day--used .menu-day__day-name {
+.training-week--cycle_volume .menu-day--used .menu-day__day-name {
   color: #267d68;
 }
-.week-schedule--cycle_volume .menu-day--used .menu-day__trainings {
+.training-week--cycle_volume .menu-day--used .menu-day__trainings {
   color: #267d68;
 }
 
 /* VOLUME-STRENGTH
 ----------------------------------------------------------- */
-.week-schedule--cycle_volume-strength .menu-day--used {
+.training-week--cycle_volume-strength .menu-day--used {
   border-color: #c391cc;
 }
-.week-schedule--cycle_volume-strength .menu-day--used.menu-day--active,
-.week-schedule--cycle_volume-strength .menu-day--used:hover {
+.training-week--cycle_volume-strength .menu-day--used.menu-day--active,
+.training-week--cycle_volume-strength .menu-day--used:hover {
   box-shadow: 0 0 0 2px #c391cc;
 }
-.week-schedule--cycle_volume-strength .menu-day--used .menu-day__title {
+.training-week--cycle_volume-strength .menu-day--used .menu-day__title {
   background-color: #fce7ff;
 }
-.week-schedule--cycle_volume-strength .menu-day--used .menu-day__day-name {
+.training-week--cycle_volume-strength .menu-day--used .menu-day__day-name {
   color: #794982;
 }
-.week-schedule--cycle_volume-strength .menu-day--used .menu-day__trainings {
+.training-week--cycle_volume-strength .menu-day--used .menu-day__trainings {
   color: #794982;
 }
 
 /* STRENGTH
 ----------------------------------------------------------- */
-.week-schedule--cycle_strength .menu-day--used {
+.training-week--cycle_strength .menu-day--used {
   border-color: #d87e7e;
 }
-.week-schedule--cycle_strength .menu-day--used.menu-day--active,
-.week-schedule--cycle_strength .menu-day--used:hover {
+.training-week--cycle_strength .menu-day--used.menu-day--active,
+.training-week--cycle_strength .menu-day--used:hover {
   box-shadow: 0 0 0 2px #d87e7e;
 }
-.week-schedule--cycle_strength .menu-day--used .menu-day__title {
+.training-week--cycle_strength .menu-day--used .menu-day__title {
   background-color: #ffe7e7;
 }
-.week-schedule--cycle_strength .menu-day--used .menu-day__day-name {
+.training-week--cycle_strength .menu-day--used .menu-day__day-name {
   color: #792f2f;
 }
-.week-schedule--cycle_strength .menu-day--used .menu-day__trainings {
+.training-week--cycle_strength .menu-day--used .menu-day__trainings {
   color: #792f2f;
 }
 
 /* FAT-BURN
 ----------------------------------------------------------- */
-.week-schedule--cycle_fat-burn .menu-day--used {
+.training-week--cycle_fat-burn .menu-day--used {
   border-color: #b1a571;
 }
-.week-schedule--cycle_fat-burn .menu-day--used.menu-day--active,
-.week-schedule--cycle_fat-burn .menu-day--used:hover {
+.training-week--cycle_fat-burn .menu-day--used.menu-day--active,
+.training-week--cycle_fat-burn .menu-day--used:hover {
   box-shadow: 0 0 0 2px #b1a571;
 }
-.week-schedule--cycle_fat-burn .menu-day--used .menu-day__title {
+.training-week--cycle_fat-burn .menu-day--used .menu-day__title {
   background-color: #fff8d9;
 }
-.week-schedule--cycle_fat-burn .menu-day--used .menu-day__day-name {
+.training-week--cycle_fat-burn .menu-day--used .menu-day__day-name {
   color: #5a4f1d;
 }
-.week-schedule--cycle_fat-burn .menu-day--used .menu-day__trainings {
+.training-week--cycle_fat-burn .menu-day--used .menu-day__trainings {
   color: #5a4f1d;
 }
