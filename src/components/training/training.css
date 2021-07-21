@@ -102,5 +102,6 @@
 .dropdown.training__dropdown {
   top: 5px;
   right: 5px;
+  left: auto;
   width: 200px;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 // ASSETS ------------------------------------------------------------
 // -------------------------------------------------------------------
@@ -13,16 +14,24 @@ import { Dropdown } from "../common/dropdown/dropdown";
 
 type Props = {};
 
-const Bla: React.FC<Props> = (props) => {
+const Bla = (props: Props) => {
 
   console.log("Bla called");
 
   const [menuOpened, setMenuOpened] = useState(true);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const nameLsProvider = useLocalStorage<boolean>("name");
+
+  console.log("Loaded:", nameLsProvider.load());
+
   useEffect(() => {
     console.log("useEffect called");
-  }, []);
+    setTimeout(() => {
+      nameLsProvider.save(false);
+      console.log("Saved:", false);
+    }, 1000);
+  }, [nameLsProvider]);
 
   useClickOutside(dropdownRef, () => {
     if (menuOpened === true) {

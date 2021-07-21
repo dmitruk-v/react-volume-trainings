@@ -1,16 +1,11 @@
 import { Actions } from "../actions"
 import { DataLoadingStatus } from "../state";
+import { UsersModel } from "../types";
 
 type UsersState = {
   status: DataLoadingStatus,
   error: string | null,
-  data: {
-    [userId: string]: {
-      name: string,
-      password: string,
-      email: string
-    }
-  }
+  data: UsersModel
 }
 
 const initialState: UsersState = {
@@ -21,6 +16,16 @@ const initialState: UsersState = {
 
 const usersReducer = (oldState: UsersState = initialState, action: Actions): UsersState => {
   switch (action.type) {
+
+    case "users/create":
+      return {
+        ...oldState,
+        data: {
+          ...oldState.data,
+          [action.payload.createdUser.userId]: action.payload.createdUser
+        }
+      }
+
     default:
       return oldState;
   }

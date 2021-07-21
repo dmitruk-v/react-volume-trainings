@@ -99,5 +99,6 @@
 .dropdown.exercise__dropdown {
   top: -10px;
   right: -10px;
+  left: auto;
   width: 200px;
 }

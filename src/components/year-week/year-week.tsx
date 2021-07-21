@@ -9,6 +9,7 @@ import { getClasses } from "../../utils/css-utils";
 import { useDispatch, useSelector } from "react-redux";
 import { createClonedWeek } from "../../utils/schedule-utils";
 import { selectSchedule } from "../../store/selectors";
+import { useScrollIntoView } from "../../hooks/useScrollIntoView";
 
 // ASSETS ------------------------------------------
 import icoCycle from "../../assets/svg/settings_backup_restore_black_24dp.svg";
@@ -44,18 +45,6 @@ const YearWeek: React.FC<Props> = (props) => {
     [props.currWeekStartDate, props.trainingWeek.weekStartDate]
   );
 
-  useEffect(() => {
-    if (isCurrentWeek && !isScrolled) {
-      const weekDiv = weekDivRef.current;
-      if (weekDiv === null) return;
-      window.scrollTo({
-        top: weekDiv.offsetTop - weekDiv.offsetHeight,
-        behavior: 'smooth'
-      });
-      isScrolled = true;
-    }
-  }, [isCurrentWeek]);
-
   const handleCycleChange = (cycle: Cycle) => {
     dispatch(
       scheduleUpdateTrainingWeekAction(props.year, {
@@ -66,7 +55,7 @@ const YearWeek: React.FC<Props> = (props) => {
   }
 
   const handleWeekCopy = (fromWeekId: string) => {
-    const fromWeek = schedule[props.year].weeks.find(week => week.weekId === fromWeekId);
+    const fromWeek = schedule.years[props.year].weeks.find(week => week.weekId === fromWeekId);
     if (fromWeek === undefined) return;
     dispatch(
       scheduleUpdateTrainingWeekAction(props.year, createClonedWeek(fromWeek, props.trainingWeek))
@@ -139,7 +128,7 @@ const YearWeek: React.FC<Props> = (props) => {
           <div className="control-select">
             <select onChange={(evt) => handleWeekCopy(evt.target.value)} className="control-select__native">
               <option key={-1} value="">Select week</option>
-              {schedule[props.year].weeks.map((week, idx) => (
+              {schedule.years[props.year].weeks.map((week, idx) => (
                 <option key={idx} value={week.weekId}>{idx + 1}</option>
               ))}
             </select>

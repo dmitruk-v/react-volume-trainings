@@ -1,0 +1,5 @@
+const useIndexedDb = () => {
+
+}
+
+export { useIndexedDb };

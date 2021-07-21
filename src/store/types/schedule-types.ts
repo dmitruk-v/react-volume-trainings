@@ -1,8 +1,12 @@
 import { WeekDay } from ".";
 import { CYCLES } from "../../constants/schedule";
 
+type ScheduleId = string;
 type ScheduleModel = {
-  [year: string]: TrainingYearModel
+  scheduleId: ScheduleId,
+  years: {
+    [year: string]: TrainingYearModel
+  }
 }
 
 type TrainingYearModel = {
@@ -68,6 +72,6 @@ type AppOptionsModel = {
 export type {
   AppOptionsModel, Cycle,
   ExSetId, ExSetModel, ExerciseId, ExerciseModel, TrainingId, TrainingModel, TrainingDayModel,
-  WeekId, TrainingWeekModel, TrainingYearModel, ScheduleModel, StatsModel
+  WeekId, TrainingWeekModel, TrainingYearModel, ScheduleId, ScheduleModel, StatsModel
 
 }

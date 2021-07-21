@@ -1,8 +1,8 @@
 import { calculateTrainingWeekStats, RootState } from "../../store";
 import { TrainingWeekModel } from "../../store/types";
 import { useMemo } from "react";
-import { Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { getClasses } from "../../utils/css-utils";
 import { selectTrainingWeekById } from "../../store/selectors";
 

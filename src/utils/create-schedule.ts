@@ -3,17 +3,7 @@ import { ExSetModel, ExerciseModel, TrainingModel, TrainingDayModel, TrainingWee
 import { WEEK_DAYS } from "../constants";
 import { getWeekdayDates } from "./date-utils";
 
-type ScheduleOptions = {
-  startDay: WeekDay,
-  trainingsCount: number,
-  exercisesCount: number,
-  setsCount: number,
-  exerciseName: string,
-  reps: number,
-  weight: number
-}
-
-const defaultScheduleOptions: ScheduleOptions = {
+const defaultScheduleOptions = {
   startDay: "monday",
   trainingsCount: 1,
   exercisesCount: 1,
@@ -23,6 +13,9 @@ const defaultScheduleOptions: ScheduleOptions = {
   weight: 0
 }
 
+type ScheduleOptions = typeof defaultScheduleOptions;
+
+const createScheduleId = createIdGenerator({ prefix: "sch-" });
 const createWeekId = createIdGenerator({ prefix: "w-" });
 const createTrainingId = createIdGenerator({ prefix: "tr-" });
 const createExerciseId = createIdGenerator({ prefix: "ex-" });
@@ -103,9 +96,12 @@ const createTrainingYear = (year: number, options: Partial<ScheduleOptions> = de
 // ------------------------------------------------------------------------------
 const createSchedule = (years: number[], options: Partial<ScheduleOptions> = defaultScheduleOptions): ScheduleModel => {
   const opts = { ...defaultScheduleOptions, ...options };
-  const schedule: ScheduleModel = {};
+  const schedule: ScheduleModel = {
+    scheduleId: createScheduleId(),
+    years: {}
+  };
   return years.reduce((schedule, year) => {
-    schedule[year] = createTrainingYear(year, opts);
+    schedule.years[year] = createTrainingYear(year, opts);
     return schedule;
   }, schedule as ScheduleModel);
 }
@@ -113,6 +109,8 @@ const createSchedule = (years: number[], options: Partial<ScheduleOptions> = def
 
 
 export {
+  createScheduleId,
+  createWeekId,
   createTrainingId,
   createExerciseId,
   createSetId,

@@ -12,7 +12,10 @@ type ScheduleState = {
 const initialState: ScheduleState = {
   status: "idle",
   error: null,
-  data: {}
+  data: {
+    scheduleId: "",
+    years: {}
+  }
 };
 
 const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions): ScheduleState => {
@@ -21,6 +24,8 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
     case "schedule/create": {
       return {
         ...oldState,
+        status: "succeeded",
+        error: null,
         data: action.payload.schedule
       };
     }
@@ -59,36 +64,39 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: tr.exercises.map(
-                              ex => ex.exerciseId === exerciseId
-                                ? {
-                                  ...ex,
-                                  sets: [...ex.sets, addedSet]
-                                }
-                                : ex
-                            )
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: tr.exercises.map(
+                                ex => ex.exerciseId === exerciseId
+                                  ? {
+                                    ...ex,
+                                    sets: [...ex.sets, addedSet]
+                                  }
+                                  : ex
+                              )
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -100,40 +108,43 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: tr.exercises.map(
-                              ex => ex.exerciseId === exerciseId
-                                ? {
-                                  ...ex,
-                                  sets: ex.sets.map(
-                                    s => s.setId === updatedSet.setId
-                                      ? updatedSet
-                                      : s
-                                  )
-                                }
-                                : ex
-                            )
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: tr.exercises.map(
+                                ex => ex.exerciseId === exerciseId
+                                  ? {
+                                    ...ex,
+                                    sets: ex.sets.map(
+                                      s => s.setId === updatedSet.setId
+                                        ? updatedSet
+                                        : s
+                                    )
+                                  }
+                                  : ex
+                              )
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -145,33 +156,36 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: tr.exercises.map(
-                              ex => ex.exerciseId === exerciseId
-                                ? createExerciseWithSpreadedSet(ex, updatedSet)
-                                : ex
-                            )
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: tr.exercises.map(
+                                ex => ex.exerciseId === exerciseId
+                                  ? createExerciseWithSpreadedSet(ex, updatedSet)
+                                  : ex
+                              )
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -183,38 +197,41 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: tr.exercises.map(
-                              ex => ex.exerciseId === exerciseId
-                                ? {
-                                  ...ex,
-                                  sets: ex.sets.length > 1
-                                    ? ex.sets.filter(s => s.setId !== removedSet.setId)
-                                    : ex.sets
-                                }
-                                : ex
-                            )
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: tr.exercises.map(
+                                ex => ex.exerciseId === exerciseId
+                                  ? {
+                                    ...ex,
+                                    sets: ex.sets.length > 1
+                                      ? ex.sets.filter(s => s.setId !== removedSet.setId)
+                                      : ex.sets
+                                  }
+                                  : ex
+                              )
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -229,29 +246,32 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: [...tr.exercises, addedExercise]
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: [...tr.exercises, addedExercise]
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -263,33 +283,36 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: tr.exercises.map(
-                              ex => ex.exerciseId === updatedExercise.exerciseId
-                                ? updatedExercise
-                                : ex
-                            )
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: tr.exercises.map(
+                                ex => ex.exerciseId === updatedExercise.exerciseId
+                                  ? updatedExercise
+                                  : ex
+                              )
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -301,31 +324,34 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === trainingId
-                          ? {
-                            ...tr,
-                            exercises: tr.exercises.length > 1
-                              ? tr.exercises.filter(ex => ex.exerciseId !== removedExercise.exerciseId)
-                              : tr.exercises
-                          }
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === trainingId
+                            ? {
+                              ...tr,
+                              exercises: tr.exercises.length > 1
+                                ? tr.exercises.filter(ex => ex.exerciseId !== removedExercise.exerciseId)
+                                : tr.exercises
+                            }
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -340,22 +366,25 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: [...week.days[day].trainings, addedTraining]
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: [...week.days[day].trainings, addedTraining]
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -367,26 +396,29 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.map(
-                        tr => tr.trainingId === updatedTraining.trainingId
-                          ? updatedTraining
-                          : tr
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.map(
+                          tr => tr.trainingId === updatedTraining.trainingId
+                            ? updatedTraining
+                            : tr
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -398,24 +430,27 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [day]: {
-                      ...week.days[day],
-                      trainings: week.days[day].trainings.filter(
-                        tr => tr.trainingId !== removedTraining.trainingId
-                      )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [day]: {
+                        ...week.days[day],
+                        trainings: week.days[day].trainings.filter(
+                          tr => tr.trainingId !== removedTraining.trainingId
+                        )
+                      }
                     }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -430,19 +465,22 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === weekId
-                ? {
-                  ...week,
-                  days: {
-                    ...week.days,
-                    [updatedTrainingDay.day]: updatedTrainingDay
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === weekId
+                  ? {
+                    ...week,
+                    days: {
+                      ...week.days,
+                      [updatedTrainingDay.day]: updatedTrainingDay
+                    }
                   }
-                }
-                : week
-            )
+                  : week
+              )
+            }
           }
         }
       }
@@ -457,13 +495,16 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: {
-            ...oldState.data[year],
-            weeks: oldState.data[year].weeks.map(
-              week => week.weekId === updatedTrainingWeek.weekId
-                ? updatedTrainingWeek
-                : week
-            )
+          years: {
+            ...oldState.data.years,
+            [year]: {
+              ...oldState.data.years[year],
+              weeks: oldState.data.years[year].weeks.map(
+                week => week.weekId === updatedTrainingWeek.weekId
+                  ? updatedTrainingWeek
+                  : week
+              )
+            }
           }
         }
       }
@@ -478,7 +519,10 @@ const scheduleReducer = (oldState: ScheduleState = initialState, action: Actions
         ...oldState,
         data: {
           ...oldState.data,
-          [year]: updatedTrainingYear,
+          years: {
+            ...oldState.data.years,
+            [year]: updatedTrainingYear,
+          }
         }
       }
     }

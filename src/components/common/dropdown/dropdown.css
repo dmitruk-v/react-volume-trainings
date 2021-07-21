@@ -45,13 +45,13 @@
 .dropdown--anim_from-lb > .dropdown__inner { transform-origin: left bottom; }
 
 /* from right */
-.dropdown--anim_from-rt {}
+.dropdown--anim_from-rt { right: 0; }
 .dropdown--anim_from-rt > .dropdown__inner { transform-origin: right top; }
 
-.dropdown--anim_from-rc {}
+.dropdown--anim_from-rc { right: 0; }
 .dropdown--anim_from-rc > .dropdown__inner { transform-origin: right center; }
 
-.dropdown--anim_from-rb {}
+.dropdown--anim_from-rb { right: 0; }
 .dropdown--anim_from-rb > .dropdown__inner { transform-origin: right bottom; }
 
 /* from top */

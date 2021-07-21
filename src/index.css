@@ -1,4 +1,6 @@
 @import "./assets/css/normalize.css";
+@import "./assets/css/form.css";
+@import "./assets/css/button.css";
 
 :root {
   --main-font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -63,76 +65,6 @@ ul:last-child,
 ol:last-child {
   margin-bottom: 0;
 }
-
-/* button icons
---------------------------------------------------------------------------------- */
-.button-type1 {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border-radius: 5px;
-  cursor: pointer;
-  user-select: none;
-}
-.button-type1:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-.button-type1 > * {
-  vertical-align: middle;
-}
-
-.button-type1--sm {
-  width: 32px;
-  height: 32px;
-}
-.button-type1--md {
-  width: 40px;
-  height: 40px;
-}
-.button-type1--lg {
-  width: 48px;
-  height: 48px;
-}
-
-/* button
---------------------------------------------------------------------------------- */
-.button {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  padding: 8px 16px;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1;
-  text-transform: uppercase;
-  border: 2px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.button span {
-  padding-top: 2px;
-}
-.button:hover {
-  border-color: #cccccc;
-}
-
-.button--ico-text {
-  padding-left: 10px;
-}
-.button--ico-text > img,
-.button--ico-text > i,
-.button--ico-text > svg {
-  margin-right: 5px;
-}
-
 
 /* utils
 --------------------------------------------------------------------------------- */
