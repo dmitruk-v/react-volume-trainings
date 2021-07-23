@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { calculateTrainingStats, AppDispatch } from "../../store";
-import { scheduleAddTrainingAction, scheduleUpdateTrainingAction, scheduleRemoveTrainingAction } from "../../store/actions";
+import { schedulesAddTrainingAction, schedulesUpdateTrainingAction, schedulesRemoveTrainingAction } from "../../store/actions";
 import { WeekDay, TrainingModel } from "../../store/types";
 import { useDispatch } from "react-redux";
 import { createClonedTraining, createResetedTraining } from "../../utils/schedule-utils";
@@ -19,6 +19,7 @@ import { Dropdown } from "../common/dropdown/dropdown";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string,
   weekId: string,
   day: WeekDay,
@@ -45,24 +46,24 @@ const Training: React.FC<Props> = (props) => {
 
   const cloneTraining = () => {
     dispatch(
-      scheduleAddTrainingAction(
-        props.year, props.weekId, props.day, createClonedTraining(props.initialTraining)
+      schedulesAddTrainingAction(
+        props.scheduleId, props.year, props.weekId, props.day, createClonedTraining(props.initialTraining)
       )
     );
   }
 
   const removeTraining = () => {
     dispatch(
-      scheduleRemoveTrainingAction(
-        props.year, props.weekId, props.day, props.initialTraining
+      schedulesRemoveTrainingAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.initialTraining
       )
     );
   }
 
   const resetTraining = () => {
     dispatch(
-      scheduleUpdateTrainingAction(
-        props.year, props.weekId, props.day, createResetedTraining(props.initialTraining)
+      schedulesUpdateTrainingAction(
+        props.scheduleId, props.year, props.weekId, props.day, createResetedTraining(props.initialTraining)
       )
     );
   }

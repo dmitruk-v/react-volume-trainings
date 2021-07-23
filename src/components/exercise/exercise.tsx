@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { calculateExerciseStats, AppDispatch } from "../../store";
-import { scheduleAddSetAction, scheduleRemoveSetAction, scheduleAddExerciseAction, scheduleUpdateExerciseAction, scheduleRemoveExerciseAction } from "../../store/actions";
+import { schedulesAddSetAction, schedulesRemoveSetAction, schedulesAddExerciseAction, schedulesUpdateExerciseAction, schedulesRemoveExerciseAction } from "../../store/actions";
 import { ExerciseModel, WeekDay } from "../../store/types";
 import { useDispatch } from "react-redux";
 import { createClonedExercise, createResetedExercise, createClonedSet } from "../../utils/schedule-utils";
@@ -20,6 +20,7 @@ import { Dropdown } from "../common/dropdown/dropdown";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string,
   weekId: string,
   day: WeekDay,
@@ -50,8 +51,8 @@ const Exercise: React.FC<Props> = (props) => {
   const handleSubmitName = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(
-      scheduleUpdateExerciseAction(
-        props.year, props.weekId, props.day, props.trainingId, { ...props.initialExercise, name: exerciseName }
+      schedulesUpdateExerciseAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.trainingId, { ...props.initialExercise, name: exerciseName }
       )
     );
     setNameEditable(false);
@@ -65,8 +66,8 @@ const Exercise: React.FC<Props> = (props) => {
   const cloneLastSet = () => {
     const lastSet = props.initialExercise.sets[props.initialExercise.sets.length - 1];
     dispatch(
-      scheduleAddSetAction(
-        props.year, props.weekId, props.day, props.trainingId, props.initialExercise.exerciseId, createClonedSet(lastSet)
+      schedulesAddSetAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.initialExercise.exerciseId, createClonedSet(lastSet)
       )
     );
   }
@@ -74,16 +75,16 @@ const Exercise: React.FC<Props> = (props) => {
   const removeSet = () => {
     const lastSet = props.initialExercise.sets[props.initialExercise.sets.length - 1];
     dispatch(
-      scheduleRemoveSetAction(
-        props.year, props.weekId, props.day, props.trainingId, props.initialExercise.exerciseId, lastSet
+      schedulesRemoveSetAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.initialExercise.exerciseId, lastSet
       )
     );
   }
 
   const cloneExercise = () => {
     dispatch(
-      scheduleAddExerciseAction(
-        props.year, props.weekId, props.day, props.trainingId, createClonedExercise(props.initialExercise)
+      schedulesAddExerciseAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.trainingId, createClonedExercise(props.initialExercise)
       )
     );
     setMenuVisible(false);
@@ -91,8 +92,8 @@ const Exercise: React.FC<Props> = (props) => {
 
   const resetExercise = () => {
     dispatch(
-      scheduleUpdateExerciseAction(
-        props.year, props.weekId, props.day, props.trainingId, createResetedExercise(props.initialExercise)
+      schedulesUpdateExerciseAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.trainingId, createResetedExercise(props.initialExercise)
       )
     );
     setMenuVisible(false);
@@ -100,8 +101,8 @@ const Exercise: React.FC<Props> = (props) => {
 
   const removeExercise = () => {
     dispatch(
-      scheduleRemoveExerciseAction(
-        props.year, props.weekId, props.day, props.trainingId, props.initialExercise
+      schedulesRemoveExerciseAction(
+        props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.initialExercise
       )
     );
     setMenuVisible(false);

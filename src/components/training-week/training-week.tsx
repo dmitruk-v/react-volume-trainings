@@ -25,6 +25,7 @@ import { DaysMenu } from "../days-menu/days-menu";
 type Props = {}
 
 type RouteParams = {
+  scheduleId: string,
   year: string,
   weekId: string,
   day: string
@@ -34,7 +35,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
 
   const match = useRouteMatch<RouteParams>();
   const trainingWeek = useSelector<RootState, TrainingWeekModel | undefined>(
-    state => selectTrainingWeekById(state, match.params.year, match.params.weekId)
+    state => selectTrainingWeekById(state, match.params.scheduleId, match.params.year, match.params.weekId)
   );
 
   const weekStats = useMemo(
@@ -48,13 +49,12 @@ const TrainingWeek: React.FC<Props> = (props) => {
 
   if (trainingWeek === undefined) {
     return (
-      <div>Can't find training week. Year: {match.params.year}, weekId: {match.params.weekId}</div>
+      <div>Training week (scheduleId: {match.params.scheduleId}, Year: {match.params.year}, weekId: {match.params.weekId}) not found.</div>
     );
   }
 
   return (
     <div className={`training-week ${weekScheduleClasses}`}>
-
       <div className="training-week__head">
         <div className={`tweek-head tweek-head--cycle_${trainingWeek.cycle}`}>
           <div className="tweek-head__meta">
@@ -71,7 +71,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
               <dd className="tweek-head__description">{trainingWeek.cycle}</dd>
             </dl>
           </div>
-          <div className="tweek-head__title">Week<br/>stats</div>
+          <div className="tweek-head__title">Week<br />stats</div>
           <div className="tweek-head__stats">
             <Stats
               statsOptions={{
@@ -85,11 +85,11 @@ const TrainingWeek: React.FC<Props> = (props) => {
               stats={weekStats}
             />
           </div>
-        </div>        
+        </div>
       </div>
 
       <div className="training-week__days">
-        <DaysMenu year={match.params.year} trainingWeek={trainingWeek} />
+        <DaysMenu scheduleId={match.params.scheduleId} year={match.params.year} trainingWeek={trainingWeek} />
       </div>
 
       <div className="training-week__selected-day">
@@ -97,6 +97,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
           {(Object.keys(trainingWeek.days) as (keyof typeof trainingWeek.days)[]).map(day => (
             <Route key={day} path={`${match.path}/${day}`}>
               <TrainingDay
+                scheduleId={match.params.scheduleId}
                 year={match.params.year}
                 weekId={match.params.weekId}
                 initialTrainingDay={trainingWeek.days[day]}
@@ -104,6 +105,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
                 {trainingWeek.days[day].trainings.map((training, tIdx) =>
                   <div key={training.trainingId} className="training-day__training">
                     <Training
+                      scheduleId={match.params.scheduleId}
                       year={match.params.year}
                       weekId={trainingWeek.weekId}
                       day={day}
@@ -113,6 +115,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
                       {training.exercises.map((exercise, eIdx) =>
                         <div key={exercise.exerciseId} className="training__exercise">
                           <Exercise
+                            scheduleId={match.params.scheduleId}
                             year={match.params.year}
                             weekId={trainingWeek.weekId}
                             day={day}
@@ -123,6 +126,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
                             {exercise.sets.map((set, sIdx) =>
                               <div key={set.setId} className="exercise__ex-set">
                                 <ExSet
+                                  scheduleId={match.params.scheduleId}
                                   year={match.params.year}
                                   weekId={trainingWeek.weekId}
                                   day={day}
@@ -142,7 +146,7 @@ const TrainingWeek: React.FC<Props> = (props) => {
               </TrainingDay>
             </Route>
           ))}
-          <Redirect from={match.path} to={`${match.url}/friday`} />
+          <Redirect from={match.path} to={`${match.url}/tuesday`} />
         </Switch>
       </div>
 

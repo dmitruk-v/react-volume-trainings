@@ -18,6 +18,7 @@ import { YearWeek } from "../year-week/year-week";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string
 };
 
@@ -25,7 +26,7 @@ let isScrolled = false;
 
 const TrainingYear: React.FC<Props> = (props) => {
 
-  const trainingYear = useSelector<RootState, TrainingYearModel>(state => selectTrainingYear(state, props.year));
+  const trainingYear = useSelector<RootState, TrainingYearModel | undefined>(state => selectTrainingYear(state, props.scheduleId, props.year));
   const currWeekStartDate = useMemo(() => getWeekStartDate(new Date()), []);
   const currWeekRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +36,7 @@ const TrainingYear: React.FC<Props> = (props) => {
   useScrollIntoView<HTMLDivElement>(currWeekRef, [!isScrolled], scrollDone);
 
   if (trainingYear === undefined) {
-    return <div>Training year ({props.year}) not found.</div>;
+    return <div>Training year ({props.scheduleId}, {props.year}) not found.</div>;
   }
 
   return (
@@ -44,6 +45,7 @@ const TrainingYear: React.FC<Props> = (props) => {
         {trainingYear.weeks.map((week, idx) => (
           <div ref={getRef(week)} key={idx} className="training-year__week">
             <YearWeek
+              scheduleId={props.scheduleId}
               year={props.year}
               weekNum={idx + 1}
               trainingWeek={week}

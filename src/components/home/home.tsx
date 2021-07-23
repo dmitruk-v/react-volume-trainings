@@ -1,4 +1,4 @@
-import React from "react";
+import { WithChildren } from "../../store";
 
 // STYLES ------------------------------------------
 import "./home.css";
@@ -9,7 +9,7 @@ import "./home.css";
 
 type Props = {};
 
-const Home: React.FC<Props> = (props) => {
+const Home = (props: WithChildren<Props>) => {
   return (
     <div className="app-home">
       <h1>Калькулятор обьёмных тренировок</h1>

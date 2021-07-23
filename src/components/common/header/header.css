@@ -1,8 +1,26 @@
-.header {}
-.header__menu {}
+.header {
+  background-color: #333333;
+}
+.header__layout {
+  display: flex;
+  flex-flow: row wrap;
+}
+.header__user {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 10px 0 10px 10px;
+  padding: 0 15px;
+  font-size: 18px;
+  background-color: #4da226;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.header__menu {
+  flex: 1;
+}
 .header-menu {
   padding: 10px 0 0 10px;
-  background-color: #333333;
 }
 .header-menu__list {
   display: flex;

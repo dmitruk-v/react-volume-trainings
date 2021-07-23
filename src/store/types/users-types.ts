@@ -1,16 +1,12 @@
-import { ScheduleId } from "./schedule-types";
+import { ScheduleId } from "./schedules-types";
 
 type UsersModel = {
   [userId: string]: UserModel
 }
 
-type UserId = string;
-
 type UserModel = {
-  userId: UserId,
+  userId: string,
   name: string,
-  password: string,
-  email: string,
   scheduleId: ScheduleId,
   measurements: {
     [date: string]: {
@@ -30,4 +26,4 @@ type UserModel = {
   }
 }
 
-export type { UsersModel, UserModel, UserId };
+export type { UsersModel, UserModel };

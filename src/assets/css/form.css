@@ -1,14 +1,16 @@
 .form {}
 .form__title {}
 .form__title + .form__field {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .form__field {
   margin-bottom: 15px;
 }
-.form__field:last-child:not(:only-child) {
+.form__field:last-child,
+.form__field:only-child {
   margin-bottom: 0;
 }
+
 .form__error {
   margin-top: 5px;
   font-size: 14px;
@@ -28,6 +30,9 @@
   flex: 1;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+.small-cols__col--auto {
+  flex: 0 0 auto;
 }
 
 /* control-input

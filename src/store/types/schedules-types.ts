@@ -1,6 +1,10 @@
 import { WeekDay } from ".";
 import { CYCLES } from "../../constants/schedule";
 
+type SchedulesModel = {
+  [scheduleId: string]: ScheduleModel
+}
+
 type ScheduleId = string;
 type ScheduleModel = {
   scheduleId: ScheduleId,
@@ -57,21 +61,9 @@ type StatsModel = {
   reps: number
 }
 
-type AppOptionsModel = {
-  ui: {
-    viewGridCols: number,
-  },
-  schedule: {
-    activeDay: WeekDay,
-    spreadReps: boolean,
-    spreadWeight: boolean
-  }
-};
-
-
 export type {
-  AppOptionsModel, Cycle,
+  Cycle,
   ExSetId, ExSetModel, ExerciseId, ExerciseModel, TrainingId, TrainingModel, TrainingDayModel,
-  WeekId, TrainingWeekModel, TrainingYearModel, ScheduleId, ScheduleModel, StatsModel
+  WeekId, TrainingWeekModel, TrainingYearModel, ScheduleId, ScheduleModel, SchedulesModel, StatsModel
 
 }

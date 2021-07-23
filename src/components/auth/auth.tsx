@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState, WithChildren } from "../../store";
 import { selectUsers } from "../../store/selectors";
-import { UsersModel, UserId, ScheduleId } from "../../store/types";
+import { UsersModel, ScheduleId } from "../../store/types";
 import { LoginForm } from "../login-form/login-form";
 import { RegistrationForm } from "../registration-form/registration-form";
 
@@ -35,7 +35,7 @@ const Auth = (props: WithChildren<Props>) => {
 }
 
 type App = {
-  selectedUser: UserId,
+  selectedUser: string,
   users: {
     [userId: string]: {
       username: string,

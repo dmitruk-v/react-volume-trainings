@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { AppDispatch, DataLoadingStatus, RootState } from "../../store";
-import { selectSchedule } from "../../store/selectors";
-import { ScheduleModel } from "../../store/types";
+import { selectScheduleById, selectAllSchedules } from "../../store/selectors";
+import { ScheduleModel, SchedulesModel } from "../../store/types";
 import { createSchedule } from "../../utils/create-schedule";
-import { scheduleCreateAction, scheduleLoadAction, scheduleLoadFailedAction, scheduleLoadSucceededAction } from "../../store/actions";
+import { schedulesCreateScheduleAction, schedulesLoadAction, schedulesLoadFailedAction, schedulesLoadSucceededAction } from "../../store/actions";
 import { useLocalStorage } from "../../hooks/useLocalStorageAsync";
 import { LS_SCHEDULE_KEY } from "../../constants";
 
@@ -22,49 +22,58 @@ import { LocalLoadingIndicator } from "../common/local-loading-indicator/local-l
 import { TrainingYear } from "../training-year/training-year";
 // -------------------------------------------------------------------
 
+type RouteParams = {
+  scheduleId: string
+}
+
 type Props = {};
 
 const Schedule: React.FC<Props> = (props) => {
 
-  const currYear = new Date().getFullYear();
-  const schedule = useSelector<RootState, ScheduleModel>(selectSchedule);
-  const scheduleStatus = useSelector<RootState, DataLoadingStatus>(state => state.schedule.status);
-  const scheduleError = useSelector<RootState, string | null>(state => state.schedule.error);
   const dispatch = useDispatch<AppDispatch>();
-  const match = useRouteMatch();
+  const match = useRouteMatch<RouteParams>();
+  const currYear = new Date().getFullYear();
+  const allSchedules = useSelector<RootState, SchedulesModel>(selectAllSchedules);
+  const schedule = useSelector<RootState, ScheduleModel | undefined>(state => selectScheduleById(state, match.params.scheduleId));
+  const schedulesStatus = useSelector<RootState, DataLoadingStatus>(state => state.schedules.status);
+  const schedulesError = useSelector<RootState, string | null>(state => state.schedules.error);
 
   console.log("Schedule called", schedule);
 
-  const scheduleDataProvider = useLocalStorage<ScheduleModel>(LS_SCHEDULE_KEY, scheduleDataTransformer);
+  // const scheduleDataProvider = useLocalStorage<SchedulesModel>(LS_SCHEDULE_KEY, scheduleDataTransformer);
 
-  useEffect(() => {
-    if (scheduleStatus === "succeeded") {
-      scheduleDataProvider.save(schedule);
-    }
-  }, [schedule, scheduleStatus, scheduleDataProvider]);
+  // useEffect(() => {
+  //   if (schedulesStatus === "succeeded") {
+  //     scheduleDataProvider.save(allSchedules);
+  //   }
+  // }, [allSchedules, schedulesStatus, scheduleDataProvider]);
 
-  useEffect(() => {
-    if (scheduleStatus === "idle") {
-      dispatch(scheduleLoadAction());
-      setTimeout(() => {
-        scheduleDataProvider.load()
-          .then(schedule => {
-            dispatch(scheduleLoadSucceededAction(schedule));
-          })
-          .catch(error => {
-            dispatch(scheduleLoadFailedAction(error));
-          })
-      }, 1000);
-    }
-  }, [dispatch, scheduleStatus, scheduleDataProvider]);
+  // useEffect(() => {
+  //   if (schedulesStatus === "idle") {
+  //     dispatch(schedulesLoadAction());
+  //     setTimeout(() => {
+  //       scheduleDataProvider.load()
+  //         .then(schedules => {
+  //           dispatch(schedulesLoadSucceededAction(schedules));
+  //         })
+  //         .catch(error => {
+  //           dispatch(schedulesLoadFailedAction(error));
+  //         })
+  //     }, 1000);
+  //   }
+  // }, [dispatch, schedulesStatus, scheduleDataProvider]);
 
   const handleScheduleCreate = () => {
     dispatch(
-      scheduleCreateAction(createSchedule([currYear], { trainingsCount: 0 }))
+      schedulesCreateScheduleAction(createSchedule([currYear], { trainingsCount: 0 }))
     );
   }
 
-  if (scheduleStatus === "loading") {
+  if (schedule === undefined) {
+    return <div>Schedule (scheduleId: {match.params.scheduleId}) not found.</div>
+  }
+
+  if (schedulesStatus === "loading") {
     return (
       <LocalLoadingIndicator
         text="Loading schedule"
@@ -73,12 +82,12 @@ const Schedule: React.FC<Props> = (props) => {
     );
   }
 
-  if (scheduleError !== null) {
+  if (schedulesError !== null) {
     return (
       <div className="schedule">
         <div className="app-message app-message--error schedule__message">
           <div className="app-message__title">Schedule loading failed.</div>
-          <div className="app-message__reason">{scheduleError}.</div>
+          <div className="app-message__reason">{schedulesError}.</div>
         </div>
         <div className="schedule__create-button">
           <button onClick={handleScheduleCreate} className="button button--ico-text">
@@ -107,7 +116,10 @@ const Schedule: React.FC<Props> = (props) => {
       <Switch>
         {Object.keys(schedule.years).map(year => (
           <Route key={year} path={`${match.path}/${year}`}>
-            <TrainingYear year={year} />
+            <TrainingYear
+              scheduleId={schedule.scheduleId}
+              year={year}
+            />
           </Route>
         ))}
         <Redirect exact from={match.path} to={`${match.url}/${currYear}`} />

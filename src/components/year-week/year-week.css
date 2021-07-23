@@ -82,65 +82,6 @@
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* DAY
------------------------------------------------------- */
-.t-year-day {
-  position: relative;
-  display: flex;
-  flex-flow: column wrap;
-  padding: 10px;
-  line-height: 1;
-  background-color: #ffffff;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: none;
-}
-.t-year-day:link,
-.t-year-day:visited {
-  color: var(--main-text-color);
-  text-decoration: none;
-}
-.t-year-day:hover,
-.t-year-day:active {
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.25);
-}
-
-.t-year-day__weekday {
-  margin-bottom: 5px;
-  padding-bottom: 5px;
-  font-size: 12px;
-  font-weight: bold;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.75);
-}
-.t-year-day__month {
-  margin-bottom: 2px;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.5);
-}
-.t-year-day__month::first-letter {
-  text-transform: uppercase;
-}
-.t-year-day__date {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  color: rgba(0, 0, 0, 0.75);
-}
-.t-year-day--used {
-  /* background: linear-gradient(0, rgb(255 255 255 / 35%), rgb(255 255 255 / 70%)); */
-  /* box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 2px rgba(0, 0, 0, 0.1); */
-}
-.t-year-day__link {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 5px;
-}
-
 /* NONE
 ------------------------------------------------------ */
 .t-year-week--cycle_none {
@@ -152,13 +93,6 @@
 }
 .t-year-week--cycle_none .t-year-week__cycle-name {
   color: #a1a1a1;
-}
-.t-year-week--cycle_none .t-year-day {
-  /* background-color: #f5f5f5; */
-  background-color: #ffffff;
-}
-.t-year-week--cycle_none .t-year-day--used {
-  background-color: #e1e1e1;
 }
 
 /* RELAX
@@ -173,12 +107,6 @@
 .t-year-week--cycle_relax .t-year-week__cycle-name {
   color: #4d87e4;
 }
-.t-year-week--cycle_relax .t-year-day {
-  background-color: #f1f6ff;
-}
-.t-year-week--cycle_relax .t-year-day--used {
-  background-color: #d3e4ff;
-}
 
 /* VOLUME
 ------------------------------------------------------ */
@@ -191,12 +119,6 @@
 }
 .t-year-week--cycle_volume .t-year-week__cycle-name {
   color: #3fc7a6;
-}
-.t-year-week--cycle_volume .t-year-day {
-  background-color: #edfbf8;
-}
-.t-year-week--cycle_volume .t-year-day--used {
-  background-color: #a5ffe9;
 }
 
 /* VOLUME-STRENGTH
@@ -211,12 +133,6 @@
 .t-year-week--cycle_volume-strength .t-year-week__cycle-name {
   color: #c765d8;
 }
-.t-year-week--cycle_volume-strength .t-year-day {
-  background-color: #f9f1fb;
-}
-.t-year-week--cycle_volume-strength .t-year-day--used {
-  background-color: #f8d0ff;
-}
 
 /* STRENGTH
 ------------------------------------------------------ */
@@ -230,12 +146,6 @@
 .t-year-week--cycle_strength .t-year-week__cycle-name {
   color: #d25454;
 }
-.t-year-week--cycle_strength .t-year-day {
-  background-color: #ffefef;
-}
-.t-year-week--cycle_strength .t-year-day--used {
-  background-color: #ffc6c6;
-}
 
 /* FAT_BURN
 ------------------------------------------------------ */
@@ -248,12 +158,6 @@
 }
 .t-year-week--cycle_fat-burn .t-year-week__cycle-name {
   color: #c5a92f;
-}
-.t-year-week--cycle_fat-burn .t-year-day {
-  background-color: #fbf6e4;
-}
-.t-year-week--cycle_fat-burn .t-year-day--used {
-  background-color: #fff0b0;
 }
 
 .dropdown.t-year-week__dropdown {

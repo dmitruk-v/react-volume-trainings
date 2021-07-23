@@ -1,0 +1,108 @@
+"filename", "language", "TypeScript", "CSS", "TypeScript React", "XML", "comment", "blank", "total"
+"h:\work\_projects\react\volume-trainings\src\App.css", "CSS", 0, 12, 0, 0, 0, 0, 12
+"h:\work\_projects\react\volume-trainings\src\App.tsx", "TypeScript React", 0, 0, 43, 0, 4, 6, 53
+"h:\work\_projects\react\volume-trainings\src\assets\css\button.css", "CSS", 0, 77, 0, 0, 4, 5, 86
+"h:\work\_projects\react\volume-trainings\src\assets\css\form.css", "CSS", 0, 126, 0, 0, 8, 4, 138
+"h:\work\_projects\react\volume-trainings\src\assets\css\normalize.css", "CSS", 0, 3, 0, 0, 0, 0, 3
+"h:\work\_projects\react\volume-trainings\src\assets\svg-loaders\loader-balls-line.svg", "XML", 0, 0, 0, 20, 0, 1, 21
+"h:\work\_projects\react\volume-trainings\src\assets\svg-loaders\loader-pendulum.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\add_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\add_circle_outline_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\arrow_downward_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\close_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\content_copy_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\copy_all_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\delete_outline_black_24dp-red.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\delete_outline_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\done_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\edit_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\history_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\keyboard_arrow_down_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\menu_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\menu_grey_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\assets\svg\settings_backup_restore_black_24dp.svg", "XML", 0, 0, 0, 1, 0, 0, 1
+"h:\work\_projects\react\volume-trainings\src\components\auth\auth.css", "CSS", 0, 0, 0, 0, 0, 1, 1
+"h:\work\_projects\react\volume-trainings\src\components\auth\auth.tsx", "TypeScript React", 0, 0, 32, 0, 6, 9, 47
+"h:\work\_projects\react\volume-trainings\src\components\bla\bla.tsx", "TypeScript React", 0, 0, 54, 0, 6, 13, 73
+"h:\work\_projects\react\volume-trainings\src\components\common\dropdown\dropdown.css", "CSS", 0, 103, 0, 0, 13, 13, 129
+"h:\work\_projects\react\volume-trainings\src\components\common\dropdown\dropdown.tsx", "TypeScript React", 0, 0, 30, 0, 6, 8, 44
+"h:\work\_projects\react\volume-trainings\src\components\common\footer\footer.css", "CSS", 0, 5, 0, 0, 1, 0, 6
+"h:\work\_projects\react\volume-trainings\src\components\common\footer\footer.tsx", "TypeScript React", 0, 0, 9, 0, 4, 5, 18
+"h:\work\_projects\react\volume-trainings\src\components\common\global-loading-indicator\global-loading-indicator.css", "CSS", 0, 20, 0, 0, 1, 0, 21
+"h:\work\_projects\react\volume-trainings\src\components\common\global-loading-indicator\global-loading-indicator.tsx", "TypeScript React", 0, 0, 26, 0, 6, 7, 39
+"h:\work\_projects\react\volume-trainings\src\components\common\header\header.css", "CSS", 0, 31, 0, 0, 0, 1, 32
+"h:\work\_projects\react\volume-trainings\src\components\common\header\header.tsx", "TypeScript React", 0, 0, 59, 0, 11, 15, 85
+"h:\work\_projects\react\volume-trainings\src\components\common\local-loading-indicator\local-loading-indicator.css", "CSS", 0, 16, 0, 0, 0, 0, 16
+"h:\work\_projects\react\volume-trainings\src\components\common\local-loading-indicator\local-loading-indicator.tsx", "TypeScript React", 0, 0, 26, 0, 7, 8, 41
+"h:\work\_projects\react\volume-trainings\src\components\days-menu\days-menu.css", "CSS", 0, 11, 0, 0, 0, 0, 11
+"h:\work\_projects\react\volume-trainings\src\components\days-menu\days-menu.tsx", "TypeScript React", 0, 0, 22, 0, 4, 7, 33
+"h:\work\_projects\react\volume-trainings\src\components\ex-set\ex-set.css", "CSS", 0, 73, 0, 0, 0, 0, 73
+"h:\work\_projects\react\volume-trainings\src\components\ex-set\ex-set.tsx", "TypeScript React", 0, 0, 79, 0, 6, 17, 102
+"h:\work\_projects\react\volume-trainings\src\components\exercise\exercise.css", "CSS", 0, 97, 0, 0, 5, 2, 104
+"h:\work\_projects\react\volume-trainings\src\components\exercise\exercise.tsx", "TypeScript React", 0, 0, 169, 0, 6, 25, 200
+"h:\work\_projects\react\volume-trainings\src\components\home\home.css", "CSS", 0, 6, 0, 0, 1, 0, 7
+"h:\work\_projects\react\volume-trainings\src\components\home\home.tsx", "TypeScript React", 0, 0, 22, 0, 4, 10, 36
+"h:\work\_projects\react\volume-trainings\src\components\login-form\login-form.css", "CSS", 0, 18, 0, 0, 0, 1, 19
+"h:\work\_projects\react\volume-trainings\src\components\login-form\login-form.tsx", "TypeScript React", 0, 0, 38, 0, 7, 9, 54
+"h:\work\_projects\react\volume-trainings\src\components\menu-day\menu-day.css", "CSS", 0, 144, 0, 0, 10, 6, 160
+"h:\work\_projects\react\volume-trainings\src\components\menu-day\menu-day.tsx", "TypeScript React", 0, 0, 100, 0, 6, 17, 123
+"h:\work\_projects\react\volume-trainings\src\components\options\options.css", "CSS", 0, 40, 0, 0, 13, 3, 56
+"h:\work\_projects\react\volume-trainings\src\components\options\options.tsx", "TypeScript React", 0, 0, 115, 0, 7, 16, 138
+"h:\work\_projects\react\volume-trainings\src\components\registration-form\registration-form.css", "CSS", 0, 18, 0, 0, 0, 1, 19
+"h:\work\_projects\react\volume-trainings\src\components\registration-form\registration-form.tsx", "TypeScript React", 0, 0, 236, 0, 8, 36, 280
+"h:\work\_projects\react\volume-trainings\src\components\schedule\schedule.css", "CSS", 0, 56, 0, 0, 0, 7, 63
+"h:\work\_projects\react\volume-trainings\src\components\schedule\schedule.tsx", "TypeScript React", 0, 0, 97, 0, 6, 19, 122
+"h:\work\_projects\react\volume-trainings\src\components\stats\stats.css", "CSS", 0, 166, 0, 0, 18, 9, 193
+"h:\work\_projects\react\volume-trainings\src\components\stats\stats.tsx", "TypeScript React", 0, 0, 61, 0, 4, 9, 74
+"h:\work\_projects\react\volume-trainings\src\components\training-day\training-day.css", "CSS", 0, 11, 0, 0, 0, 0, 11
+"h:\work\_projects\react\volume-trainings\src\components\training-day\training-day.tsx", "TypeScript React", 0, 0, 37, 0, 6, 9, 52
+"h:\work\_projects\react\volume-trainings\src\components\training-week\training-week.css", "CSS", 0, 134, 0, 0, 13, 9, 156
+"h:\work\_projects\react\volume-trainings\src\components\training-week\training-week.tsx", "TypeScript React", 0, 0, 131, 0, 6, 16, 153
+"h:\work\_projects\react\volume-trainings\src\components\training-year\training-year.css", "CSS", 0, 12, 0, 0, 0, 0, 12
+"h:\work\_projects\react\volume-trainings\src\components\training-year\training-year.tsx", "TypeScript React", 0, 0, 41, 0, 6, 12, 59
+"h:\work\_projects\react\volume-trainings\src\components\training\training.css", "CSS", 0, 104, 0, 0, 1, 2, 107
+"h:\work\_projects\react\volume-trainings\src\components\training\training.tsx", "TypeScript React", 0, 0, 107, 0, 6, 16, 129
+"h:\work\_projects\react\volume-trainings\src\components\users\users.css", "CSS", 0, 0, 0, 0, 0, 1, 1
+"h:\work\_projects\react\volume-trainings\src\components\users\users.tsx", "TypeScript React", 0, 0, 21, 0, 6, 11, 38
+"h:\work\_projects\react\volume-trainings\src\components\year-week\year-week.css", "CSS", 0, 236, 0, 0, 19, 9, 264
+"h:\work\_projects\react\volume-trainings\src\components\year-week\year-week.tsx", "TypeScript React", 0, 0, 148, 0, 6, 18, 172
+"h:\work\_projects\react\volume-trainings\src\constants\date-and-time.ts", "TypeScript", 28, 0, 0, 0, 4, 5, 37
+"h:\work\_projects\react\volume-trainings\src\constants\index.ts", "TypeScript", 3, 0, 0, 0, 0, 0, 3
+"h:\work\_projects\react\volume-trainings\src\constants\local-storage.ts", "TypeScript", 4, 0, 0, 0, 2, 2, 8
+"h:\work\_projects\react\volume-trainings\src\constants\schedule.ts", "TypeScript", 10, 0, 0, 0, 0, 2, 12
+"h:\work\_projects\react\volume-trainings\src\hooks\useClickOutside.ts", "TypeScript", 19, 0, 0, 0, 1, 4, 24
+"h:\work\_projects\react\volume-trainings\src\hooks\useIndexedDb.ts", "TypeScript", 3, 0, 0, 0, 0, 2, 5
+"h:\work\_projects\react\volume-trainings\src\hooks\useLocalStorage.ts", "TypeScript", 34, 0, 0, 0, 1, 6, 41
+"h:\work\_projects\react\volume-trainings\src\hooks\useLocalStorageAsync.ts", "TypeScript", 39, 0, 0, 0, 0, 6, 45
+"h:\work\_projects\react\volume-trainings\src\hooks\useScrollIntoView.ts", "TypeScript", 19, 0, 0, 0, 0, 4, 23
+"h:\work\_projects\react\volume-trainings\src\index.css", "CSS", 0, 56, 0, 0, 6, 11, 73
+"h:\work\_projects\react\volume-trainings\src\index.tsx", "TypeScript React", 0, 0, 14, 0, 0, 1, 15
+"h:\work\_projects\react\volume-trainings\src\providers\index.ts", "TypeScript", 7, 0, 0, 0, 0, 1, 8
+"h:\work\_projects\react\volume-trainings\src\providers\json-provider.ts", "TypeScript", 14, 0, 0, 0, 1, 4, 19
+"h:\work\_projects\react\volume-trainings\src\providers\local-storage-provider.ts", "TypeScript", 33, 0, 0, 0, 0, 5, 38
+"h:\work\_projects\react\volume-trainings\src\react-app-env.d.ts", "TypeScript", 0, 0, 0, 0, 1, 1, 2
+"h:\work\_projects\react\volume-trainings\src\store\actions\app-options-actions.ts", "TypeScript", 40, 0, 0, 0, 0, 6, 46
+"h:\work\_projects\react\volume-trainings\src\store\actions\index.ts", "TypeScript", 11, 0, 0, 0, 0, 3, 14
+"h:\work\_projects\react\volume-trainings\src\store\actions\schedule-actions.ts", "TypeScript", 158, 0, 0, 0, 24, 20, 202
+"h:\work\_projects\react\volume-trainings\src\store\actions\users-actions.ts", "TypeScript", 13, 0, 0, 0, 0, 4, 17
+"h:\work\_projects\react\volume-trainings\src\store\index.ts", "TypeScript", 3, 0, 0, 0, 4, 1, 8
+"h:\work\_projects\react\volume-trainings\src\store\providers.ts", "TypeScript", 7, 0, 0, 0, 0, 2, 9
+"h:\work\_projects\react\volume-trainings\src\store\reducers\app-options-reducer.ts", "TypeScript", 75, 0, 0, 0, 0, 9, 84
+"h:\work\_projects\react\volume-trainings\src\store\reducers\index.ts", "TypeScript", 11, 0, 0, 0, 0, 3, 14
+"h:\work\_projects\react\volume-trainings\src\store\reducers\reducers-utils.ts", "TypeScript", 13, 0, 0, 0, 0, 3, 16
+"h:\work\_projects\react\volume-trainings\src\store\reducers\schedule-reducer.ts", "TypeScript", 496, 0, 0, 0, 18, 22, 536
+"h:\work\_projects\react\volume-trainings\src\store\reducers\users-reducer.ts", "TypeScript", 29, 0, 0, 0, 0, 6, 35
+"h:\work\_projects\react\volume-trainings\src\store\selectors.ts", "TypeScript", 43, 0, 0, 0, 6, 13, 62
+"h:\work\_projects\react\volume-trainings\src\store\state.ts", "TypeScript", 16, 0, 0, 0, 4, 9, 29
+"h:\work\_projects\react\volume-trainings\src\store\types\date-types.ts", "TypeScript", 6, 0, 0, 0, 0, 3, 9
+"h:\work\_projects\react\volume-trainings\src\store\types\index.ts", "TypeScript", 3, 0, 0, 0, 0, 0, 3
+"h:\work\_projects\react\volume-trainings\src\store\types\schedule-types.ts", "TypeScript", 64, 0, 0, 0, 0, 13, 77
+"h:\work\_projects\react\volume-trainings\src\store\types\users-types.ts", "TypeScript", 29, 0, 0, 0, 0, 4, 33
+"h:\work\_projects\react\volume-trainings\src\utils\calculate-stats.ts", "TypeScript", 80, 0, 0, 0, 2, 7, 89
+"h:\work\_projects\react\volume-trainings\src\utils\create-schedule.ts", "TypeScript", 104, 0, 0, 0, 8, 14, 126
+"h:\work\_projects\react\volume-trainings\src\utils\create-users.ts", "TypeScript", 14, 0, 0, 0, 1, 2, 17
+"h:\work\_projects\react\volume-trainings\src\utils\css-utils.ts", "TypeScript", 17, 0, 0, 0, 0, 2, 19
+"h:\work\_projects\react\volume-trainings\src\utils\date-utils.ts", "TypeScript", 142, 0, 0, 0, 0, 27, 169
+"h:\work\_projects\react\volume-trainings\src\utils\generate-id.ts", "TypeScript", 34, 0, 0, 0, 9, 8, 51
+"h:\work\_projects\react\volume-trainings\src\utils\schedule-utils.ts", "TypeScript", 62, 0, 0, 0, 15, 13, 90
+"Total", "-", 1683, 1575, 1717, 36, 358, 641, 6010

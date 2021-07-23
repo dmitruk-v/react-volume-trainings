@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store";
-import { scheduleUpdateSetWithSpreadAction, scheduleUpdateSetAction } from "../../store/actions";
+import { schedulesUpdateSetWithSpreadAction, schedulesUpdateSetAction } from "../../store/actions";
 import { selectScheduleOptions } from "../../store/selectors";
 import { WeekDay, ExSetModel } from "../../store/types";
 
@@ -15,9 +15,10 @@ import "./ex-set.css";
 // COMPONENTS --------------------------------------
 // -------------------------------------------------
 
-type UpdateSetActionCreator = typeof scheduleUpdateSetWithSpreadAction | typeof scheduleUpdateSetAction;
+type UpdateSetActionCreator = typeof schedulesUpdateSetWithSpreadAction | typeof schedulesUpdateSetAction;
 
 type Props = {
+  scheduleId: string,
   year: string,
   weekId: string,
   day: WeekDay,
@@ -47,13 +48,13 @@ const ExSet: React.FC<Props> = (props) => {
       updatedSet = { ...props.initialSet, weight: val };
     }
 
-    let actionCreator: UpdateSetActionCreator = scheduleUpdateSetAction;
+    let actionCreator: UpdateSetActionCreator = schedulesUpdateSetAction;
     if (scheduleOptions.spreadReps === true || scheduleOptions.spreadWeight === true) {
-      actionCreator = scheduleUpdateSetWithSpreadAction;
+      actionCreator = schedulesUpdateSetWithSpreadAction;
     }
 
     dispatch(
-      actionCreator(props.year, props.weekId, props.day, props.trainingId, props.exerciseId, updatedSet)
+      actionCreator(props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.exerciseId, updatedSet)
     );
   }
 

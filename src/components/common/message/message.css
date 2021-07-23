@@ -1,0 +1,16 @@
+.message {
+  padding: 15px;
+  border: 1px solid #cccccc;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.message--warning {
+  border-color: #e0dab0;
+  background-color: #fffada;
+}
+
+.message--error {
+  border-color: #e0dab0;
+  background-color: #fffada;
+}

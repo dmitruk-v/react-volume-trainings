@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
+import { UserModel } from "./store/types";
+import { selectScheduleById, selectUserById } from "./store/selectors";
+import { useAppSelector } from "./hooks/common";
 
 // STYLES ------------------------------------------
 import "./App.css";
@@ -15,7 +20,7 @@ import { Schedule } from "./components/schedule/schedule";
 import { Bla } from "./components/bla/bla";
 import { Users } from "./components/users/users";
 import { Auth } from "./components/auth/auth";
-// -------------------------------------------------
+// --------------------------------------------------
 
 function App() {
   return (
@@ -30,8 +35,8 @@ function App() {
             <Route path="/bla" component={Bla} />
             <Route path="/auth" component={Auth} />
             <Route path="/users" component={Users} />
-            <Route path="/schedule" component={Schedule} />
-            <Route path="/week-schedule/:year/:weekId" component={TrainingWeek} />
+            <Route path="/years-schedule/:scheduleId" component={Schedule} />
+            <Route path="/week-schedule/:scheduleId/:year/:weekId" component={TrainingWeek} />
             <Route path="/options" component={Options} />
             <Route path="*" component={NoMatch} />
           </Switch>

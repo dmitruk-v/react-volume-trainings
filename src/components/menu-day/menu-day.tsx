@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useRouteMatch, NavLink, useLocation } from "react-router-dom";
 import { AppDispatch, calculateTrainingDayStats, RootState } from "../../store";
-import { scheduleUpdateTrainingDayAction } from "../../store/actions";
+import { schedulesUpdateTrainingDayAction } from "../../store/actions";
 import { WeekDay, TrainingWeekModel, TrainingDayModel } from "../../store/types";
 import { WEEK_DAYS } from "../../constants/date-and-time";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +23,7 @@ import { Dropdown } from "../common/dropdown/dropdown";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string,
   weekId: string,
   trainingDay: TrainingDayModel
@@ -36,7 +37,7 @@ const MenuDay: React.FC<Props> = (props) => {
   const dispatch = useDispatch<AppDispatch>();
   const [cloneMenuOpened, setCloneMenuOpened] = useState(false);
   const trainingWeek = useSelector<RootState, TrainingWeekModel | undefined>(
-    state => selectTrainingWeekById(state, props.year, props.weekId)
+    state => selectTrainingWeekById(state, props.scheduleId, props.year, props.weekId)
   );
 
   const dayStats = useMemo(
@@ -51,7 +52,7 @@ const MenuDay: React.FC<Props> = (props) => {
       trainings: trainingWeek.days[dayToClone].trainings.map(tr => createClonedTraining(tr))
     };
     dispatch(
-      scheduleUpdateTrainingDayAction(props.year, props.weekId, updatedTrainingDay)
+      schedulesUpdateTrainingDayAction(props.scheduleId, props.year, props.weekId, updatedTrainingDay)
     );
     setCloneMenuOpened(false);
   }

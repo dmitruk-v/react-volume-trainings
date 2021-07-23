@@ -5,7 +5,7 @@ import { getWeekdayDates } from "./date-utils";
 
 const defaultScheduleOptions = {
   startDay: "monday",
-  trainingsCount: 1,
+  trainingsCount: 0,
   exercisesCount: 1,
   setsCount: 3,
   exerciseName: "Exercise",

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch, createTraining } from "../../store";
-import { scheduleAddTrainingAction } from "../../store/actions";
+import { schedulesAddTrainingAction } from "../../store/actions";
 import { TrainingDayModel } from "../../store/types";
 
 // ASSETS ------------------------------------------
@@ -15,6 +15,7 @@ import "./training-day.css";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string,
   weekId: string,
   initialTrainingDay: TrainingDayModel
@@ -26,7 +27,7 @@ const TrainingDay: React.FC<Props> = (props) => {
 
   const handleAddTraining = () => {
     dispatch(
-      scheduleAddTrainingAction(props.year, props.weekId, props.initialTrainingDay.day, createTraining())
+      schedulesAddTrainingAction(props.scheduleId, props.year, props.weekId, props.initialTrainingDay.day, createTraining())
     )
   }
 
@@ -35,8 +36,7 @@ const TrainingDay: React.FC<Props> = (props) => {
       <div className="training-day__body">
         {props.initialTrainingDay.trainings.length === 0
           ? (
-            <button className="button button--ico-text" onClick={() => handleAddTraining()}>
-              <img src={icoPlus} alt="ico-plus" />
+            <button className="button button--primary" onClick={() => handleAddTraining()}>
               <span>Add training</span>
             </button>
           )

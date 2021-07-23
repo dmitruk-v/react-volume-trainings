@@ -1,15 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useMemo, useRef, useState } from "react";
 import { CYCLES } from "../../constants/schedule";
 import { AppDispatch, calculateTrainingDayStats, calculateTrainingWeekStats, RootState } from "../../store";
-import { scheduleUpdateTrainingWeekAction } from "../../store/actions";
+import { schedulesUpdateTrainingWeekAction } from "../../store/actions";
 import { Cycle, TrainingWeekModel, WeekDay, ScheduleModel } from "../../store/types";
-import { getDayName, getMonthName } from "../../utils/date-utils";
 import { getClasses } from "../../utils/css-utils";
 import { useDispatch, useSelector } from "react-redux";
 import { createClonedWeek } from "../../utils/schedule-utils";
-import { selectSchedule } from "../../store/selectors";
-import { useScrollIntoView } from "../../hooks/useScrollIntoView";
+import { selectScheduleById } from "../../store/selectors";
 
 // ASSETS ------------------------------------------
 import icoCycle from "../../assets/svg/settings_backup_restore_black_24dp.svg";
@@ -22,32 +19,27 @@ import "./year-week.css";
 
 // COMPONENTS --------------------------------------
 import { Dropdown } from "../common/dropdown/dropdown";
+import { YearDay } from "../year-day/year-day";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string,
   currWeekStartDate: Date,
   trainingWeek: TrainingWeekModel,
   weekNum: number
 };
 
-let isScrolled = false;
-
 const YearWeek: React.FC<Props> = (props) => {
   const dispatch = useDispatch<AppDispatch>();
   const [cycleMenuOpened, setCycleMenuOpened] = useState(false);
   const [copyMenuOpened, setCopyMenuOpened] = useState(false);
-  const schedule = useSelector<RootState, ScheduleModel>(selectSchedule);
+  const schedule = useSelector<RootState, ScheduleModel | undefined>(state => selectScheduleById(state, props.scheduleId));
   const weekDivRef = useRef<HTMLDivElement>(null);
-
-  const isCurrentWeek = useMemo(
-    () => props.currWeekStartDate.getTime() === props.trainingWeek.weekStartDate.getTime(),
-    [props.currWeekStartDate, props.trainingWeek.weekStartDate]
-  );
 
   const handleCycleChange = (cycle: Cycle) => {
     dispatch(
-      scheduleUpdateTrainingWeekAction(props.year, {
+      schedulesUpdateTrainingWeekAction(props.scheduleId, props.year, {
         ...props.trainingWeek, cycle
       })
     );
@@ -55,10 +47,11 @@ const YearWeek: React.FC<Props> = (props) => {
   }
 
   const handleWeekCopy = (fromWeekId: string) => {
+    if (schedule === undefined) return;
     const fromWeek = schedule.years[props.year].weeks.find(week => week.weekId === fromWeekId);
     if (fromWeek === undefined) return;
     dispatch(
-      scheduleUpdateTrainingWeekAction(props.year, createClonedWeek(fromWeek, props.trainingWeek))
+      schedulesUpdateTrainingWeekAction(props.scheduleId, props.year, createClonedWeek(fromWeek, props.trainingWeek))
     );
     setCopyMenuOpened(false);
   }
@@ -99,14 +92,14 @@ const YearWeek: React.FC<Props> = (props) => {
             );
             return (
               <div key={day} className="t-year-week__day">
-                <NavLink
-                  className={`t-year-day ${dayStats.volume > 0 ? "t-year-day--used" : ""}`}
-                  to={`/week-schedule/${props.year}/${props.trainingWeek.weekId}/${day}`}
-                >
-                  <div className="t-year-day__weekday">{formatWeekday(currDayDate)}</div>
-                  <div className="t-year-day__month">{formatMonth(currDayDate)}</div>
-                  <div className="t-year-day__date">{currDayDate.getDate()}</div>
-                </NavLink>
+                <YearDay
+                  isUsed={dayStats.volume > 0}
+                  scheduleId={props.scheduleId}
+                  year={props.year}
+                  weekId={props.trainingWeek.weekId}
+                  day={day as WeekDay}
+                  currDayDate={currDayDate}
+                />
               </div>
             );
           })}
@@ -128,7 +121,7 @@ const YearWeek: React.FC<Props> = (props) => {
           <div className="control-select">
             <select onChange={(evt) => handleWeekCopy(evt.target.value)} className="control-select__native">
               <option key={-1} value="">Select week</option>
-              {schedule.years[props.year].weeks.map((week, idx) => (
+              {schedule && schedule.years[props.year].weeks.map((week, idx) => (
                 <option key={idx} value={week.weekId}>{idx + 1}</option>
               ))}
             </select>
@@ -160,13 +153,5 @@ const YearWeek: React.FC<Props> = (props) => {
     </div>
   );
 }
-
-const formatMonth = (date: Date): string => {
-  return getMonthName(date.getMonth()).slice(0, 3);
-};
-
-const formatWeekday = (weekday: Date): string => {
-  return getDayName(weekday.getDay()).slice(0, 3);
-};
 
 export { YearWeek };

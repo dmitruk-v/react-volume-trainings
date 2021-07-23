@@ -1,0 +1,170 @@
+Date : 2021-07-21 19:54:08
+Directory : h:\work\_projects\react\volume-trainings\src
+Total : 106 files,  5011 codes, 358 comments, 641 blanks, all 6010 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| TypeScript React |         25 |      1,717 |        144 |        319 |      2,180 |
+| TypeScript       |         37 |      1,683 |        101 |        236 |      2,020 |
+| CSS              |         27 |      1,575 |        113 |         85 |      1,773 |
+| XML              |         17 |         36 |          0 |          1 |         37 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                    |        106 |      5,011 |        358 |        641 |      6,010 |
+| assets                                                                                                               |         20 |        242 |         12 |         10 |        264 |
+| assets\css                                                                                                           |          3 |        206 |         12 |          9 |        227 |
+| assets\svg                                                                                                           |         15 |         15 |          0 |          0 |         15 |
+| assets\svg-loaders                                                                                                   |          2 |         21 |          0 |          1 |         22 |
+| components                                                                                                           |         45 |      2,961 |        235 |        377 |      3,573 |
+| components\auth                                                                                                      |          2 |         32 |          6 |         10 |         48 |
+| components\bla                                                                                                       |          1 |         54 |          6 |         13 |         73 |
+| components\common                                                                                                    |         10 |        325 |         49 |         57 |        431 |
+| components\common\dropdown                                                                                           |          2 |        133 |         19 |         21 |        173 |
+| components\common\footer                                                                                             |          2 |         14 |          5 |          5 |         24 |
+| components\common\global-loading-indicator                                                                           |          2 |         46 |          7 |          7 |         60 |
+| components\common\header                                                                                             |          2 |         90 |         11 |         16 |        117 |
+| components\common\local-loading-indicator                                                                            |          2 |         42 |          7 |          8 |         57 |
+| components\days-menu                                                                                                 |          2 |         33 |          4 |          7 |         44 |
+| components\ex-set                                                                                                    |          2 |        152 |          6 |         17 |        175 |
+| components\exercise                                                                                                  |          2 |        266 |         11 |         27 |        304 |
+| components\home                                                                                                      |          2 |         28 |          5 |         10 |         43 |
+| components\login-form                                                                                                |          2 |         56 |          7 |         10 |         73 |
+| components\menu-day                                                                                                  |          2 |        244 |         16 |         23 |        283 |
+| components\options                                                                                                   |          2 |        155 |         20 |         19 |        194 |
+| components\registration-form                                                                                         |          2 |        254 |          8 |         37 |        299 |
+| components\schedule                                                                                                  |          2 |        153 |          6 |         26 |        185 |
+| components\stats                                                                                                     |          2 |        227 |         22 |         18 |        267 |
+| components\training                                                                                                  |          2 |        211 |          7 |         18 |        236 |
+| components\training-day                                                                                              |          2 |         48 |          6 |          9 |         63 |
+| components\training-week                                                                                             |          2 |        265 |         19 |         25 |        309 |
+| components\training-year                                                                                             |          2 |         53 |          6 |         12 |         71 |
+| components\users                                                                                                     |          2 |         21 |          6 |         12 |         39 |
+| components\year-week                                                                                                 |          2 |        384 |         25 |         27 |        436 |
+| constants                                                                                                            |          4 |         45 |          6 |          9 |         60 |
+| hooks                                                                                                                |          5 |        114 |          2 |         22 |        138 |
+| providers                                                                                                            |          3 |         54 |          1 |         10 |         65 |
+| store                                                                                                                |         17 |      1,017 |         56 |        121 |      1,194 |
+| store\actions                                                                                                        |          4 |        222 |         24 |         33 |        279 |
+| store\reducers                                                                                                       |          5 |        624 |         18 |         43 |        685 |
+| store\types                                                                                                          |          4 |        102 |          0 |         20 |        122 |
+| utils                                                                                                                |          7 |        453 |         35 |         73 |        561 |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                             | language         | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| h:\work\_projects\react\volume-trainings\src\App.css                                                                 | CSS              |         12 |          0 |          0 |         12 |
+| h:\work\_projects\react\volume-trainings\src\App.tsx                                                                 | TypeScript React |         43 |          4 |          6 |         53 |
+| h:\work\_projects\react\volume-trainings\src\assets\css\button.css                                                   | CSS              |         77 |          4 |          5 |         86 |
+| h:\work\_projects\react\volume-trainings\src\assets\css\form.css                                                     | CSS              |        126 |          8 |          4 |        138 |
+| h:\work\_projects\react\volume-trainings\src\assets\css\normalize.css                                                | CSS              |          3 |          0 |          0 |          3 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg-loaders\loader-balls-line.svg                                | XML              |         20 |          0 |          1 |         21 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg-loaders\loader-pendulum.svg                                  | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\add_black_24dp.svg                                           | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\add_circle_outline_black_24dp.svg                            | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\arrow_downward_black_24dp.svg                                | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\close_black_24dp.svg                                         | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\content_copy_black_24dp.svg                                  | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\copy_all_black_24dp.svg                                      | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\delete_outline_black_24dp-red.svg                            | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\delete_outline_black_24dp.svg                                | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\done_black_24dp.svg                                          | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\edit_black_24dp.svg                                          | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\history_black_24dp.svg                                       | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\keyboard_arrow_down_black_24dp.svg                           | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\menu_black_24dp.svg                                          | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\menu_grey_24dp.svg                                           | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\assets\svg\settings_backup_restore_black_24dp.svg                       | XML              |          1 |          0 |          0 |          1 |
+| h:\work\_projects\react\volume-trainings\src\components\auth\auth.css                                                | CSS              |          0 |          0 |          1 |          1 |
+| h:\work\_projects\react\volume-trainings\src\components\auth\auth.tsx                                                | TypeScript React |         32 |          6 |          9 |         47 |
+| h:\work\_projects\react\volume-trainings\src\components\bla\bla.tsx                                                  | TypeScript React |         54 |          6 |         13 |         73 |
+| h:\work\_projects\react\volume-trainings\src\components\common\dropdown\dropdown.css                                 | CSS              |        103 |         13 |         13 |        129 |
+| h:\work\_projects\react\volume-trainings\src\components\common\dropdown\dropdown.tsx                                 | TypeScript React |         30 |          6 |          8 |         44 |
+| h:\work\_projects\react\volume-trainings\src\components\common\footer\footer.css                                     | CSS              |          5 |          1 |          0 |          6 |
+| h:\work\_projects\react\volume-trainings\src\components\common\footer\footer.tsx                                     | TypeScript React |          9 |          4 |          5 |         18 |
+| h:\work\_projects\react\volume-trainings\src\components\common\global-loading-indicator\global-loading-indicator.css | CSS              |         20 |          1 |          0 |         21 |
+| h:\work\_projects\react\volume-trainings\src\components\common\global-loading-indicator\global-loading-indicator.tsx | TypeScript React |         26 |          6 |          7 |         39 |
+| h:\work\_projects\react\volume-trainings\src\components\common\header\header.css                                     | CSS              |         31 |          0 |          1 |         32 |
+| h:\work\_projects\react\volume-trainings\src\components\common\header\header.tsx                                     | TypeScript React |         59 |         11 |         15 |         85 |
+| h:\work\_projects\react\volume-trainings\src\components\common\local-loading-indicator\local-loading-indicator.css   | CSS              |         16 |          0 |          0 |         16 |
+| h:\work\_projects\react\volume-trainings\src\components\common\local-loading-indicator\local-loading-indicator.tsx   | TypeScript React |         26 |          7 |          8 |         41 |
+| h:\work\_projects\react\volume-trainings\src\components\days-menu\days-menu.css                                      | CSS              |         11 |          0 |          0 |         11 |
+| h:\work\_projects\react\volume-trainings\src\components\days-menu\days-menu.tsx                                      | TypeScript React |         22 |          4 |          7 |         33 |
+| h:\work\_projects\react\volume-trainings\src\components\ex-set\ex-set.css                                            | CSS              |         73 |          0 |          0 |         73 |
+| h:\work\_projects\react\volume-trainings\src\components\ex-set\ex-set.tsx                                            | TypeScript React |         79 |          6 |         17 |        102 |
+| h:\work\_projects\react\volume-trainings\src\components\exercise\exercise.css                                        | CSS              |         97 |          5 |          2 |        104 |
+| h:\work\_projects\react\volume-trainings\src\components\exercise\exercise.tsx                                        | TypeScript React |        169 |          6 |         25 |        200 |
+| h:\work\_projects\react\volume-trainings\src\components\home\home.css                                                | CSS              |          6 |          1 |          0 |          7 |
+| h:\work\_projects\react\volume-trainings\src\components\home\home.tsx                                                | TypeScript React |         22 |          4 |         10 |         36 |
+| h:\work\_projects\react\volume-trainings\src\components\login-form\login-form.css                                    | CSS              |         18 |          0 |          1 |         19 |
+| h:\work\_projects\react\volume-trainings\src\components\login-form\login-form.tsx                                    | TypeScript React |         38 |          7 |          9 |         54 |
+| h:\work\_projects\react\volume-trainings\src\components\menu-day\menu-day.css                                        | CSS              |        144 |         10 |          6 |        160 |
+| h:\work\_projects\react\volume-trainings\src\components\menu-day\menu-day.tsx                                        | TypeScript React |        100 |          6 |         17 |        123 |
+| h:\work\_projects\react\volume-trainings\src\components\options\options.css                                          | CSS              |         40 |         13 |          3 |         56 |
+| h:\work\_projects\react\volume-trainings\src\components\options\options.tsx                                          | TypeScript React |        115 |          7 |         16 |        138 |
+| h:\work\_projects\react\volume-trainings\src\components\registration-form\registration-form.css                      | CSS              |         18 |          0 |          1 |         19 |
+| h:\work\_projects\react\volume-trainings\src\components\registration-form\registration-form.tsx                      | TypeScript React |        236 |          8 |         36 |        280 |
+| h:\work\_projects\react\volume-trainings\src\components\schedule\schedule.css                                        | CSS              |         56 |          0 |          7 |         63 |
+| h:\work\_projects\react\volume-trainings\src\components\schedule\schedule.tsx                                        | TypeScript React |         97 |          6 |         19 |        122 |
+| h:\work\_projects\react\volume-trainings\src\components\stats\stats.css                                              | CSS              |        166 |         18 |          9 |        193 |
+| h:\work\_projects\react\volume-trainings\src\components\stats\stats.tsx                                              | TypeScript React |         61 |          4 |          9 |         74 |
+| h:\work\_projects\react\volume-trainings\src\components\training-day\training-day.css                                | CSS              |         11 |          0 |          0 |         11 |
+| h:\work\_projects\react\volume-trainings\src\components\training-day\training-day.tsx                                | TypeScript React |         37 |          6 |          9 |         52 |
+| h:\work\_projects\react\volume-trainings\src\components\training-week\training-week.css                              | CSS              |        134 |         13 |          9 |        156 |
+| h:\work\_projects\react\volume-trainings\src\components\training-week\training-week.tsx                              | TypeScript React |        131 |          6 |         16 |        153 |
+| h:\work\_projects\react\volume-trainings\src\components\training-year\training-year.css                              | CSS              |         12 |          0 |          0 |         12 |
+| h:\work\_projects\react\volume-trainings\src\components\training-year\training-year.tsx                              | TypeScript React |         41 |          6 |         12 |         59 |
+| h:\work\_projects\react\volume-trainings\src\components\training\training.css                                        | CSS              |        104 |          1 |          2 |        107 |
+| h:\work\_projects\react\volume-trainings\src\components\training\training.tsx                                        | TypeScript React |        107 |          6 |         16 |        129 |
+| h:\work\_projects\react\volume-trainings\src\components\users\users.css                                              | CSS              |          0 |          0 |          1 |          1 |
+| h:\work\_projects\react\volume-trainings\src\components\users\users.tsx                                              | TypeScript React |         21 |          6 |         11 |         38 |
+| h:\work\_projects\react\volume-trainings\src\components\year-week\year-week.css                                      | CSS              |        236 |         19 |          9 |        264 |
+| h:\work\_projects\react\volume-trainings\src\components\year-week\year-week.tsx                                      | TypeScript React |        148 |          6 |         18 |        172 |
+| h:\work\_projects\react\volume-trainings\src\constants\date-and-time.ts                                              | TypeScript       |         28 |          4 |          5 |         37 |
+| h:\work\_projects\react\volume-trainings\src\constants\index.ts                                                      | TypeScript       |          3 |          0 |          0 |          3 |
+| h:\work\_projects\react\volume-trainings\src\constants\local-storage.ts                                              | TypeScript       |          4 |          2 |          2 |          8 |
+| h:\work\_projects\react\volume-trainings\src\constants\schedule.ts                                                   | TypeScript       |         10 |          0 |          2 |         12 |
+| h:\work\_projects\react\volume-trainings\src\hooks\useClickOutside.ts                                                | TypeScript       |         19 |          1 |          4 |         24 |
+| h:\work\_projects\react\volume-trainings\src\hooks\useIndexedDb.ts                                                   | TypeScript       |          3 |          0 |          2 |          5 |
+| h:\work\_projects\react\volume-trainings\src\hooks\useLocalStorage.ts                                                | TypeScript       |         34 |          1 |          6 |         41 |
+| h:\work\_projects\react\volume-trainings\src\hooks\useLocalStorageAsync.ts                                           | TypeScript       |         39 |          0 |          6 |         45 |
+| h:\work\_projects\react\volume-trainings\src\hooks\useScrollIntoView.ts                                              | TypeScript       |         19 |          0 |          4 |         23 |
+| h:\work\_projects\react\volume-trainings\src\index.css                                                               | CSS              |         56 |          6 |         11 |         73 |
+| h:\work\_projects\react\volume-trainings\src\index.tsx                                                               | TypeScript React |         14 |          0 |          1 |         15 |
+| h:\work\_projects\react\volume-trainings\src\providers\index.ts                                                      | TypeScript       |          7 |          0 |          1 |          8 |
+| h:\work\_projects\react\volume-trainings\src\providers\json-provider.ts                                              | TypeScript       |         14 |          1 |          4 |         19 |
+| h:\work\_projects\react\volume-trainings\src\providers\local-storage-provider.ts                                     | TypeScript       |         33 |          0 |          5 |         38 |
+| h:\work\_projects\react\volume-trainings\src\react-app-env.d.ts                                                      | TypeScript       |          0 |          1 |          1 |          2 |
+| h:\work\_projects\react\volume-trainings\src\store\actions\app-options-actions.ts                                    | TypeScript       |         40 |          0 |          6 |         46 |
+| h:\work\_projects\react\volume-trainings\src\store\actions\index.ts                                                  | TypeScript       |         11 |          0 |          3 |         14 |
+| h:\work\_projects\react\volume-trainings\src\store\actions\schedule-actions.ts                                       | TypeScript       |        158 |         24 |         20 |        202 |
+| h:\work\_projects\react\volume-trainings\src\store\actions\users-actions.ts                                          | TypeScript       |         13 |          0 |          4 |         17 |
+| h:\work\_projects\react\volume-trainings\src\store\index.ts                                                          | TypeScript       |          3 |          4 |          1 |          8 |
+| h:\work\_projects\react\volume-trainings\src\store\providers.ts                                                      | TypeScript       |          7 |          0 |          2 |          9 |
+| h:\work\_projects\react\volume-trainings\src\store\reducers\app-options-reducer.ts                                   | TypeScript       |         75 |          0 |          9 |         84 |
+| h:\work\_projects\react\volume-trainings\src\store\reducers\index.ts                                                 | TypeScript       |         11 |          0 |          3 |         14 |
+| h:\work\_projects\react\volume-trainings\src\store\reducers\reducers-utils.ts                                        | TypeScript       |         13 |          0 |          3 |         16 |
+| h:\work\_projects\react\volume-trainings\src\store\reducers\schedule-reducer.ts                                      | TypeScript       |        496 |         18 |         22 |        536 |
+| h:\work\_projects\react\volume-trainings\src\store\reducers\users-reducer.ts                                         | TypeScript       |         29 |          0 |          6 |         35 |
+| h:\work\_projects\react\volume-trainings\src\store\selectors.ts                                                      | TypeScript       |         43 |          6 |         13 |         62 |
+| h:\work\_projects\react\volume-trainings\src\store\state.ts                                                          | TypeScript       |         16 |          4 |          9 |         29 |
+| h:\work\_projects\react\volume-trainings\src\store\types\date-types.ts                                               | TypeScript       |          6 |          0 |          3 |          9 |
+| h:\work\_projects\react\volume-trainings\src\store\types\index.ts                                                    | TypeScript       |          3 |          0 |          0 |          3 |
+| h:\work\_projects\react\volume-trainings\src\store\types\schedule-types.ts                                           | TypeScript       |         64 |          0 |         13 |         77 |
+| h:\work\_projects\react\volume-trainings\src\store\types\users-types.ts                                              | TypeScript       |         29 |          0 |          4 |         33 |
+| h:\work\_projects\react\volume-trainings\src\utils\calculate-stats.ts                                                | TypeScript       |         80 |          2 |          7 |         89 |
+| h:\work\_projects\react\volume-trainings\src\utils\create-schedule.ts                                                | TypeScript       |        104 |          8 |         14 |        126 |
+| h:\work\_projects\react\volume-trainings\src\utils\create-users.ts                                                   | TypeScript       |         14 |          1 |          2 |         17 |
+| h:\work\_projects\react\volume-trainings\src\utils\css-utils.ts                                                      | TypeScript       |         17 |          0 |          2 |         19 |
+| h:\work\_projects\react\volume-trainings\src\utils\date-utils.ts                                                     | TypeScript       |        142 |          0 |         27 |        169 |
+| h:\work\_projects\react\volume-trainings\src\utils\generate-id.ts                                                    | TypeScript       |         34 |          9 |          8 |         51 |
+| h:\work\_projects\react\volume-trainings\src\utils\schedule-utils.ts                                                 | TypeScript       |         62 |         15 |         13 |         90 |
+| Total                                                                                                                |                  |      5,011 |        358 |        641 |      6,010 |
++----------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

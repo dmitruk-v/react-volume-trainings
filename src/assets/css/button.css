@@ -1,6 +1,8 @@
 /* button
 --------------------------------------------------------------------------------- */
-.button {
+.button,
+.button:link,
+.button:visited {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -11,17 +13,34 @@
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  border: 2px solid #000000;
-  background-color: #ffffff;
-  color: #000000;
+  border: 0;
+  background-color: #f1f1f1;
+  color: #555555;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0 2px 2px #cccccc;
 }
+
+.button:hover,
+.button:active {
+  background-color: #fafafa;
+}
+
+
 .button span {
   padding-top: 2px;
 }
-.button:hover {
-  border-color: #cccccc;
+
+.button--primary,
+.button--primary:link,
+.button--primary:visited {
+  background-color: #ffde9c;
+  color: #80693b;
+  box-shadow: 0 2px 2px #c3a467;
+}
+.button--primary:hover,
+.button--primary:active {
+  background-color: #ffe5b0;
 }
 
 .button--ico-text {
@@ -33,20 +52,15 @@
   margin-right: 5px;
 }
 
-.button--primary,
-.button--primary:link,
-.button--primary:visited {
-  border-color: #f3d395;
-  background-color: #ffde9c;
-  color: #8a6b2c;
-}
-.button--primary:hover,
-.button--primary:active {
-  border-color: #8a6b2c;
-}
-
 .button--wide {
   width: 100%;
+}
+
+.button:disabled {
+  background-color: #f1f1f1;
+  color: #a1a1a1;
+  box-shadow: 0 2px 2px #a1a1a1;
+  cursor: auto;
 }
 
 /* button icons

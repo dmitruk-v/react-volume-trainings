@@ -9,6 +9,7 @@ import { MenuDay } from "../menu-day/menu-day";
 // -------------------------------------------------
 
 type Props = {
+  scheduleId: string,
   year: string,
   trainingWeek: TrainingWeekModel,
 };
@@ -22,7 +23,12 @@ const DaysMenu: React.FC<Props> = (props) => {
       <div className="days-menu__items">
         {scheduleDays.map(day => (
           <div key={day} className="days-menu__item" >
-            <MenuDay year={props.year} weekId={props.trainingWeek.weekId} trainingDay={props.trainingWeek.days[day]} />
+            <MenuDay
+              scheduleId={props.scheduleId}
+              year={props.year}
+              weekId={props.trainingWeek.weekId}
+              trainingDay={props.trainingWeek.days[day]}
+            />
           </div>
         ))}
       </div>

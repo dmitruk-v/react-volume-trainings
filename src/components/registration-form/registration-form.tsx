@@ -108,11 +108,7 @@ const RegistrationForm = (props: WithChildren<Props>) => {
     });
 
     if (isFormValid(validationMap)) {
-      const createdUser = createUser(
-        form.fields.username.value,
-        form.fields.password.value,
-        form.fields.passwordRep.value
-      );
+      const createdUser = createUser(form.fields.username.value, "");
       dispatch(
         usersCreateAction(createdUser)
       );
