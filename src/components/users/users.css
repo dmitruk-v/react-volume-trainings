@@ -34,8 +34,8 @@
   border-radius: 5px;
 }
 .user--selected {
-  border-color: #ffffff;
-  box-shadow: 0 0 0 5px #ff9e9e;
+  /* border-color: #ffffff; */
+  /* box-shadow: 0 0 0 5px #ff9e9e; */
 }
 .user__user-id {
   margin-bottom: 3px;

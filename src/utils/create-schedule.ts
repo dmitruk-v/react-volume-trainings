@@ -102,6 +102,7 @@ const createSchedule = (years: number[], options: Partial<ScheduleOptions> = def
   };
   return years.reduce((schedule, year) => {
     schedule.years[year] = createTrainingYear(year, opts);
+    console.log("!!! --- !!!", years, schedule);
     return schedule;
   }, schedule as ScheduleModel);
 }

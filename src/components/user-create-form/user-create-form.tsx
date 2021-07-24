@@ -25,7 +25,7 @@ const UserCreateForm = (props: WithChildren<Props>) => {
   const handleFormSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
     if (username.length === 0) return;
-    const createdSchedule = createSchedule([currYear]);
+    const createdSchedule = createSchedule([currYear - 2, currYear - 1, currYear]);
     const createdUser = createUser(username, createdSchedule.scheduleId);
     dispatch(schedulesCreateScheduleAction(createdSchedule))
     dispatch(usersCreateAction(createdUser));

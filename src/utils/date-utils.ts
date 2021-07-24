@@ -154,6 +154,11 @@ const getDaysCountBetweenDates = (begin: Date, end: Date) => {
   return (end.getTime() - begin.getTime()) / (1000 * 60 * 60 * 24);
 }
 
+const getDayStartDate = (date: Date) => {
+  date.setHours(0, 0, 0, 0);
+  return date;
+};
+
 export {
   fromMs,
   getLastDayOfMonth,
@@ -165,5 +170,6 @@ export {
   getDayName,
   getMonthName,
   getWeekStartDate,
-  getDaysCountBetweenDates
+  getDaysCountBetweenDates,
+  getDayStartDate,
 }

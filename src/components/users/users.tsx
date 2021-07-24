@@ -45,7 +45,7 @@ const Users = (props: WithChildren<Props>) => {
                     className="button button--primary button--wide"
                     disabled={selectedUserId === userId}
                     onClick={() => { dispatch(selectedUserActivate(userId)) }}
-                  >Select</button>
+                  >{`${userId === selectedUserId ? "Selected" : "Select"}`}</button>
                 </div>
               </div>
             </div>

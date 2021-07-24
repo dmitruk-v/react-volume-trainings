@@ -48,6 +48,9 @@
   /* background: linear-gradient(0, rgb(255 255 255 / 35%), rgb(255 255 255 / 70%)); */
   /* box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 2px rgba(0, 0, 0, 0.1); */
 }
+.t-year-day--current {
+  box-shadow: 0 0 0 5px #ff9e9e;
+}
 .t-year-day__link {
   position: absolute;
   top: 0;

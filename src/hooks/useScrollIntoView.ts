@@ -7,7 +7,7 @@ const useScrollIntoView = <T extends HTMLElement>(
 ) => {
 
   useEffect(() => {
-    console.log("bla!!!");
+    // console.log("bla!!!");
     if (ref.current === null) return;
     if (conditions.some(c => c === false)) return;
     const el = ref.current;

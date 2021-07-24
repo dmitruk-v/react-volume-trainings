@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
-import { AppDispatch, DataLoadingStatus, RootState } from "../../store";
-import { selectScheduleById, selectAllSchedules } from "../../store/selectors";
-import { ScheduleModel, SchedulesModel } from "../../store/types";
+import { AppDispatch, calculateTrainingDayStats, DataLoadingStatus, RootState } from "../../store";
+import { selectScheduleById, selectAllSchedules, selectTrainingYear } from "../../store/selectors";
+import { ScheduleModel, SchedulesModel, TrainingWeekModel, TrainingYearModel, WeekDay } from "../../store/types";
 import { createSchedule } from "../../utils/create-schedule";
 import { schedulesCreateScheduleAction, schedulesLoadAction, schedulesLoadFailedAction, schedulesLoadSucceededAction } from "../../store/actions";
 import { useLocalStorage } from "../../hooks/useLocalStorageAsync";
 import { LS_SCHEDULE_KEY } from "../../constants";
+import { getDayStartDate, getWeekStartDate } from "../../utils/date-utils";
 
 // ASSETS ------------------------------------------------------------
 import icoPlus from "../../assets/svg/add_black_24dp.svg";
@@ -20,6 +21,9 @@ import "./schedule.css";
 // COMPONENTS --------------------------------------------------------
 import { LocalLoadingIndicator } from "../common/local-loading-indicator/local-loading-indicator";
 import { TrainingYear } from "../training-year/training-year";
+import { YearWeek } from "../year-week/year-week";
+import { YearDay } from "../year-day/year-day";
+import { useScrollIntoView } from "../../hooks/useScrollIntoView";
 // -------------------------------------------------------------------
 
 type RouteParams = {
@@ -30,15 +34,32 @@ type Props = {};
 
 const Schedule: React.FC<Props> = (props) => {
 
+  const now = new Date();
+  const currYear = now.getFullYear();
   const dispatch = useDispatch<AppDispatch>();
   const match = useRouteMatch<RouteParams>();
-  const currYear = new Date().getFullYear();
   const allSchedules = useSelector<RootState, SchedulesModel>(selectAllSchedules);
-  const schedule = useSelector<RootState, ScheduleModel | undefined>(state => selectScheduleById(state, match.params.scheduleId));
+
+  const schedule = useSelector<RootState, ScheduleModel | undefined>(
+    state => selectScheduleById(state, match.params.scheduleId)
+  );
+
   const schedulesStatus = useSelector<RootState, DataLoadingStatus>(state => state.schedules.status);
   const schedulesError = useSelector<RootState, string | null>(state => state.schedules.error);
 
-  console.log("Schedule called", schedule);
+  const todayStartDate = getDayStartDate(now);
+  const todayWeekStartDate = getWeekStartDate(now);
+
+  const currWeekRef = useRef<HTMLDivElement>(null);
+
+  const getRef = (week: TrainingWeekModel) => {
+    // console.log("GET_REF", week, week.weekStartDate.getTime() === todayWeekStartDate.getTime());
+    return week.weekStartDate.getTime() === todayWeekStartDate.getTime() ? currWeekRef : null
+  };
+
+  useScrollIntoView<HTMLDivElement>(currWeekRef, []);
+
+  console.log("Schedule called", schedule, todayWeekStartDate, todayWeekStartDate.getTime());
 
   // const scheduleDataProvider = useLocalStorage<SchedulesModel>(LS_SCHEDULE_KEY, scheduleDataTransformer);
 
@@ -65,7 +86,7 @@ const Schedule: React.FC<Props> = (props) => {
 
   const handleScheduleCreate = () => {
     dispatch(
-      schedulesCreateScheduleAction(createSchedule([currYear], { trainingsCount: 0 }))
+      schedulesCreateScheduleAction(createSchedule([currYear - 2, currYear - 1, currYear], { trainingsCount: 0 }))
     );
   }
 
@@ -119,7 +140,41 @@ const Schedule: React.FC<Props> = (props) => {
             <TrainingYear
               scheduleId={schedule.scheduleId}
               year={year}
-            />
+            >
+              {schedule.years[year].weeks.map((week, weekIdx) => (
+                <div ref={getRef(week)} key={week.weekId} className="training-year__week">
+                  <YearWeek
+                    scheduleId={schedule.scheduleId}
+                    year={year}
+                    weekNum={weekIdx + 1}
+                    trainingWeek={week}
+                    todayWeekStartDate={todayWeekStartDate}
+                  >
+                    {Object.keys(week.days).map((day, dayIdx) => {
+                      const dayStats = calculateTrainingDayStats(week.days[day as WeekDay]);
+                      const dayDate = new Date(
+                        week.weekStartDate.getFullYear(),
+                        week.weekStartDate.getMonth(),
+                        week.weekStartDate.getDate() + dayIdx
+                      );
+                      return (
+                        <div key={day} className="t-year-week__day">
+                          <YearDay
+                            isUsed={dayStats.volume > 0}
+                            scheduleId={schedule.scheduleId}
+                            year={year}
+                            weekId={week.weekId}
+                            day={day as WeekDay}
+                            dayDate={dayDate}
+                            todayStartDate={todayStartDate}
+                          />
+                        </div>
+                      );
+                    })}
+                  </YearWeek>
+                </div>
+              ))}
+            </TrainingYear>
           </Route>
         ))}
         <Redirect exact from={match.path} to={`${match.url}/${currYear}`} />

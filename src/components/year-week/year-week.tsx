@@ -25,9 +25,9 @@ import { YearDay } from "../year-day/year-day";
 type Props = {
   scheduleId: string,
   year: string,
-  currWeekStartDate: Date,
+  todayWeekStartDate: Date,
   trainingWeek: TrainingWeekModel,
-  weekNum: number
+  weekNum: number,
 };
 
 const YearWeek: React.FC<Props> = (props) => {
@@ -59,7 +59,7 @@ const YearWeek: React.FC<Props> = (props) => {
   const weekClasses = getClasses(
     "t-year-week--cycle_" + props.trainingWeek.cycle,
     {
-      "t-year-week--current": props.currWeekStartDate.getTime() === props.trainingWeek.weekStartDate.getTime(),
+      "t-year-week--current": props.todayWeekStartDate.getTime() === props.trainingWeek.weekStartDate.getTime(),
     }
   );
 
@@ -80,12 +80,10 @@ const YearWeek: React.FC<Props> = (props) => {
         </button>
       </div>
       <div className="t-year-week__body">
-        {/* <div className="t-year-week__cycle-name">{props.trainingWeek.cycle}</div> */}
-        {/* <div className="t-year-week__id">{props.trainingWeek.weekId}</div> */}
         <div className="t-year-week__days">
-          {Object.keys(props.trainingWeek.days).map((day, idx) => {
+          {/* {Object.keys(props.trainingWeek.days).map((day, idx) => {
             const dayStats = calculateTrainingDayStats(props.trainingWeek.days[day as WeekDay]);
-            const currDayDate = new Date(
+            const dayDate = new Date(
               props.trainingWeek.weekStartDate.getFullYear(),
               props.trainingWeek.weekStartDate.getMonth(),
               props.trainingWeek.weekStartDate.getDate() + idx
@@ -98,11 +96,12 @@ const YearWeek: React.FC<Props> = (props) => {
                   year={props.year}
                   weekId={props.trainingWeek.weekId}
                   day={day as WeekDay}
-                  currDayDate={currDayDate}
+                  dayDate={dayDate}
                 />
               </div>
             );
-          })}
+          })} */}
+          {props.children}
         </div>
         <div className="t-year-week__stats">
           V: {trainingWeekStats.volume.toFixed(2)} t,
