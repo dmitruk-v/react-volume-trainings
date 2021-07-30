@@ -8,6 +8,7 @@ type UserModel = {
   userId: string,
   name: string,
   scheduleId: ScheduleId,
+  optionsId: string,
   measurements: {
     [date: string]: {
       height: number,

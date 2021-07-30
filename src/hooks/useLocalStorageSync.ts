@@ -5,7 +5,7 @@ type LocalStorageProvider<T> = {
   save: (data: T) => void
 }
 
-const useLocalStorage = <T>(key: string): LocalStorageProvider<T> => {
+const useLocalStorageSync = <T>(key: string): LocalStorageProvider<T> => {
 
   if (window.localStorage === undefined) {
     throw new Error("LocalStorage is not supported.");
@@ -38,4 +38,4 @@ const useLocalStorage = <T>(key: string): LocalStorageProvider<T> => {
   return lsProvider;
 }
 
-export { useLocalStorage };
+export { useLocalStorageSync };

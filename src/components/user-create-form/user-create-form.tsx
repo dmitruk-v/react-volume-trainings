@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { useAppDispatch } from "../../hooks/common";
-import { createSchedule, WithChildren } from "../../store";
-import { schedulesCreateScheduleAction, selectedUserActivate, usersCreateAction } from "../../store/actions";
+import React, { PropsWithChildren, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/common";
+import { createSchedule } from "../../store";
+import { schedulesCreateScheduleAction, selectedUserActivate, usersCreateUserAction, appOptionsCreateAppOptionsAction } from "../../store/actions";
+import { selectAllUsers } from "../../store/selectors";
+import { UsersModel } from "../../store/types";
 import { createUser } from "../../utils/create-users";
+import { createOptions } from "../../utils/create-options";
 
 // ASSETS ------------------------------------------------------------
 // -------------------------------------------------------------------
@@ -16,21 +20,37 @@ import "./user-create-form.css";
 
 type Props = {};
 
-const UserCreateForm = (props: WithChildren<Props>) => {
+const UserCreateForm = (props: PropsWithChildren<Props>) => {
 
   const currYear = new Date().getFullYear();
+  const users = useAppSelector<UsersModel>(selectAllUsers);
   const [username, setUsername] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
+  const history = useHistory();
 
   const handleFormSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    if (username.length === 0) return;
+
+    if (username.length === 0) {
+      return setError("Username can not be empty!");
+    }
+
+    const userAlreadyExists = Object.keys(users).some(userId => users[userId].name === username);
+    if (userAlreadyExists) {
+      return setError(`User "${username}" already exists!`);
+    }
+
+    const createdOptions = createOptions();
     const createdSchedule = createSchedule([currYear - 2, currYear - 1, currYear]);
-    const createdUser = createUser(username, createdSchedule.scheduleId);
-    dispatch(schedulesCreateScheduleAction(createdSchedule))
-    dispatch(usersCreateAction(createdUser));
+    const createdUser = createUser(username, createdSchedule.scheduleId, createdOptions.optionsId);
+    dispatch(schedulesCreateScheduleAction(createdSchedule));
+    dispatch(appOptionsCreateAppOptionsAction(createdOptions));
+    dispatch(usersCreateUserAction(createdUser));
     dispatch(selectedUserActivate(createdUser.userId));
     setUsername("");
+    setError(null);
+    history.push(`/years-schedule/${createdUser.scheduleId}`);
   }
 
   return (
@@ -56,6 +76,11 @@ const UserCreateForm = (props: WithChildren<Props>) => {
               value={username}
               onChange={evt => setUsername(evt.target.value)}
             />
+            {error && (
+              <div className="form-error">
+                <div className="form-error__text">{error}</div>
+              </div>
+            )}
           </div>
         </div>
       </div>

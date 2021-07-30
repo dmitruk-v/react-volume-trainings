@@ -1,0 +1,34 @@
+.header-user {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 100%;
+  padding: 0 40px 0 15px;
+  font-size: 18px;
+  background-color: #cccccc;
+  color: #555555;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.header-user:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: url(../../../assets/svg/expand_more_black_24dp.svg) center center no-repeat;
+}
+.header-user:hover {
+  background-color: #e1e1e1;
+}
+
+.header-user--active {
+  background-color: #ffde9c;
+  color: #4e4024;
+}
+.header-user--active:hover {
+  background-color: #ffebc1;
+}

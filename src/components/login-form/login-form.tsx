@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { RootState, WithChildren } from "../../store";
-import { selectUsers } from "../../store/selectors";
+import { RootState } from "../../store";
+import { selectAllUsers } from "../../store/selectors";
 import { UsersModel } from "../../store/types";
 
 // ASSETS ------------------------------------------------------------
@@ -17,24 +16,12 @@ import "./login-form.css";
 
 type Props = {};
 
-const LoginForm = (props: WithChildren<Props>) => {
-  const users = useSelector<RootState, UsersModel>(selectUsers);
-  const [canRedirect, setCanRedirect] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      // setCanRedirect(true);
-    }, 2000);
-  }, []);
-
-  if (canRedirect && Object.keys(users).length === 0) {
-    return (
-      <Redirect to="/users" />
-    );
-  }
+const LoginForm = (props: PropsWithChildren<Props>) => {
+  const users = useSelector<RootState, UsersModel>(selectAllUsers);
 
   return (
     <div className="wrapper">
+      {JSON.stringify(users)}
       <form className="form login-form">
         <h2>Sign in</h2>
         <div className="form__field">

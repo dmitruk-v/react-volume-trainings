@@ -1,0 +1,10 @@
+.huge-list-wrapper {
+  overflow: auto;
+  position: relative;
+  height: 500px;
+}
+.huge-list {}
+.huge-list__item {
+  position: absolute;
+  width: calc(100% - 17px);
+}

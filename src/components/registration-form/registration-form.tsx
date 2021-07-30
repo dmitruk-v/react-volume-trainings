@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { AppDispatch, WithChildren } from "../../store";
-import { usersCreateAction } from "../../store/actions";
+import { AppDispatch } from "../../store";
+import { usersCreateUserAction } from "../../store/actions";
 import { createUser } from "../../utils/create-users";
 
 // ASSETS ------------------------------------------------------------
@@ -76,21 +76,15 @@ const initialFormState: MyForm = {
 };
 
 // ------------------------------------------------------------------------------
-type Bla<Type extends MyForm> = {
-  [Property in keyof Type["fields"]]: FormField
-};
 
-type Bla2 = Bla<typeof initialFormState>;
-// ------------------------------------------------------------------------------
-
-const RegistrationForm = (props: WithChildren<Props>) => {
+const RegistrationForm = (props: PropsWithChildren<Props>) => {
   console.log("RegistrationForm called!");
 
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
   const [form, setForm] = useState(initialFormState);
 
-  const resetForm = () => setForm(initialFormState);
+  // const resetForm = () => setForm(initialFormState);
 
   const handleFormSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
@@ -108,9 +102,9 @@ const RegistrationForm = (props: WithChildren<Props>) => {
     });
 
     if (isFormValid(validationMap)) {
-      const createdUser = createUser(form.fields.username.value, "");
+      const createdUser = createUser(form.fields.username.value, "", "");
       dispatch(
-        usersCreateAction(createdUser)
+        usersCreateUserAction(createdUser)
       );
       console.log("--- HISTORY ---", history);
 
@@ -234,15 +228,15 @@ const RegistrationForm = (props: WithChildren<Props>) => {
 
 
 
-const validateForm = (form: MyForm): string[] => {
-  return form.validators.reduce((acc, validator) => {
-    const curr = validator(form);
-    if (curr !== null) {
-      acc.push(curr);
-    }
-    return acc;
-  }, [] as string[]);
-}
+// const validateForm = (form: MyForm): string[] => {
+//   return form.validators.reduce((acc, validator) => {
+//     const curr = validator(form);
+//     if (curr !== null) {
+//       acc.push(curr);
+//     }
+//     return acc;
+//   }, [] as string[]);
+// }
 
 const validateFormFields = (form: MyForm): ValidationMap => {
   const validationMap: ValidationMap = {};

@@ -1,4 +1,4 @@
-import { WithChildren } from "../../../store";
+import { PropsWithChildren } from "react";
 
 // ASSETS ------------------------------------------------------------
 // -------------------------------------------------------------------
@@ -15,7 +15,7 @@ type Props = {
   type: MessageType;
 };
 
-const Message = (props: WithChildren<Props>) => {
+const Message = (props: PropsWithChildren<Props>) => {
   return (
     <div className={`message message--${props.type}`}>{props.children}</div>
   );

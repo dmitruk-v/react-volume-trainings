@@ -1,46 +1,66 @@
 import { AppOptionsModel } from "../../store/types";
 
-const changeOptionViewGridCols = (optionValue: AppOptionsModel["ui"]["viewGridCols"]) => {
+type UIOptions = AppOptionsModel["options"]["ui"];
+type ScheduleOptions = AppOptionsModel["options"]["schedule"];
+
+const appOptionsCreateAppOptionsAction = (createdAppOptions: AppOptionsModel) => {
+  return {
+    type: "appOptions/create",
+    payload: { createdAppOptions }
+  } as const;
+}
+
+const appOptionsRemoveAppOptionsAction = (removedAppOptions: AppOptionsModel) => {
+  return {
+    type: "appOptions/remove",
+    payload: { removedAppOptions }
+  } as const;
+}
+
+const changeOptionViewGridCols = (optionsId: string, newValue: UIOptions["viewGridCols"]) => {
   return {
     type: "appOptions/ui/viewGridCols",
-    payload: {
-      value: optionValue
-    }
+    payload: { optionsId, newValue }
   } as const
 }
 
-const changeOptionScheduleSpreadReps = (optionValue: AppOptionsModel["schedule"]["spreadReps"]) => {
+const changeOptionScheduleSpreadReps = (optionsId: string, newValue: ScheduleOptions["spreadReps"]) => {
   return {
     type: "appOptions/schedule/spreadReps",
-    payload: {
-      value: optionValue
-    }
+    payload: { optionsId, newValue }
   } as const
 }
 
-const changeOptionScheduleSpreadWeight = (optionValue: AppOptionsModel["schedule"]["spreadWeight"]) => {
+const changeOptionScheduleSpreadWeight = (optionsId: string, newValue: ScheduleOptions["spreadWeight"]) => {
   return {
     type: "appOptions/schedule/spreadWeight",
-    payload: {
-      value: optionValue
-    }
+    payload: { optionsId, newValue }
   } as const
 }
 
-const changeOptionScheduleActiveDay = (optionValue: AppOptionsModel["schedule"]["activeDay"]) => {
+const changeOptionScheduleActiveDay = (optionsId: string, newValue: ScheduleOptions["activeDay"]) => {
   return {
     type: "appOptions/schedule/activeDay",
-    payload: {
-      value: optionValue
-    }
+    payload: { optionsId, newValue }
   } as const
 }
 
 type AppOptionsActions =
-  ReturnType<typeof changeOptionViewGridCols>
+  | ReturnType<typeof appOptionsCreateAppOptionsAction>
+  | ReturnType<typeof appOptionsRemoveAppOptionsAction>
+  | ReturnType<typeof changeOptionViewGridCols>
   | ReturnType<typeof changeOptionScheduleSpreadReps>
   | ReturnType<typeof changeOptionScheduleSpreadWeight>
   | ReturnType<typeof changeOptionScheduleActiveDay>;
 
 export type { AppOptionsActions };
-export { changeOptionViewGridCols, changeOptionScheduleSpreadReps, changeOptionScheduleSpreadWeight, changeOptionScheduleActiveDay };
+
+export {
+  appOptionsCreateAppOptionsAction,
+  appOptionsRemoveAppOptionsAction,
+
+  changeOptionViewGridCols,
+  changeOptionScheduleSpreadReps,
+  changeOptionScheduleSpreadWeight,
+  changeOptionScheduleActiveDay
+};

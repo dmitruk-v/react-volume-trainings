@@ -120,9 +120,11 @@ const Training: React.FC<Props> = (props) => {
         </Dropdown>
 
       </div>
+
       <div className="training__body">
         <div className="training__exercises">{props.children}</div>
       </div>
+
     </div>
   );
 }

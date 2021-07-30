@@ -12,6 +12,12 @@ const selectScheduleById = (state: RootState, scheduleId: string): ScheduleModel
   return state.schedules.data[scheduleId];
 };
 
+const selectScheduleByUserId = (state: RootState, userId: string): ScheduleModel | undefined => {
+  const selectedUser = selectUserById(state, userId);
+  if (selectedUser === undefined) return;
+  return selectScheduleById(state, selectedUser.scheduleId);
+}
+
 const selectTrainingYear = (state: RootState, scheduleId: string, year: string): TrainingYearModel | undefined => {
   const selectedSchedule = selectScheduleById(state, scheduleId);
   if (selectedSchedule === undefined) return;
@@ -34,23 +40,31 @@ const selectTrainingWeekByDate = (state: RootState, scheduleId: string, date: Da
   );
 }
 
+const selectWeeksCount = (state: RootState, scheduleId: string, year: string): number | undefined => {
+  const selectedYear = selectTrainingYear(state, scheduleId, year);
+  if (selectedYear === undefined) return;
+  return selectedYear.weeks.length;
+}
+
 // TODO options selectors
 // ---------------------------------------------------------------------------
-const selectOptions = (state: RootState): AppOptionsModel => {
+const selectAllOptions = (state: RootState): { [optionsId: string]: AppOptionsModel } => {
   return state.options.data;
 }
 
-const selectScheduleOptions = (state: RootState): AppOptionsModel["schedule"] => {
-  return state.options.data.schedule;
+const selectOptionsById = (state: RootState, optionsId: string): AppOptionsModel | undefined => {
+  return state.options.data[optionsId];
 }
 
-const selectUIOptions = (state: RootState): AppOptionsModel["ui"] => {
-  return state.options.data.ui;
+const selectOptionsByUserId = (state: RootState, userId: string): AppOptionsModel | undefined => {
+  const selectedUser = selectUserById(state, userId);
+  if (selectedUser === undefined) return;
+  return state.options.data[selectedUser.optionsId];
 }
 
 // TODO users selectors
 // ---------------------------------------------------------------------------
-const selectUsers = (state: RootState): UsersModel => {
+const selectAllUsers = (state: RootState): UsersModel => {
   return state.users.data;
 }
 
@@ -60,22 +74,20 @@ const selectUserById = (state: RootState, userId: string): UserModel | undefined
 
 // TODO complex selectors
 // ---------------------------------------------------------------------------
-const selectScheduleByUserId = (state: RootState, userId: string): ScheduleModel | undefined => {
-  const selectedUser = selectUserById(state, userId);
-  if (selectedUser === undefined) return;
-  return selectScheduleById(state, selectedUser.scheduleId);
-}
 // ---------------------------------------------------------------------------
 
 export {
   selectAllSchedules,
   selectScheduleById,
+  selectScheduleByUserId,
   selectTrainingYear,
   selectTrainingWeekById, selectTrainingWeekByDate,
+  selectWeeksCount,
 
-  selectOptions, selectScheduleOptions, selectUIOptions,
+  selectAllOptions,
+  selectOptionsById,
+  selectOptionsByUserId,
 
-  selectUsers, selectUserById,
-
-  selectScheduleByUserId,
+  selectAllUsers,
+  selectUserById,
 }

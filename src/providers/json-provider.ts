@@ -1,6 +1,6 @@
-import { Provider } from ".";
+import { AsyncProvider } from ".";
 
-const JsonProvider = <T>(resourceUrl: string): Provider<T> => {
+const JsonProvider = <T>(resourceUrl: string): AsyncProvider<T> => {
   if (window.fetch === undefined)
     throw new Error("Use of JsonProvider in environment, where window.fetch is not available.");
 

@@ -1,6 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { WithChildren } from "../../store";
+import React, { PropsWithChildren } from "react";
+import { Link } from "react-router-dom";
 import { WeekDay } from "../../store/types";
 import { getClasses } from "../../utils/css-utils";
 import { getDayName, getMonthName } from "../../utils/date-utils";
@@ -25,7 +24,7 @@ type Props = {
   todayStartDate: Date
 };
 
-const YearDay = (props: WithChildren<Props>) => {
+const YearDay = (props: PropsWithChildren<Props>) => {
 
   const dayClasses = getClasses({
     "t-year-day--used": props.isUsed,
@@ -33,16 +32,17 @@ const YearDay = (props: WithChildren<Props>) => {
   });
 
   return (
-    <NavLink
+    <Link
       className={`t-year-day ${dayClasses}`}
       to={`/week-schedule/${props.scheduleId}/${props.year}/${props.weekId}/${props.day}`}
     >
       <div className="t-year-day__weekday">{formatWeekday(props.dayDate)}</div>
       <div className="t-year-day__month">{formatMonth(props.dayDate)}</div>
       <div className="t-year-day__date">{props.dayDate.getDate()}</div>
-    </NavLink>
+    </Link>
+    // <>Someday</>
   );
-}
+};
 
 const formatMonth = (date: Date): string => {
   return getMonthName(date.getMonth()).slice(0, 3);

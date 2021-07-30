@@ -14,7 +14,7 @@
   flex-flow: row wrap;
   align-items: center;
   padding: 15px 15px 15px 50px;
-  background-color: #ffffff;
+  background-color: #fafafa;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -62,11 +62,11 @@
   border-radius: 16px;
   box-shadow: 0 0 0 2px #a1a1a1;
 }
-
 .training__body {
   display: none;
   padding: 15px 15px 17px 15px;
   border-top: 1px solid #e1e1e1;
+  /* background: url(../../assets/images/bg.jpg) center center no-repeat; */
 }
 .training--opened > .training__body {
   display: block;

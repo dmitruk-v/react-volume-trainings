@@ -1,24 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-const useClickOutside = (ref: React.RefObject<HTMLElement>, onClickOutside: () => void) => {
+const useClickOutside = <T extends HTMLElement>(onClickOutside: () => void, listenCondition?: boolean) => {
 
-  console.log("useClickOutside called");
+  const domNodeRef = useRef<T>(null);
 
   useEffect(() => {
-    const checkClickOutside = (evt: MouseEvent) => {
-      if (ref.current === null) return;
-      // If click target is not child element of ref element, than it was a click outside
-      if (!ref.current.contains(evt.target as HTMLElement)) {
+    if (listenCondition) {
+      const checkClickOutside = (evt: MouseEvent) => {
+        // If click target is a child element of ref element, than it was not a click outside
+        if (!domNodeRef.current || domNodeRef.current.contains(evt.target as HTMLElement)) return;
         onClickOutside();
       }
+      document.addEventListener("click", checkClickOutside);
+      return () => {
+        document.removeEventListener("click", checkClickOutside);
+      }
     }
-    console.log("addEventListener called");
-    document.addEventListener("click", checkClickOutside);
-    return () => {
-      console.log("removeEventListener called");
-      document.removeEventListener("click", checkClickOutside);
-    }
-  }, [ref, onClickOutside]);
+  }, [onClickOutside, listenCondition]);
+
+  return domNodeRef;
 }
 
 export { useClickOutside };

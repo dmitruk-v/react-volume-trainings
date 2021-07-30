@@ -2,6 +2,7 @@ import { createExerciseWithSpreadedSet } from "../../utils/schedule-utils";
 import { Actions } from "../actions"
 import { DataLoadingStatus } from "..";
 import { SchedulesModel } from "../types"
+import { removeEntryByKey } from "./reducers-utils";
 
 type SchedulesState = {
   status: DataLoadingStatus,
@@ -534,6 +535,35 @@ const schedulesReducer = (oldState: SchedulesState = initialState, action: Actio
       }
     }
 
+    case "schedules/copyTrainingWeek": {
+      const { scheduleId, year, fromWeekId, toWeekId } = action.payload;
+      const fromWeek = oldState.data[scheduleId].years[year].weeks.find(w => w.weekId === fromWeekId);
+      if (fromWeek === undefined) return oldState;
+      return {
+        ...oldState,
+        data: {
+          ...oldState.data,
+          [scheduleId]: {
+            ...oldState.data[scheduleId],
+            years: {
+              ...oldState.data[scheduleId].years,
+              [year]: {
+                ...oldState.data[scheduleId].years[year],
+                weeks: oldState.data[scheduleId].years[year].weeks.map(
+                  week => week.weekId === toWeekId
+                    ? {
+                      ...fromWeek,
+                      weekId: week.weekId,
+                    }
+                    : week
+                )
+              }
+            }
+          }
+        }
+      }
+    }
+
     // -------------------------------------------------------------------------------------
     // TRAINING-YEARS
     // -------------------------------------------------------------------------------------
@@ -569,6 +599,25 @@ const schedulesReducer = (oldState: SchedulesState = initialState, action: Actio
         }
       };
     }
+
+    case "schedules/remove": {
+      const { removedScheduleId } = action.payload;
+      return {
+        ...oldState,
+        data: removeEntryByKey(oldState.data, removedScheduleId),
+      };
+    }
+
+    // // -------------------------------------------------------------------------------------
+    // // USER REMOVE
+    // // -------------------------------------------------------------------------------------
+    // case "users/remove": {
+    //   const { removedUser } = action.payload;
+    //   return {
+    //     ...oldState,
+    //     data: removeEntry(oldState.data, removedUser.scheduleId),
+    //   };
+    // }
 
     default:
       return oldState;

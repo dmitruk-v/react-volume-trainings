@@ -6,45 +6,8 @@
   flex-flow: row wrap;
 }
 .header__user {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
   margin: 10px 0 10px 10px;
-  padding: 0 15px;
-  font-size: 18px;
-  background-color: #4da226;
-  color: #ffffff;
-  border-radius: 5px;
 }
 .header__menu {
   flex: 1;
-}
-.header-menu {
-  padding: 10px 0 0 10px;
-}
-.header-menu__list {
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.header-menu__item {
-  position: relative;
-}
-.header-menu__link {
-  display: block;
-  padding: 15px 20px;
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 1;
-  text-decoration: none;
-  color: #ffffff;
-  border-radius: 5px 5px 0 0;
-}
-.header-menu__link--schedule {}
-
-.header-menu__link--active {
-  background-color: #ffffff;
-  color: #000000;
 }

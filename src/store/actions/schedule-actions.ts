@@ -144,6 +144,15 @@ const schedulesUpdateTrainingWeekAction = (
   } as const
 }
 
+const schedulesCopyTrainingWeekAction = (
+  scheduleId: string, year: string, fromWeekId: string, toWeekId: string
+) => {
+  return {
+    type: "schedules/copyTrainingWeek",
+    payload: { scheduleId, year, fromWeekId, toWeekId }
+  } as const
+}
+
 // --------------------------------------------------------------------------------
 // TRAINING-YEAR
 // --------------------------------------------------------------------------------
@@ -166,9 +175,15 @@ const schedulesCreateScheduleAction = (schedule: ScheduleModel) => {
   } as const;
 }
 
+const schedulesRemoveScheduleAction = (removedScheduleId: string) => {
+  return {
+    type: "schedules/remove",
+    payload: { removedScheduleId }
+  } as const;
+}
+
 
 type SchedulesActions =
-  | ReturnType<typeof schedulesCreateScheduleAction>
   | ReturnType<typeof schedulesLoadAction>
   | ReturnType<typeof schedulesLoadSucceededAction>
   | ReturnType<typeof schedulesLoadFailedAction>
@@ -189,17 +204,21 @@ type SchedulesActions =
   | ReturnType<typeof schedulesUpdateTrainingDayAction>
   // training-week
   | ReturnType<typeof schedulesUpdateTrainingWeekAction>
+  | ReturnType<typeof schedulesCopyTrainingWeekAction>
   // training-year
-  | ReturnType<typeof schedulesUpdateTrainingYearAction>;
+  | ReturnType<typeof schedulesUpdateTrainingYearAction>
+  // schedule
+  | ReturnType<typeof schedulesCreateScheduleAction>
+  | ReturnType<typeof schedulesRemoveScheduleAction>;
 
 export type { SchedulesActions };
 export {
-  schedulesCreateScheduleAction,
   schedulesLoadAction, schedulesLoadSucceededAction, schedulesLoadFailedAction,
   schedulesAddSetAction, schedulesUpdateSetAction, schedulesUpdateSetWithSpreadAction, schedulesRemoveSetAction,
   schedulesAddExerciseAction, schedulesUpdateExerciseAction, schedulesRemoveExerciseAction,
   schedulesAddTrainingAction, schedulesUpdateTrainingAction, schedulesRemoveTrainingAction,
   schedulesUpdateTrainingDayAction,
-  schedulesUpdateTrainingWeekAction,
+  schedulesUpdateTrainingWeekAction, schedulesCopyTrainingWeekAction,
   schedulesUpdateTrainingYearAction,
+  schedulesCreateScheduleAction, schedulesRemoveScheduleAction,
 }

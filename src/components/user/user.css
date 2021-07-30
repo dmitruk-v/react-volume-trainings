@@ -1,0 +1,34 @@
+.user {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 15px;
+  line-height: 1;
+  border: 1px solid #e1e1e1;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+.user--selected {}
+.user__layout {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.user__menu-button {
+  margin-right: 15px;
+}
+.user__name {
+  margin-bottom: 2px;
+  margin-right: 15px;
+  font-size: 18px;
+  line-height: 1.1;
+  color: #000000;
+}
+.user__select {
+  margin-left: auto;
+}
+.dropdown.user__menu-dropdown {
+  top: -10px;
+  left: -10px;
+  right: -10px;
+}

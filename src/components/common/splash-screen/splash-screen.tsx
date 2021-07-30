@@ -1,4 +1,4 @@
-import { WithChildren } from "../../../store";
+import { PropsWithChildren } from "react";
 
 // ASSETS ------------------------------------------------------------
 // -------------------------------------------------------------------
@@ -12,7 +12,7 @@ import "./splash-screen.css";
 
 type Props = {};
 
-const SplashScreen = (props: WithChildren<Props>) => {
+const SplashScreen = (props: PropsWithChildren<Props>) => {
   return (
     <div className="splash-screen">
       <div className="splash-screen__inner">{props.children}</div>

@@ -5,7 +5,7 @@ type LocalStorageAsyncProvider<T> = {
   save: (data: T) => Promise<void>
 }
 
-const useLocalStorage = <T>(key: string, transformer?: (key: any, value: any) => any): LocalStorageAsyncProvider<T> => {
+const useLocalStorageAsync = <T>(key: string, transformer?: (key: any, value: any) => any): LocalStorageAsyncProvider<T> => {
 
   if (window.localStorage === undefined) {
     throw new Error("LocalStorage is not supported.");
@@ -42,4 +42,4 @@ const useLocalStorage = <T>(key: string, transformer?: (key: any, value: any) =>
   return lsProvider;
 }
 
-export { useLocalStorage };
+export { useLocalStorageAsync };

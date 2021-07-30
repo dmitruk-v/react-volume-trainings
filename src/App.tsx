@@ -1,10 +1,5 @@
 import React from "react";
-import { BrowserRouter, Redirect, Route, Switch, useHistory, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "./store";
-import { UserModel } from "./store/types";
-import { selectScheduleById, selectUserById } from "./store/selectors";
-import { useAppSelector } from "./hooks/common";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 
 // STYLES ------------------------------------------
 import "./App.css";
@@ -17,9 +12,8 @@ import { Header } from "./components/common/header/header";
 import { Footer } from "./components/common/footer/footer";
 import { TrainingWeek } from "./components/training-week/training-week";
 import { Schedule } from "./components/schedule/schedule";
-import { Bla } from "./components/bla/bla";
-import { Users } from "./components/users/users";
-import { Auth } from "./components/auth/auth";
+import { VirtualizationScreen } from "./components/features/virtualization-screen/virtualization-screen";
+import { GameOfLife } from "./components/features/game-of-life/game-of-life";
 // --------------------------------------------------
 
 function App() {
@@ -32,12 +26,13 @@ function App() {
         <div className="app__main">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/bla" component={Bla} />
-            <Route path="/auth" component={Auth} />
-            <Route path="/users" component={Users} />
             <Route path="/years-schedule/:scheduleId" component={Schedule} />
             <Route path="/week-schedule/:scheduleId/:year/:weekId" component={TrainingWeek} />
-            <Route path="/options" component={Options} />
+            <Route path="/options/:optionsId" component={Options} />
+
+            {/* <Route path="/features/virtualization" component={VirtualizationScreen} />
+            <Route path="/features/game-of-life" component={GameOfLife} /> */}
+
             <Route path="*" component={NoMatch} />
           </Switch>
         </div>

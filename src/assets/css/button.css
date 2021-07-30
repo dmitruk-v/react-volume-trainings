@@ -30,7 +30,8 @@
 .button span {
   padding-top: 2px;
 }
-
+/* button primary
+-------------------------------------------- */
 .button--primary,
 .button--primary:link,
 .button--primary:visited {
@@ -41,6 +42,19 @@
 .button--primary:hover,
 .button--primary:active {
   background-color: #ffe5b0;
+}
+/* button error
+-------------------------------------------- */
+.button--error,
+.button--error:link,
+.button--error:visited {
+  background-color: #ffacac;
+  color: #823030;
+  box-shadow: 0 2px 2px #d07979;
+}
+.button--error:hover,
+.button--error:active {
+  background-color: #ffc3c3;
 }
 
 .button--ico-text {
@@ -59,7 +73,7 @@
 .button:disabled {
   background-color: #f1f1f1;
   color: #a1a1a1;
-  box-shadow: none;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.15);
   cursor: auto;
 }
 

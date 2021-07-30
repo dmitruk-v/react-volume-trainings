@@ -1,16 +1,11 @@
-import { useMemo, useRef, useState } from "react";
-import { CYCLES } from "../../constants/schedule";
-import { AppDispatch, calculateTrainingDayStats, calculateTrainingWeekStats, RootState } from "../../store";
-import { schedulesUpdateTrainingWeekAction } from "../../store/actions";
-import { Cycle, TrainingWeekModel, WeekDay, ScheduleModel } from "../../store/types";
+import React, { PropsWithChildren, useCallback, useMemo, useRef } from "react";
+import { AppDispatch, calculateTrainingDayStats, calculateTrainingWeekStats } from "../../store";
+import { schedulesCopyTrainingWeekAction, schedulesUpdateTrainingWeekAction } from "../../store/actions";
+import { Cycle, TrainingWeekModel, WeekDay } from "../../store/types";
 import { getClasses } from "../../utils/css-utils";
-import { useDispatch, useSelector } from "react-redux";
-import { createClonedWeek } from "../../utils/schedule-utils";
-import { selectScheduleById } from "../../store/selectors";
+import { useDispatch } from "react-redux";
 
 // ASSETS ------------------------------------------
-import icoCycle from "../../assets/svg/settings_backup_restore_black_24dp.svg";
-import icoCopy from "../../assets/svg/content_copy_black_24dp.svg";
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
@@ -18,44 +13,23 @@ import "./year-week.css";
 // -------------------------------------------------
 
 // COMPONENTS --------------------------------------
-import { Dropdown } from "../common/dropdown/dropdown";
 import { YearDay } from "../year-day/year-day";
+import { YearWeekHeader } from "./year-week-header/year-week-header";
 // -------------------------------------------------
 
 type Props = {
   scheduleId: string,
   year: string,
-  todayWeekStartDate: Date,
   trainingWeek: TrainingWeekModel,
   weekNum: number,
+  todayWeekStartDate: Date,
+  todayStartDate: Date,
 };
 
-const YearWeek: React.FC<Props> = (props) => {
+const YearWeek = React.memo((props: PropsWithChildren<Props>) => {
+
   const dispatch = useDispatch<AppDispatch>();
-  const [cycleMenuOpened, setCycleMenuOpened] = useState(false);
-  const [copyMenuOpened, setCopyMenuOpened] = useState(false);
-  const schedule = useSelector<RootState, ScheduleModel | undefined>(state => selectScheduleById(state, props.scheduleId));
   const weekDivRef = useRef<HTMLDivElement>(null);
-
-  const handleCycleChange = (cycle: Cycle) => {
-    dispatch(
-      schedulesUpdateTrainingWeekAction(props.scheduleId, props.year, {
-        ...props.trainingWeek, cycle
-      })
-    );
-    setCycleMenuOpened(false);
-  }
-
-  const handleWeekCopy = (fromWeekId: string) => {
-    if (schedule === undefined) return;
-    const fromWeek = schedule.years[props.year].weeks.find(week => week.weekId === fromWeekId);
-    if (fromWeek === undefined) return;
-    dispatch(
-      schedulesUpdateTrainingWeekAction(props.scheduleId, props.year, createClonedWeek(fromWeek, props.trainingWeek))
-    );
-    setCopyMenuOpened(false);
-  }
-
   const weekClasses = getClasses(
     "t-year-week--cycle_" + props.trainingWeek.cycle,
     {
@@ -68,25 +42,34 @@ const YearWeek: React.FC<Props> = (props) => {
     [props.trainingWeek]
   );
 
+  const handleCycleChange = useCallback((cycle: Cycle) => {
+    dispatch(
+      schedulesUpdateTrainingWeekAction(props.scheduleId, props.year, { ...props.trainingWeek, cycle })
+    );
+  }, [dispatch, props.scheduleId, props.year, props.trainingWeek]);
+
+  const handleWeekCopy = useCallback((fromWeekId: string) => {
+    dispatch(
+      schedulesCopyTrainingWeekAction(props.scheduleId, props.year, fromWeekId, props.trainingWeek.weekId)
+    );
+  }, [dispatch, props.scheduleId, props.year, props.trainingWeek]);
+
   return (
     <div ref={weekDivRef} className={`t-year-week ${weekClasses}`}>
-      <div className="t-year-week__header">
-        <div className="t-year-week__number">{props.weekNum}</div>
-        <button className="button-type1 t-year-week__menu-button" onClick={() => setCopyMenuOpened(true)}>
-          <img src={icoCopy} alt="ico-menu" />
-        </button>
-        <button className="button-type1 t-year-week__menu-button" onClick={() => setCycleMenuOpened(true)}>
-          <img src={icoCycle} alt="ico-cycle" />
-        </button>
-      </div>
+      <YearWeekHeader
+        weekNum={props.weekNum}
+        weekCycle={props.trainingWeek.cycle}
+        onCycleChange={handleCycleChange}
+        onWeekCopy={handleWeekCopy}
+      />
       <div className="t-year-week__body">
         <div className="t-year-week__days">
-          {/* {Object.keys(props.trainingWeek.days).map((day, idx) => {
+          {Object.keys(props.trainingWeek.days).map((day, dayIdx) => {
             const dayStats = calculateTrainingDayStats(props.trainingWeek.days[day as WeekDay]);
             const dayDate = new Date(
               props.trainingWeek.weekStartDate.getFullYear(),
               props.trainingWeek.weekStartDate.getMonth(),
-              props.trainingWeek.weekStartDate.getDate() + idx
+              props.trainingWeek.weekStartDate.getDate() + dayIdx
             );
             return (
               <div key={day} className="t-year-week__day">
@@ -97,11 +80,11 @@ const YearWeek: React.FC<Props> = (props) => {
                   weekId={props.trainingWeek.weekId}
                   day={day as WeekDay}
                   dayDate={dayDate}
+                  todayStartDate={props.todayStartDate}
                 />
               </div>
             );
-          })} */}
-          {props.children}
+          })}
         </div>
         <div className="t-year-week__stats">
           V: {trainingWeekStats.volume.toFixed(2)} t,
@@ -109,48 +92,8 @@ const YearWeek: React.FC<Props> = (props) => {
         </div>
       </div>
 
-      <Dropdown
-        isOpened={copyMenuOpened}
-        classNames={"t-year-week__dropdown"}
-        withCloseBtn
-        onClose={() => setCopyMenuOpened(false)}
-      >
-        <div className="dropdown-title">Copy from:</div>
-        <div className="dropdown-form">
-          <div className="control-select">
-            <select onChange={(evt) => handleWeekCopy(evt.target.value)} className="control-select__native">
-              <option key={-1} value="">Select week</option>
-              {schedule && schedule.years[props.year].weeks.map((week, idx) => (
-                <option key={idx} value={week.weekId}>{idx + 1}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </Dropdown>
-
-      <Dropdown
-        isOpened={cycleMenuOpened}
-        classNames={"t-year-week__dropdown"}
-        withCloseBtn
-        onClose={() => setCycleMenuOpened(false)}
-      >
-        <div className="dropdown-title">Cycle type:</div>
-        <div className="dropdown-menu">
-          <ul className="dropdown-menu__list">
-            {CYCLES.map(cycle => (
-              <li key={cycle} className="dropdown-menu__item">
-                <button
-                  className={`dropdown-menu__button ${cycle === props.trainingWeek.cycle ? "dropdown-menu__button--active" : ""}`}
-                  onClick={() => handleCycleChange(cycle)}
-                >{cycle}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Dropdown>
-
     </div>
   );
-}
+});
 
-export { YearWeek };
+export { YearWeek }

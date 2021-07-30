@@ -5,6 +5,13 @@ type SchedulesModel = {
   [scheduleId: string]: ScheduleModel
 }
 
+type SchedulesRootModel = {
+  schedules: {
+    [scheduleId: string]: ScheduleModel
+  },
+  ids: string[]
+}
+
 type ScheduleId = string;
 type ScheduleModel = {
   scheduleId: ScheduleId,

@@ -1,4 +1,7 @@
-import { WithChildren } from "../../store";
+import { PropsWithChildren } from "react";
+
+// ASSETS ------------------------------------------
+// -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./home.css";
@@ -9,7 +12,7 @@ import "./home.css";
 
 type Props = {};
 
-const Home = (props: WithChildren<Props>) => {
+const Home = (props: PropsWithChildren<Props>) => {
   return (
     <div className="app-home">
       <h1>Калькулятор обьёмных тренировок</h1>

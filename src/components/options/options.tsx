@@ -3,35 +3,46 @@ import { AppDispatch, RootState } from "../../store";
 import { changeOptionScheduleSpreadReps, changeOptionScheduleSpreadWeight } from "../../store/actions";
 import { WEEK_DAYS } from "../../constants";
 import { AppOptionsModel } from "../../store/types";
-import { selectOptions } from "../../store/selectors";
+import { PropsWithChildren } from "react";
+import { useParams } from "react-router-dom";
 
 // ASSETS ------------------------------------------
 // -------------------------------------------------
 
 // STYLES ------------------------------------------
 import "./options.css";
+import { selectOptionsById } from "../../store/selectors";
 // -------------------------------------------------
 
 // COMPONENTS --------------------------------------
 // -------------------------------------------------
 
+type RouteParams = {
+  optionsId: string
+}
+
 type Props = {};
 
-const Options: React.FC<Props> = (props) => {
+const Options = (props: PropsWithChildren<Props>) => {
 
   const dispatch = useDispatch<AppDispatch>();
-  const appOptions = useSelector<RootState, AppOptionsModel>(selectOptions);
+  const params = useParams<RouteParams>();
+  const appOptions = useSelector<RootState, AppOptionsModel | undefined>(state => selectOptionsById(state, params.optionsId));
 
   const handleSpreadRepsCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
-      changeOptionScheduleSpreadReps(evt.target.checked)
+      changeOptionScheduleSpreadReps(params.optionsId, evt.target.checked)
     );
   }
 
   const handleSpreadWeightCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
-      changeOptionScheduleSpreadWeight(evt.target.checked)
+      changeOptionScheduleSpreadWeight(params.optionsId, evt.target.checked)
     );
+  }
+
+  if (appOptions === undefined) {
+    return <div>Schedule (scheduleId: {params.optionsId}) not found.</div>
   }
 
   return (
@@ -64,10 +75,6 @@ const Options: React.FC<Props> = (props) => {
                 </ol>
               </div>
             </div>
-          </div>
-
-          <div className="app-opts-form__title">Schedule editor options</div>
-          <div className="app-opts-form__section">
             <div className="app-opts-form__field">
               <div className="app-opts-form__control">
                 <span className="control-select">
@@ -78,13 +85,16 @@ const Options: React.FC<Props> = (props) => {
               </div>
               <div className="app-opts-form__detail">Default week day. Day that would be active when you navigate to schedule page</div>
             </div>
+          </div>
 
+          <div className="app-opts-form__title">Schedule editor options</div>
+          <div className="app-opts-form__section">
             <div className="app-opts-form__field">
               <div className="app-opts-form__control">
                 <label className="control-checkbox">
                   <input type="checkbox" name="spread-reps" className="control-checkbox__input"
                     onChange={handleSpreadRepsCheckbox}
-                    checked={appOptions.schedule.spreadReps}
+                    checked={appOptions.options.schedule.spreadReps}
                   />
                   <span className="control-checkbox__name">Spread reps?</span>
                 </label>
@@ -99,7 +109,7 @@ const Options: React.FC<Props> = (props) => {
                 <label className="control-checkbox">
                   <input type="checkbox" name="spread-weight" className="control-checkbox__input"
                     onChange={handleSpreadWeightCheckbox}
-                    checked={appOptions.schedule.spreadWeight}
+                    checked={appOptions.options.schedule.spreadWeight}
                   />
                   <span className="control-checkbox__name">Spread weight?</span>
                 </label>

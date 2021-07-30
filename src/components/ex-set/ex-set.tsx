@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import { schedulesUpdateSetWithSpreadAction, schedulesUpdateSetAction } from "../../store/actions";
-import { selectScheduleOptions } from "../../store/selectors";
-import { WeekDay, ExSetModel } from "../../store/types";
+import { selectOptionsByUserId } from "../../store/selectors";
+import { WeekDay, ExSetModel, AppOptionsModel } from "../../store/types";
 
 // ASSETS ------------------------------------------
 // -------------------------------------------------
@@ -33,13 +33,15 @@ const ExSet: React.FC<Props> = (props) => {
   console.log("ExSet called");
 
   const dispatch = useDispatch<AppDispatch>();
-  const scheduleOptions = useSelector(selectScheduleOptions);
+  const selectedUserId = useSelector<RootState, string>(state => state.selectedUser);
+  const appOptions = useSelector<RootState, AppOptionsModel | undefined>(state => selectOptionsByUserId(state, selectedUserId));
   const [isRepsFocused, setIsRepsFocused] = useState(false);
   const [isWeightFocused, setIsWeightFocused] = useState(false);
 
   const handleChange = (type: "reps" | "weight", value: string) => {
     const val = Number(value);
     if (isNaN(val)) return;
+    if (appOptions === undefined) return;
 
     let updatedSet: ExSetModel = props.initialSet;
     if (type === "reps") {
@@ -47,9 +49,8 @@ const ExSet: React.FC<Props> = (props) => {
     } else if (type === "weight") {
       updatedSet = { ...props.initialSet, weight: val };
     }
-
     let actionCreator: UpdateSetActionCreator = schedulesUpdateSetAction;
-    if (scheduleOptions.spreadReps === true || scheduleOptions.spreadWeight === true) {
+    if (appOptions.options.schedule.spreadReps === true || appOptions.options.schedule.spreadWeight === true) {
       actionCreator = schedulesUpdateSetWithSpreadAction;
     }
 
