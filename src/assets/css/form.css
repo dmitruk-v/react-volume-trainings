@@ -24,14 +24,13 @@
   width: 14px;
   height: 14px;
   margin-right: 5px;
-  padding: 1px 1px 0 0;
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
   text-align: center;
   vertical-align: middle;
-  color: #ffffff;
-  background-color: #ff8989;
+  color: #ff0000;
+  border: 1px solid #ff0000;
   border-radius: 10px;
 }
 .form-error__text {

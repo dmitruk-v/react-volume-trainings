@@ -19,7 +19,7 @@
   transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: url(../../../assets/svg/expand_more_black_24dp.svg) center center no-repeat;
+  background: url("../../../assets/svg/expand_more_black_24dp.svg") center center no-repeat;
 }
 .header-user:hover {
   background-color: #e1e1e1;

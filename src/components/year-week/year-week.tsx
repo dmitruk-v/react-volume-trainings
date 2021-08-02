@@ -1,9 +1,10 @@
-import React, { PropsWithChildren, useCallback, useMemo, useRef } from "react";
+import React, { PropsWithChildren, useCallback, useContext, useMemo } from "react";
 import { AppDispatch, calculateTrainingDayStats, calculateTrainingWeekStats } from "../../store";
 import { schedulesCopyTrainingWeekAction, schedulesUpdateTrainingWeekAction } from "../../store/actions";
 import { Cycle, TrainingWeekModel, WeekDay } from "../../store/types";
 import { getClasses } from "../../utils/css-utils";
 import { useDispatch } from "react-redux";
+import { WeekCopyModeContext } from "../../contexts";
 
 // ASSETS ------------------------------------------
 // -------------------------------------------------
@@ -13,7 +14,7 @@ import "./year-week.css";
 // -------------------------------------------------
 
 // COMPONENTS --------------------------------------
-import { YearDay } from "../year-day/year-day";
+import { YearWeekDay } from "./year-week-day/year-week-day";
 import { YearWeekHeader } from "./year-week-header/year-week-header";
 // -------------------------------------------------
 
@@ -29,7 +30,6 @@ type Props = {
 const YearWeek = React.memo((props: PropsWithChildren<Props>) => {
 
   const dispatch = useDispatch<AppDispatch>();
-  const weekDivRef = useRef<HTMLDivElement>(null);
   const weekClasses = getClasses(
     "t-year-week--cycle_" + props.trainingWeek.cycle,
     {
@@ -43,20 +43,23 @@ const YearWeek = React.memo((props: PropsWithChildren<Props>) => {
   );
 
   const handleCycleChange = useCallback((cycle: Cycle) => {
+    if (cycle === props.trainingWeek.cycle) return;
     dispatch(
       schedulesUpdateTrainingWeekAction(props.scheduleId, props.year, { ...props.trainingWeek, cycle })
     );
   }, [dispatch, props.scheduleId, props.year, props.trainingWeek]);
 
-  const handleWeekCopy = useCallback((fromWeekId: string) => {
+  const handleWeekCopy = useCallback((fromWeekYear: string, fromWeekId: string, toWeekYear: string, toWeekId: string) => {
     dispatch(
-      schedulesCopyTrainingWeekAction(props.scheduleId, props.year, fromWeekId, props.trainingWeek.weekId)
+      schedulesCopyTrainingWeekAction(props.scheduleId, fromWeekYear, fromWeekId, toWeekYear, toWeekId)
     );
-  }, [dispatch, props.scheduleId, props.year, props.trainingWeek]);
+  }, [dispatch, props.scheduleId]);
 
   return (
-    <div ref={weekDivRef} className={`t-year-week ${weekClasses}`}>
+    <div className={`t-year-week ${weekClasses}`}>
       <YearWeekHeader
+        year={props.year}
+        weekId={props.trainingWeek.weekId}
         weekNum={props.weekNum}
         weekCycle={props.trainingWeek.cycle}
         onCycleChange={handleCycleChange}
@@ -73,7 +76,7 @@ const YearWeek = React.memo((props: PropsWithChildren<Props>) => {
             );
             return (
               <div key={day} className="t-year-week__day">
-                <YearDay
+                <YearWeekDay
                   isUsed={dayStats.volume > 0}
                   scheduleId={props.scheduleId}
                   year={props.year}

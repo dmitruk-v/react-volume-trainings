@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
 import { AppDispatch, DataLoadingStatus, RootState } from "../../store";
@@ -6,6 +6,7 @@ import { selectScheduleById } from "../../store/selectors";
 import { ScheduleModel } from "../../store/types";
 import { createSchedule } from "../../utils/create-schedule";
 import { schedulesCreateScheduleAction } from "../../store/actions";
+import { WeekCopyModeContext, weekCopyModeDefault } from "../../contexts";
 
 // ASSETS ------------------------------------------------------------
 import icoPlus from "../../assets/svg/add_black_24dp.svg";
@@ -28,10 +29,13 @@ type Props = {};
 
 const Schedule: React.FC<Props> = (props) => {
 
+  console.log("Schedule called!");
+
   const now = new Date();
   const currYear = now.getFullYear();
   const dispatch = useDispatch<AppDispatch>();
   const match = useRouteMatch<RouteParams>();
+  const [weekCopyMode, setWeekCopyMode] = useState(weekCopyModeDefault);
 
   const schedule = useSelector<RootState, ScheduleModel | undefined>(
     state => selectScheduleById(state, match.params.scheduleId)
@@ -90,17 +94,24 @@ const Schedule: React.FC<Props> = (props) => {
         ))}
       </div>
 
-      <Switch>
-        {Object.keys(schedule.years).map(year => (
-          <Route key={year} path={`${match.path}/:year`} component={TrainingYear} />
-        ))}
-        <Redirect exact from={match.path} to={`${match.url}/${currYear}`} />
-      </Switch>
+      <WeekCopyModeContext.Provider value={{ ...weekCopyMode, setWeekCopyMode }}>
+        <Switch>
+          {Object.keys(schedule.years).map(year => (
+            <Route key={year} path={`${match.path}/${year}`}>
+              <TrainingYear
+                scheduleId={schedule.scheduleId}
+                year={year}
+                trainingYear={schedule.years[year]}
+              />
+            </Route>
+          ))}
+          <Route path={`${match.path}/*`}>Training year not found.</Route>
+          <Redirect exact from={match.path} to={`${match.url}/${currYear}`} />
+        </Switch>
+      </WeekCopyModeContext.Provider>
 
     </div>
   );
 }
-
-const schedulesDataTransformer = (key: any, value: any) => key === "weekStartDate" ? new Date(value) : value;
 
 export { Schedule };

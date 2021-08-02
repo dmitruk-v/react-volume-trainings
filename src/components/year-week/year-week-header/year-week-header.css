@@ -1,0 +1,9 @@
+.t-year-week__menu-button {
+  /* outline: none; */
+}
+.t-year-week__menu-button--choose {
+  background-color: #ffeac0;
+}
+.t-year-week__menu-button--cancel {
+  background-color: #ffffff;
+}

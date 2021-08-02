@@ -3,6 +3,7 @@ import { useClickOutside } from "../../../hooks/useClickOutside";
 import { usePreventDocumentScroll } from "../../../hooks/usePreventDocumentScroll";
 
 // ASSETS ------------------------------------------------------------
+import icoClose from "../../../assets/svg/close_black_24dp.svg";
 // -------------------------------------------------------------------
 
 // STYLES ------------------------------------------------------------
@@ -30,7 +31,11 @@ const Modal = (props: PropsWithChildren<Props>) => {
         <div className="modal__scroller">
           <div className="modal__body">{props.children}</div>
         </div>
-        <div className="modal__close" onClick={props.onClose} />
+        <div className="modal__close">
+          <button className="button-type1" onClick={props.onClose}>
+            <img src={icoClose} alt="ico-close" />
+          </button>
+        </div>
       </div>
     </div>
   );

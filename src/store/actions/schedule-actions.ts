@@ -145,11 +145,11 @@ const schedulesUpdateTrainingWeekAction = (
 }
 
 const schedulesCopyTrainingWeekAction = (
-  scheduleId: string, year: string, fromWeekId: string, toWeekId: string
+  scheduleId: string, fromWeekYear: string, fromWeekId: string, toWeekYear: string, toWeekId: string
 ) => {
   return {
     type: "schedules/copyTrainingWeek",
-    payload: { scheduleId, year, fromWeekId, toWeekId }
+    payload: { scheduleId, fromWeekYear, fromWeekId, toWeekYear, toWeekId }
   } as const
 }
 

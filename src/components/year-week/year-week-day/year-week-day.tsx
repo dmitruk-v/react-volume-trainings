@@ -1,14 +1,14 @@
 import React, { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
-import { WeekDay } from "../../store/types";
-import { getClasses } from "../../utils/css-utils";
-import { getDayName, getMonthName } from "../../utils/date-utils";
+import { WeekDay } from "../../../store/types";
+import { getClasses } from "../../../utils/css-utils";
+import { getDayName, getMonthName } from "../../../utils/date-utils";
 
 // ASSETS ------------------------------------------------------------
 // -------------------------------------------------------------------
 
 // STYLES ------------------------------------------------------------
-import "./year-day.css";
+import "./year-week-day.css";
 // -------------------------------------------------------------------
 
 // COMPONENTS --------------------------------------------------------
@@ -24,7 +24,7 @@ type Props = {
   todayStartDate: Date
 };
 
-const YearDay = (props: PropsWithChildren<Props>) => {
+const YearWeekDay = (props: PropsWithChildren<Props>) => {
 
   const dayClasses = getClasses({
     "t-year-day--used": props.isUsed,
@@ -52,4 +52,4 @@ const formatWeekday = (weekday: Date): string => {
   return getDayName(weekday.getDay()).slice(0, 3);
 };
 
-export { YearDay };
+export { YearWeekDay };

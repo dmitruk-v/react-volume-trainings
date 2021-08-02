@@ -536,8 +536,8 @@ const schedulesReducer = (oldState: SchedulesState = initialState, action: Actio
     }
 
     case "schedules/copyTrainingWeek": {
-      const { scheduleId, year, fromWeekId, toWeekId } = action.payload;
-      const fromWeek = oldState.data[scheduleId].years[year].weeks.find(w => w.weekId === fromWeekId);
+      const { scheduleId, fromWeekYear, fromWeekId, toWeekYear, toWeekId } = action.payload;
+      const fromWeek = oldState.data[scheduleId].years[fromWeekYear].weeks.find(w => w.weekId === fromWeekId);
       if (fromWeek === undefined) return oldState;
       return {
         ...oldState,
@@ -547,9 +547,9 @@ const schedulesReducer = (oldState: SchedulesState = initialState, action: Actio
             ...oldState.data[scheduleId],
             years: {
               ...oldState.data[scheduleId].years,
-              [year]: {
-                ...oldState.data[scheduleId].years[year],
-                weeks: oldState.data[scheduleId].years[year].weeks.map(
+              [toWeekYear]: {
+                ...oldState.data[scheduleId].years[toWeekYear],
+                weeks: oldState.data[scheduleId].years[toWeekYear].weeks.map(
                   week => week.weekId === toWeekId
                     ? {
                       ...fromWeek,
