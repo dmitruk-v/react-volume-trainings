@@ -74,7 +74,6 @@ const WeekScheduleMenuDay = (props: PropsWithChildren<Props>) => {
       <Dropdown
         isOpened={cloneMenuOpened}
         classNames="wsch-menu-day__dropdown"
-        withCloseBtn
         onClose={() => setCloneMenuOpened(false)}
       >
         <div className="dropdown-title">Clone from:</div>

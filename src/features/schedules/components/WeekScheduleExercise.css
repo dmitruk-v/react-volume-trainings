@@ -1,21 +1,22 @@
 .wsch-exercise {
-  --set-input-width: 70px;
-  --set-input-height: calc(var(--set-input-width) / 1.62 - var(--set-input-between));
+  --set-input-width: 60px;
+  --set-input-height: 40px;
   --set-input-between: 5px;
   position: relative;
   height: 100%;
+  padding: 20px;
   background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #b1b1b1;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
 }
 .wsch-exercise__layout {
   position: relative;
   display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
+  flex-flow: column wrap;
 }
-/* ---------------------------------------------------------------------------- */
 .wsch-exercise__head {
-  width: 200px;
-  margin-right: 15px;
+  margin-bottom: 15px;
 }
 .wsch-exercise__number {
   margin-bottom: 5px;
@@ -28,24 +29,20 @@
   font-size: 18px;
   line-height: 1.2;
 }
-/* ---------------------------------------------------------------------------- */
-.wsch-exercise__stats {
-  width: 130px;
-  margin-top: 4px;
-  margin-right: 15px;
-  padding: 10px 15px;
-  border: 1px solid #e1e1e1;
-  border-radius: 5px;
-}
-/* ---------------------------------------------------------------------------- */
 .wsch-exercise__sets-wrapper {
   flex: 1;
 }
 .wsch-exercise__sets {
   display: flex;
   flex-flow: row wrap;
+  margin-right: -10px;
+  margin-bottom: 5px;
 }
-.wsch-exercise__set {}
+.wsch-exercise__set {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.wsch-exercise__stats {}
 
 /* ---------------------------------------------------------------------------- */
 .wsch-exercise__overlay {
@@ -88,16 +85,16 @@
 /* ---------------------------------------------------------------------------- */
 .wsch-exercise__menu-btn {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 15px;
+  right: 15px;
 }
 .wsch-exercise__menu-btn:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dropdown.wsch-exercise__dropdown {
-  top: -10px;
-  right: -10px;
+  top: -5px;
+  right: -5px;
   left: auto;
   width: 200px;
 }

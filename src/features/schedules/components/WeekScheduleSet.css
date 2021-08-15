@@ -9,7 +9,6 @@
   --set-input-focus-text-color: #000000;
   --set-input-focus-placeholder-color: transparent;
   position: relative;
-  padding: 5px;
 }
 .wsch-set__layout {
   display: flex;

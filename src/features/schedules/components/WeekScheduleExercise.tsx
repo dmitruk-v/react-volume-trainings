@@ -55,18 +55,20 @@ const WeekScheduleExercise = (props: PropsWithChildren<Props>) => {
       <div className="wsch-exercise__layout">
 
         <div className="wsch-exercise__head">
-          <div className="wsch-exercise__number">Exercise {props.exerciseNumber}</div>
-          <div className="wsch-exercise__name">{props.initialExercise.name}</div>
+          <div className="wsch-exercise__name">{props.exerciseNumber}. {props.initialExercise.name}</div>
+        </div>
+
+        <div className="wsch-exercise__sets-wrapper">
+          <div className="wsch-exercise__sets">{props.children}</div>
         </div>
 
         <div className="wsch-exercise__stats">
           <Stats
             statsOptions={{
               modifierClasses: [
-                "stats--vertical",
                 "stats--strong-terms",
                 "stats--colored-terms",
-                "stats--colored-values"
+                "stats--colored-values",
               ],
               volumeTerm: "V:",
               intensityTerm: "I:",
@@ -74,10 +76,6 @@ const WeekScheduleExercise = (props: PropsWithChildren<Props>) => {
             }}
             stats={exerciseStats}
           />
-        </div>
-
-        <div className="wsch-exercise__col wsch-exercise__sets-wrapper">
-          <div className="wsch-exercise__sets">{props.children}</div>
         </div>
 
       </div>
@@ -89,10 +87,9 @@ const WeekScheduleExercise = (props: PropsWithChildren<Props>) => {
       <Dropdown
         isOpened={menuVisible}
         classNames={"wsch-exercise__dropdown"}
-        withCloseBtn
         onClose={() => setMenuVisible(false)}
       >
-        <div className="dropdown-title">Exercise menu</div>
+        <div className="dropdown-title">Exercise {props.exerciseNumber} menu</div>
         <div className="dropdown-menu">
           <ul className="dropdown-menu__list">
             <li className="dropdown-menu__item">

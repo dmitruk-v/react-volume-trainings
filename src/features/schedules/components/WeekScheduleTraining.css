@@ -14,7 +14,7 @@
   flex-flow: row wrap;
   align-items: center;
   padding: 15px 15px 15px 50px;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -28,6 +28,9 @@
   height: 16px;
   background: url("../../../assets/svg/arrow_downward_black_24dp.svg") center center no-repeat;
   transition: all 0.3s ease-in-out;
+}
+.wsch-training--opened > .wsch-training__head {
+  border-radius: 5px 5px 0 0;
 }
 .wsch-training--opened > .wsch-training__head::before {
   transform: translateY(-50%) rotate(-180deg);
@@ -49,19 +52,20 @@
   display: none;
   padding: 15px 15px 17px 15px;
   border-top: 1px solid #e1e1e1;
-  /* background: url(../../assets/images/bg.jpg) center center no-repeat; */
+  /* background-color: #f5f5f5; */
+  border-radius: 0 0  5px 5px;
+  /* background: url(../../../assets/images/bg.jpg) center center no-repeat; */
 }
 .wsch-training--opened > .wsch-training__body {
   display: block;
 }
 .wsch-training__exercises {
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-gap: 15px;
 }
-.wsch-training__exercise {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #f1f1f1;
-}
+.wsch-training__exercise {}
 .wsch-training__exercise:last-child {
   margin-bottom: 0;
   padding-bottom: 0;
@@ -87,4 +91,16 @@
   right: 5px;
   left: auto;
   width: 200px;
+}
+
+@media only screen and (max-width: 992px) {
+  .wsch-training__exercises {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wsch-training__exercises {
+    grid-template-columns: 1fr;
+  }
 }

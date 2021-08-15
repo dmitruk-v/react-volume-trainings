@@ -69,10 +69,9 @@ const WeekScheduleTraining = (props: PropsWithChildren<Props>) => {
         <Dropdown
           isOpened={menuOpened}
           classNames="wsch-training__dropdown"
-          withCloseBtn
           onClose={() => setMenuOpened(false)}
         >
-          <div className="dropdown-title">Training menu</div>
+          <div className="dropdown-title">Training {props.trainingNumber} menu</div>
           <div className="dropdown-menu">
             <ul className="dropdown-menu__list">
               <li className="dropdown-menu__item">
