@@ -1,0 +1,12 @@
+.ysch-year__weeks {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1px 0 0 1px;
+}
+.ysch-year__week {
+  flex: 1 1 20%;
+  min-width: 240px;
+  margin-top: -1px;
+  margin-left: -1px;
+  border: 1px solid #cccccc;
+}

@@ -1,0 +1,21 @@
+.loading-indicator-global {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  /* background-color: rgba(255, 255, 255, 0.25); */
+}
+.loading-indicator-global__body {
+  margin: auto;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+}
+.loading-indicator-global__text {
+  margin-bottom: 15px;
+}
+.loading-indicator-global__img {}

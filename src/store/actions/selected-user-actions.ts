@@ -1,7 +1,9 @@
-const selectedUserActivate = (userId: string) => {
+import { UserModel } from "../../features/users/users-types";
+
+const selectedUserActivate = (user: UserModel | null) => {
   return {
     type: "selectedUser/activate",
-    payload: { userId }
+    payload: { user }
   } as const;
 }
 

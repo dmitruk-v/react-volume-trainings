@@ -1,6 +1,6 @@
-import { AppOptionsActions } from "./app-options-actions";
-import { SchedulesActions } from "./schedule-actions";
-import { UsersActions } from "./users-actions";
+import { AppOptionsActions } from "../../features/options/options-actions";
+import { SchedulesActions } from "../../features/schedules/schedules-actions";
+import { UsersActions } from "../../features/users/users-actions";
 import { SelectedUserActions } from "./selected-user-actions";
 import { CopyModeActions } from "./copy-mode-actions";
 
@@ -11,9 +11,9 @@ type Actions =
   | SelectedUserActions
   | CopyModeActions;
 
-export * from "./app-options-actions";
-export * from "./schedule-actions";
-export * from "./users-actions";
+export * from "../../features/options/options-actions";
+export * from "../../features/schedules/schedules-actions";
+export * from "../../features/users/users-actions";
 export * from "./selected-user-actions";
 export * from "./copy-mode-actions";
 

@@ -1,0 +1,163 @@
+.wsch-menu-day {
+  position: relative;
+  display: block;
+  border: 1px solid #a1a1a1;
+  background-color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.wsch-menu-day--active,
+.wsch-menu-day:hover {
+  box-shadow: 0 0 0 2px #a1a1a1;
+}
+
+.wsch-menu-day__title {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 18px;
+  line-height: 1;
+  background-color: #f1f1f1;
+  border-radius: 5px 5px 0 0;
+}
+.wsch-menu-day__menu-button {
+  z-index: 1;
+  margin-left: 10px;
+}
+.wsch-menu-day__day-name {
+  padding: 15px 15px 15px 10px;
+  color: #555555;
+}
+.wsch-menu-day__day-name::first-letter {
+  text-transform: uppercase;
+}
+.wsch-menu-day__trainings {
+  margin-left: auto;
+  padding: 15px;
+  font-weight: bold;
+  line-height: 1;
+  color: #555555;
+  border-radius: 0 5px 0 0;
+}
+.wsch-menu-day__stats {
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
+}
+.wsch-menu-day__menu-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.wsch-menu-day__link {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* .wsch-menu-day__link--active {
+  pointer-events: none;
+} */
+.dropdown.wsch-menu-day__dropdown {
+  z-index: 3;
+  position: absolute;
+  top: 35px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+}
+
+/* RELAX
+----------------------------------------------------------- */
+.week-schedule--cycle_relax .wsch-menu-day--used {
+  border-color: #8da7d0;
+}
+.week-schedule--cycle_relax .wsch-menu-day--used.wsch-menu-day--active,
+.week-schedule--cycle_relax .wsch-menu-day--used:hover {
+  box-shadow: 0 0 0 2px #8da7d0;
+}
+.week-schedule--cycle_relax .wsch-menu-day--used .wsch-menu-day__title {
+  background-color: #ebf3ff;
+}
+.week-schedule--cycle_relax .wsch-menu-day--used .wsch-menu-day__day-name {
+  color: #324e79;
+}
+.week-schedule--cycle_relax .wsch-menu-day--used .wsch-menu-day__trainings {
+  color: #324e79;
+}
+
+/* VOLUME
+----------------------------------------------------------- */
+.week-schedule--cycle_volume .wsch-menu-day--used {
+  border-color: #77b7a7;
+}
+.week-schedule--cycle_volume .wsch-menu-day--used.wsch-menu-day--active,
+.week-schedule--cycle_volume .wsch-menu-day--used:hover {
+  box-shadow: 0 0 0 2px #77b7a7;
+}
+.week-schedule--cycle_volume .wsch-menu-day--used .wsch-menu-day__title {
+  background-color: #e0fff7;
+}
+.week-schedule--cycle_volume .wsch-menu-day--used .wsch-menu-day__day-name {
+  color: #267d68;
+}
+.week-schedule--cycle_volume .wsch-menu-day--used .wsch-menu-day__trainings {
+  color: #267d68;
+}
+
+/* VOLUME-STRENGTH
+----------------------------------------------------------- */
+.week-schedule--cycle_volume-strength .wsch-menu-day--used {
+  border-color: #c391cc;
+}
+.week-schedule--cycle_volume-strength .wsch-menu-day--used.wsch-menu-day--active,
+.week-schedule--cycle_volume-strength .wsch-menu-day--used:hover {
+  box-shadow: 0 0 0 2px #c391cc;
+}
+.week-schedule--cycle_volume-strength .wsch-menu-day--used .wsch-menu-day__title {
+  background-color: #fce7ff;
+}
+.week-schedule--cycle_volume-strength .wsch-menu-day--used .wsch-menu-day__day-name {
+  color: #794982;
+}
+.week-schedule--cycle_volume-strength .wsch-menu-day--used .wsch-menu-day__trainings {
+  color: #794982;
+}
+
+/* STRENGTH
+----------------------------------------------------------- */
+.week-schedule--cycle_strength .wsch-menu-day--used {
+  border-color: #d87e7e;
+}
+.week-schedule--cycle_strength .wsch-menu-day--used.wsch-menu-day--active,
+.week-schedule--cycle_strength .wsch-menu-day--used:hover {
+  box-shadow: 0 0 0 2px #d87e7e;
+}
+.week-schedule--cycle_strength .wsch-menu-day--used .wsch-menu-day__title {
+  background-color: #ffe7e7;
+}
+.week-schedule--cycle_strength .wsch-menu-day--used .wsch-menu-day__day-name {
+  color: #792f2f;
+}
+.week-schedule--cycle_strength .wsch-menu-day--used .wsch-menu-day__trainings {
+  color: #792f2f;
+}
+
+/* FAT-BURN
+----------------------------------------------------------- */
+.week-schedule--cycle_fat-burn .wsch-menu-day--used {
+  border-color: #b1a571;
+}
+.week-schedule--cycle_fat-burn .wsch-menu-day--used.wsch-menu-day--active,
+.week-schedule--cycle_fat-burn .wsch-menu-day--used:hover {
+  box-shadow: 0 0 0 2px #b1a571;
+}
+.week-schedule--cycle_fat-burn .wsch-menu-day--used .wsch-menu-day__title {
+  background-color: #fff8d9;
+}
+.week-schedule--cycle_fat-burn .wsch-menu-day--used .wsch-menu-day__day-name {
+  color: #5a4f1d;
+}
+.week-schedule--cycle_fat-burn .wsch-menu-day--used .wsch-menu-day__trainings {
+  color: #5a4f1d;
+}

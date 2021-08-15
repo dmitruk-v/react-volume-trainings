@@ -1,6 +1,7 @@
 @import "./assets/css/normalize.css";
 @import "./assets/css/form.css";
 @import "./assets/css/button.css";
+@import "./assets/css/message.css";
 
 :root {
   --main-font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;

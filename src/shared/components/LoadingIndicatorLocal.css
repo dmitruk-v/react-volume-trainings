@@ -1,0 +1,16 @@
+.loading-indicator-local {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 10px 15px;
+  line-height: 1;
+  border: 1px dashed #cccccc;
+  border-radius: 5px;
+}
+.loading-indicator-local__text {
+  padding-bottom: 2px;
+  font-size: 18px;
+}
+.loading-indicator-local__img {
+  margin-right: 15px;
+}

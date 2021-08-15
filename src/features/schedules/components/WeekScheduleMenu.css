@@ -1,0 +1,11 @@
+.wsch-menu-days {}
+.wsch-menu-days__items {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -15px;
+  margin-bottom: -15px;
+}
+.wsch-menu-days__item {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}

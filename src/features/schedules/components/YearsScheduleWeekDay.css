@@ -1,0 +1,116 @@
+/* DAY
+------------------------------------------------------ */
+.ysch-day {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 10px;
+  line-height: 1;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: none;
+}
+.ysch-day:link,
+.ysch-day:visited {
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+.ysch-day:hover,
+.ysch-day:active {
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.ysch-day__weekday {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.75);
+}
+.ysch-day__month {
+  margin-bottom: 2px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.ysch-day__month::first-letter {
+  text-transform: uppercase;
+}
+.ysch-day__date {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  color: rgba(0, 0, 0, 0.75);
+}
+.ysch-day--used {
+  /* background: linear-gradient(0, rgb(255 255 255 / 35%), rgb(255 255 255 / 70%)); */
+  /* box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 2px rgba(0, 0, 0, 0.1); */
+}
+.ysch-day--current {
+  box-shadow: 0 0 0 5px #ff9e9e;
+}
+.ysch-day__link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+}
+
+/* NONE
+------------------------------------------------------ */
+.ysch-week--cycle_none .ysch-day {
+  /* background-color: #f5f5f5; */
+  background-color: #ffffff;
+}
+.ysch-week--cycle_none .ysch-day--used {
+  background-color: #e1e1e1;
+}
+
+/* RELAX
+------------------------------------------------------ */
+.ysch-week--cycle_relax .ysch-day {
+  background-color: #f1f6ff;
+}
+.ysch-week--cycle_relax .ysch-day--used {
+  background-color: #d3e4ff;
+}
+
+/* VOLUME
+------------------------------------------------------ */
+.ysch-week--cycle_volume .ysch-day {
+  background-color: #edfbf8;
+}
+.ysch-week--cycle_volume .ysch-day--used {
+  background-color: #a5ffe9;
+}
+
+/* VOLUME-STRENGTH
+------------------------------------------------------ */
+.ysch-week--cycle_volume-strength .ysch-day {
+  background-color: #f9f1fb;
+}
+.ysch-week--cycle_volume-strength .ysch-day--used {
+  background-color: #f8d0ff;
+}
+
+/* STRENGTH
+------------------------------------------------------ */
+.ysch-week--cycle_strength .ysch-day {
+  background-color: #ffefef;
+}
+.ysch-week--cycle_strength .ysch-day--used {
+  background-color: #ffc6c6;
+}
+
+/* FAT_BURN
+------------------------------------------------------ */
+.ysch-week--cycle_fat-burn .ysch-day {
+  background-color: #fbf6e4;
+}
+.ysch-week--cycle_fat-burn .ysch-day--used {
+  background-color: #fff0b0;
+}

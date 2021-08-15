@@ -1,0 +1,28 @@
+.app-message {
+  padding: 20px;
+  border-radius: 5px;
+}
+.app-message__title {
+  margin-bottom: 2px;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000000;
+}
+.app-message_reason {
+  font-size: 16px;
+  line-height: 1.2;
+  color: #a1a1a1;
+}
+
+
+.app-message--error { background-color: #fdf0f0; }
+.app-message--error .app-message__title { color: #d03535; }
+.app-message--error .app-message__reason { color: #826161; }
+
+.app-message--success { background-color: #f4fdf0; }
+.app-message--success .app-message__title { color: #4cab23; }
+.app-message--success .app-message__reason { color: #718261; }
+
+.app-message--info { background-color: #f0f8fd; }
+.app-message--info .app-message__title { color: #3075a0; }
+.app-message--info .app-message__reason { color: #617682; }

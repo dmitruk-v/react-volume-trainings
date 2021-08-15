@@ -6,33 +6,40 @@ import "./App.css";
 // -------------------------------------------------
 
 // COMPONENTS --------------------------------------
-import { Home } from "./components/home/home";
-import { Options } from "./components/options/options";
-import { Header } from "./components/common/header/header";
-import { Footer } from "./components/common/footer/footer";
-import { TrainingWeek } from "./components/training-week/training-week";
-import { Schedule } from "./components/schedule/schedule";
-import { VirtualizationScreen } from "./components/features/virtualization-screen/virtualization-screen";
-import { GameOfLife } from "./components/features/game-of-life/game-of-life";
+import { UserSelector } from "./features/users/components/UserSelector";
+import { UserMenu } from "./features/users/components/UserMenu";
+import { Header } from "./shared/components/Header";
+import { Footer } from "./shared/components/Footer";
+
+import { HomePage } from "./pages/home";
+import { OptionsPage } from "./pages/options";
+import { WeekSchedulePage } from "./pages/week-schedule";
+import { YearsSchedulePage } from "./pages/years-schedule";
+import { VirtualizationPage } from "./pages/virtualization-demo";
+import { GameOfLifePage } from "./pages/game-of-life";
+import { OtherMain as OtherMainPage } from "./pages/other";
 // --------------------------------------------------
 
 function App() {
+
   return (
     <div className="app">
       <BrowserRouter>
         <div className="app__header">
-          <Header />
+          <Header
+            userSelector={<UserSelector />}
+            userMenu={<UserMenu />}
+          />
         </div>
         <div className="app__main">
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/years-schedule/:scheduleId" component={Schedule} />
-            <Route path="/week-schedule/:scheduleId/:year/:weekId" component={TrainingWeek} />
-            <Route path="/options/:optionsId" component={Options} />
-
-            {/* <Route path="/features/virtualization" component={VirtualizationScreen} />
-            <Route path="/features/game-of-life" component={GameOfLife} /> */}
-
+            <Route path="/" exact component={HomePage} />
+            <Route path="/years-schedule/:scheduleId" component={YearsSchedulePage} />
+            <Route path="/week-schedule/:scheduleId/:year/:weekId" component={WeekSchedulePage} />
+            <Route path="/options/:optionsId" component={OptionsPage} />
+            <Route path="/features/virtualization" component={VirtualizationPage} />
+            <Route path="/features/game-of-life" component={GameOfLifePage} />
+            <Route path="/features/other" component={OtherMainPage} />
             <Route path="*" component={NoMatch} />
           </Switch>
         </div>

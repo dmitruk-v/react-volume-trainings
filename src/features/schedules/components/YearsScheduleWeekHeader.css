@@ -1,0 +1,9 @@
+.ysch-week__menu-button {
+  /* outline: none; */
+}
+.ysch-week__menu-button--choose {
+  background-color: #ffeac0;
+}
+.ysch-week__menu-button--cancel {
+  background-color: #ffffff;
+}

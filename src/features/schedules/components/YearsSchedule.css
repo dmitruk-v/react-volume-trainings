@@ -1,0 +1,33 @@
+.years-schedule {}
+.years-schedule__message {
+  margin-bottom: 15px;
+}
+.years-schedule__create-button {
+  margin-top: 15px;
+}
+.years-schedule__year-selector {
+  margin-bottom: 15px;
+}
+.years-schedule__button {
+  margin-right: 10px;
+}
+
+.ysch-button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 18px;
+  line-height: 1;
+  border: 2px solid #eaeaea;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.ysch-button:hover {
+  border-color: #c1c1c1;
+}
+.ysch-button--active,
+.ysch-button--active:hover {
+  border-color: #333333;
+}

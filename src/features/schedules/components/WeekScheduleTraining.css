@@ -1,0 +1,90 @@
+.wsch-training {
+  border: 1px solid #e1e1e1;
+  background-color: #ffffff;
+  border-radius: 5px;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+.wsch-training:hover {
+  border-color: #a1a1a1;
+}
+.wsch-training__head {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 15px 15px 15px 50px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.wsch-training__head:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%) rotate(0);
+  width: 16px;
+  height: 16px;
+  background: url("../../../assets/svg/arrow_downward_black_24dp.svg") center center no-repeat;
+  transition: all 0.3s ease-in-out;
+}
+.wsch-training--opened > .wsch-training__head::before {
+  transform: translateY(-50%) rotate(-180deg);
+}
+.wsch-training__title {
+  position: relative;
+  margin-right: 30px;
+  padding: 5px 10px 3px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  border: 1px solid #a1a1a1;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  color: #555555;
+  border-radius: 5px;
+}
+.wsch-training__body {
+  display: none;
+  padding: 15px 15px 17px 15px;
+  border-top: 1px solid #e1e1e1;
+  /* background: url(../../assets/images/bg.jpg) center center no-repeat; */
+}
+.wsch-training--opened > .wsch-training__body {
+  display: block;
+}
+.wsch-training__exercises {
+  position: relative;
+}
+.wsch-training__exercise {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.wsch-training__exercise:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.wsch-training__stats {}
+.wsch-training-stats {
+  display: flex;
+  flex-flow: row wrap;
+}
+/* ---------------------------------------------------------------------------- */
+.wsch-training__menu-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.wsch-training__menu-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.dropdown.wsch-training__dropdown {
+  top: 5px;
+  right: 5px;
+  left: auto;
+  width: 200px;
+}

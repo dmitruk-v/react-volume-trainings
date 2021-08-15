@@ -1,0 +1,11 @@
+.wsch-day {}
+.wsch-day__body {
+  position: relative;
+}
+.wsch-day__trainings {}
+.wsch-day__training {
+  margin-bottom: 15px;
+}
+.wsch-day__training:last-child {
+  margin-bottom: 0;
+}

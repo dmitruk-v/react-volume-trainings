@@ -1,7 +1,26 @@
-import { applyMiddleware, compose, createStore, Middleware } from "redux";
-import rootReducer from "./reducers";
+import { applyMiddleware, combineReducers, compose, createStore, Middleware } from "redux";
+// import rootReducer from "./reducers";
+
+import { schedulesReducer } from "../features/schedules/schedules-reducer";
+import { usersReducer } from "../features/users/users-reducer";
+import { optionsReducer } from "../features/options/options-reducer";
+import { copyModeReducer, selectedUserReducer } from "./reducers"
+
 import { throttle } from "lodash";
-import { LocalStorageProvider } from "../providers/local-storage-provider";
+import { LocalStorageService } from "../shared/services/local-storage.service";
+
+
+// ---------------------------------------------------------------------------
+// compose rootReducer
+// ---------------------------------------------------------------------------
+const rootReducer = combineReducers({
+  selectedUser: selectedUserReducer,
+  copyMode: copyModeReducer,
+  schedules: schedulesReducer,
+  users: usersReducer,
+  options: optionsReducer
+});
+
 
 // import { debounce } from "lodash";
 
@@ -40,7 +59,7 @@ const enhancer = composeEnhancers(applyMiddleware(loggingMiddleware, promiseMidd
 
 // Preload state
 // ----------------------------------------------------------------------
-const dataProvider = LocalStorageProvider<ReturnType<typeof rootReducer>>("ROOT_STATE", (key, value) => {
+const dataProvider = LocalStorageService<ReturnType<typeof rootReducer>>("ROOT_STATE", (key, value) => {
   return key === "weekStartDate" ? new Date(value) : value;
 });
 const persistedState = dataProvider.load();
