@@ -24,20 +24,18 @@ const useSet = (
 
   const handleChange = (type: "reps" | "weight", value: string) => {
     const val = Number(value);
-    if (isNaN(val)) return;
-    if (appOptions === undefined) return;
+    if (isNaN(val) || appOptions === undefined) return;
 
     let updatedSet: ExSetModel = initialSet;
-    if (type === "reps") {
-      updatedSet = { ...initialSet, reps: val };
-    } else if (type === "weight") {
-      updatedSet = { ...initialSet, weight: val };
-    }
+
+    if (type === "reps") updatedSet = { ...initialSet, reps: val };
+    else if (type === "weight") updatedSet = { ...initialSet, weight: val };
+    else console.error("[SET ERROR]. Unknown change type: " + type);
+
     let actionCreator: UpdateSetActionCreator = schedulesUpdateSetAction;
     if (appOptions.options.schedule.spreadReps === true || appOptions.options.schedule.spreadWeight === true) {
       actionCreator = schedulesUpdateSetWithSpreadAction;
     }
-
     dispatch(
       actionCreator(scheduleId, year, weekId, day, trainingId, exerciseId, updatedSet)
     );

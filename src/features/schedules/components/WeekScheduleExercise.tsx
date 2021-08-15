@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useState } from "react";
 import { ExerciseModel } from "../schedules-types";
 import { WeekDay } from "../../../shared/types";
-import { useFocusWhen } from "../hooks/useFocusWhen";
+import { useFocusWhen } from "../../../shared/hooks/useFocusWhen";
 import { useExercise } from "../hooks/useExercise";
 
 // ASSETS ------------------------------------------
@@ -31,10 +31,7 @@ type Props = {
 const WeekScheduleExercise = (props: PropsWithChildren<Props>) => {
 
   const {
-    updateExerciseName,
-    cloneExercise, resetExercise, removeExercise,
-    cloneLastSet, removeLastSet,
-    exerciseStats,
+    cloneExercise, resetExercise, removeExercise, cloneLastSet, removeLastSet, updateExerciseName, exerciseStats
   } = useExercise(props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.initialExercise);
 
   const [nameEditable, setNameEditable] = useState(false);

@@ -25,14 +25,13 @@ type Props = {
 }
 
 const WeekScheduleSet = (props: Props) => {
-  const { handleRepsChange, handleWeightChange } = useSet(props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.exerciseId, props.initialSet);
+
+  const {
+    handleRepsChange, handleWeightChange
+  } = useSet(props.scheduleId, props.year, props.weekId, props.day, props.trainingId, props.exerciseId, props.initialSet);
   const [isRepsFocused, setIsRepsFocused] = useState(false);
   const [isWeightFocused, setIsWeightFocused] = useState(false);
-
-  const focused = useMemo(
-    () => isRepsFocused || isWeightFocused,
-    [isRepsFocused, isWeightFocused]
-  );
+  const focused = useMemo(() => isRepsFocused || isWeightFocused, [isRepsFocused, isWeightFocused]);
 
   return (
     <div className={`wsch-set ${focused ? "wsch-set--focused" : ""}`}>
