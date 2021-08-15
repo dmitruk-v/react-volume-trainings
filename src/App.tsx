@@ -21,7 +21,6 @@ import { OtherMain as OtherMainPage } from "./pages/other";
 // --------------------------------------------------
 
 function App() {
-
   return (
     <div className="app">
       <BrowserRouter>

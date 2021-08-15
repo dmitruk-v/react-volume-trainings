@@ -1,10 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../../shared/hooks";
-// import { selectOptionsById } from "../../options/options-selectors";
-// import { AppOptionsModel } from "../../options/options-types";
-// import { selectScheduleById } from "../../schedules/schedules-selectors";
-// import { ScheduleModel } from "../../schedules/schedules-types";
+import { selectTrainingWeekByDate, TrainingWeekModel } from "../../schedules";
 import { UserModel } from "../users-types";
 
 // ASSETS ------------------------------------------------------------
@@ -21,15 +18,16 @@ type Props = {};
 
 const UserMenu = (props: Props) => {
 
+  const now = new Date();
+  const currYear = now.getFullYear();
   const selectedUser = useAppSelector<UserModel | null>(state => state.selectedUser);
+  const currTrainingWeek = useAppSelector<TrainingWeekModel | undefined>(
+    state => selectTrainingWeekByDate(state, selectedUser?.scheduleId || "", now)
+  );
 
-  if (!selectedUser) return null;
-
-  // const options = useAppSelector<AppOptionsModel | undefined>(state => selectOptionsById(state, props.selectedUserId));
-  // const currYear = new Date().getFullYear();
-  // const currWeek = useAppSelector<TrainingWeekModel | undefined>(
-  //   state => selectTrainingWeekByDate(state, schedule ? schedule.scheduleId : "", new Date())
-  // );
+  if (selectedUser === null) {
+    return null;
+  }
 
   return (
     <div className="header-menu">
@@ -42,12 +40,12 @@ const UserMenu = (props: Props) => {
             activeClassName="header-menu__link--active">Schedule</NavLink>
         </li>
 
-        {/* <li className="header-menu__item">
+        <li className="header-menu__item">
           <NavLink
-            to={`/week-schedule/${selectedUser.scheduleId}/${currYear}/${currWeek?.weekId}`}
+            to={`/week-schedule/${selectedUser.scheduleId}/${currYear}/${currTrainingWeek?.weekId}`}
             className="header-menu__link"
             activeClassName="header-menu__link--active">Current Week</NavLink>
-        </li> */}
+        </li>
 
         <li className="header-menu__item">
           <NavLink

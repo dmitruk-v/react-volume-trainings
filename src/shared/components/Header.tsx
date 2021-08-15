@@ -10,7 +10,7 @@ import "./Header.css";
 
 type Props = {
   userSelector: React.ReactNode,
-  userMenu: React.ReactNode
+  userMenu: React.ReactNode,
 }
 
 const Header = (props: Props) => {

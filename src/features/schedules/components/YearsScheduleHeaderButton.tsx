@@ -1,11 +1,10 @@
+import { Link } from "react-router-dom";
+
 // ASSETS ------------------------------------------------------------
 // -------------------------------------------------------------------
 
 // STYLES ------------------------------------------------------------
-import { useAppSelector } from "../../../shared/hooks";
-import { selectScheduleById } from "../schedules-selectors";
-import { ScheduleModel } from "../schedules-types";
-import "./YearsScheduleUserButton.css"
+import "./YearsScheduleHeaderButton.css"
 // -------------------------------------------------------------------
 
 // COMPONENTS --------------------------------------------------------
@@ -15,12 +14,12 @@ type Props = {
   scheduleId: string
 };
 
-const YearsScheduleUserButton = (props: Props) => {
-  const schedule = useAppSelector<ScheduleModel | undefined>(state => selectScheduleById(state, props.scheduleId));
+const YearsScheduleHeaderButton = (props: Props) => {
+  const now = new Date();
 
   return (
-    <div>YearsScheduleUserButton !</div>
+    <Link to={`/years-schedule/${props.scheduleId}/${now.getFullYear()}`}>Link</Link>
   );
 }
 
-export { YearsScheduleUserButton };
+export { YearsScheduleHeaderButton };

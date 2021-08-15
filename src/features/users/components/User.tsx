@@ -40,6 +40,7 @@ const User = (props: Props) => {
     if (props.selectedUser && props.selectedUser.userId === props.user.userId) {
       dispatch(selectedUserActivate(null));
     }
+    history.push(`/`);
   }
 
   const userClasses = getClasses({ "user--selected": props.user.userId === props.selectedUser?.userId });
