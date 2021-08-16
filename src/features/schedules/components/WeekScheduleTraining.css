@@ -5,9 +5,9 @@
   user-select: none;
   transition: all 0.15s ease-in-out;
 }
-.wsch-training:hover {
+/* .wsch-training:hover {
   border-color: #a1a1a1;
-}
+} */
 .wsch-training__head {
   position: relative;
   display: flex;
